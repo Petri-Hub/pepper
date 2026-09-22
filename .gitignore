@@ -1,0 +1,6 @@
+# Environment files
+.env
+
+# Private keys that might be dropped in by accident
+*.pem
+*.key
