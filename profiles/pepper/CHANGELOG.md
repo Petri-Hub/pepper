@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-09-22 · The default profile is called Pepper
+
+> *Make Pepper a profile, and make the default profile her. There will probably be more profiles in the future.*
+
+Hermes' default profile can't be renamed or turned into a named one, so it got a display name instead: `hermes profile rename default Pepper`, applied on the live agent. Hermes now shows her as "Pepper (default)". She stays at `/opt/data` with her history, crons and memory, and future profiles go under `/opt/data/profiles/<name>`. Moving her into a real `pepper` profile was left out, since it would lose her conversation history and change the lab's compose file.
+
 ### 2026-09-22 · A SOUL without Petri's personal life
 
 > *Temporarily remove my personal information from the SOUL. Generalize her without knowledge of me — I'm thinking about making her public, and she'll understand me through other means that won't live in this repository.*

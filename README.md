@@ -57,11 +57,12 @@ Only placeholders. The real values live in the lab and never reach this reposito
 ├── .claude/rules      # how agents write profiles and .env files here
 ├── assets             # the diagram, as an editable Excalidraw file and its SVG
 ├── profiles
-│   └── pepper
-│       ├── .env.example   # the variables she needs, with placeholders
+│   └── <name>
+│       ├── .env.example   # the variables the agent needs, with placeholders
+│       ├── avatar.png     # its picture on every platform
 │       ├── CHANGELOG.md   # every change, in the words I asked for it
 │       ├── CONFIG.md      # what's configured, and why, with the settings that do it
-│       └── SOUL.md        # who she is, and the rules she follows
+│       └── SOUL.md        # who the agent is, and the rules it follows
 └── AGENTS.md          # the conventions for working in this repository
 ```
 
