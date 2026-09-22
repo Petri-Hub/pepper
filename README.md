@@ -89,6 +89,7 @@ What's already in place:
 - ✅ Her own GitHub App, working on my repositories through pull requests
 - ✅ Crons and reminders, delivered to Telegram or Discord
 - ✅ A personality, with rules on who she trusts and what she never shares
+- ✅ Her own avatar, the same bird on every platform
 - ✅ This repository, keeping her configuration readable
 
 What comes next:
@@ -100,7 +101,10 @@ What comes next:
 - ❌ Miro
 - ❌ WhatsApp, as one more place to talk to her
 - ❌ Backups of her memory and conversations, next to the game saves the lab already protects
-- ❌ Quiet hours, so her messages respect my routine
+- ❌ Customization and personalization: the name and look she carries across the interfaces, recorded here instead of set by hand in the desktop app
+- ❌ Plugins, for behaviour Hermes doesn't ship with
+- ❌ MCP servers, so she can reach tools that speak the protocol
+- ❌ More profiles beside her, each with its own soul, talking to her through Bot Mode or the kanban board
 
 ## References
 
