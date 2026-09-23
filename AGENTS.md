@@ -54,6 +54,8 @@ The lab's own repository is not edited from here. When a change needs something 
 
 **No credentials, ever.** Tokens, API keys, private keys, password hashes and session secrets never enter this repository, in any file. Identifiers are fine: chat IDs, user IDs, an App ID. When looking at a live `.env`, read key names only, never values.
 
+**The repository is private.** `Petri-Hub/pepper` is private on GitHub, and that is what makes it safe for a profile's `SOUL.md` to carry Petri's personal life: his routine, the people close to him, the repositories he owns. It changes nothing about the rule above, since credentials stay out either way. Making the repository public would expose everything already written into the git history, so anything personal comes out before that happens, not after.
+
 **Things that move fast stay out.** Skills, memories and reminders created from chat change every day and are managed by Hermes itself. A copy here would always be out of date.
 
 ## Changing a profile

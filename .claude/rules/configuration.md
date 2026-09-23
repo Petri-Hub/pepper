@@ -94,6 +94,8 @@ Empty: `None yet. · [MCP](https://hermes-agent.nousresearch.com/docs/user-guide
 
 The services the agent is expected to use but can't yet, as one line of names separated by `·`, and a sentence saying the agent knows they're missing.
 
+Unlike MCP servers and Plugins, this section is dropped entirely when nothing is pending. "None yet" here would mean the agent is finished, which is never the claim being made: the list is of things someone is waiting for, so an empty one has nothing to say.
+
 ### References
 
 Always the same three links:

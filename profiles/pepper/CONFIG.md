@@ -1,6 +1,6 @@
 # 🐦 Pepper
 
-> Petri's general-purpose assistant, and a bird about it. She's sarcastic, answers in whatever language she's spoken to, and complains once before doing what he asks. She lives on Telegram, Discord and voice, runs reminders, and opens PRs across Petri-Hub as her own GitHub App. With anyone who isn't Petri, his money, documents, inbox and private repos stay off limits.
+> Petri's general-purpose assistant, and a bird about it. She's sarcastic, answers in whatever language she's spoken to, and complains once before doing what he asks. She lives on Telegram, Discord and voice, runs reminders, opens PRs across Petri-Hub as her own GitHub App, and works his Gmail, Calendar and Drive. With anyone who isn't Petri, his money, documents, inbox and private repos stay off limits.
 
 ## 💬 Platforms
 
@@ -112,17 +112,72 @@ GITHUB_APP_INSTALLATION_ID=…
 GITHUB_APP_PRIVATE_KEY_PATH=/run/secrets/github-app.pem
 ```
 
+### 📬 Google Workspace
+
+Pepper reads and writes Petri's Gmail, Calendar and Drive, and reaches Contacts, Sheets and Docs along the way. Hermes has no toolset for any of it: it ships a bundled skill, `google-workspace`, that she drives from her terminal. So nothing here is enabled in the configuration and nothing is mapped by the lab — what makes it work is an OAuth client of Petri's own, created as a Desktop app in Google Cloud, and a token she holds beside her other files.
+
+The skill asks for all of its scopes at once — `gmail.readonly`, `gmail.send`, `gmail.modify`, `calendar`, `drive`, `contacts.readonly`, `spreadsheets` and `documents` — because this build has no flag to narrow them. Google's consent screen is the only place to hand over less, and the skill accepts a partial grant. Her token is profile-scoped, so a second profile authorizes on its own rather than inheriting hers, and it refreshes without asking. Both files sit in `/opt/data`, which the lab already mounts, so they survive a restart.
+
+What she may send, attach and share is a matter of her personality rather than her configuration, and lives in [SOUL.md](SOUL.md#what-never-leaves).
+
+```bash
+/opt/data/google_client_secret.json   # the OAuth client, downloaded from Google Cloud
+/opt/data/google_token.json           # her token, refreshed automatically
+```
+
 ### 🔌 MCP servers
 
-None yet. · [MCP](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp)
+Notion, Miro, Vercel, Sentry and Canva, all as the vendors' own hosted servers, all from Hermes' approved catalog. Notion also ships as a bundled skill and the skill lost: it wants an integration token in the environment, and every page has to be connected to it by hand, with an unconnected page answering 404 as though it did not exist. The hosted servers authorize as Petri in the browser instead, and each vendor's consent screen is where he chooses what it may see.
+
+None of them needed an OAuth app of his own. Notion, Sentry and Canva identify Hermes with a client metadata document; Miro and Vercel register it dynamically. Miro's six excluded tools are the ones Miro itself deprecated, dropped by the catalog entry rather than by choice. Every token lives in `/opt/data/mcp-tokens/`, profile-scoped like the Google one, and no vendor here offers the device-code flow, so authorizing each one meant pasting the redirect URL back into an interactive session.
+
+Their tools are deferred rather than loaded up front. Hermes' tool search replaces them with `tool_search`, `tool_describe` and `tool_call`, so a schema arrives when it is wanted instead of riding along in every request.
+
+Vercel is the one to be careful with. Its 212 tools include a `buy_*` family that charges Petri's card the moment it runs, tools that read project and shared environment variables in plain text, and one that mints a link bypassing authentication. None of that is turned off here, because the restraint belongs in her personality rather than her configuration: [SOUL.md](SOUL.md#what-costs-money) forbids the purchases outright and treats Vercel's variables the way it treats `/run/secrets/`.
+
+| Server | What it gives the agent | Link |
+|---|---|---|
+| `notion` | Pages and databases from Petri's Notion workspace | [Notion MCP](https://developers.notion.com/docs/mcp) |
+| `miro` | Boards, spaces and frames, read and write | [Miro MCP](https://developers.miro.com/docs/connecting-to-miro-mcp) |
+| `vercel` | Deployments, logs, projects and domains | [Vercel MCP](https://vercel.com/docs/mcp) |
+| `sentry` | Issues, events, stack traces and Seer analysis | [Sentry MCP](https://docs.sentry.io/product/sentry-mcp/) |
+| `canva` | Designs, folders, brand templates, assets and comments | [Canva MCP](https://www.canva.dev/docs/mcp/) |
+
+```yaml
+mcp_servers:
+  notion:
+    url: https://mcp.notion.com/mcp
+    auth: oauth
+    enabled: true
+  miro:
+    url: https://mcp.miro.com/
+    auth: oauth
+    enabled: true
+    tools:
+      exclude:
+        - diagram_create
+        - diagram_get_dsl
+        - layout_create
+        - layout_get_dsl
+        - layout_read
+        - layout_update
+  vercel:
+    url: https://mcp.vercel.com
+    auth: oauth
+    enabled: true
+  sentry:
+    url: https://mcp.sentry.dev/mcp
+    auth: oauth
+    enabled: true
+  canva:
+    url: https://mcp.canva.com/mcp
+    auth: oauth
+    enabled: true
+```
 
 ### 🧱 Plugins
 
 None yet. · [Plugins](https://hermes-agent.nousresearch.com/docs/user-guide/features/plugins)
-
-## 🚧 Not connected yet
-
-Gmail · Google Drive · Google Calendar · Notion · Miro · WhatsApp. Pepper knows these are missing and says so rather than improvising.
 
 ## References
 

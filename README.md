@@ -12,7 +12,7 @@
 
 ## About
 
-> **TL;DR:** Pepper is the agent that runs in my [lab](https://github.com/Petri-Hub/lab): she sets reminders and crons, notifies me on Telegram and Discord, and opens PRs on my repos. The lab runs her container. This repo keeps what runs inside it, the personality, the model and every platform she's wired to, written so I can tell what's configured without opening a YAML file.
+> **TL;DR:** Pepper is the agent that runs in my [lab](https://github.com/Petri-Hub/lab): she sets reminders and crons, notifies me on Telegram and Discord, opens PRs on my repos, and reaches my Gmail, Calendar and Drive. The lab runs her container. This repo keeps what runs inside it, the personality, the model and every platform she's wired to, written so I can tell what's configured without opening a YAML file.
 
 ## How it works
 
@@ -75,6 +75,12 @@ Only placeholders. The real values live in the lab and never reach this reposito
 | <img src="https://cdn.simpleicons.org/telegram" width="20" height="20" alt="" /> | [Telegram](https://core.telegram.org/bots) | Where I talk to Pepper day to day, and where her reminders reach me |
 | <img src="https://cdn.simpleicons.org/discord" width="20" height="20" alt="" /> | [Discord](https://discord.com/developers/docs) | Where Pepper hangs out with my friends, and where they can ask her things too |
 | <img src="https://cdn.simpleicons.org/github/9198A1" width="20" height="20" alt="" /> | [GitHub](https://docs.github.com/en/apps) | Where Pepper works on my repositories through her own GitHub App, always through pull requests |
+| <img src="https://cdn.simpleicons.org/google" width="20" height="20" alt="" /> | [Google Workspace](https://developers.google.com/workspace) | Gmail, Calendar and Drive, reached with an OAuth client of mine that Pepper holds her own token for |
+| <img src="https://cdn.simpleicons.org/notion/9198A1" width="20" height="20" alt="" /> | [Notion](https://developers.notion.com/docs/mcp) | My pages and databases, reached over Notion's hosted MCP server as her first MCP connection |
+| <img src="https://cdn.simpleicons.org/miro" width="20" height="20" alt="" /> | [Miro](https://developers.miro.com/docs/connecting-to-miro-mcp) | My boards and spaces, reached over Miro's hosted MCP server |
+| <img src="https://cdn.simpleicons.org/vercel/9198A1" width="20" height="20" alt="" /> | [Vercel](https://vercel.com/docs/mcp) | My deployments, logs and projects, over Vercel's hosted MCP server |
+| <img src="https://cdn.simpleicons.org/sentry" width="20" height="20" alt="" /> | [Sentry](https://docs.sentry.io/product/sentry-mcp/) | Issues and stack traces from my projects, over Sentry's hosted MCP server |
+| <img src="https://api.iconify.design/simple-icons:canva.svg?color=%239198A1" width="20" height="20" alt="" /> | [Canva](https://www.canva.dev/docs/mcp/) | My designs, folders and brand templates, over Canva's hosted MCP server |
 | <img src="https://cdn.simpleicons.org/docker" width="20" height="20" alt="" /> | [Docker](https://docs.docker.com/) | The container in the lab that Pepper lives in |
 
 ## Roadmap
@@ -87,6 +93,15 @@ What's already in place:
 - ✅ Discord, where my friends can talk to her too
 - ✅ Voice, so she understands voice notes, answers out loud and holds live conversations
 - ✅ Her own GitHub App, working on my repositories through pull requests
+- ✅ Gmail, to read, send and sort my email
+- ✅ Google Calendar, to know my schedule and put things on it
+- ✅ Google Drive, to find, read and share my documents
+- ✅ Notion, over MCP, reading and writing my pages and databases
+- ✅ Miro, over MCP, reading and editing my boards
+- ✅ Vercel, over MCP, for my deployments, logs and projects
+- ✅ Sentry, over MCP, for issues and stack traces
+- ✅ Canva, over MCP, for my designs and brand templates
+- ✅ MCP servers, so she can reach tools that speak the protocol
 - ✅ Crons and reminders, delivered to Telegram or Discord
 - ✅ A personality, with rules on who she trusts and what she never shares
 - ✅ Her own avatar, the same bird on every platform
@@ -94,17 +109,8 @@ What's already in place:
 
 What comes next:
 
-- ❌ Gmail, to read, sort and draft email
-- ❌ Google Calendar, to know my schedule and plan around it
-- ❌ Google Drive, to find and read my documents
-- ❌ Notion
-- ❌ Miro
-- ❌ WhatsApp, as one more place to talk to her
 - ❌ Backups of her memory and conversations, next to the game saves the lab already protects
-- ❌ Customization and personalization: the name and look she carries across the interfaces, recorded here instead of set by hand in the desktop app
 - ❌ Plugins, for behaviour Hermes doesn't ship with
-- ❌ MCP servers, so she can reach tools that speak the protocol
-- ❌ More profiles beside her, each with its own soul, talking to her through Bot Mode or the kanban board
 
 ## References
 
@@ -114,5 +120,12 @@ What comes next:
 - [Telegram Bot API](https://core.telegram.org/bots/api): how Pepper's Telegram bot talks to Telegram
 - [Discord Developer Portal](https://discord.com/developers/applications): where Pepper's Discord bot is registered
 - [GitHub Apps](https://docs.github.com/en/apps): how Pepper gets her own identity on GitHub
+- [Google Workspace skill](https://hermes-agent.nousresearch.com/docs/user-guide/skills/bundled/productivity/productivity-google-workspace): the bundled Hermes skill that gives Pepper Gmail, Calendar and Drive
+- [Notion MCP](https://developers.notion.com/docs/mcp): the hosted server Pepper reaches Notion through
+- [Miro MCP](https://developers.miro.com/docs/connecting-to-miro-mcp): the hosted server Pepper reaches Miro through
+- [Vercel MCP](https://vercel.com/docs/mcp): the hosted server Pepper reaches Vercel through
+- [Sentry MCP](https://docs.sentry.io/product/sentry-mcp/): the hosted server Pepper reaches Sentry through
+- [Canva MCP](https://www.canva.dev/docs/mcp/): the hosted server Pepper reaches Canva through
+- [MCP in Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp): how Pepper's MCP servers are configured and authorized
 - [Docker](https://docs.docker.com/): what runs Pepper's container in the lab
 - [lab](https://github.com/Petri-Hub/lab): the homelab that hosts her
