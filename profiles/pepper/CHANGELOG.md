@@ -2,6 +2,18 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-09-23 · CONFIG.md stops explaining Hermes
+
+> *Some Pepper sections are HUGE, map some of that to the CHANGELOG or something, keep the overall CONFIG.md less descriptive. Too many technical details. This is for a human, a human doesn't want to know about 10000 Modal caveats.*
+
+[CONFIG.md](CONFIG.md) went from roughly 1,450 words of prose to 790. The rule in `.claude/rules/configuration.md` has always said one to three sentences per section, and today's entries quietly broke it: Modal had grown to 279 words, the GitHub App to 272, MCP servers to 269, against Checkpoints at 16 and Voice at 80.
+
+What came out was mechanism. Whether `modal_mode` is pinned to `direct` and why, how the secret scope resolves a profile credential, that `home_mode` already resolves correctly inside a container, the five-second sync interval, which vendors register dynamically and which use a metadata document, Vercel's 212 tools, Miro's six deprecated exclusions, the eight Google scopes by name. None of it is wrong and all of it is in the entries below, which is where a reader who wants it should end up.
+
+What stayed is the shape of a decision: what the thing is, why it was chosen, and the one consequence someone needs to hold in their head. Modal keeps "a build that goes wrong burns a cloud VM instead of the laptop" and "nothing she writes there comes back". The fallback keeps "a new model gets a smaller allowance until it earns a bigger one" without the token arithmetic.
+
+Two corrections fell out of the pass. A sentence about the GitHub key had been inserted twice, and the App was described as installed across "all 16 repositories" when the live installation reports 17 — the count now reads "every repository", since a number in a document nobody recounts is a number that goes stale. `SOUL.md` still lists sixteen by name and is due the same correction in its own rework.
+
 ### 2026-09-23 · She learns her way around FAM
 
 > *She also configured the FAM skills, and I've configured the credentials, mark as done.*

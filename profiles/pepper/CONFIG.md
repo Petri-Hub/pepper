@@ -17,7 +17,7 @@
 
 OpenAI, because it's the easiest to set up and it runs on prepaid credits: when they run out, Pepper stops, so there's no pay-as-you-go bill that can grow without limit. GPT-6 Luna is a good mid-tier model for almost everything she does, and it gets replaced whenever a better one comes out — which is exactly what happened to GPT-5.6 Luna, beaten by its own successor on both score and price.
 
-GPT-5.6 Luna stays on as the fallback, for a reason that has nothing to do with quality. A new model launches with a reduced token-per-minute ceiling until it earns a higher one, so GPT-6 Luna allows 200,000 tokens a minute where everything else on the account allows 500,000 — and a single turn with a handful of tool calls can spend that in twenty-five seconds. The ceiling is per model, so the fallback is a second bucket on the same key rather than another provider to sign up for. Hermes reaches for it when the primary is rate-limited, answers 5xx or drops the connection.
+GPT-5.6 Luna sits behind it as a fallback — not for quality, but because a new model gets a smaller hourly allowance until it earns a bigger one, and Luna runs out sooner than everything else on the account.
 
 ```yaml
 model:
@@ -108,15 +108,11 @@ wake_word:
 
 ### 🐙 GitHub App
 
-Pepper works on GitHub as herself, through an App called *Pepper, Petri's Bot*, installed on the Petri-Hub account across all 16 repositories. Her commits and pull requests show up under the bot's name instead of Petri's, so it's always clear who did what.
+Pepper works on GitHub as herself, through an App called *Pepper, Petri's Bot*, installed on the Petri-Hub account across every repository. Her commits and pull requests show up under the bot's name instead of Petri's, so it's always clear who did what.
 
-There's no personal token and no login to keep alive. For each task she mints a token that lasts about an hour and can be narrowed to the one repository she's touching, so nothing powerful sits around waiting to leak. The App's private key is mounted read-only by the lab.
+There's no personal token and no login to keep alive: for each task she mints one that lasts about an hour and can be narrowed to the single repository she is touching. The key itself lives inside her Hermes home, mounted read-only by the lab, so it travels with her into a sandbox.
 
 Which repositories she may merge on her own, and which stop at a pull request for Petri to review, is part of her personality rather than her configuration, and lives in [SOUL.md](SOUL.md#the-repositories).
-
-Since her terminal moved to Modal, the key has to travel with her: a credential file only syncs into a sandbox when it sits inside her Hermes home, and `/run/secrets/` does not. The lab mounts the same file read-only at `/opt/data/github-app.pem`, and the `github-app-auth` skill declares it the way the Google skill declares its own, so it is pushed into every sandbox and never written back. One file on disk under two paths, so rotating the key cannot leave a stale copy behind. `mint-token.py` resolves it from its own location, which lands on `/opt/data` on the host and `/root/.hermes` in a sandbox.
-
-A fresh sandbox has no `PyJWT`, so the first mint inside one installs it first — a couple of seconds. That is behaviour rather than configuration and lives in [SOUL.md](SOUL.md#what-you-can-reach), and it goes away once she has an image with the library already in it.
 
 ```bash
 GITHUB_APP_ID=…
@@ -126,11 +122,9 @@ GITHUB_APP_PRIVATE_KEY_PATH=/opt/data/github-app.pem
 
 ### 📬 Google Workspace
 
-Pepper reads and writes Petri's Gmail, Calendar and Drive, and reaches Contacts, Sheets and Docs along the way. Hermes has no toolset for any of it: it ships a bundled skill, `google-workspace`, that she drives from her terminal. So nothing here is enabled in the configuration and nothing is mapped by the lab — what makes it work is an OAuth client of Petri's own, created as a Desktop app in Google Cloud, and a token she holds beside her other files.
+Pepper reads and writes Petri's Gmail, Calendar and Drive, and reaches Contacts, Sheets and Docs along the way. Hermes has no toolset for any of it — it ships a skill she drives herself — so nothing is enabled here and nothing is mapped by the lab. What makes it work is an OAuth client of Petri's own and a token beside her other files, profile-scoped so a second agent signs in as itself.
 
-The skill asks for all of its scopes at once — `gmail.readonly`, `gmail.send`, `gmail.modify`, `calendar`, `drive`, `contacts.readonly`, `spreadsheets` and `documents` — because this build has no flag to narrow them. Google's consent screen is the only place to hand over less, and the skill accepts a partial grant. Her token is profile-scoped, so a second profile authorizes on its own rather than inheriting hers, and it refreshes without asking. Both files sit in `/opt/data`, which the lab already mounts, so they survive a restart.
-
-What she may send, attach and share is a matter of her personality rather than her configuration, and lives in [SOUL.md](SOUL.md#what-never-leaves).
+The skill takes all of its scopes at once, so Google's consent screen is the only place to hand over less. What she may send, attach and share lives in [SOUL.md](SOUL.md#what-never-leaves).
 
 ```bash
 /opt/data/google_client_secret.json   # the OAuth client, downloaded from Google Cloud
@@ -139,13 +133,9 @@ What she may send, attach and share is a matter of her personality rather than h
 
 ### 📦 Modal
 
-Her terminal runs in a Modal sandbox instead of inside the container. Hermes itself does not move — the gateway, the model calls, Google, the five MCP servers all stay where they are — only shell commands do, so a build that goes wrong burns a disposable cloud VM instead of the laptop the lab runs on. Modal's Starter plan gives $30 of compute a month and simply stops when it runs out as long as no card is on file, which is the same reason OpenAI was picked over a pay-as-you-go provider.
+Her shell commands run in a disposable Modal sandbox rather than inside her own container, so a build that goes wrong burns a cloud VM instead of the laptop the lab runs on. Hermes itself does not move: only the terminal does. Modal's free tier stops rather than bills when it runs out, which is the same reason OpenAI was picked.
 
-`modal_mode` is pinned to `direct` rather than left at `auto`. Auto prefers Hermes' managed Nous gateway whenever the account happens to be entitled to it, and pinning it keeps every sandbox on Petri's own Modal account, where the spend is his to see. The resource limits are Hermes' own defaults and stay out of here; at one core and 5 GB she would have to run about 350 hours in a month to reach the free ceiling.
-
-The token pair is a profile credential, read through Hermes' secret scope rather than the container's environment, so a second profile brings its own Modal account instead of inheriting hers. It lives in the profile's own `.env` and needs nothing from the lab. `home_mode` stays at `auto`, which inside a container already resolves to the profile's own home.
-
-Credentials, the skills tree and the cache directories are pushed into the sandbox and re-pushed every five seconds as they change. Almost nothing comes back: at teardown the workspace syncs home, but credential files are upload-only, so a token refreshed inside a sandbox is discarded rather than written back over hers.
+Her credentials and skills travel into each sandbox and nothing she writes there comes back, so anything worth keeping goes to a repository or a message before the command ends. The token pair is profile-scoped, so a second agent brings its own Modal account.
 
 ```yaml
 terminal:
@@ -160,26 +150,34 @@ MODAL_TOKEN_SECRET=…
 
 ### 🔌 MCP servers
 
-Notion, Miro, Vercel, Sentry and Canva, all as the vendors' own hosted servers, all from Hermes' approved catalog. Notion also ships as a bundled skill and the skill lost: it wants an integration token in the environment, and every page has to be connected to it by hand, with an unconnected page answering 404 as though it did not exist. The hosted servers authorize as Petri in the browser instead, and each vendor's consent screen is where he chooses what it may see.
+Notion, Vercel, Sentry, Canva and Miro, each as the vendor's own hosted server. Every one is authorized as Petri in the browser, so each vendor's consent screen is where he chooses what it may see, and none needed an app of his own.
 
-None of them needed an OAuth app of his own. Notion, Sentry and Canva identify Hermes with a client metadata document; Miro and Vercel register it dynamically. Miro's six excluded tools are the ones Miro itself deprecated, dropped by the catalog entry rather than by choice. Every token lives in `/opt/data/mcp-tokens/`, profile-scoped like the Google one, and no vendor here offers the device-code flow, so authorizing each one meant pasting the redirect URL back into an interactive session.
-
-Their tools are deferred rather than loaded up front. Hermes' tool search replaces them with `tool_search`, `tool_describe` and `tool_call`, so a schema arrives when it is wanted instead of riding along in every request.
-
-Vercel is the one to be careful with. Its 212 tools include a `buy_*` family that charges Petri's card the moment it runs, tools that read project and shared environment variables in plain text, and one that mints a link bypassing authentication. None of that is turned off here, because the restraint belongs in her personality rather than her configuration: [SOUL.md](SOUL.md#what-costs-money) forbids the purchases outright and treats Vercel's variables the way it treats `/run/secrets/`.
+Vercel is the one to be careful with: it can spend his money and read production secrets. Nothing is turned off here, because the restraint belongs in her personality — [SOUL.md](SOUL.md#what-costs-money) forbids the purchases outright.
 
 | Server | What it gives the agent | Link |
 |---|---|---|
 | `notion` | Pages and databases from Petri's Notion workspace | [Notion MCP](https://developers.notion.com/docs/mcp) |
-| `miro` | Boards, spaces and frames, read and write | [Miro MCP](https://developers.miro.com/docs/connecting-to-miro-mcp) |
 | `vercel` | Deployments, logs, projects and domains | [Vercel MCP](https://vercel.com/docs/mcp) |
 | `sentry` | Issues, events, stack traces and Seer analysis | [Sentry MCP](https://docs.sentry.io/product/sentry-mcp/) |
 | `canva` | Designs, folders, brand templates, assets and comments | [Canva MCP](https://www.canva.dev/docs/mcp/) |
+| `miro` | Boards, spaces and frames, read and write | [Miro MCP](https://developers.miro.com/docs/connecting-to-miro-mcp) |
 
 ```yaml
 mcp_servers:
   notion:
     url: https://mcp.notion.com/mcp
+    auth: oauth
+    enabled: true
+  vercel:
+    url: https://mcp.vercel.com
+    auth: oauth
+    enabled: true
+  sentry:
+    url: https://mcp.sentry.dev/mcp
+    auth: oauth
+    enabled: true
+  canva:
+    url: https://mcp.canva.com/mcp
     auth: oauth
     enabled: true
   miro:
@@ -194,18 +192,6 @@ mcp_servers:
         - layout_get_dsl
         - layout_read
         - layout_update
-  vercel:
-    url: https://mcp.vercel.com
-    auth: oauth
-    enabled: true
-  sentry:
-    url: https://mcp.sentry.dev/mcp
-    auth: oauth
-    enabled: true
-  canva:
-    url: https://mcp.canva.com/mcp
-    auth: oauth
-    enabled: true
 ```
 
 ### 🧱 Plugins
