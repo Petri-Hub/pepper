@@ -2,6 +2,18 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-09-23 · Backed up, identity only
+
+> *I care more about WHAT MAKES IT RUN LIKE BEFORE, than THE HISTORY THAT IT PRODUCED.*
+
+Restic now copies Pepper to the lab's pendrive, beside the game saves, every six hours. The set is small on purpose: `SOUL.md`, `config.yaml`, `skills/`, `cron/`, `memories/`, `assets/` and `profiles/`. Roughly four megabytes of the gigabyte under `/opt/data`, and 1.3 MB once stored.
+
+What was left out shaped it more than what went in. Conversations, the kanban and the other SQLite databases hold what she did rather than who she is, and dropping them also meant nothing in the set is a live database, so the job needs no snapshot hook and the container never stops. Every credential stays out too — the five MCP tokens, the Google token and client, the provider pool — because each is re-obtainable by redoing an OAuth flow, and leaving them out keeps the pendrive from being worth stealing.
+
+It is an allow-list rather than a list of exclusions, so a new token or cache file appearing in `/opt/data` is left out by default instead of being quietly swept in. `profiles/` is listed so a second agent is captured without touching the configuration again.
+
+A restore gives back an agent who is herself, remembers Petri, keeps her schedule and knows her rules, with no history and signed out of all six services. The work lives in the lab repository, where it belongs, as [Petri-Hub/lab#5](https://github.com/Petri-Hub/lab/pull/5).
+
 ### 2026-09-22 · Canva, over MCP
 
 > *Help me connect the Canva MCP, it's configured in Claude Code already.*

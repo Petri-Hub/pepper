@@ -106,11 +106,20 @@ What's already in place:
 - ✅ A personality, with rules on who she trusts and what she never shares
 - ✅ Her own avatar, the same bird on every platform
 - ✅ This repository, keeping her configuration readable
+- ✅ Backups of who she is — her soul, settings, skills, crons and memories — on the pendrive that already holds the game saves
 
 What comes next:
 
-- ❌ Backups of her memory and conversations, next to the game saves the lab already protects
-- ❌ Plugins, for behaviour Hermes doesn't ship with
+- ❌ Plugins: a look through what exists for Hermes, the general-purpose ones and a connection to Excalidraw
+- ❌ Claude Code running cleanly under my personal account, authenticated over OAuth
+- ❌ A reshaped `SOUL.md`, and the files around it: who I am, my repositories, and what she should know without being told
+- ❌ Real routines — personalizations, schedules and proactive work she does for me instead of waiting to be asked
+- ❌ Access to FAM's website, with a ledger of what she has already done there so she doesn't repeat herself
+- ❌ The Wakapi and AI Memory connection I'm bringing up in the homelab
+
+And then the bigger one:
+
+- ❌ Pedro, my agent for work, as a profile of his own
 
 ## References
 
