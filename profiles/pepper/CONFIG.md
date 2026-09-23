@@ -17,11 +17,19 @@
 
 OpenAI, because it's the easiest to set up and it runs on prepaid credits: when they run out, Pepper stops, so there's no pay-as-you-go bill that can grow without limit. GPT-6 Luna is a good mid-tier model for almost everything she does, and it gets replaced whenever a better one comes out — which is exactly what happened to GPT-5.6 Luna, beaten by its own successor on both score and price.
 
+GPT-5.6 Luna stays on as the fallback, for a reason that has nothing to do with quality. A new model launches with a reduced token-per-minute ceiling until it earns a higher one, so GPT-6 Luna allows 200,000 tokens a minute where everything else on the account allows 500,000 — and a single turn with a handful of tool calls can spend that in twenty-five seconds. The ceiling is per model, so the fallback is a second bucket on the same key rather than another provider to sign up for. Hermes reaches for it when the primary is rate-limited, answers 5xx or drops the connection.
+
 ```yaml
 model:
   provider: openai-api
   base_url: https://api.openai.com/v1
   default: gpt-6-luna
+```
+
+```yaml
+fallback_model:
+  - provider: openai-api
+    model: gpt-5.6-luna
 ```
 
 ### 🤔 Reasoning

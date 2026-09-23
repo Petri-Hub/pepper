@@ -2,6 +2,32 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-09-23 · She learns her way around FAM
+
+> *She also configured the FAM skills, and I've configured the credentials, mark as done.*
+
+Three skills of her own, written by her from the portal rather than from a description of it: `fam-login` signs in with vault credentials, `fam-inbox` finds and summarizes the university's notifications, and `fam-assignements` finds activities by their current status. They live under `productivity/`, like the rest of what she has taught herself.
+
+The credentials are in Hermes' encrypted browser vault, `vault.json.enc` beside its key, not in `.env` and not anywhere near this repository. She reaches them with `browser_vault_list` and `browser_vault_fill`, so the values never pass through a prompt or a log line.
+
+Nothing is recorded here beyond this entry. Skills she writes from chat are runtime state, and a copy kept here would be out of date by the week — the same reason memories and reminders stay out. What the repository holds is that she can do it at all.
+
+Worth knowing for whoever picks this up next: the browser she drives for FAM is the local one inside the container, not the Modal sandbox. It is also the component that wedged the gateway's event loop this evening when its CDP connection died, so a FAM session that hangs is the first place to look.
+
+### 2026-09-23 · A second bucket, after the new model turned out to have a smaller one
+
+> *Let's configure GPT 5.6-luna fallback only for now.*
+
+She stopped mid-task twice tonight, and the cause was the morning's model switch rather than anything she did. Reading the rate-limit headers off Petri's own key: `gpt-6-luna` allows **200,000 tokens a minute**, while `gpt-5.6-luna`, `gpt-6-sol`, `gpt-5.6-terra` and `gpt-6-astra` all allow **500,000**. A new model launches with a reduced ceiling until it earns a higher one. Moving her to GPT-6 Luna cut her throughput by sixty per cent, which the benchmark and the price list gave no hint of.
+
+That ceiling is easier to hit than it looks. Her context sits around 55,000 tokens, and one turn with a few tool calls makes four API calls in twenty-five seconds — roughly 220,000 tokens, over the limit before the minute is out. Prompt caching does not help: the failing calls logged a 100% cache hit and were refused anyway, because caching discounts the bill, not the rate.
+
+The ceiling is per model, so the fix needs no second provider and no second key — just a second bucket. `gpt-5.6-luna` is the entry, chosen over the higher-scoring `gpt-5.6-terra` because it is the model she ran on until this morning and is known-good here. Hermes' own `fallback list` states the trigger: rate limits, 5xx and dropped connections.
+
+Also worth recording, since it was wrong in this repository's head for most of the day: the fallback chain is **not** auth-only. That is a different mechanism in the CLI's start-up path. The runtime chain classifies rate limits as a failover reason and engages after `agent.api_max_retries` (3 by default) is spent, before the auto-recovery ladder.
+
+Applied to the live agent without a restart, since the gateway's cold boot discards Telegram messages queued while it was down — which is how three of Petri's messages disappeared earlier this evening. It takes effect on new sessions.
+
 ### 2026-09-23 · The key stops being a copy
 
 > *Shouldn't we have the variable of HERMES_GITHUB_APP_ID to like, HERMES_PEPPER_GITHUB_APP_ID, so HERMES_PEDRO_GITHUB_APP_ID can exist in the future? Why 2 mounts of the secrets?*

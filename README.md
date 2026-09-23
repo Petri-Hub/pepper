@@ -109,6 +109,8 @@ What's already in place:
 - ✅ This repository, keeping her configuration readable
 - ✅ Backups of who she is — her soul, settings, skills, crons and memories — on the pendrive that already holds the game saves
 - ✅ Modal as her terminal backend, so her shell commands run in a disposable cloud sandbox instead of on the lab host
+- ✅ A fallback model, so a rate limit or a provider error hands over to a second model instead of ending the turn
+- ✅ FAM's website, through skills of her own that sign in from the vault, read the inbox and find open activities
 
 What comes next:
 
@@ -116,10 +118,8 @@ What comes next:
 - ❌ Claude Code running cleanly under my personal account, authenticated over OAuth
 - ❌ A reshaped `SOUL.md`, and the files around it: who I am, my repositories, and what she should know without being told
 - ❌ Real routines — personalizations, schedules and proactive work she does for me instead of waiting to be asked
-- ❌ Access to FAM's website, with a ledger of what she has already done there so she doesn't repeat herself
 - ❌ The Wakapi and AI Memory connection I'm bringing up in the homelab
-- ❌ Retry and fallback configuration per model, so a provider that errors, rate-limits or runs out of credit hands over to the next one instead of stopping her mid-task
-- ❌ A Modal image of her own, with the Python libraries her skills need baked in — without them Gmail and the GitHub App cannot run from inside a sandbox
+- ❌ A Modal image of her own, carrying the Python libraries and the CLIs her skills reach for, so a fresh sandbox stops spending its first seconds installing them and her soul stops having to explain how
 
 And then the bigger one:
 
