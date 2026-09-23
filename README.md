@@ -81,6 +81,7 @@ Only placeholders. The real values live in the lab and never reach this reposito
 | <img src="https://cdn.simpleicons.org/vercel/9198A1" width="20" height="20" alt="" /> | [Vercel](https://vercel.com/docs/mcp) | My deployments, logs and projects, over Vercel's hosted MCP server |
 | <img src="https://cdn.simpleicons.org/sentry" width="20" height="20" alt="" /> | [Sentry](https://docs.sentry.io/product/sentry-mcp/) | Issues and stack traces from my projects, over Sentry's hosted MCP server |
 | <img src="https://api.iconify.design/simple-icons:canva.svg?color=%239198A1" width="20" height="20" alt="" /> | [Canva](https://www.canva.dev/docs/mcp/) | My designs, folders and brand templates, over Canva's hosted MCP server |
+| <img src="https://cdn.simpleicons.org/modal/9198A1" width="20" height="20" alt="" /> | [Modal](https://modal.com/docs) | The cloud sandbox her shell commands run in, so nothing she executes touches the lab host |
 | <img src="https://cdn.simpleicons.org/docker" width="20" height="20" alt="" /> | [Docker](https://docs.docker.com/) | The container in the lab that Pepper lives in |
 
 ## Roadmap
@@ -107,6 +108,7 @@ What's already in place:
 - ✅ Her own avatar, the same bird on every platform
 - ✅ This repository, keeping her configuration readable
 - ✅ Backups of who she is — her soul, settings, skills, crons and memories — on the pendrive that already holds the game saves
+- ✅ Modal as her terminal backend, so her shell commands run in a disposable cloud sandbox instead of on the lab host
 
 What comes next:
 
@@ -116,6 +118,8 @@ What comes next:
 - ❌ Real routines — personalizations, schedules and proactive work she does for me instead of waiting to be asked
 - ❌ Access to FAM's website, with a ledger of what she has already done there so she doesn't repeat herself
 - ❌ The Wakapi and AI Memory connection I'm bringing up in the homelab
+- ❌ Retry and fallback configuration per model, so a provider that errors, rate-limits or runs out of credit hands over to the next one instead of stopping her mid-task
+- ❌ A Modal image of her own, with the Python libraries her skills need baked in — without them Gmail and the GitHub App cannot run from inside a sandbox
 
 And then the bigger one:
 
@@ -136,5 +140,6 @@ And then the bigger one:
 - [Sentry MCP](https://docs.sentry.io/product/sentry-mcp/): the hosted server Pepper reaches Sentry through
 - [Canva MCP](https://www.canva.dev/docs/mcp/): the hosted server Pepper reaches Canva through
 - [MCP in Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp): how Pepper's MCP servers are configured and authorized
+- [Modal](https://modal.com/docs): the cloud sandbox Hermes sends her terminal commands to
 - [Docker](https://docs.docker.com/): what runs Pepper's container in the lab
 - [lab](https://github.com/Petri-Hub/lab): the homelab that hosts her

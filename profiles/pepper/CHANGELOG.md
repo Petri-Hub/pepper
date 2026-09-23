@@ -2,6 +2,83 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-09-23 · The key stops being a copy
+
+> *Shouldn't we have the variable of HERMES_GITHUB_APP_ID to like, HERMES_PEPPER_GITHUB_APP_ID, so HERMES_PEDRO_GITHUB_APP_ID can exist in the future? Why 2 mounts of the secrets?*
+
+Earlier today the GitHub App key was copied into `/opt/data` by hand, because a credential file only reaches a sandbox from inside the Hermes home. A copy of a private key is a thing that goes stale on rotation, so the lab now mounts the same file there instead — [Petri-Hub/lab#6](https://github.com/Petri-Hub/lab/pull/6). One file on disk, two paths, nothing to keep in step.
+
+The second mount is gone with it. `/run/secrets/github-app.pem` only ever served `GITHUB_APP_PRIVATE_KEY_PATH`, which now points at the new location; `skills_hub_github.py` is its only reader, and `mint-token.py` hardcodes its own App and installation identifiers and never reads the environment at all. `CONFIG.md` and `.env.example` follow the variable to its new value.
+
+That PR also committed the deployment as it actually ran. The lab's compose had drifted badly — still naming OpenRouter and Groq, missing every dashboard, OpenAI, Telegram and GitHub App variable the container had been running with, and not included in the apps aggregate at all. The lab-side App identifiers are now `HERMES_PEPPER_GITHUB_APP_ID` and `HERMES_PEPPER_GITHUB_APP_INSTALLATION_ID`, which reads better beside a second agent, though it is naming rather than isolation: the container environment is shared by every profile, and what actually separates them is each profile's own `.env` read through Hermes' secret scope, the same route the Modal tokens take.
+
+`SOUL.md` gained the key too. *What never leaves* named `.env` and `/run/secrets/` but not the private key itself, which was fine while it sat in a directory she never touched and is not fine now that it rides into every sandbox with her; it is listed there and in the injection rules beside them.
+
+Applying it moved the container from the `hermes` compose project to `apps`, which is where the merged `services/apps/compose.yml` now includes it. `make apps-up` is the command.
+
+### 2026-09-23 · She installs what the sandbox is missing
+
+> *Change only the SOUL.md for now, I want to have more time for the actual Docker image, let's make a temporary fix.*
+
+Gmail and the GitHub App were never as broken as they looked. A bare Modal sandbox has no `googleapiclient`, no `jwt` and no `cryptography`, so both scripts die on import — but the credentials and the scripts themselves are already there, and installing the libraries takes seconds. Measured in a live sandbox: `setup.py --install-deps` in five seconds, after which `gmail labels` returns real labels; `pip install PyJWT cryptography` in two, after which `mint-token.py` mints a valid `ghs_` installation token.
+
+So the fix is knowledge, not capability. `SOUL.md` now tells her that a `ModuleNotFoundError` in a fresh sandbox means the libraries are missing and never that the integration is gone, names the two commands, and asks her to run them quietly once per sandbox rather than reporting Gmail or GitHub as down — which would send Petri chasing a problem that is not there.
+
+Hermes re-reads `SOUL.md` on every prompt build, so this needed no restart. The system prompt is composed once per thread, so a conversation already open keeps the old copy until the next session.
+
+Deliberately left alone: `google_api.py` still hardcodes `/opt/data/google-workspace-packages` on line 33, the same bug that `mint-token.py` had with its key path, and it should resolve from `__file__` instead. Fixing it changes nothing on its own, since that directory does not sync into a sandbox either way. Both it and this stopgap go away when she gets an image with the libraries already in it.
+
+### 2026-09-23 · GPT-6 Luna
+
+> *Looks like OpenAI released GPT-6 models, and Luna + Sol prices went 50% cheaper. Can you help Pepper use GPT-6 Luna by default?*
+
+Her model is `gpt-6-luna`. The id was read off OpenAI's own `/v1/models` on Petri's key rather than taken from the announcement, which answers 403 to anything that is not a browser, and a real completion was sent to it before the switch — it came back on `gpt-6-luna` with `finish_reason: stop`. `gpt-6-astra` is also on the account and was not considered.
+
+The case for Luna over Sol is not the halved price, it is that the benchmark puts Luna ahead on both axes at once: 95.5 points against GPT-5.6 Luna's own run, at roughly a twelfth of the cost. Sol went the other way — 91.0 against its predecessor's 100.0, and specifically weaker at noticing disguised vulnerabilities, which is the wrong regression for an agent that reads other people's repositories and other people's email.
+
+Nothing else moved. `reasoning_effort` stays at medium, and nothing about the switch touches the terminal, the MCP servers or her soul.
+
+### 2026-09-23 · What the move to Modal broke, and the soul that never shipped
+
+> *Go ahead and fix things: the GitHub thing, the SOUL.md, the paths fix, etc. Just keep Google out of terminal if the skill is already doing its job.*
+
+A health check run from Telegram found Gmail, Calendar, Drive, Sheets, Docs, Contacts and the GitHub App all failing, every one of them with a path that no longer exists:
+
+```
+'/opt/data/skills/productivity/google-workspace/scripts/google_api.py': No such file or directory
+'/opt/data/skills/github-app-auth/scripts/mint-token.py': No such file or directory
+```
+
+Pepper read that as her tools being absent. They are not. All 68 skills sync into the sandbox, scripts included — `_walk_skill_tree` keeps `scripts/` deliberately — but they arrive under `/root/.hermes/`, not `/opt/data/`. She was calling the container's name for a directory from inside a machine that has never heard of it.
+
+`SOUL.md` now says where she is. Three anchors changed: clones are `~/.hermes/workspace/<repo>` instead of `/opt/data/workspace/<repo>`, her Google token is named home-relative, and the closing paragraph is replaced by *Where your commands actually run* — that she thinks in the container and executes in a Modal sandbox as root at `/root`, that `/opt/data` does not exist there, what travels with her and what does not, and that nothing she writes comes home. Her personality, Petri's life and the repository policy were left untouched; a fuller rework comes later.
+
+**The larger find was that the repository and the live agent had drifted, in the direction that mattered.** The repo copy was 241 lines against the live agent's 216, and everything written over the previous two days had landed here only: the whole `What costs money` section, the Vercel environment-variable rule, the `gmail.send` draft-and-wait rule, the Drive attachment rule and the Notion/Miro line. She had been answering messages with Vercel's `buy_*` family reachable and no rule against calling it. The sync that fixed the paths also, finally, gave her those.
+
+Google needed nothing. The `google-workspace` skill already declares both files in its own `required_credential_files`, so they travel whenever it loads; `terminal.credential_files` stays unset rather than duplicating a working declaration.
+
+GitHub needed three things. A credential file only syncs when it sits inside the Hermes home, and `/run/secrets/` does not, so the key was copied to `/opt/data/github-app.pem`. `mint-token.py` had `/run/secrets/github-app.pem` hardcoded — not read from `GITHUB_APP_PRIVATE_KEY_PATH`, which turned out to be decorative — and now resolves `parents[3] / "github-app.pem"` from its own location, which is `/opt/data` on the host and `/root/.hermes` in a sandbox, with the old path kept as a fallback. The skill declares the key in its frontmatter like Google does, so it gets the same upload-only protection. Verified: the key arrives, the path resolves, and the script still fails on `import jwt`.
+
+That last failure is the one thing neither config nor code can fix here. The stock sandbox image has no `PyJWT`, no `cryptography` and no `googleapiclient`, and the 121 MB of Google libraries under `/opt/data/google-workspace-packages` are not in the sync set and never will be — Hermes syncs credentials and skills, not installed libraries. An image of her own is now on the roadmap, and it unblocks Gmail and GitHub together.
+
+Also: `browser.use_real_profile` is off. It was on with no Chromium in the container, which failed every real-profile page load and predates Modal entirely. `false` is Hermes' own default, so nothing is recorded in [CONFIG.md](CONFIG.md) for it.
+
+Still open: sync-back is broken on this build — `_modal_bulk_download()` reads a binary tar through a text decoder and dies on the first non-UTF-8 byte — and a stray copy of the Google OAuth client is sitting in `attachments/`, which syncs to every sandbox as ordinary content rather than as a protected credential.
+
+### 2026-09-23 · Her terminal moves to Modal
+
+> *I need your help to configure Hermes with Modal, I've already created the account. One important thing: I'm planning to create Pedro, so I think the `home_mode` should be per profile, as Pedro will have overall different credentials.*
+
+Shell commands now run in a Modal sandbox instead of inside the container she lives in. Hermes does not move — the gateway, the model, Google and the five MCP servers stay put — only `terminal.backend` changes, so the lab's laptop stops being the thing that executes whatever she decides to run. Modal's Starter plan is $30 of compute a month that stops rather than bills when no card is on file, which is the same argument that picked OpenAI.
+
+`modal_mode` is pinned to `direct`. Its default, `auto`, prefers Hermes' managed Nous gateway whenever the account is entitled to it, and pinning keeps every sandbox on Petri's own Modal account. Nothing else was recorded: the resource limits in the live `config.yaml` are Hermes' own defaults, so they stay out by the usual rule.
+
+**`home_mode` was left at `auto`, and the ask it came from was answered a different way.** In a container, `auto` already resolves to `{HERMES_HOME}/home` — Pepper's terminal home is `/opt/data/home` — so `profile` would force the path it already uses. It only differs on a bare-metal host, where `auto` keeps the real OS home. Profile isolation does not come from that setting at all: `agent/secret_scope.py` exists so that "each profile's `.env` keys cannot be unioned into `os.environ`", and it fails closed rather than falling back. Modal was built into that deliberately — `has_direct_modal_credentials()` reads the token pair through the secret scope "so the default profile's Modal account never selects the direct backend for a multiplexed secondary". Pedro will get his own Modal account by having his own `.env`, and nothing here has to change for him.
+
+The lab is untouched, which was not the expectation going in. The SDK looked like it needed a new image, since the venv is read-only to the `hermes` user and the deployment sets `HERMES_DISABLE_LAZY_INSTALLS=1` — but that flag only stops Hermes installing on its own, and `hermes_bootstrap.activate_durable_lazy_target()` already puts `/opt/data/lazy-packages` on `sys.path` at startup for exactly this case. `modal==1.3.4`, the version `lazy_deps.py` pins, installs there. The tokens are profile credentials in `/opt/data/.env` rather than a `HERMES_*` compose mapping, which is both what makes them per-profile and why the lab needs no new variable.
+
+Worth knowing about what crosses the wire: credentials, the skills tree and nine cache directories are pushed in and re-pushed every five seconds. At teardown the workspace comes home, but credential files are upload-only, so a token refreshed inside a sandbox is thrown away instead of overwriting hers. Her state — `state.db`, `config.yaml`, `SOUL.md`, `cron/`, `memories/` — never leaves the container.
+
 ### 2026-09-23 · Backed up, identity only
 
 > *I care more about WHAT MAKES IT RUN LIKE BEFORE, than THE HISTORY THAT IT PRODUCED.*

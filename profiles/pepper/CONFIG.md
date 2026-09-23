@@ -15,13 +15,13 @@
 
 ### 🧠 Model
 
-OpenAI, because it's the easiest to set up and it runs on prepaid credits: when they run out, Pepper stops, so there's no pay-as-you-go bill that can grow without limit. GPT-5.6 Luna is a good mid-tier model for almost everything she does, and it gets replaced whenever a better one comes out.
+OpenAI, because it's the easiest to set up and it runs on prepaid credits: when they run out, Pepper stops, so there's no pay-as-you-go bill that can grow without limit. GPT-6 Luna is a good mid-tier model for almost everything she does, and it gets replaced whenever a better one comes out — which is exactly what happened to GPT-5.6 Luna, beaten by its own successor on both score and price.
 
 ```yaml
 model:
   provider: openai-api
   base_url: https://api.openai.com/v1
-  default: gpt-5.6-luna
+  default: gpt-6-luna
 ```
 
 ### 🤔 Reasoning
@@ -106,10 +106,14 @@ There's no personal token and no login to keep alive. For each task she mints a 
 
 Which repositories she may merge on her own, and which stop at a pull request for Petri to review, is part of her personality rather than her configuration, and lives in [SOUL.md](SOUL.md#the-repositories).
 
+Since her terminal moved to Modal, the key has to travel with her: a credential file only syncs into a sandbox when it sits inside her Hermes home, and `/run/secrets/` does not. The lab mounts the same file read-only at `/opt/data/github-app.pem`, and the `github-app-auth` skill declares it the way the Google skill declares its own, so it is pushed into every sandbox and never written back. One file on disk under two paths, so rotating the key cannot leave a stale copy behind. `mint-token.py` resolves it from its own location, which lands on `/opt/data` on the host and `/root/.hermes` in a sandbox.
+
+A fresh sandbox has no `PyJWT`, so the first mint inside one installs it first — a couple of seconds. That is behaviour rather than configuration and lives in [SOUL.md](SOUL.md#what-you-can-reach), and it goes away once she has an image with the library already in it.
+
 ```bash
 GITHUB_APP_ID=…
 GITHUB_APP_INSTALLATION_ID=…
-GITHUB_APP_PRIVATE_KEY_PATH=/run/secrets/github-app.pem
+GITHUB_APP_PRIVATE_KEY_PATH=/opt/data/github-app.pem
 ```
 
 ### 📬 Google Workspace
@@ -123,6 +127,27 @@ What she may send, attach and share is a matter of her personality rather than h
 ```bash
 /opt/data/google_client_secret.json   # the OAuth client, downloaded from Google Cloud
 /opt/data/google_token.json           # her token, refreshed automatically
+```
+
+### 📦 Modal
+
+Her terminal runs in a Modal sandbox instead of inside the container. Hermes itself does not move — the gateway, the model calls, Google, the five MCP servers all stay where they are — only shell commands do, so a build that goes wrong burns a disposable cloud VM instead of the laptop the lab runs on. Modal's Starter plan gives $30 of compute a month and simply stops when it runs out as long as no card is on file, which is the same reason OpenAI was picked over a pay-as-you-go provider.
+
+`modal_mode` is pinned to `direct` rather than left at `auto`. Auto prefers Hermes' managed Nous gateway whenever the account happens to be entitled to it, and pinning it keeps every sandbox on Petri's own Modal account, where the spend is his to see. The resource limits are Hermes' own defaults and stay out of here; at one core and 5 GB she would have to run about 350 hours in a month to reach the free ceiling.
+
+The token pair is a profile credential, read through Hermes' secret scope rather than the container's environment, so a second profile brings its own Modal account instead of inheriting hers. It lives in the profile's own `.env` and needs nothing from the lab. `home_mode` stays at `auto`, which inside a container already resolves to the profile's own home.
+
+Credentials, the skills tree and the cache directories are pushed into the sandbox and re-pushed every five seconds as they change. Almost nothing comes back: at teardown the workspace syncs home, but credential files are upload-only, so a token refreshed inside a sandbox is discarded rather than written back over hers.
+
+```yaml
+terminal:
+  backend: modal
+  modal_mode: direct
+```
+
+```bash
+MODAL_TOKEN_ID=…
+MODAL_TOKEN_SECRET=…
 ```
 
 ### 🔌 MCP servers
