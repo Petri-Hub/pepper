@@ -1,0 +1,70 @@
+# Pepper's sandbox image: how it is built, every version it pins, and a way to
+# open it locally the way Hermes sees it.
+#
+#   docker compose build                         # builds ghcr.io/petri-hub/pepper-sandbox:dev
+#   TAG=abc1234 docker compose build             # builds under another tag
+#   docker compose run --rm pepper-sandbox bash -l
+#
+# The build args are the only thing a version bump touches. The Dockerfile
+# declares none of them with a default, so a pin deleted here fails the build
+# instead of silently baking yesterday's version, and no script ever resolves
+# "latest" — an image that cannot say which OpenCode it carries is an image
+# nobody can roll back.
+#
+# The base image is not here: FROM is resolved before any build arg reaches the
+# scripts, so it lives in the Dockerfile's BASE_IMAGE argument.
+
+services:
+  pepper-sandbox:
+    image: ${IMAGE:-ghcr.io/petri-hub/pepper-sandbox}:${TAG:-dev}
+    build:
+      context: .
+      tags:
+        - ${IMAGE:-ghcr.io/petri-hub/pepper-sandbox}:latest
+      args:
+        # Claude Code — the coding agent she hands work to. Released most days.
+        # Its manifest.json carries each binary's digest, so only the version
+        # is pinned.
+        # https://downloads.claude.ai/claude-code-releases/latest
+        CLAUDE_CODE_VERSION: 2.1.284
+
+        # Codex — OpenAI's coding agent. Tags are rust-v<version>; the prefix
+        # is added by the script. codex-package_SHA256SUMS covers the package.
+        # https://github.com/openai/codex/releases
+        CODEX_VERSION: 0.158.0
+
+        # OpenCode — a third coding agent she can run. Roughly two releases a
+        # week.
+        # https://github.com/anomalyco/opencode/releases
+        OPENCODE_VERSION: 1.18.33
+
+        # OpenCode publishes no checksums of any kind, so this digest is ours:
+        # computed once from the released tarball, pinned here, and checked on
+        # every build. It is weaker than an upstream signature, since a tarball
+        # swapped before we first saw it would be recorded as correct — but it
+        # does catch a release re-cut under the same tag, a corrupted download
+        # and a poisoned cache, which is most of what a checksum is for.
+        # Recompute it whenever OPENCODE_VERSION changes.
+        OPENCODE_SHA256: e546123213ae47909a4268692aa4b94950d011afe9cac9938753a2194f1c16d5
+
+        # ai-memory — cross-session memory. Ships a .sha256 beside each asset,
+        # so the build fetches upstream's digest and no value is pinned here.
+        # https://github.com/akitaonrails/ai-memory/releases
+        AI_MEMORY_VERSION: 2.4.1
+
+        # wakatime-cli — the heartbeats that reach Wakapi in the lab. Ships a
+        # checksums_sha256.txt covering every asset.
+        # https://github.com/wakatime/wakatime-cli/releases
+        WAKATIME_VERSION: 2.26.13
+
+        # claude-code-wakatime — the Claude Code plugin that feeds
+        # wakatime-cli. It installs from its repository's default branch, so
+        # this pin is checked rather than chosen: a new upstream release fails
+        # the build until it is bumped here.
+        # https://github.com/wakatime/claude-code-wakatime/releases
+        WAKATIME_CLAUDE_PLUGIN_VERSION: 4.1.0
+
+    # Only for `docker compose run`: the credentials Hermes will mount from the
+    # lab, taken from this machine instead. Building ignores it.
+    volumes:
+      - ~/.config/pepper-sandbox/credentials:/root/.hermes/sandbox/credentials:ro
