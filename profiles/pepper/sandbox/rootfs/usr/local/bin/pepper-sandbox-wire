@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+# Connect the sandbox to Petri's lab: Wakapi for the clock, ai-memory for the
+# memory, in all three coding agents.
+#
+# Both need a URL and a secret, so neither can be baked into this public image.
+# They arrive as files in /root/.hermes/sandbox/credentials, and this writes
+# them where each tool looks. ai-memory's side is done by ai-memory's own
+# installers, so the hooks and MCP entries are exactly what it would write on
+# a desktop, and a new ai-memory release changes them without a change here.
+#
+# /etc/profile.d/pepper-sandbox.sh calls this on every login shell. It returns
+# at once when the credentials match the last run it finished, so the work is
+# done once per sandbox, and again only when a credential changes.
+#
+# Usage: pepper-sandbox-wire [--force]
+
+set -uo pipefail
+
+credentials=/root/.hermes/sandbox/credentials
+state=/root/.cache/pepper-sandbox
+log="$state/wire.log"
+
+read_credential() {
+  [ -r "$credentials/$1" ] || return 1
+  tr -d '\r\n' < "$credentials/$1"
+}
+
+wakapi_url="$(read_credential wakapi-url)" || wakapi_url=""
+wakapi_key="$(read_credential wakapi-api-key)" || wakapi_key=""
+memory_url="$(read_credential ai-memory-url)" || memory_url=""
+memory_token="$(read_credential ai-memory-auth-token)" || memory_token=""
+
+mkdir -p "$state"
+chmod 700 "$state"
+
+# The digest of everything this script acts on, and of the script itself, so a
+# new image with a different wiring re-runs it too.
+fingerprint="$(
+  { printf '%s\n' "$wakapi_url" "$wakapi_key" "$memory_url" "$memory_token"; cat "$0"; } \
+    | sha256sum | cut -d' ' -f1
+)"
+if [ "${1:-}" != "--force" ] && [ "$(cat "$state/wired" 2>/dev/null)" = "$fingerprint" ]; then
+  exit 0
+fi
+
+exec >"$log" 2>&1
+echo "wiring at $(date -u +%FT%TZ)"
+failed=0
+
+# --- Wakapi -----------------------------------------------------------------
+# One config for every agent: all three call wakatime-cli, and it reads this.
+# The hostname is what Wakapi shows as the machine, beside globals, monstrao
+# and lab. The rate limit is off because wakatime-cli otherwise queues each
+# heartbeat and sends only once two minutes have passed since the last send,
+# and a sandbox can be gone well before then, taking the queue with it.
+if [ -n "$wakapi_url" ] && [ -n "$wakapi_key" ]; then
+  umask 077
+  cat > /root/.wakatime.cfg <<CFG
+[settings]
+api_url = $wakapi_url
+api_key = $wakapi_key
+hostname = pepper
+heartbeat_rate_limit_seconds = 0
+CFG
+  umask 022
+  echo "wakapi: wrote ~/.wakatime.cfg"
+else
+  echo "wakapi: wakapi-url or wakapi-api-key missing, skipped"
+fi
+
+# --- ai-memory --------------------------------------------------------------
+if [ -n "$memory_url" ] && [ -n "$memory_token" ]; then
+  wire() { echo "+ ai-memory $1 $2 $3"; ai-memory "$@" --server-url "$memory_url" --auth-token "$memory_token" --apply || failed=1; }
+
+  # Claude Code: hooks in ~/.claude/settings.json beside the WakaTime plugin,
+  # and the session-aware bridge in ~/.claude.json.
+  wire install-hooks --agent claude-code
+  wire install-mcp --client claude-code --session-aware
+
+  # Codex: MCP in ~/.codex/config.toml, hooks rendered to hooks.json and then
+  # moved into the managed config, where Codex runs them without asking a
+  # person to trust them first.
+  wire install-hooks --agent codex
+  wire install-mcp --client codex
+  if [ -f /root/.codex/hooks.json ]; then
+    python3 - /root/.codex/hooks.json /etc/pepper-sandbox/codex-managed-base.toml /etc/codex/managed_config.toml <<'PY' || failed=1
+import json, sys
+
+hooks_json, base, out = sys.argv[1:4]
+events = json.load(open(hooks_json))["hooks"]
+
+# JSON string escapes are valid TOML basic-string escapes, so json.dumps
+# quotes each value correctly for TOML as well.
+q = json.dumps
+lines = [open(base).read().rstrip("\n"), ""]
+for event, groups in events.items():
+    for group in groups:
+        lines += [f"[[hooks.{event}]]", f"matcher = {q(group.get('matcher', ''))}", ""]
+        for hook in group.get("hooks", []):
+            lines.append(f"[[hooks.{event}.hooks]]")
+            for key, value in hook.items():
+                lines.append(f"{key} = {q(value)}")
+            lines.append("")
+open(out, "w").write("\n".join(lines))
+PY
+    rm -f /root/.codex/hooks.json
+    echo "codex: ai-memory hooks moved to /etc/codex/managed_config.toml"
+  fi
+
+  # OpenCode: a generated plugin beside the WakaTime one, and MCP in
+  # opencode.json.
+  wire install-hooks --agent open-code
+  wire install-mcp --client open-code
+else
+  echo "ai-memory: ai-memory-url or ai-memory-auth-token missing, skipped"
+fi
+
+if [ "$failed" -eq 0 ]; then
+  printf '%s\n' "$fingerprint" > "$state/wired"
+  echo "done"
+else
+  rm -f "$state/wired"
+  echo "failed; the next login shell tries again"
+  exit 1
+fi
