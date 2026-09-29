@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Check out
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Update the card
         uses: athul/waka-readme@8539bedb8277066fc9fe1b47d1f9b108eb866494  # v0.3.1
