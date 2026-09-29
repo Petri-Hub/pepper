@@ -124,6 +124,7 @@ What comes next:
 - ❌ Real routines — personalizations, schedules and proactive work she does for me instead of waiting to be asked
 - ❌ Wakapi tracking her own conversations, not only the coding she delegates
 - ❌ Spotify control, so she can play, pause and queue music for me
+- ❌ Her GitHub App, which is misbehaving and needs a proper look
 
 ## Activity
 
