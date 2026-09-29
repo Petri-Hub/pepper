@@ -55,6 +55,7 @@ Only placeholders. The real values live in the lab and never reach this reposito
 
 ```sh
 ├── .claude/rules      # how agents write profiles and .env files here
+├── .github/workflows  # publishes Pepper's sandbox image, and refreshes her Wakapi card below
 ├── assets             # the diagram, as an editable Excalidraw file and its SVG
 ├── profiles
 │   └── <name>
@@ -62,7 +63,8 @@ Only placeholders. The real values live in the lab and never reach this reposito
 │       ├── avatar.png     # its picture on every platform
 │       ├── CHANGELOG.md   # every change, in the words I asked for it
 │       ├── CONFIG.md      # what's configured, and why, with the settings that do it
-│       └── SOUL.md        # who the agent is, and the rules it follows
+│       ├── SOUL.md        # who the agent is, and the rules it follows
+│       └── sandbox        # Pepper's Modal image: the tools her terminal runs with
 └── AGENTS.md          # the conventions for working in this repository
 ```
 
@@ -111,19 +113,24 @@ What's already in place:
 - ✅ Modal as her terminal backend, so her shell commands run in a disposable cloud sandbox instead of on the lab host
 - ✅ A fallback model, so a rate limit or a provider error hands over to a second model instead of ending the turn
 - ✅ FAM's website, through skills of her own that sign in from the vault, read the inbox and find open activities
+- ✅ A Modal image of her own, carrying the Python libraries and the CLIs her skills reach for, and reporting her coding work to Wakapi and AI Memory
+- ✅ Claude Code in her sandbox, under my personal account, so she delegates coding to it instead of spending her own tokens
+- ✅ AI Memory as her long-term memory, the same wiki Claude Code writes to on every machine I code on
 
 What comes next:
 
 - ❌ Plugins: a look through what exists for Hermes, the general-purpose ones and a connection to Excalidraw
-- ❌ Claude Code running cleanly under my personal account, authenticated over OAuth
 - ❌ A reshaped `SOUL.md`, and the files around it: who I am, my repositories, and what she should know without being told
 - ❌ Real routines — personalizations, schedules and proactive work she does for me instead of waiting to be asked
-- ❌ The Wakapi and AI Memory connection I'm bringing up in the homelab
-- ❌ A Modal image of her own, carrying the Python libraries and the CLIs her skills reach for, so a fresh sandbox stops spending its first seconds installing them and her soul stops having to explain how
+- ❌ Wakapi tracking her own conversations, not only the coding she delegates
+- ❌ Spotify control, so she can play, pause and queue music for me
 
-And then the bigger one:
+## Activity
 
-- ❌ Pedro, my agent for work, as a profile of his own
+Pepper's own time, from her Wakapi user in the lab: the coding she hands to Claude Code in her sandbox. Refreshed every night, and never counted in my own stats.
+
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
 
 ## References
 
@@ -143,3 +150,6 @@ And then the bigger one:
 - [Modal](https://modal.com/docs): the cloud sandbox Hermes sends her terminal commands to
 - [Docker](https://docs.docker.com/): what runs Pepper's container in the lab
 - [lab](https://github.com/Petri-Hub/lab): the homelab that hosts her
+- [Wakapi](https://wakapi.dev): the self-hosted time tracker her coding reports to, and where this card's numbers come from
+- [waka-readme](https://github.com/athul/waka-readme): the action that writes the Activity card from Wakapi's stats
+- [ai-memory](https://github.com/akitaonrails/ai-memory): the memory server she shares with Claude Code, through the [community Hermes plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin)

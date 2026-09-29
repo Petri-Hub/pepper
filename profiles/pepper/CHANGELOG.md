@@ -2,6 +2,46 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-09-29 · ai-memory becomes her long-term memory
+
+> *Can you do that for me please? Feel free to restart it.* — installing the community ai-memory plugin for Hermes, with the search left as shipped.
+
+She now uses [ai-memory](https://github.com/akitaonrails/ai-memory) as her memory provider, through the community [ai-memory-hermes-plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin). Hermes allows one external memory provider at a time and she had none, so nothing was replaced: `MEMORY.md` and `USER.md` stay on beside it. [CONFIG.md](CONFIG.md#-plugins) records the setting, the plugin's own `ai-memory.json`, and the token.
+
+What it does, per conversation: fetches any pending handoff at the start, searches the wiki before each reply and puts the top three snippets in her context, sends each of Petri's messages as an observation, sends the whole conversation when it ends, and mirrors her `MEMORY.md` writes to wiki pages under `hermes-memory/`. Its writes are scoped to workspace `hermes`, project `pepper`.
+
+Its search is not scoped, and that was chosen knowingly over a three-line patch that would have limited it to her own project: she sees every project's memory, work included, in every conversation, the ones with his friends included. SOUL.md's list of what is his alone doesn't name ai-memory yet.
+
+How it was installed, since there is no first-party installer:
+
+- the plugin was read in full first, then copied into `plugins/ai-memory/` at commit `087e310`, rather than through its `curl | bash` script. It has no license and one main author, and it was written against ai-memory 1.28 and Hermes 0.20.5; every endpoint it calls was checked against the lab's ai-memory 2.4.1 before switching
+- it talks to `http://ai-memory:49374` on the lab's Docker network, so it doesn't depend on the public address or on the Cloudflare bypass that comes off on 30 September
+- `AI_MEMORY_AUTH_TOKEN` went into her own `.env`, beside Modal's tokens, instead of a lab mapping, so it needed no lab change
+
+On the live agent: `memory.provider: ai-memory` in her config, the plugin and its config in her data folder, the token in `.env`, and a gateway restart. `hermes memory status` reports the provider active and available. Backups are beside the files, dated `20260929-095904`. A first conversation will show whether prefetch and the hooks work end to end.
+
+### 2026-09-29 · Her own sandbox image, and Claude Code in it
+
+> *Add Claude Code and Codex installation into her environment, adjust whatever you need in the SBX, and ensure that the image is working as expected: Wakapi, CC, Codex, OpenCode downloaded, AI Memory and Wakapi wired in.*
+
+Her Modal sandbox now runs [an image of her own](sandbox/) instead of Hermes' stock one. It carries the Python libraries her Gmail and GitHub skills used to install on every fresh sandbox, and three coding agents she can delegate to: Claude Code, Codex and OpenCode. [CONFIG.md](CONFIG.md#-modal) records the two new settings, `modal_image` and `credential_files`. It is built from `sandbox/compose.yml` and published to GHCR by the *Publish Pepper Image* workflow on every push to `main` that touches it.
+
+Claude Code signs in with a long-lived OAuth token from `claude setup-token`, so delegated work runs on Petri's Claude subscription instead of her OpenAI allowance. The 25 September roadmap note that Claude Code "does not work" was never true: it had not been tried. It works now, confirmed with her own delegated run.
+
+Secrets reach the sandbox as files, not variables. Hermes passes neither `env_passthrough` nor Modal Secrets to a Modal sandbox, but it does mount `terminal.credential_files`, so each token and URL is a file under `sandbox/credentials/` in her data folder. A script in the image exports them once per session and wires Wakapi and ai-memory into all three agents.
+
+Getting Wakapi to record her work took three fixes:
+
+- `heartbeat_rate_limit_seconds = 0`, since wakatime-cli held heartbeats for two minutes and a sandbox can be gone before then
+- one more sync when a Claude Code session ends, since the WakaTime plugin syncs at most once a minute and short jobs never reached it
+- two tips in her `claude-code` skill, which told her to use `--no-session-persistence` and `--bare`. The first stops Claude Code from writing the session log that WakaTime reads, and the second skips the plugin and hooks entirely. Both tips now say never. Hermes keeps a skill someone edited through upgrades, so this copy stops receiving upstream changes to that skill.
+
+Her heartbeats go to a Wakapi user of her own, `Pepper`, not to Petri's. His GitHub profile README pulls its numbers from his account's last 30 days, and Wakapi can't exclude a machine from those stats, so a separate user is what keeps her work out of them.
+
+On the live agent: her config gained both settings, her seven stock-image snapshots were cleared so the new image would take over, and the gateway was restarted. The backups are beside the files, dated `20260929-121819` for the skill and `20260928-230733` for the rest.
+
+Still open: Codex needs a `CODEX_ACCESS_TOKEN` and OpenCode a model provider, so neither is signed in. The sandbox reaches ai-memory through its public URL, which loses its Cloudflare bypass on 30 September; after that, her Claude Code runs keep reporting to Wakapi but not to ai-memory until the sandbox has another way in.
+
 ### 2026-09-23 · CONFIG.md stops explaining Hermes
 
 > *Some Pepper sections are HUGE, map some of that to the CHANGELOG or something, keep the overall CONFIG.md less descriptive. Too many technical details. This is for a human, a human doesn't want to know about 10000 Modal caveats.*

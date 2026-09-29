@@ -137,15 +137,34 @@ Her shell commands run in a disposable Modal sandbox rather than inside her own 
 
 Her credentials and skills travel into each sandbox and nothing she writes there comes back, so anything worth keeping goes to a repository or a message before the command ends. The token pair is profile-scoped, so a second agent brings its own Modal account.
 
+The sandbox runs [her own image](sandbox/), built from this repository and public because Modal pulls it without credentials. It carries the libraries her skills need, and Claude Code, Codex and OpenCode, so she can hand coding work to an agent signed in as Petri instead of spending her own tokens. Their work reports to Wakapi under her own user, as machine `pepper`, so it never counts in Petri's stats, and to ai-memory. Claude Code is the one signed in today; Codex and OpenCode are installed without a login.
+
+The image holds no secrets. Each one is a file in her data folder, which Hermes copies into every sandbox:
+
 ```yaml
 terminal:
   backend: modal
   modal_mode: direct
+  modal_image: ghcr.io/petri-hub/pepper-sandbox:9efd5cd
+  credential_files:
+    - sandbox/credentials/claude-code-oauth-token
+    - sandbox/credentials/wakapi-url
+    - sandbox/credentials/wakapi-api-key
+    - sandbox/credentials/ai-memory-url
+    - sandbox/credentials/ai-memory-auth-token
 ```
 
 ```bash
 MODAL_TOKEN_ID=…
 MODAL_TOKEN_SECRET=…
+```
+
+```
+/opt/data/sandbox/credentials/claude-code-oauth-token   # from claude setup-token, valid for a year
+/opt/data/sandbox/credentials/wakapi-url                # https://lab-wakapi.petri.zip/api
+/opt/data/sandbox/credentials/wakapi-api-key            # her own Wakapi user's key, so her time stays out of his stats
+/opt/data/sandbox/credentials/ai-memory-url             # https://lab-ai-memory.petri.zip
+/opt/data/sandbox/credentials/ai-memory-auth-token      # the lab's ai-memory token
 ```
 
 ### 🔌 MCP servers
@@ -196,7 +215,30 @@ mcp_servers:
 
 ### 🧱 Plugins
 
-None yet. · [Plugins](https://hermes-agent.nousresearch.com/docs/user-guide/features/plugins)
+ai-memory is her long-term memory, the same wiki Claude Code writes to on every machine Petri codes on, so she remembers what was decided in any repository and not only what was said to her. Before each reply she searches it and gets the top matches in context, and each conversation is sent back to it when it ends. The search covers the whole wiki, work projects included, and that was a deliberate choice. It runs in every conversation, his friends' included, and [SOUL.md](SOUL.md)'s list of what is his alone doesn't name ai-memory yet.
+
+She reaches it on the lab's internal network rather than its public address. It's a community plugin with no license, pinned to the commit that was read before installing it.
+
+| Plugin | What it gives the agent | Link |
+|---|---|---|
+| `ai-memory` | Wiki context before every reply, turns and session ends sent to ai-memory, and `ai_memory_search`, `ai_memory_write` and `ai_memory_status` tools | [ai-memory-hermes-plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin) |
+
+```yaml
+memory:
+  provider: ai-memory
+```
+
+```json
+{
+  "server_url": "http://ai-memory:49374",
+  "workspace": "hermes",
+  "project": "pepper"
+}
+```
+
+```bash
+AI_MEMORY_AUTH_TOKEN=…
+```
 
 ## References
 
