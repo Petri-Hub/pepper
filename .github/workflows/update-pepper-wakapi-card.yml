@@ -1,0 +1,31 @@
+name: Update Pepper Wakapi Card
+run-name: Update Pepper's Wakapi card
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Update the card
+        uses: athul/waka-readme@8539bedb8277066fc9fe1b47d1f9b108eb866494  # v0.3.1
+        with:
+          WAKATIME_API_KEY: ${{ secrets.PEPPER_WAKAPI_API_KEY }}
+          API_BASE_URL: https://lab-wakapi.petri.zip/api
+          TIME_RANGE: last_30_days
+          LANG_COUNT: 7
+          BLOCKS: "░▒▓█"
+          SHOW_TIME: true
+          SHOW_TOTAL: true
+          CODE_LANG: rust
+          COMMIT_MESSAGE: "chore: update Pepper's Wakapi card"
