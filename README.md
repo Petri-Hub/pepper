@@ -116,19 +116,19 @@ What's already in place:
 - ✅ A Modal image of her own, carrying the Python libraries and the CLIs her skills reach for, and reporting her coding work to Wakapi and AI Memory
 - ✅ Claude Code in her sandbox, under my personal account, so she delegates coding to it instead of spending her own tokens
 - ✅ AI Memory as her long-term memory, the same wiki Claude Code writes to on every machine I code on
+- ✅ Wakapi tracking her own time, her conversations and crons as well as the coding she delegates, under a Wakapi user of her own
 
 What comes next:
 
 - ❌ Plugins: a look through what exists for Hermes, the general-purpose ones and a connection to Excalidraw
 - ❌ A reshaped `SOUL.md`, and the files around it: who I am, my repositories, and what she should know without being told
 - ❌ Real routines — personalizations, schedules and proactive work she does for me instead of waiting to be asked
-- ❌ Wakapi tracking her own conversations, not only the coding she delegates
 - ❌ Spotify control, so she can play, pause and queue music for me
 - ❌ Her GitHub App, which is misbehaving and needs a proper look
 
 ## Activity
 
-Pepper's own time, from her Wakapi user in the lab: the coding she hands to Claude Code in her sandbox. Refreshed every night, and never counted in my own stats.
+Pepper's own time, from her Wakapi user in the lab: her conversations and crons, and the coding she hands to Claude Code in her sandbox. Refreshed every night, and never counted in my own stats.
 
 <!--START_SECTION:waka-->
 
