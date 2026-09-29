@@ -130,6 +130,13 @@ What comes next:
 Pepper's own time, from her Wakapi user in the lab: the coding she hands to Claude Code in her sandbox. Refreshed every night, and never counted in my own stats.
 
 <!--START_SECTION:waka-->
+
+```rust
+Total Time: 0 hrs 0 mins
+
+Markdown   0 hrs 0 mins    █████████████████████████   100.00 %
+```
+
 <!--END_SECTION:waka-->
 
 ## References
