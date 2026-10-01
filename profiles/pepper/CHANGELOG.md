@@ -2,6 +2,22 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-01 · Files from her sandbox reach the chat again
+
+> *Pepper is not being able to send me the file she produced with /brag. It's been some days since she can't send me PDFs or any kind of media.*
+
+Since her terminal moved to Modal on 22 September, nothing she made in the sandbox could be attached: the gateway looks for a `MEDIA:` path on its own disk, and the file lives in the sandbox. Hermes has code to fetch it from the sandbox, but that code is switched off for Modal. It only runs for backends that report a home folder, and Modal does not. The log said so every time: `Skipping MEDIA directive path (not found on this host)`. She also told Petri the file was attached when it was not.
+
+Three changes to Hermes' own source, inside her container, fixed it:
+
+- **Modal reports its home folder** (`tools/environments/modal.py`: `_remote_home = "/root"`), which switches the fetch on.
+- **The credential denylist grew** (`gateway/platforms/base.py`), so that none of her credential files can be attached to a message once the fetch is on, checked by a test of eight paths.
+- **The fetch finds the right sandbox** (`gateway/media_fetch.py`, and the call in `base.py`). Delivery runs after the turn has ended, so the session id the lookup used was empty. The session key already reached the function that validates attachments but was not passed on. It is now, and the sandbox is found by a key that ends with it, only when exactly one matches, so a second profile cannot reach another's sandbox.
+
+Confirmed from Telegram: a PDF she made in `/root/outputs/` arrived, and the log says `Fetched remote media ... from the ModalEnvironment sandbox`. The file arrives named `remote_<id>_<name>`. Paths she writes under `~/.hermes/workspace` or `/root/outputs` are fine; the `write_file` tool still only reaches the host, so in the sandbox she should write with the terminal.
+
+These edits live in the container's image, not in a volume. A recreated container or a Hermes update undoes them, and the lab would need to mount the three patched files to keep them. Three `DIAG` warnings in `media_fetch.py`, left from debugging, log on every fetch and can come out. The backups are beside each file as `.bak-`, `.bak2-` and `.bak3-` with the time. The `sync_back` warning is the same family of problem, binary data decoded as text when files come back out of a sandbox, and is still open.
+
 ### 2026-10-01 · Her sandbox can render video
 
 > *We need to adjust its Docker image, check if node and ffmpeg is available. Can we do that?*
