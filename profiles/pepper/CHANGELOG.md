@@ -14,9 +14,11 @@ Confirmed from Telegram in a fresh session: she authenticated to GitHub and list
 
 Decided afterwards: the Google consent screen stays on "Testing", so her token will need a new sign-in about once a week, and that is accepted for now. Codex and OpenCode are closed, since Claude Code is the only coding agent she will use. The Cloudflare bypass on ai-memory was removed on purpose, and her sandbox's own reports to ai-memory are not worth restoring. `SOUL.md` is to be rewritten from scratch, slowly.
 
-Still open: the GitHub skill's `SKILL.md` writes its commands with `/opt/data/...`, a path that exists only in her own container. She worked around it, but the commands should use `${HERMES_HOME:-/root/.hermes}`. A sandbox that closes logs `sync_back ... utf-8 codec can't decode byte` and nothing she writes there comes back, so a Google token refreshed there is not kept.
+The GitHub skill's `SKILL.md` and its git credential helper wrote their commands with `/opt/data/...`, a path that exists only in her own container. They now use `${HERMES_HOME:-/root/.hermes}`, which resolves in both places, with the originals beside them as `.bak-<timestamp>`. Hermes keeps an edited skill through upgrades, so this copy stops receiving upstream changes to that skill.
 
-On the live agent: three entries added to `terminal.credential_files`, with the original beside it as `config.yaml.bak-<timestamp>`, and a gateway restart.
+Still open: a sandbox that closes logs `sync_back ... utf-8 codec can't decode byte` and nothing she writes there comes back, so a Google token refreshed there is not kept.
+
+On the live agent: three entries added to `terminal.credential_files`, with the original beside it as `config.yaml.bak-<timestamp>`, a gateway restart, and the skill edit above.
 
 ### 2026-10-01 · Her ai-memory search gets its parameters back
 
