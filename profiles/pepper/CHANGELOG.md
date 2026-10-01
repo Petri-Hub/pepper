@@ -2,6 +2,18 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-01 · She controls Spotify
+
+> *Contextualize yourself about Spotify connection and let's try to wire it up.*
+
+Hermes ships its own Spotify tools, so nothing was installed: seven tools for playback, devices, queue, search, playlists, albums and the library, signed in with `hermes auth spotify`. The community `spotify-desktop` plugin that an earlier session had found is a different thing and was not needed. The Client ID came from Petri's Spotify developer app, since ai-memory held none, and the earlier attempt had left no trace.
+
+The sign-in waits for Spotify's redirect inside her container, where Petri's browser cannot reach it. So the login ran in the background without a browser, and the redirect address he copied after approving was sent to it from inside the container with `curl`, which finished it.
+
+The toolset was off for Telegram and Discord, so it was enabled for both. That made Hermes replace the `hermes-telegram` and `hermes-discord` bundles with their full tool lists in her config, which means a tool Hermes adds in the future will not reach those two platforms on its own. CLI, cron and the other platforms were left alone. Petri tested it from Telegram: it works.
+
+On the live agent: `providers.spotify` in her `auth.json`, and `spotify` added to the Telegram and Discord toolsets, with the original config beside it as `config.yaml.bak-<timestamp>`. Spotify needs Premium and an active device, and its token renews itself.
+
 ### 2026-10-01 · Google and GitHub reach her sandbox again
 
 > *Pepper is currently without access to my Google and is without access to my GitHub for some reason... those are the two most important connections that she needs to have.*

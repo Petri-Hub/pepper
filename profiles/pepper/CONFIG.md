@@ -131,6 +131,20 @@ The skill takes all of its scopes at once, so Google's consent screen is the onl
 /opt/data/google_token.json           # her token, refreshed automatically
 ```
 
+### 🎵 Spotify
+
+Pepper can play, pause, queue and search music, and read and edit playlists and the library, through Hermes' own Spotify tools. They run on a Spotify developer app of Petri's, signed in once with his account, and they only work with a Premium account and a device that is open, like his phone. They are on for Telegram and Discord and off everywhere else.
+
+Turning the toolset on made Hermes write out the full tool list for those two platforms instead of the `hermes-telegram` and `hermes-discord` bundles, so a tool Hermes adds later will not reach them on its own.
+
+```yaml
+platform_toolsets:
+  telegram: [browser, clarify, code_execution, …, spotify, …]
+  discord:  [browser, clarify, code_execution, …, spotify, …]
+```
+
+The app's redirect URI is `http://127.0.0.1:43827/spotify/callback`, and its token is renewed by Hermes itself. The Client ID is saved with that token in her data folder, so there is no variable for it.
+
 ### 📦 Modal
 
 Her shell commands run in a disposable Modal sandbox rather than inside her own container, so a build that goes wrong burns a cloud VM instead of the laptop the lab runs on. Hermes itself does not move: only the terminal does. Modal's free tier stops rather than bills when it runs out, which is the same reason OpenAI was picked.
