@@ -151,7 +151,7 @@ Her shell commands run in a disposable Modal sandbox rather than inside her own 
 
 Her credentials and skills travel into each sandbox and nothing she writes there comes back, so anything worth keeping goes to a repository or a message before the command ends. The token pair is profile-scoped, so a second agent brings its own Modal account.
 
-The sandbox runs [her own image](sandbox/), built from this repository and public because Modal pulls it without credentials. It carries the libraries her skills need, and Claude Code, Codex and OpenCode, so she can hand coding work to an agent signed in as Petri instead of spending her own tokens. Their work reports to Wakapi under her own user, as machine `pepper`, so it never counts in Petri's stats, and to ai-memory. Claude Code is the one signed in today; Codex and OpenCode are installed without a login.
+The sandbox runs [her own image](sandbox/), built from this repository and public because Modal pulls it without credentials. It carries the libraries her skills need, the tools to render video, and Claude Code, Codex and OpenCode, so she can hand coding work to an agent signed in as Petri instead of spending her own tokens. Their work reports to Wakapi under her own user, as machine `pepper`, so it never counts in Petri's stats, and to ai-memory. Claude Code is the one signed in today; Codex and OpenCode are installed without a login.
 
 The image holds no secrets. Each one is a file in her data folder, which Hermes copies into every sandbox. The GitHub key and the Google files are listed here too: the skills ask for them, but only this list gets them there reliably.
 
@@ -159,7 +159,7 @@ The image holds no secrets. Each one is a file in her data folder, which Hermes 
 terminal:
   backend: modal
   modal_mode: direct
-  modal_image: ghcr.io/petri-hub/pepper-sandbox:9efd5cd
+  modal_image: ghcr.io/petri-hub/pepper-sandbox:45daeb9
   credential_files:
     - sandbox/credentials/claude-code-oauth-token
     - sandbox/credentials/wakapi-url
@@ -257,7 +257,7 @@ memory:
 AI_MEMORY_AUTH_TOKEN=…
 ```
 
-She also has five official skills from Hermes' catalog, installed on purpose and not made from chat: `excalidraw` for hand-drawn diagrams, `pixel-art` for retro art, `pr-lens` for animated diagrams of code changes, and `hyperframes` and `brag` for videos. The two video skills need Node, FFmpeg and a headless Chrome that her sandbox image does not carry yet.
+She also has five official skills from Hermes' catalog, installed on purpose and not made from chat: `excalidraw` for hand-drawn diagrams, `pixel-art` for retro art, `pr-lens` for animated diagrams of code changes, and `hyperframes` and `brag` for videos. The two video skills need Node, FFmpeg and a headless Chrome, which her sandbox image carries.
 
 ```bash
 hermes skills install official/creative/excalidraw

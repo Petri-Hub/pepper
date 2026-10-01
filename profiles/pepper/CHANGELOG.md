@@ -2,6 +2,16 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-01 · Her sandbox can render video
+
+> *We need to adjust its Docker image, check if node and ffmpeg is available. Can we do that?*
+
+It could not: the image had Node 20, no FFmpeg and no Chrome, so `hyperframes` and `brag`, installed a few minutes earlier, would have failed. [The sandbox](sandbox/) now also carries Node 22.23.3, FFmpeg, the libraries headless Chrome needs, HyperFrames 0.8.106 and a cached `chrome-headless-shell`, each version pinned in `compose.yml` and the Node download checked against nodejs.org's own checksum file. The image grew from about 3.9 GB to about 6.0 GB, mostly Chrome.
+
+The first build failed, because unpacking Node 22 over the base image's Node 20 left a broken npm behind. The script now removes the old Node and npm before unpacking. The finished image was checked locally for Node, FFmpeg, `hyperframes doctor` and the Chrome cache, and Claude Code, Codex and her Python libraries still work. No video has been rendered yet.
+
+On the live agent: `terminal.modal_image` moved from `9efd5cd` to `45daeb9`, built and published by the workflow on push. Her three saved sandbox snapshots were emptied so the new image takes over, and the gateway was restarted. The backups are beside the files, dated `20261001-224941`.
+
 ### 2026-10-01 · Five official skills
 
 > *These are the skills I need to install: brag, excalidraw, hyperframes, pixel-art, pr-lens.*
