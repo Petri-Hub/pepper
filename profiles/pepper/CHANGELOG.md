@@ -2,6 +2,20 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-01 · Google and GitHub reach her sandbox again
+
+> *Pepper is currently without access to my Google and is without access to my GitHub for some reason... those are the two most important connections that she needs to have.*
+
+Nothing was wrong with either credential on her own container. Since her terminal moved to Modal, her skills run in a sandbox where her data folder is `/root/.hermes`, and the GitHub key and the Google token and client file never got there: the skills ask for them, but only `terminal.credential_files` reliably delivers them. Her own check from inside the sandbox showed all three missing, and `mint-token.py` falling back to `/run/secrets/github-app.pem`. [CONFIG.md](CONFIG.md#-modal) now lists all three beside the Claude Code, Wakapi and ai-memory files.
+
+GitHub worked as soon as the key arrived. Google also needed a new sign-in, since Google said the token from 22 September was expired or revoked (`invalid_grant`), nine days later. A consent screen left on "Testing" expires refresh tokens after seven days, so the Audience page of the Google Cloud project is where to check that it reads "In production", or it will happen again.
+
+Confirmed from Telegram in a fresh session: she authenticated to GitHub and listed three private repos, and read the Calendar for the next seven days.
+
+Still open: the GitHub skill's `SKILL.md` writes its commands with `/opt/data/...`, a path that exists only in her own container. She worked around it, but the commands should use `${HERMES_HOME:-/root/.hermes}`. A sandbox that closes logs `sync_back ... utf-8 codec can't decode byte` and nothing she writes there comes back, so a Google token refreshed there is not kept.
+
+On the live agent: three entries added to `terminal.credential_files`, with the original beside it as `config.yaml.bak-<timestamp>`, and a gateway restart.
+
 ### 2026-10-01 · Her ai-memory search gets its parameters back
 
 > *She told me she cannot use the AI memory search call, it doesn't have parameters in that specific tool, so both me and her are really confused... Can you make this fix so maybe she can search my sessions?*

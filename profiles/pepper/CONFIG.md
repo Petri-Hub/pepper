@@ -139,7 +139,7 @@ Her credentials and skills travel into each sandbox and nothing she writes there
 
 The sandbox runs [her own image](sandbox/), built from this repository and public because Modal pulls it without credentials. It carries the libraries her skills need, and Claude Code, Codex and OpenCode, so she can hand coding work to an agent signed in as Petri instead of spending her own tokens. Their work reports to Wakapi under her own user, as machine `pepper`, so it never counts in Petri's stats, and to ai-memory. Claude Code is the one signed in today; Codex and OpenCode are installed without a login.
 
-The image holds no secrets. Each one is a file in her data folder, which Hermes copies into every sandbox:
+The image holds no secrets. Each one is a file in her data folder, which Hermes copies into every sandbox. The GitHub key and the Google files are listed here too: the skills ask for them, but only this list gets them there reliably.
 
 ```yaml
 terminal:
@@ -152,6 +152,9 @@ terminal:
     - sandbox/credentials/wakapi-api-key
     - sandbox/credentials/ai-memory-url
     - sandbox/credentials/ai-memory-auth-token
+    - github-app.pem
+    - google_token.json
+    - google_client_secret.json
 ```
 
 ```bash
