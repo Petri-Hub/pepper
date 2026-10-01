@@ -12,6 +12,8 @@ GitHub worked as soon as the key arrived. Google also needed a new sign-in, sinc
 
 Confirmed from Telegram in a fresh session: she authenticated to GitHub and listed three private repos, and read the Calendar for the next seven days.
 
+Decided afterwards: the Google consent screen stays on "Testing", so her token will need a new sign-in about once a week, and that is accepted for now. Codex and OpenCode are closed, since Claude Code is the only coding agent she will use. The Cloudflare bypass on ai-memory was removed on purpose, and her sandbox's own reports to ai-memory are not worth restoring. `SOUL.md` is to be rewritten from scratch, slowly.
+
 Still open: the GitHub skill's `SKILL.md` writes its commands with `/opt/data/...`, a path that exists only in her own container. She worked around it, but the commands should use `${HERMES_HOME:-/root/.hermes}`. A sandbox that closes logs `sync_back ... utf-8 codec can't decode byte` and nothing she writes there comes back, so a Google token refreshed there is not kept.
 
 On the live agent: three entries added to `terminal.credential_files`, with the original beside it as `config.yaml.bak-<timestamp>`, and a gateway restart.

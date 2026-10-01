@@ -117,14 +117,14 @@ What's already in place:
 - ✅ Claude Code in her sandbox, under my personal account, so she delegates coding to it instead of spending her own tokens
 - ✅ AI Memory as her long-term memory, the same wiki Claude Code writes to on every machine I code on
 - ✅ Wakapi tracking her own time, her conversations and crons as well as the coding she delegates, under a Wakapi user of her own
+- ✅ Her GitHub App and her Google account, both reaching her sandbox, so she works on GitHub and reads Gmail and Calendar from there
 
 What comes next:
 
 - ❌ Plugins: a look through what exists for Hermes, the general-purpose ones and a connection to Excalidraw
-- ❌ A reshaped `SOUL.md`, and the files around it: who I am, my repositories, and what she should know without being told
+- ❌ A reshaped `SOUL.md`, rewritten from scratch and without hurry, and the files around it: who I am, my repositories, and what she should know without being told
 - ❌ Real routines — personalizations, schedules and proactive work she does for me instead of waiting to be asked
 - ❌ Spotify control, so she can play, pause and queue music for me
-- ❌ Her GitHub App, which is misbehaving and needs a proper look
 
 ## Activity
 
