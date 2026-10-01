@@ -12,7 +12,7 @@ The cause is in the community plugin: it declares its tools with `input_schema`,
 
 This is not a permissions problem. ai-memory has no users, only one shared token, and her search is deliberately unscoped, so she reads every project's pages, yours and Claude Code's included. Nothing about that changed. Her own writes still land under workspace `hermes`, project `pepper`.
 
-On the live agent: the three `input_schema` keys in `plugins/ai-memory/provider.py` became `parameters`, with the original beside it as `provider.py.bak-<timestamp>`. The plugin now differs from upstream commit `087e310`, so reinstalling it would bring the bug back. The change takes effect after a gateway restart, which is still to be done.
+On the live agent: the three `input_schema` keys in `plugins/ai-memory/provider.py` became `parameters`, with the original beside it as `provider.py.bak-<timestamp>`. The plugin now differs from upstream commit `087e310`, so reinstalling it would bring the bug back. The gateway was restarted so the schemas load.
 
 ### 2026-09-29 · ai-memory becomes her long-term memory
 
