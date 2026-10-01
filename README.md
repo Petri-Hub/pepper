@@ -119,10 +119,10 @@ What's already in place:
 - ✅ Wakapi tracking her own time, her conversations and crons as well as the coding she delegates, under a Wakapi user of her own
 - ✅ Her GitHub App and her Google account, both reaching her sandbox, so she works on GitHub and reads Gmail and Calendar from there
 - ✅ Spotify control, so she can play, pause and queue music for me
+- ✅ Skills from Hermes' catalog: Excalidraw diagrams, pixel art, animated PR diagrams, and video through Hyperframes
 
 What comes next:
 
-- ❌ Plugins: a look through what exists for Hermes, the general-purpose ones and a connection to Excalidraw
 - ❌ A reshaped `SOUL.md`, rewritten from scratch and without hurry, and the files around it: who I am, my repositories, and what she should know without being told
 - ❌ Real routines — personalizations, schedules and proactive work she does for me instead of waiting to be asked
 

@@ -2,6 +2,16 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-01 · Five official skills
+
+> *These are the skills I need to install: brag, excalidraw, hyperframes, pixel-art, pr-lens.*
+
+She gained `excalidraw`, `pixel-art`, `pr-lens`, `hyperframes` and `brag`, all official and trusted by Hermes, each read with `hermes skills inspect` before installing. They are skills, not plugins, which is why they sit under the Plugins heading in [CONFIG.md](CONFIG.md#-plugins) as a short note and not in its table. Excalidraw covers the connection the roadmap asked for: it writes `.excalidraw` files and needs no account. Its bundled `upload.py` can publish a diagram to Excalidraw's servers for a shareable link, and that sends the diagram's content out, so it is worth keeping in mind.
+
+`hyperframes` needs Node 22, FFmpeg and `npx`, and downloads a headless Chrome to render, and `brag` builds on it. Her sandbox image has not been checked for any of them, so expect both to fail until it is. That is the one open piece.
+
+On the live agent: all five installed with `hermes skills install ... --yes` and listed as enabled. No restart.
+
 ### 2026-10-01 · Google signs in on the host, not in the sandbox
 
 > *I've just restarted Hermes into a new session, and it returned me that Google connection is out. Do you think the daily-report skill has some wrong assumptions in file locations?*

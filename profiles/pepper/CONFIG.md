@@ -257,6 +257,16 @@ memory:
 AI_MEMORY_AUTH_TOKEN=…
 ```
 
+She also has five official skills from Hermes' catalog, installed on purpose and not made from chat: `excalidraw` for hand-drawn diagrams, `pixel-art` for retro art, `pr-lens` for animated diagrams of code changes, and `hyperframes` and `brag` for videos. The two video skills need Node, FFmpeg and a headless Chrome that her sandbox image does not carry yet.
+
+```bash
+hermes skills install official/creative/excalidraw
+hermes skills install official/creative/pixel-art
+hermes skills install official/software-development/pr-lens
+hermes skills install official/creative/hyperframes
+hermes skills install official/creative/brag
+```
+
 ## References
 
 - [Environment variables](.env.example): every variable Pepper needs, with placeholders instead of real values
