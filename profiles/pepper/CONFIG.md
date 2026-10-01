@@ -124,7 +124,7 @@ GITHUB_APP_PRIVATE_KEY_PATH=/opt/data/github-app.pem
 
 Pepper reads and writes Petri's Gmail, Calendar and Drive, and reaches Contacts, Sheets and Docs along the way. Hermes has no toolset for any of it — it ships a skill she drives herself — so nothing is enabled here and nothing is mapped by the lab. What makes it work is an OAuth client of Petri's own and a token beside her other files, profile-scoped so a second agent signs in as itself.
 
-The skill takes all of its scopes at once, so Google's consent screen is the only place to hand over less. What she may send, attach and share lives in [SOUL.md](SOUL.md#what-never-leaves).
+While the consent screen is on "Testing", the token expires about once a week, and it has to be renewed in her own container, since a token written inside a sandbox is lost with it. The skill takes all of its scopes at once, so Google's consent screen is the only place to hand over less. What she may send, attach and share lives in [SOUL.md](SOUL.md#what-never-leaves).
 
 ```bash
 /opt/data/google_client_secret.json   # the OAuth client, downloaded from Google Cloud

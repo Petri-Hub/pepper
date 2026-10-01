@@ -2,6 +2,16 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-01 · Google signs in on the host, not in the sandbox
+
+> *I've just restarted Hermes into a new session, and it returned me that Google connection is out. Do you think the daily-report skill has some wrong assumptions in file locations?*
+
+It did not: the daily report was fine. The new Google sign-in from earlier had been done by Pepper inside her sandbox, so the fresh token was written there, and nothing written in a sandbox comes back. The host's `google_token.json` was still the one from 22 September, revoked, and every new sandbox starts from the host's copy. It looked fixed while that sandbox lived and broke on the next session.
+
+The sign-in was redone in her own container with the skill's setup script, so the host file is the new one, with the old one kept beside it as `google_token.json.bak-<timestamp>`. Because the consent screen is still on "Testing", the token expires in about a week, and each time the sign-in has to be redone on the host the same way, never through her sandbox. [CONFIG.md](CONFIG.md#-google-workspace) says so.
+
+The same report also warned that Sentry has no projects and lacks a valid scope. That is a separate problem and has not been looked at.
+
 ### 2026-10-01 · She controls Spotify
 
 > *Contextualize yourself about Spotify connection and let's try to wire it up.*
