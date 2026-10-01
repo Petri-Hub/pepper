@@ -2,6 +2,18 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-01 · Her ai-memory search gets its parameters back
+
+> *She told me she cannot use the AI memory search call, it doesn't have parameters in that specific tool, so both me and her are really confused... Can you make this fix so maybe she can search my sessions?*
+
+Her `ai_memory_search` and `ai_memory_write` tools reached the model with no parameters, so she couldn't tell what to pass and gave up. `ai_memory_status` kept working because it takes none, which is why the connection looked healthy the whole time.
+
+The cause is in the community plugin: it declares its tools with `input_schema`, Anthropic's key, and Hermes reads `parameters`, as its own providers do. Hermes only checks that a tool has a name, so the mismatch raised no error. The plugin's per-reply prefetch was never affected, since it searches directly.
+
+This is not a permissions problem. ai-memory has no users, only one shared token, and her search is deliberately unscoped, so she reads every project's pages, yours and Claude Code's included. Nothing about that changed. Her own writes still land under workspace `hermes`, project `pepper`.
+
+On the live agent: the three `input_schema` keys in `plugins/ai-memory/provider.py` became `parameters`, with the original beside it as `provider.py.bak-<timestamp>`. The plugin now differs from upstream commit `087e310`, so reinstalling it would bring the bug back. The change takes effect after a gateway restart, which is still to be done.
+
 ### 2026-09-29 · ai-memory becomes her long-term memory
 
 > *Can you do that for me please? Feel free to restart it.* — installing the community ai-memory plugin for Hermes, with the search left as shipped.
