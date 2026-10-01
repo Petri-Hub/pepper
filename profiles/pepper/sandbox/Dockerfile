@@ -44,6 +44,14 @@ COPY scripts/lib/common.sh /tmp/build/lib/common.sh
 COPY scripts/install-core.sh requirements-core.txt /tmp/build/
 RUN /tmp/build/install-core.sh
 
+# Video rendering for the hyperframes and brag skills: Node 22, FFmpeg and a
+# headless Chrome. Slow-moving, so it sits above the agents.
+ARG NODE_VERSION
+ARG HYPERFRAMES_VERSION
+ARG PUPPETEER_VERSION
+COPY scripts/install-video.sh /tmp/build/
+RUN /tmp/build/install-video.sh
+
 ARG WAKATIME_VERSION
 COPY scripts/install-wakatime.sh /tmp/build/
 RUN /tmp/build/install-wakatime.sh

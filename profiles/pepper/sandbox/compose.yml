@@ -22,6 +22,21 @@ services:
       tags:
         - ${IMAGE:-ghcr.io/petri-hub/pepper-sandbox}:latest
       args:
+        # Node — HyperFrames needs 22 or newer and the base image has 20. The
+        # tarball is checked against nodejs.org's own SHASUMS256.txt.
+        # https://nodejs.org/en/about/previous-releases
+        NODE_VERSION: 22.23.3
+
+        # HyperFrames — renders video from HTML for the hyperframes and brag
+        # skills. Its skill's setup script would take "latest" at every start.
+        # https://www.npmjs.com/package/hyperframes
+        HYPERFRAMES_VERSION: 0.8.106
+
+        # Puppeteer — only used to fetch chrome-headless-shell; its release
+        # decides which Chrome build that is.
+        # https://www.npmjs.com/package/puppeteer
+        PUPPETEER_VERSION: 25.12.0
+
         # Claude Code — the coding agent she hands work to. Released most days.
         # Its manifest.json carries each binary's digest, so only the version
         # is pinned.
