@@ -2,6 +2,51 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-02 · A new voice for her: marin
+
+> *Cedar is not sounding right, you know. Let's use Marin in both TTS and Realtime, is that possible?*
+
+It was possible, and it needed two lines. Petri generated thirteen samples of one short sentence, one per voice, with `gpt-4o-mini-tts` and the same style note for each, and played them. *Marin* is in OpenAI's text-to-speech and in her live voice model, so it works in both places.
+
+What she really spoke with turned out to differ from what this repository said. On Telegram and Discord she used `gpt-4o-mini-tts` with Hermes' default voice, *alloy*, because `tts` named only the provider, and not *cedar*. And the live voice was never the plain Realtime model: `voice_chat_mode: gpt-live` is OpenAI's GPT-Live (`gpt-live-1`), which Hermes' source lists with fourteen voices, *marin* and *cedar* among them. The sample voices are text-to-speech, so they only approximate the live one.
+
+On the live agent, `tts.openai.voice` is now `marin` and `voice.gpt_live.voice` went from `cedar` to `marin`, which is also Hermes' default for that mode. Petri ran the change over SSH, and the backup is `config.yaml.bak-20261002-marin`. Whether a running session needs a restart to hear it was not checked. Hermes' source says GPT-Live bills about $0.05 a minute for its voice layer, which was not checked against OpenAI's pricing.
+
+### 2026-10-02 · Spotify in her scheduled runs
+
+> *Let's give her the cron Spotify control.*
+
+The morning report gained a "how am I" list that checks each of her connections, and Spotify came back as a red cross. It was a false alarm: `platform_toolsets` named Spotify for Telegram and Discord only, and a cron run is its own platform, `cron`, which gets Hermes' defaults, and Spotify is on Hermes' list of toolsets that are off by default. In Telegram the tool existed, which is why she said she had it.
+
+The live `config.yaml` now has a `cron` list under `platform_toolsets`: her current cron tools plus `spotify`. Before writing it, the result was computed in memory with Hermes' own resolver, which showed exactly `spotify` gained and nothing lost, so the five MCP servers a cron run gets by default stayed. The backup is `config.yaml.bak-20261002-cronspotify`. Petri ran the change himself over SSH, since the tooling refused to write to the live agent. Whether a cron run needs a gateway restart to see it was not checked; the next report is the test.
+
+The Spotify toolset also plays, queues and edits playlists, and the report reads email and GitHub text, so the report skill should list devices and nothing more, and treat no open device as "phone not open" and not as a failure.
+
+The dead-sandbox problem from the entry below was taken off the roadmap without a fix. The reports of 2 October ran well, nothing was changed to stop a repeat, and Petri is watching how the next days go. If a run again comes back with no Google and GitHub and every command failing at once, the cause to look at first is a single `execute_code` call that outlives the sandbox.
+
+Dependabot, from the same report: the 403 she saw was GitHub saying alerts were off. The App already holds `vulnerability_alerts`, and of her 18 repositories only `lab`, `portfolio` and `wenvi` had alerts on, each with none open. Petri turned on Dependabot alerts, security updates and grouped security updates for all of them and for new repositories, so Dependabot may now open pull requests on its own, and her merge rules in [SOUL.md](SOUL.md#the-repositories) decide what she does with them. He left "Dependabot on self-hosted runners" off.
+
+The scheduler problem from the entry below closed itself: Petri took the "Schedules" section out of the morning report, so a cron run no longer needs `cronjob_manage`, and `cron.allow_agent_scheduling` stays off.
+
+### 2026-10-02 · Why the daily report goes blind
+
+> *In the daily report skill + schedule we have two problems: she is not accessing either GitHub or Google for some reason, and she can't use schedule tools when she is called as a sub-agent or cron-agent. We need to make Pepper work reliably.*
+
+Nothing was changed on the live agent. This entry is the diagnosis, read from her logs, the cron output folder and her session database, so the fixes can be chosen with the evidence in hand.
+
+**The two problems are not one.** The runs of 28 September to 1 October used plain `terminal` commands, and the reports of 29 September to 1 October reached GitHub and listed its 18 repositories. Google failed on 30 September and 1 October with `invalid_grant`, which is the weekly expiry of a token on a consent screen in "Testing"; the sign-in redone on the host at 21:48 on 1 October fixed that. The report of 2 October failed for a new reason that hit both at once.
+
+**What happened on 2 October.** The main model hit a rate limit at 08:01 and handed over to the fallback, which then did something no earlier run had done: it put the calendar, four Gmail searches of up to 100 messages each and the GitHub calls into one `execute_code` call. Her sandbox had to be created from scratch, which took two minutes and eighteen seconds, probably because the image changed the night before and her snapshots were emptied. The call hit Hermes' 420-second limit and was killed. Afterwards the Modal sandbox no longer existed (`sync_back` says `Sandbox ... has already shut down`), but Hermes kept using the dead one: every command returned `exit_code 1` with no output in a fifth of a second, and `execute_code` said `Python 3 is not available`, which is false, since her image carries Python 3.11. Sentry and Vercel still answered, because they are MCP calls that never touch the sandbox. Hermes marked the job `ok`, so nothing flagged the failure. How long the script really needed, and whether Gmail's rate limit slowed it, was not measured.
+
+**Why the scheduler is missing.** This is a Hermes rule, not a bug. A job run by cron has the `cronjob` toolset removed by default, to stop jobs from creating jobs; `cron.allow_agent_scheduling: true` gives it back and her config does not set it. A sub-agent is different: `cronjob_manage` is in a fixed list of tools that delegated agents never receive (`DELEGATE_BLOCKED_TOOLS`), and no setting changes that. The daily report skill calls `cronjob_manage(action="list")` and has said "not available in this run" since 30 September.
+
+**Choices still open:**
+
+- Turn on `cron.allow_agent_scheduling` for the report, knowing the same run reads email and GitHub text, which is the kind of input that could try to schedule work.
+- Make the report issue its commands one at a time through `terminal`, as the days that worked did, instead of one `execute_code` call.
+- Move the Google consent screen to "In production", so the token stops expiring every week.
+- Keep scheduling in Pepper's own hands, never a sub-agent's.
+
 ### 2026-10-01 · Files from her sandbox reach the chat again
 
 > *Pepper is not being able to send me the file she produced with /brag. It's been some days since she can't send me PDFs or any kind of media.*

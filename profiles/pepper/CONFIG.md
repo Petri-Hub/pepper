@@ -80,7 +80,7 @@ checkpoints:
 
 ### 🎙️ Voice
 
-Everything voice goes through OpenAI, with the same key as the model, good quality and a fair price. Voice notes on Telegram and Discord are transcribed before Pepper reads them, and when she answers out loud, OpenAI speaks for her. In Hermes' CLI, TUI and desktop app she can also hold live conversations with the *cedar* voice, listening while she talks, and a wake phrase opens a session without touching anything. Those last two don't work on Telegram or Discord.
+Everything voice goes through OpenAI, with the same key as the model, good quality and a fair price. Voice notes on Telegram and Discord are transcribed before Pepper reads them, and when she answers out loud, OpenAI speaks for her, in the *marin* voice. *Cedar* and, before it, Hermes' default *alloy* didn't sound like her, so one voice was picked for both ways she talks: *marin* exists in OpenAI's text-to-speech and in GPT-Live, the model behind her live conversations. In Hermes' CLI, TUI and desktop app she can also hold those live conversations, listening while she talks, and a wake phrase opens a session without touching anything. Those last two don't work on Telegram or Discord. Her live voice is Hermes' own default for that mode, so the YAML leaves it out.
 
 ```yaml
 stt:
@@ -92,13 +92,13 @@ stt:
 ```yaml
 tts:
   provider: openai
+  openai:
+    voice: marin
 ```
 
 ```yaml
 voice:
   voice_chat_mode: gpt-live
-  gpt_live:
-    voice: cedar
 ```
 
 ```yaml
@@ -133,14 +133,15 @@ While the consent screen is on "Testing", the token expires about once a week, a
 
 ### 🎵 Spotify
 
-Pepper can play, pause, queue and search music, and read and edit playlists and the library, through Hermes' own Spotify tools. They run on a Spotify developer app of Petri's, signed in once with his account, and they only work with a Premium account and a device that is open, like his phone. They are on for Telegram and Discord and off everywhere else.
+Pepper can play, pause, queue and search music, and read and edit playlists and the library, through Hermes' own Spotify tools. They run on a Spotify developer app of Petri's, signed in once with his account, and they only work with a Premium account and a device that is open, like his phone. They are on for Telegram, Discord and her scheduled runs, and off everywhere else. Her scheduled runs matter because the morning report checks that Spotify is connected, and Hermes leaves Spotify out of a cron run unless it is asked for by name. The report only needs to list devices, but the toolset also plays and queues, and that run reads email and GitHub text, so the report should touch nothing else.
 
-Turning the toolset on made Hermes write out the full tool list for those two platforms instead of the `hermes-telegram` and `hermes-discord` bundles, so a tool Hermes adds later will not reach them on its own.
+Turning the toolset on made Hermes write out the full tool list for those platforms instead of the `hermes-telegram` and `hermes-discord` bundles, so a tool Hermes adds later will not reach them on its own. The cron list is her current cron tools plus `spotify`, checked beforehand so that Notion, Miro, Sentry, Vercel and Canva stayed in.
 
 ```yaml
 platform_toolsets:
   telegram: [browser, clarify, code_execution, …, spotify, …]
   discord:  [browser, clarify, code_execution, …, spotify, …]
+  cron:     [browser, clarify, code_execution, …, spotify, …]
 ```
 
 The app's redirect URI is `http://127.0.0.1:43827/spotify/callback`, and its token is renewed by Hermes itself. The Client ID is saved with that token in her data folder, so there is no variable for it.

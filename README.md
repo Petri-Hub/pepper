@@ -120,11 +120,14 @@ What's already in place:
 - ✅ Her GitHub App and her Google account, both reaching her sandbox, so she works on GitHub and reads Gmail and Calendar from there
 - ✅ Spotify control, so she can play, pause and queue music for me
 - ✅ Skills from Hermes' catalog: Excalidraw diagrams, pixel art, animated PR diagrams, and video through Hyperframes
+- ✅ A morning report that does her own check-up, reads my calendar, mail and GitHub, and tells me what to do first, without waiting to be asked
+- ✅ A voice that sounds like her: *marin*, both in spoken replies and in live conversations
 
 What comes next:
 
+- ❌ A Google sign-in that outlasts a week: the consent screen is on "Testing", so the token expired on 30 September and 1 October and the report went without calendar and mail
+- ❌ Files that keep reaching the chat after a rebuild: the fix lives inside the container's image, and the lab still needs one mount to keep it
 - ❌ A reshaped `SOUL.md`, rewritten from scratch and without hurry, and the files around it: who I am, my repositories, and what she should know without being told
-- ❌ Real routines — personalizations, schedules and proactive work she does for me instead of waiting to be asked
 
 ## Activity
 
