@@ -124,10 +124,7 @@ What's already in place:
 - ✅ A voice that sounds like her: *marin*, both in spoken replies and in live conversations
 - ✅ A `SOUL.md` rewritten from scratch, with who I am, my repositories, and what she should know without being told
 - ✅ Files from her sandbox reach the chat, and keep reaching it after a rebuild: the lab applies her patches to Hermes every time the container starts
-
-What comes next:
-
-- ❌ A characteristic personality for her: a voice and a temperament of her own, now that the rewritten soul keeps her neutral
+- ✅ A voice like one more friend from the group: casual and quick in Portuguese, joking back, and plain when it is serious
 
 ## Activity
 

@@ -2,6 +2,20 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-05 · She talks like the group
+
+> *It's not necessarily about personality, but how formal she sounds. When the moment isn't that serious, money or something, she can talk more casually, especially in PT-BR, like how I talk sometimes. A final good result is a Pepper that looks like just one more friend from the friend group.*
+
+Her voice was read from the group's own messages. In the friends' Discord server, recent messages from Petri and three friends were read through Discord's search, filtered by author, and analysed inside the page, so only statistics and a scrubbed sample were seen and nothing was saved. They are short, nearly all lowercase and without final punctuation, with no emoji and a lot of shorthand (q, n, ta, pra, vc, mto, tbm, agr), "mano" and "cara" as the way to address someone, and light swearing. Laughter is rare and shows up as long runs of capital K.
+
+`SOUL.md` gained a *Voice* section: casual by default, their Portuguese, joke back, plain sentences when it is serious (money, anything irreversible, a refusal, an error, anything under his name), and words instead of shorthand in voice replies. *Language* and *Communication* now say that she mirrors his friends' language too, in Portuguese when they use it. The example lines in the prompt were written for it, and none is a real message. Harsher words and jokes were left out on purpose, so that a stranger reaching her does not get that tone; he can add them. The live file was replaced after backing up the old one as `SOUL.md.bak-20261005-voice`, and a new chat is needed to pick it up. How well it sounds like them was not tested when this was written.
+
+### 2026-10-03 · A new soul, from scratch
+
+> *Can you help me apply this SOUL.md file?*
+
+Her prompt was rewritten from scratch, 9,356 bytes, and replaced on the live agent after Hermes' own injection scanner found nothing in it. The old one was kept as `SOUL.md.bak-20261003-before-rewrite` on her data folder and in git history. She no longer calls him "chefe", is no longer a bird, and lost the environment lines. The daily report skill still asks for a humorous health line, which may clash with the new prompt.
+
 ### 2026-10-04 · Keeping the weekly Google token, on purpose
 
 > *For now I think that I'm going to keep her with 7d tokens. Consider done for now. If it turns into a pain, then we deal about it.*
