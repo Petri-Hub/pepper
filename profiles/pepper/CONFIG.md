@@ -124,7 +124,7 @@ GITHUB_APP_PRIVATE_KEY_PATH=/opt/data/github-app.pem
 
 Pepper reads and writes Petri's Gmail, Calendar and Drive, and reaches Contacts, Sheets and Docs along the way. Hermes has no toolset for any of it — it ships a skill she drives herself — so nothing is enabled here and nothing is mapped by the lab. What makes it work is an OAuth client of Petri's own and a token beside her other files, profile-scoped so a second agent signs in as itself.
 
-While the consent screen is on "Testing", the token expires about once a week, and it has to be renewed in her own container, since a token written inside a sandbox is lost with it. The skill takes all of its scopes at once, so Google's consent screen is the only place to hand over less. What she may send, attach and share lives in [SOUL.md](SOUL.md#what-never-leaves).
+While the consent screen is on "Testing", the token expires about once a week, and it has to be renewed in her own container, since a token written inside a sandbox is lost with it. That is kept on purpose: publishing the consent screen removes the expiry, but a leaked token would then stay valid for months, and hers is copied into every sandbox. The skill takes all of its scopes at once, so Google's consent screen is the only place to hand over less. What she may send, attach and share lives in [SOUL.md](SOUL.md#what-never-leaves).
 
 ```bash
 /opt/data/google_client_secret.json   # the OAuth client, downloaded from Google Cloud
@@ -183,6 +183,26 @@ MODAL_TOKEN_SECRET=…
 /opt/data/sandbox/credentials/wakapi-api-key            # her own Wakapi user's key, so her time stays out of his stats
 /opt/data/sandbox/credentials/ai-memory-url             # https://lab-ai-memory.petri.zip
 /opt/data/sandbox/credentials/ai-memory-auth-token      # the lab's ai-memory token
+```
+
+### 🩹 Patches to Hermes
+
+Two faults in Hermes' own code stopped her sandbox from working properly: a file she made there never reached the chat, and her file tools hung until they timed out. Each has a patch, kept on her data folder in `patches/`, and the lab runs a boot script that applies them every time the container starts. The image is `:latest`, so without the script a rebuild would bring both faults back; a patch that no longer fits a newer Hermes is skipped and named in the boot log, never forced.
+
+```yaml
+# the lab's compose, in the hermes service
+volumes:
+  - ./configuration/03-apply-patches:/etc/cont-init.d/03-apply-patches:ro
+```
+
+### ✍️ File tools
+
+Her file tools write into the Modal sandbox, not into her container, so Hermes' guard that limits them to `/opt/data` was checking the wrong filesystem and only denied her own scratch folders. It is switched off, and the credential and session files stay protected on their own. Their content travels inside one command, so a file over roughly 64 KB fails, and her personality tells her to build a big one in the terminal.
+
+```yaml
+# the lab's compose, in the hermes service
+environment:
+  - HERMES_WRITE_SAFE_ROOT=
 ```
 
 ### 🔌 MCP servers

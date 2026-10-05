@@ -2,6 +2,28 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-04 · Keeping the weekly Google token, on purpose
+
+> *For now I think that I'm going to keep her with 7d tokens. Consider done for now. If it turns into a pain, then we deal about it.*
+
+Moving the consent screen to "In production" was looked at and left alone. Google refuses to publish it without a homepage and a privacy policy page, and `petri.zip/privacy` does not exist yet. A draft was written but not published. The bigger reason is that her token holds Gmail read, modify and send, full Drive and Calendar, Docs, Sheets and read-only Contacts, and a copy of it goes into every Modal sandbox. The weekly expiry is, by accident, what limits a leak, and a published app would make a stolen token last until it is revoked or goes six months unused. Nobody else can reach his data through the client either way, since a token only opens the account that signed in.
+
+So the token still has to be renewed about once a week, in her own container. If that becomes a chore, the way out is to publish after adding the privacy page, ideally with fewer scopes. Revoking at `myaccount.google.com/permissions` kills a token at once.
+
+### 2026-10-04 · Her file tools work, and the fixes survive a rebuild
+
+> *Our focus in this session is to fix two loose ends: the files reaching me after a rebuild, and a non-documented problem with her write tool.*
+
+**The write tool had two faults, and neither was the one first suspected.** A path under `/root` was denied by `HERMES_WRITE_SAFE_ROOT`, a guard that checks the path inside her container while the write lands in the Modal sandbox. That is not something the lab sets, as the 1 October entry said: the Hermes image sets it to `/opt/data`. The lab now overrides it with an empty value, which switches the guard off. It went through a middle step, `/opt/data:/root`, which still denied `/tmp`, so it was dropped. The credential and session protections are separate and still apply.
+
+The second fault was the hang, which the first test after widening the guard exposed: every write waited the full 180 seconds and returned an empty error. It is not the sync of her Hermes home, as first suspected, and there was no sync failure during the write. For a backend like Modal, Hermes sends the file inside a heredoc, and a heredoc attaches only to the last command of a script, so the `cat` that was meant to read it waited on a stdin nobody closes. It was reproduced on a throwaway container from the live image, and fixed in `hermes-write.patch` by grouping the script. The heredoc also adds a newline that Hermes' sha256 check would reject, so the patch trims it, and an empty file no longer skips the heredoc.
+
+A test through her real file code, on a backend modelled on Modal's, wrote ten cases correctly, and a fresh Telegram session then wrote, read back and edited a file in `/root/outputs` in seconds, with `verified: true`. A file over about 64 KB still fails, because it travels in the command line. Modal's own code notes that limit, but where Modal really stops was not measured. `SOUL.md` gained a one-bullet Limitations section so she builds big files in the terminal, and the live `SOUL.md` was replaced with the local one, the old one kept as `SOUL.md.bak-20261004-limitations`.
+
+**The media fix survives a rebuild.** A recreated container drops both patches, and a Telegram test confirmed the bug had come back: the log said `Skipping MEDIA directive path (not found on this host)` and nothing arrived, while she said she had attached the file. The lab now mounts `03-apply-patches` into the image's `cont-init.d`, which runs before the gateway. It applies each patch in `patches/`, skips one already in place and reports one that no longer fits. A recreated container logged both as applied, and a plain restart logged both as already in place. The lab commits are `db31073` and `3a86afd` for the guard and `44b0999` for the script. A fresh Telegram session then made `media-test.md` in `/root/outputs` and the file arrived as `remote_<id>_media-test.md`, with the log saying `Fetched remote media ... from the ModalEnvironment sandbox`.
+
+Still open: `sync_back` fails with a utf-8 decode error whenever a sandbox is saved, and the patches exist only on her data folder, not in this repository. The write patch, the media patch and the sandbox sync could be offered to Hermes upstream, so nobody has to carry them.
+
 ### 2026-10-02 · A new voice for her: marin
 
 > *Cedar is not sounding right, you know. Let's use Marin in both TTS and Realtime, is that possible?*
