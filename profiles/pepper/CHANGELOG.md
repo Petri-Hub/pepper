@@ -8,7 +8,7 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 `CONFIG.md`'s description still showed the old Pepper, a sarcastic bird who complains before doing what she's asked. It now describes the coordinator who talks like one more friend from the group. Its GitHub App section still spoke of repositories she may merge on her own, which the new soul no longer has, and four links in it and in this changelog pointed at `SOUL.md` sections the rewrite renamed. The README shows the newer diagram, with her built-in tools, MCP servers, sandbox, AI Memory and Wakapi, and `AGENTS.md`'s tree lists the sandbox and the workflows.
 
-The other settings in `CONFIG.md` were compared with the live agent and match, except one already known since 22 September: the live agent still hides her reasoning, with `display.show_reasoning: false`.
+The other settings in `CONFIG.md` were compared with the live agent and match, except one left over from 22 September: the live agent still hid her reasoning. `display.show_reasoning` is now `true` there too, with the old config kept as `config.yaml.bak-20261005-reasoning`. Hermes reads that setting on every turn, so it needs no restart, though a reply showing her reasoning was not seen when this was written.
 
 ### 2026-10-05 · Ready to be public
 
