@@ -17,10 +17,10 @@
 ## How it works
 
 <p align="center">
-  <img src="assets/how-it-works.svg" alt="Telegram, Discord and voice reach the Hermes gateway in the lab, which hands every message to Pepper or to another profile. Pepper thinks with OpenAI, works on GitHub through her App and reaches the other lab services. The lab repo runs the container, and this repo describes every profile." />
+  <img src="assets/how-it-works.svg" alt="Telegram, Discord and voice reach the Hermes gateway in the lab's hermes container, which hands every message to Pepper or to another profile. Pepper thinks with OpenAI, uses her built-in tools for GitHub, Google and Spotify, reaches Notion, Vercel, Sentry, Canva and Miro over MCP, and runs her shell in a Modal sandbox with Claude Code. Beside her in the lab, AI Memory keeps the wiki she shares with Claude Code and Wakapi tracks her time. The lab repo runs the container, and this repo describes every profile." />
 </p>
 
-Every message, from Telegram, Discord or voice, goes through the Hermes gateway to Pepper, who thinks with OpenAI and works on GitHub and the lab. The lab repository keeps the container running, and this one describes who each profile is.
+Every message, from Telegram, Discord or voice, goes through the Hermes gateway to Pepper, who thinks with OpenAI. She works through her built-in tools and her MCP servers, runs her shell in a Modal sandbox where she hands big coding jobs to Claude Code, and remembers through the AI Memory wiki beside her in the lab. The lab repository keeps the container running, and this one describes who each profile is.
 
 ## Profiles
 

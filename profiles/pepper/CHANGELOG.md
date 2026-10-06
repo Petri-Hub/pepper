@@ -2,6 +2,14 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-05 · What went stale
+
+> *Make this general passthrough in the files, for these outdated information: CONFIG.md, and other files maybe if they exist.*
+
+`CONFIG.md`'s description still showed the old Pepper, a sarcastic bird who complains before doing what she's asked. It now describes the coordinator who talks like one more friend from the group. Its GitHub App section still spoke of repositories she may merge on her own, which the new soul no longer has, and four links in it and in this changelog pointed at `SOUL.md` sections the rewrite renamed. The README shows the newer diagram, with her built-in tools, MCP servers, sandbox, AI Memory and Wakapi, and `AGENTS.md`'s tree lists the sandbox and the workflows.
+
+The other settings in `CONFIG.md` were compared with the live agent and match, except one already known since 22 September: the live agent still hides her reasoning, with `display.show_reasoning: false`.
+
 ### 2026-10-05 · Ready to be public
 
 > *The idea is that we're going to have a single 'pepper' repository afterwards. You're free to rename whatever you need, perform a history rewrite if needed, etc.*
@@ -70,7 +78,7 @@ The Spotify toolset also plays, queues and edits playlists, and the report reads
 
 The dead-sandbox problem from the entry below was taken off the roadmap without a fix. The reports of 2 October ran well, nothing was changed to stop a repeat, and Petri is watching how the next days go. If a run again comes back with no Google and GitHub and every command failing at once, the cause to look at first is a single `execute_code` call that outlives the sandbox.
 
-Dependabot, from the same report: the 403 she saw was GitHub saying alerts were off. The App already holds `vulnerability_alerts`, and of her 18 repositories only `lab`, `portfolio` and `wenvi` had alerts on, each with none open. Petri turned on Dependabot alerts, security updates and grouped security updates for all of them and for new repositories, so Dependabot may now open pull requests on its own, and her merge rules in [SOUL.md](SOUL.md#the-repositories) decide what she does with them. He left "Dependabot on self-hosted runners" off.
+Dependabot, from the same report: the 403 she saw was GitHub saying alerts were off. The App already holds `vulnerability_alerts`, and of her 18 repositories only `lab`, `portfolio` and `wenvi` had alerts on, each with none open. Petri turned on Dependabot alerts, security updates and grouped security updates for all of them and for new repositories, so Dependabot may now open pull requests on its own, and her merge rules in [SOUL.md](SOUL.md#coding) decide what she does with them. He left "Dependabot on self-hosted runners" off.
 
 The scheduler problem from the entry below closed itself: Petri took the "Schedules" section out of the morning report, so a cron run no longer needs `cronjob_manage`, and `cron.allow_agent_scheduling` stays off.
 

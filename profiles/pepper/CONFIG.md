@@ -1,6 +1,6 @@
 # 🐦 Pepper
 
-> Petri's general-purpose assistant, and a bird about it. She's sarcastic, answers in whatever language she's spoken to, and complains once before doing what he asks. She lives on Telegram, Discord and voice, runs reminders, opens PRs across Petri-Hub as her own GitHub App, and works his Gmail, Calendar and Drive. With anyone who isn't Petri, his money, documents, inbox and private repos stay off limits.
+> Petri's general-purpose assistant, who works as a coordinator with hands: she does small things herself and hands large coding work to Claude Code. She talks like one more friend from his group, casual and quick in Portuguese and plain when something is serious, and answers in whatever language she's spoken to. She lives on Telegram, Discord and voice, runs reminders, opens pull requests across Petri-Hub as her own GitHub App, and works his Gmail, Calendar and Drive. She never buys anything, and nothing goes out under his name before he has seen it. With anyone who isn't Petri, his money, documents, inbox and private repos stay off limits.
 
 ## 💬 Platforms
 
@@ -112,7 +112,7 @@ Pepper works on GitHub as herself, through an App called *Pepper, Petri's Bot*, 
 
 There's no personal token and no login to keep alive: for each task she mints one that lasts about an hour and can be narrowed to the single repository she is touching. The key itself lives inside her Hermes home, mounted read-only by the lab, so it travels with her into a sandbox.
 
-Which repositories she may merge on her own, and which stop at a pull request for Petri to review, is part of her personality rather than her configuration, and lives in [SOUL.md](SOUL.md#the-repositories).
+Every change she makes is a branch and a pull request, and she merges only when Petri says so for that one pull request. That rule is part of her personality rather than her configuration, and lives in [SOUL.md](SOUL.md#coding).
 
 ```bash
 GITHUB_APP_ID=…
@@ -124,7 +124,7 @@ GITHUB_APP_PRIVATE_KEY_PATH=/opt/data/github-app.pem
 
 Pepper reads and writes Petri's Gmail, Calendar and Drive, and reaches Contacts, Sheets and Docs along the way. Hermes has no toolset for any of it — it ships a skill she drives herself — so nothing is enabled here and nothing is mapped by the lab. What makes it work is an OAuth client of Petri's own and a token beside her other files, profile-scoped so a second agent signs in as itself.
 
-While the consent screen is on "Testing", the token expires about once a week, and it has to be renewed in her own container, since a token written inside a sandbox is lost with it. That is kept on purpose: publishing the consent screen removes the expiry, but a leaked token would then stay valid for months, and hers is copied into every sandbox. The skill takes all of its scopes at once, so Google's consent screen is the only place to hand over less. What she may send, attach and share lives in [SOUL.md](SOUL.md#what-never-leaves).
+While the consent screen is on "Testing", the token expires about once a week, and it has to be renewed in her own container, since a token written inside a sandbox is lost with it. That is kept on purpose: publishing the consent screen removes the expiry, but a leaked token would then stay valid for months, and hers is copied into every sandbox. The skill takes all of its scopes at once, so Google's consent screen is the only place to hand over less. What she may send, attach and share lives in [SOUL.md](SOUL.md#constraints--guidelines).
 
 ```bash
 /opt/data/google_client_secret.json   # the OAuth client, downloaded from Google Cloud
@@ -209,7 +209,7 @@ environment:
 
 Notion, Vercel, Sentry, Canva and Miro, each as the vendor's own hosted server. Every one is authorized as Petri in the browser, so each vendor's consent screen is where he chooses what it may see, and none needed an app of his own.
 
-Vercel is the one to be careful with: it can spend his money and read production secrets. Nothing is turned off here, because the restraint belongs in her personality — [SOUL.md](SOUL.md#what-costs-money) forbids the purchases outright.
+Vercel is the one to be careful with: it can spend his money and read production secrets. Nothing is turned off here, because the restraint belongs in her personality — [SOUL.md](SOUL.md#constraints--guidelines) forbids the purchases outright.
 
 | Server | What it gives the agent | Link |
 |---|---|---|

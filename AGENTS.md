@@ -11,6 +11,7 @@ The reader is a person, not a deploy script. Someone opening a profile should un
 ├── .claude/rules/
 │   ├── configuration.md  # how a profile's documents are written
 │   └── environment.md    # how .env.example is written
+├── .github/workflows/    # publishes Pepper's sandbox image, and refreshes her Wakapi card
 ├── assets/               # the How it works diagram, as .excalidraw and .svg
 ├── profiles/
 │   └── <name>/
@@ -18,7 +19,8 @@ The reader is a person, not a deploy script. Someone opening a profile should un
 │       ├── CHANGELOG.md  # every change, in the words it was asked for
 │       ├── SOUL.md       # personality and rules, as the agent reads them
 │       ├── .env.example  # every variable it needs, with placeholders
-│       └── avatar.png    # its picture on every platform
+│       ├── avatar.png    # its picture on every platform
+│       └── sandbox/      # Pepper only: the image her Modal sandbox runs
 ├── README.md             # the repository's front page and the list of profiles
 └── AGENTS.md
 ```
