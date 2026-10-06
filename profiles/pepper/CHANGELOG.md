@@ -10,7 +10,7 @@ The repository was private because her old `SOUL.md` carried Petri's personal li
 
 In the current files, `SOUL.md` says `pepper` is public and says less about `documents` and `atlas`, and `AGENTS.md` says nothing personal goes in. A few older entries here were edited for the same reason, the one exception to leaving entries as they were written. Commit ids in older entries, like the image tag `45daeb9`, are from before the rewrite: the images keep those tags, but the commits here have new ids.
 
-On the live agent: her `SOUL.md` still says `pepper` is private, and needs this version applied.
+On the live agent: `SOUL.md` was replaced with this version, the old one kept as `SOUL.md.bak-20261005-public`, and a new chat is needed to pick it up.
 
 ### 2026-10-05 · She talks like the group
 
