@@ -2,6 +2,16 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-05 · Ready to be public
+
+> *The idea is that we're going to have a single 'pepper' repository afterwards. You're free to rename whatever you need, perform a history rewrite if needed, etc.*
+
+The repository was private because her old `SOUL.md` carried Petri's personal life, and every commit from 22 September to 4 October still did. That was taken out of the history, not only out of the current files: those versions of `SOUL.md` were replaced with a note, the friends' names and a few other details were scrubbed from every version of this changelog, and the commits carry his GitHub noreply address instead of his email. GitHub keeps the commits of a merged pull request even after a rewrite, so the cleaned history went to a new repository, and the old one is private and archived as `pepper-archive`.
+
+In the current files, `SOUL.md` says `pepper` is public and says less about `documents` and `atlas`, and `AGENTS.md` says nothing personal goes in. A few older entries here were edited for the same reason, the one exception to leaving entries as they were written. Commit ids in older entries, like the image tag `45daeb9`, are from before the rewrite: the images keep those tags, but the commits here have new ids.
+
+On the live agent: her `SOUL.md` still says `pepper` is private, and needs this version applied.
+
 ### 2026-10-05 · She talks like the group
 
 > *It's not necessarily about personality, but how formal she sounds. When the moment isn't that serious, money or something, she can talk more casually, especially in PT-BR, like how I talk sometimes. A final good result is a Pepper that looks like just one more friend from the friend group.*
@@ -14,7 +24,7 @@ Her voice was read from the group's own messages. In the friends' Discord server
 
 > *Can you help me apply this SOUL.md file?*
 
-Her prompt was rewritten from scratch, 9,356 bytes, and replaced on the live agent after Hermes' own injection scanner found nothing in it. The old one was kept as `SOUL.md.bak-20261003-before-rewrite` on her data folder and in git history. She no longer calls him "chefe", is no longer a bird, and lost the environment lines. The daily report skill still asks for a humorous health line, which may clash with the new prompt.
+Her prompt was rewritten from scratch, 9,356 bytes, and replaced on the live agent after Hermes' own injection scanner found nothing in it. The old one was kept as `SOUL.md.bak-20261003-before-rewrite` on her data folder. She no longer calls him "chefe", is no longer a bird, and lost the environment lines. The daily report skill still asks for a humorous health line, which may clash with the new prompt.
 
 ### 2026-10-04 · Keeping the weekly Google token, on purpose
 
@@ -414,7 +424,7 @@ The granted scopes were not checked against the live agent, which was unreachabl
 
 The generalization from earlier today is reverted. `SOUL.md` is again a copy of the live agent's, 216 lines against the 141 of the stripped version, so the repository and the running agent stop drifting apart.
 
-That puts Petri's personal life back into the repository: his background and his situation, his routine, the people close to him by name, the repositories and their merge policy, and the list of what must never be published. It is safe only because `Petri-Hub/pepper` is private, which is now written down as a principle in `AGENTS.md`. Making the repository public would expose all of it through the git history, so it comes out before that happens, not after.
+That put Petri's personal life back into the repository, which was private at the time. Those versions were taken out of the history on 5 October, before the repository went public.
 
 ### 2026-09-22 · The default profile is called Pepper
 

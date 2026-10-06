@@ -54,7 +54,7 @@ The lab's own repository is not edited from here. When a change needs something 
 
 **No credentials, ever.** Tokens, API keys, private keys, password hashes and session secrets never enter this repository, in any file. Identifiers are fine: chat IDs, user IDs, an App ID. When looking at a live `.env`, read key names only, never values.
 
-**The repository is private.** `Petri-Hub/pepper` is private on GitHub, and that is what makes it safe for a profile's `SOUL.md` to carry Petri's personal life: his routine, the people close to him, the repositories he owns. It changes nothing about the rule above, since credentials stay out either way. Making the repository public would expose everything already written into the git history, so anything personal comes out before that happens, not after.
+**The repository is public.** Anyone can read `Petri-Hub/pepper` and its whole history, so nothing personal enters it: not Petri's routine, where he lives, his finances or his family, not what his private repositories hold, not former employers or clients, and not the people close to him, who are never named. Write "a friend" or "his friends" instead. What an agent needs to know privately lives in its memory on the live agent, not in `SOUL.md`. A new commit cannot take a slip back, because the history keeps it, so check before committing.
 
 **One branch.** `main` is the only branch, and commits land on it directly. This is documentation for one reader, not software with releases to stage, so a `develop` branch or a long-lived feature branch only adds a merge to do later. A pull request is for when Petri asks for one.
 
