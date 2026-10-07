@@ -2,6 +2,16 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-07 · Saying "hey pepper"
+
+> *I would like to, in my current computer, say something like "Hey Pepper" and basically pop up something. Make a minimal configuration, check if we don't need to install anything, and if it fails because of that, then we install it. Ensure that afterwards we document this on the Pepper repository.*
+
+`wake_word.enabled` was already `true` on the live agent, but it never armed: each try in the log, from 20 to 23 September, failed because the default engine, openWakeWord, needs `tflite-runtime`, which has no build for the container's Python 3.13. The config now uses sherpa with the phrase `hey pepper`. Sherpa takes any phrase typed as text, so there is no model to train, and its packages install fine on 3.13. Nothing was needed for sound: the lab has no microphone, and in the mode the desktop app uses, which streams its own microphone to the lab, the lab never opens a sound device. That was checked by arming the detector with `external_audio` and feeding it silence, while `sounddevice` itself still can't load there for lack of PortAudio.
+
+One package had to be installed by hand: sherpa needs `pypinyin` to turn the phrase into tokens, and doesn't declare it. It went into `/opt/data/lazy-packages`, on the data volume, next to what Hermes installed itself, so it survives restarts and a rebuilt container. Sherpa's own model, about 13 MB, was downloaded on first use. The old config was kept as `config.yaml.bak-wake-20261007`, and the container was restarted.
+
+What was not tested: saying the phrase into the desktop app, which was not open while this was written. From its code, the app plays a sound and starts a voice conversation on wake, but it does not raise its window, and the wake indicator is macOS-only, so on Linux she may answer out loud without anything appearing on screen. The app also has to stay open: it has no tray icon or autostart here, and it quits when its last window closes. How well sherpa hears "pepper", and the right `sensitivity` (0.6 is the default), is to be found by trying it.
+
 ### 2026-10-05 · What went stale
 
 > *Make this general passthrough in the files, for these outdated information: CONFIG.md, and other files maybe if they exist.*
