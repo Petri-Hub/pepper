@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-20 · FAM MCP connection
+
+> *I published an MCP for my university on PyPI. Add it to Pepper's connections, and keep the portal credentials out of `config.yaml`.*
+
+Pepper's profile records FAM MCP as a local stdio server run with `uvx` and Python 3.14. It reads the student portal through Petri's package. The lab's Compose service forwards `FAM_USERNAME` and `FAM_PASSWORD` to Hermes, and the MCP entry passes them to the server through environment references; neither value appears in this repository.
+
 ### 2026-10-07 · Saying "hey pepper"
 
 > *I would like to, in my current computer, say something like "Hey Pepper" and basically pop up something. Make a minimal configuration, check if we don't need to install anything, and if it fails because of that, then we install it. Ensure that afterwards we document this on the Pepper repository.*
