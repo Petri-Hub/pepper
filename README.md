@@ -83,7 +83,7 @@ Only placeholders. The real values live in the lab and never reach this reposito
 | <img src="https://cdn.simpleicons.org/sentry" width="20" height="20" alt="" /> | [Sentry](https://docs.sentry.io/product/sentry-mcp/) | Issues and stack traces from my projects, over Sentry's hosted MCP server |
 | <img src="https://api.iconify.design/simple-icons:canva.svg?color=%239198A1" width="20" height="20" alt="" /> | [Canva](https://www.canva.dev/docs/mcp/) | My designs, folders and brand templates, over Canva's hosted MCP server |
 | <img src="https://cdn.simpleicons.org/miro" width="20" height="20" alt="" /> | [Miro](https://developers.miro.com/docs/connecting-to-miro-mcp) | My boards and spaces, reached over Miro's hosted MCP server |
-| 🎓 | [FAM MCP](https://github.com/Petri-Hub/fam-mcp) | My grades, assignments, schedule and other university portal data, through my read-only MCP server published on PyPI |
+| <img src="https://www.fam.br/wp-content/uploads/2022/08/favicon-96x96-1.png" width="20" height="20" alt="" /> | [FAM MCP](https://github.com/Petri-Hub/fam-mcp) | My grades, assignments, schedule and other university portal data, through my read-only MCP server published on PyPI |
 | <img src="https://cdn.simpleicons.org/modal/9198A1" width="20" height="20" alt="" /> | [Modal](https://modal.com/docs) | The cloud sandbox her shell commands run in, so nothing she executes touches the lab host |
 | <img src="https://cdn.simpleicons.org/docker" width="20" height="20" alt="" /> | [Docker](https://docs.docker.com/) | The container in the lab that Pepper lives in |
 
