@@ -126,6 +126,13 @@ What's already in place:
 - ✅ Files from her sandbox reach the chat, and keep reaching it after a rebuild: the lab applies her patches to Hermes every time the container starts
 - ✅ A voice like one more friend from the group: casual and quick in Portuguese, joking back, and plain when it is serious
 
+### Next steps
+
+- [ ] Connect FAM's MCP for university content.
+- [ ] Add proactive task execution, especially when help is urgent.
+- [ ] Enable and connect the Google Classroom API.
+- [ ] Move the Google OAuth app to production to avoid frequent reauthorization.
+
 ## Activity
 
 Pepper's own time, from her Wakapi user in the lab: her conversations and crons, and the coding she hands to Claude Code in her sandbox. Refreshed every night, and never counted in my own stats.
