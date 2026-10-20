@@ -83,6 +83,7 @@ Only placeholders. The real values live in the lab and never reach this reposito
 | <img src="https://cdn.simpleicons.org/sentry" width="20" height="20" alt="" /> | [Sentry](https://docs.sentry.io/product/sentry-mcp/) | Issues and stack traces from my projects, over Sentry's hosted MCP server |
 | <img src="https://api.iconify.design/simple-icons:canva.svg?color=%239198A1" width="20" height="20" alt="" /> | [Canva](https://www.canva.dev/docs/mcp/) | My designs, folders and brand templates, over Canva's hosted MCP server |
 | <img src="https://cdn.simpleicons.org/miro" width="20" height="20" alt="" /> | [Miro](https://developers.miro.com/docs/connecting-to-miro-mcp) | My boards and spaces, reached over Miro's hosted MCP server |
+| <img src="https://www.fam.br/wp-content/uploads/2022/08/favicon-96x96-1.png" width="20" height="20" alt="" /> | [FAM MCP](https://github.com/Petri-Hub/fam-mcp) | My grades, assignments, schedule and other university portal data, through my read-only MCP server published on PyPI |
 | <img src="https://cdn.simpleicons.org/modal/9198A1" width="20" height="20" alt="" /> | [Modal](https://modal.com/docs) | The cloud sandbox her shell commands run in, so nothing she executes touches the lab host |
 | <img src="https://cdn.simpleicons.org/docker" width="20" height="20" alt="" /> | [Docker](https://docs.docker.com/) | The container in the lab that Pepper lives in |
 
@@ -104,6 +105,7 @@ What's already in place:
 - ✅ Sentry, over MCP, for issues and stack traces
 - ✅ Canva, over MCP, for my designs and brand templates
 - ✅ Miro, over MCP, reading and editing my boards
+- ✅ FAM MCP, reading my university portal through my own server published on PyPI
 - ✅ MCP servers, so she can reach tools that speak the protocol
 - ✅ Crons and reminders, delivered to Telegram or Discord
 - ✅ A personality, with rules on who she trusts and what she never shares
@@ -128,7 +130,6 @@ What's already in place:
 
 ### Next steps
 
-- [ ] Connect FAM's MCP for university content.
 - [ ] Add proactive task execution, especially when help is urgent.
 - [ ] Enable and connect the Google Classroom API.
 - [ ] Move the Google OAuth app to production to avoid frequent reauthorization.
@@ -163,6 +164,7 @@ Python     0 hrs 0 mins    ░░░░░░░░░░░░░░░░░�
 - [Sentry MCP](https://docs.sentry.io/product/sentry-mcp/): the hosted server Pepper reaches Sentry through
 - [Canva MCP](https://www.canva.dev/docs/mcp/): the hosted server Pepper reaches Canva through
 - [Miro MCP](https://developers.miro.com/docs/connecting-to-miro-mcp): the hosted server Pepper reaches Miro through
+- [FAM MCP](https://pypi.org/project/fam-mcp/): the read-only server Pepper reaches the university portal through
 - [MCP in Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp): how Pepper's MCP servers are configured and authorized
 - [Modal](https://modal.com/docs): the cloud sandbox Hermes sends her terminal commands to
 - [Docker](https://docs.docker.com/): what runs Pepper's container in the lab
