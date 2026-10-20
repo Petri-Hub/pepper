@@ -209,7 +209,7 @@ environment:
 
 ### 🔌 MCP servers
 
-Notion, Vercel, Sentry, Canva and Miro, each as the vendor's own hosted server. Every one is authorized as Petri in the browser, so each vendor's consent screen is where he chooses what it may see, and none needed an app of his own.
+Notion, Vercel, Sentry, Canva and Miro are each the vendor's own hosted server. Every one is authorized as Petri in the browser, so each vendor's consent screen is where he chooses what it may see, and none needed an app of his own. FAM is Petri's own read-only server, published on PyPI and run locally with `uvx`; the lab passes his portal credentials to Hermes as environment variables, and the MCP entry forwards them without storing their values in `config.yaml`.
 
 Vercel is the one to be careful with: it can spend his money and read production secrets. Nothing is turned off here, because the restraint belongs in her personality — [SOUL.md](SOUL.md#constraints--guidelines) forbids the purchases outright.
 
@@ -220,6 +220,7 @@ Vercel is the one to be careful with: it can spend his money and read production
 | `sentry` | Issues, events, stack traces and Seer analysis | [Sentry MCP](https://docs.sentry.io/product/sentry-mcp/) |
 | `canva` | Designs, folders, brand templates, assets and comments | [Canva MCP](https://www.canva.dev/docs/mcp/) |
 | `miro` | Boards, spaces and frames, read and write | [Miro MCP](https://developers.miro.com/docs/connecting-to-miro-mcp) |
+| `fam` | Grades, assignments, schedule and other data from FAM's student portal, read-only | [FAM MCP](https://github.com/Petri-Hub/fam-mcp) |
 
 ```yaml
 mcp_servers:
@@ -251,6 +252,12 @@ mcp_servers:
         - layout_get_dsl
         - layout_read
         - layout_update
+  fam:
+    command: uvx
+    args: [--python, "3.14", fam-mcp]
+    env:
+      FAM_USERNAME: "${FAM_USERNAME}"
+      FAM_PASSWORD: "${FAM_PASSWORD}"
 ```
 
 ### 🧱 Plugins
