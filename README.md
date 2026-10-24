@@ -141,11 +141,9 @@ Pepper's own time, from her Wakapi user in the lab: her conversations and crons,
 <!--START_SECTION:waka-->
 
 ```rust
-Total Time: 0 hrs 2 mins
+Total Time: 0 hrs 0 mins
 
-Unknown    0 hrs 2 mins    ████████████████████▒░░░░   81.74 %
-Markdown   0 hrs 0 mins    ████▓░░░░░░░░░░░░░░░░░░░░   18.26 %
-Python     0 hrs 0 mins    ░░░░░░░░░░░░░░░░░░░░░░░░░   00.00 %
+Markdown   0 hrs 0 mins    █████████████████████████   100.00 %
 ```
 
 <!--END_SECTION:waka-->
