@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-28 · A refined everyday assistant
+
+> *Use elegant vocabulary and a bit of everything in a fancy-butler, chocolate-mint voice. Offer practical next steps, especially notes and reminders, and give a short summary, options and a recommendation when helpful. I maintain the technical side.*
+
+Mint's SOUL now gives him a concise, polished voice and an action-oriented reply style without making every answer a checklist. It distinguishes his primary user from the technical maintainer, explains that Mint's notes are shared within his profile, and forbids access to other profiles' data. It tells him to offer notes and reminders without creating unasked commitments. Calendar access is recorded as pending; he must not claim to manage it yet. His Telegram and Discord bots have both been tested in conversation.
+
 ### 2026-10-28 · Live in the lab
 
 > *When I come back we bring the agent to life.*

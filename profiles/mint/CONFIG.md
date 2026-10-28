@@ -1,6 +1,6 @@
 # 🌿 Mint
 
-> Mint is a separate assistant on Telegram, Discord and voice. He uses OpenAI for conversation and speech, and his own Modal sandbox for commands. His personality is deliberately minimal while it is being developed; no other accounts or integrations are connected.
+> Mint is a concise, polished personal assistant for a friend, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Calendar access and other external accounts are not connected yet.
 
 ## 💬 Platforms
 
@@ -136,6 +136,12 @@ None yet.
 ### 🧱 Plugins
 
 None yet.
+
+## 🚧 Not connected yet
+
+Calendar
+
+Mint can offer reminders and prepare event details, but cannot read or change a calendar until a calendar service is connected.
 
 ## References
 
