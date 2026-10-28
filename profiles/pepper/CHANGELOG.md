@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-28 · Manual credential cutover
+
+> *Ignore the script for now. Let's do everything by hand.*
+
+Pepper's profile variables were copied into a local, gitignored `profiles/pepper/.env` and into her live `/opt/data/.env`. The lab checkout was updated to the merged Compose change, Hermes was recreated, and the old Pepper-specific values were removed from the lab's Compose `.env`. The container now receives only container-wide settings from Compose. Pepper's gateway, Telegram and Discord connections, and OpenAI authentication were checked after the restart. No sync script was added.
+
 ### 2026-10-28 · Profile credentials
 
 > *Did you place those keys into Pepper's `.env.example`? That's where the removed keys should go, right?*

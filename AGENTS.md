@@ -54,7 +54,7 @@ The lab's own repository is not edited from here. When a change needs something 
 
 **The live agent is in use.** Reading from it is fine. Changing it, restarting it or writing to its files needs Petri's go-ahead first, every time.
 
-**No credentials, ever.** Tokens, API keys, private keys, password hashes and session secrets never enter this repository, in any file. Identifiers are fine: chat IDs, user IDs, an App ID. When looking at a live `.env`, read key names only, never values.
+**No committed credentials, ever.** Tokens, API keys, private keys, password hashes and session secrets never enter tracked files. A local, gitignored `profiles/<name>/.env` may hold values for manual setup; keep it private and never stage it. Identifiers are fine: chat IDs, user IDs, an App ID. When looking at a live `.env`, read key names only, never values.
 
 **The repository is public.** Anyone can read `Petri-Hub/pepper` and its whole history, so nothing personal enters it: not Petri's routine, where he lives, his finances or his family, not what his private repositories hold, not former employers or clients, and not the people close to him, who are never named. Write "a friend" or "his friends" instead. What an agent needs to know privately lives in its memory on the live agent, not in `SOUL.md`. A new commit cannot take a slip back, because the history keeps it, so check before committing.
 

@@ -27,7 +27,7 @@ TELEGRAM_ALLOWED_USERS=123456789
 
 Variables use the names Hermes reads inside the container, like `OPENAI_API_KEY`. Real values belong in the agent's own `.env`: `/opt/data/.env` for Pepper, Hermes' default profile, and `/opt/data/profiles/<name>/.env` for a named profile. The lab's Compose environment is for container-wide settings, not agent credentials.
 
-So a new profile variable needs an entry here and a value in that profile's live `.env`. This repository records only the placeholder; the live value must never be copied here.
+So a new profile variable needs an entry here and a value in that profile's live `.env`. Tracked files record only placeholders. A local, gitignored `profiles/<name>/.env` can hold values for manual transfer to the live profile.
 
 ## What belongs here
 
@@ -40,7 +40,7 @@ What doesn't belong:
 
 ## Secrets
 
-No real value ever enters this repository: not here, not in `CONFIG.md`, not in a changelog entry.
+No real value ever enters a tracked file: not here, not in `CONFIG.md`, not in a changelog entry. Never stage or commit a local profile `.env`.
 
 `.env` holds real values and is gitignored. When looking at a live `.env` on the lab, read key names only. To learn whether a key is set, test it without printing it:
 
