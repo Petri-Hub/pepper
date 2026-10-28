@@ -27,7 +27,7 @@ Every message, from Telegram, Discord or voice, goes through the Hermes gateway 
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Profile | What it is | Model | Talks on |
 |:---:|---|---|---|---|
 | 🐦 | [Pepper](profiles/pepper/CONFIG.md) | My general-purpose assistant: reminders, crons, GitHub, research, errands | OpenAI | Telegram · Discord · voice |
-| 🌿 | [Mint](profiles/mint/CONFIG.md) | Separate assistant with his own bots and sandbox | OpenAI | Telegram · Discord · voice |
+| 🌿 | [Mint](profiles/mint/CONFIG.md) | Bárbara's personal assistant for everyday help and design work | OpenAI | Telegram · Discord · voice |
 
 ## Philosophy
 
@@ -89,9 +89,25 @@ Tracked files hold placeholders only. Local, gitignored profile `.env` files hol
 | <img src="https://cdn.simpleicons.org/modal/9198A1" width="20" height="20" alt="" /> | [Modal](https://modal.com/docs) | The cloud sandbox her shell commands run in, so nothing she executes touches the lab host |
 | <img src="https://cdn.simpleicons.org/docker" width="20" height="20" alt="" /> | [Docker](https://docs.docker.com/) | The container in the lab that Pepper lives in |
 
+## Activity
+
+Pepper's own time, from her Wakapi user in the lab: her conversations and crons, and the coding she hands to Claude Code in her sandbox. Refreshed every night, and never counted in my own stats.
+
+<!--START_SECTION:waka-->
+
+```rust
+Total Time: 0 hrs 0 mins
+
+Markdown   0 hrs 0 mins    █████████████████████████   100.00 %
+```
+
+<!--END_SECTION:waka-->
+
 ## Roadmap
 
-What's already in place:
+### 🐦 Pepper
+
+#### Done
 
 - ✅ Hermes running in the lab, in a container of its own
 - ✅ OpenAI as the model provider, replacing OpenRouter
@@ -129,26 +145,36 @@ What's already in place:
 - ✅ A `SOUL.md` rewritten from scratch, with who I am, my repositories, and what she should know without being told
 - ✅ Files from her sandbox reach the chat, and keep reaching it after a rebuild: the lab applies her patches to Hermes every time the container starts
 - ✅ A voice like one more friend from the group: casual and quick in Portuguese, joking back, and plain when it is serious
+- ✅ Proactive task execution, including when help is urgent
 
-### Next steps
+#### Next
 
-- [ ] Add proactive task execution, especially when help is urgent.
 - [ ] Enable and connect the Google Classroom API.
 - [ ] Move the Google OAuth app to production to avoid frequent reauthorization.
 
-## Activity
+### 🌿 Mint
 
-Pepper's own time, from her Wakapi user in the lab: her conversations and crons, and the coding she hands to Claude Code in her sandbox. Refreshed every night, and never counted in my own stats.
+#### Done
 
-<!--START_SECTION:waka-->
+- ✅ A separate Hermes profile with his own OpenAI, Modal, Telegram and Discord credentials
+- ✅ Telegram and Discord bots connected and tested in conversation
+- ✅ OpenAI as the model provider, with GPT-6 Luna and GPT-5.6 Luna as a fallback
+- ✅ His own Modal workspace and sandbox, tested with a disposable command
+- ✅ A voice configuration using Cedar for spoken replies and live conversations
+- ✅ Medium reasoning, a 500-turn limit, São Paulo time, reply display and checkpoints
+- ✅ Built-in notes and reminders available in his profile, separate from Pepper's stores
+- ✅ His own SOUL, configuration, changelog and avatar in this repository
 
-```rust
-Total Time: 0 hrs 0 mins
+#### Next
 
-Markdown   0 hrs 0 mins    █████████████████████████   100.00 %
-```
-
-<!--END_SECTION:waka-->
+- [ ] Enable GitHub Issues on this repository and give Mint a way to open issues, so Bárbara and Mint can propose improvements.
+- [ ] Connect Mint's own Google access for Calendar, Gmail, Drive and other useful services, with an OAuth setup that does not require weekly reauthorization.
+- [ ] Choose useful plugins from Pepper's setup and install them for Mint without sharing Pepper's accounts or credentials.
+- [ ] Try `i-have-adhd` as an optional response mode for low-energy days, and evaluate `i-am-burned-out` before adopting it.
+- [ ] Connect Mint to Vercel MCP for Bárbara's Next.js apps and deployments.
+- [ ] Give Mint his own Wakapi user and plugin, then add his activity to this README.
+- [ ] Decide whether Mint needs AI Memory, with Bárbara's projects and knowledge kept separate from Pepper's.
+- [ ] Include Mint's full live profile at `/opt/data/profiles/mint` in the lab backup alongside Pepper, and verify a restore.
 
 ## References
 
