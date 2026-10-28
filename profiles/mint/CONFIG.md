@@ -1,6 +1,6 @@
 # 🌿 Mint
 
-> Mint is a concise, polished personal assistant for a friend, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Calendar access and other external accounts are not connected yet.
+> Mint is Bárbara's concise, polished personal assistant, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Calendar access and other external accounts are not connected yet.
 
 ## 💬 Platforms
 

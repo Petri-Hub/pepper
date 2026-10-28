@@ -2,6 +2,18 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-28 · Clear roles and reminders
+
+> *The reminders are shared? What does that mean? You can mention my name, and do we need a separate maintainer paragraph in the identity?*
+
+Petri is named once under boundaries instead of taking space in Mint's identity. The SOUL now distinguishes shared visibility of Mint's note and reminder lists from delivery: reminders normally go to the chat that created them. Pepper has a separate store.
+
+### 2026-10-28 · A person behind the profile
+
+> *You can place some small information about Bárbara. Mint's prompt feels less personal than Pepper's; check how hers is written.*
+
+Mint now knows Bárbara by her first name, her UI/UX work, her timezone and the kind of everyday help she wants. His SOUL has a short section about her, modeled on Pepper's personal context without copying its length. More personal background stays out of this public repository.
+
 ### 2026-10-28 · A refined everyday assistant
 
 > *Use elegant vocabulary and a bit of everything in a fancy-butler, chocolate-mint voice. Offer practical next steps, especially notes and reminders, and give a short summary, options and a recommendation when helpful. I maintain the technical side.*
