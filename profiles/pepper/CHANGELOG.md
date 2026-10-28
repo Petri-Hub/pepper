@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-28 · Profile credentials
+
+> *Did you place those keys into Pepper's `.env.example`? That's where the removed keys should go, right?*
+
+The example already listed every Pepper variable removed from the lab's Compose environment, including FAM. Its FAM comment and the profile documentation now say that live values belong in Pepper's `/opt/data/.env`; the examples keep placeholders only. The live agent has not been changed yet, so the lab still supplies those values until the cutover.
+
 ### 2026-10-20 · FAM MCP connection
 
 > *I published an MCP for my university on PyPI. Add it to Pepper's connections, and keep the portal credentials out of `config.yaml`.*

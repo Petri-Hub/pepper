@@ -25,9 +25,9 @@ TELEGRAM_ALLOWED_USERS=123456789
 
 ## Names
 
-Variables use the names Hermes reads inside the container, like `OPENAI_API_KEY`. The lab stores them with a `HERMES_` prefix in `services/apps/hermes/.env` and maps them in `services/apps/hermes/compose.yml`.
+Variables use the names Hermes reads inside the container, like `OPENAI_API_KEY`. Real values belong in the agent's own `.env`: `/opt/data/.env` for Pepper, Hermes' default profile, and `/opt/data/profiles/<name>/.env` for a named profile. The lab's Compose environment is for container-wide settings, not agent credentials.
 
-So a new variable needs two changes: the entry here, and a mapping in the lab. This repo doesn't touch the lab, so say which `HERMES_*` variable and compose line the lab needs.
+So a new profile variable needs an entry here and a value in that profile's live `.env`. This repository records only the placeholder; the live value must never be copied here.
 
 ## What belongs here
 

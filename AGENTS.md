@@ -67,7 +67,7 @@ The lab's own repository is not edited from here. When a change needs something 
 1. Understand the ask, and ask back when it's unclear which setting it means.
 2. Check the current state on the live agent.
 3. Update `CONFIG.md`: the section, its reason and its YAML, following `.claude/rules/configuration.md`.
-4. If a variable is involved, update `.env.example` following `.claude/rules/environment.md`, and name the lab mapping it needs.
+4. If a variable is involved, update `.env.example` following `.claude/rules/environment.md`, and say which live profile `.env` needs its value.
 5. Add an entry at the top of the profile's `CHANGELOG.md`, with the ask in Petri's words.
 6. If the change also has to reach the live agent, say so, and apply it only once Petri agrees.
 

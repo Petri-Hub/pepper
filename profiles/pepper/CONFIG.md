@@ -209,7 +209,7 @@ environment:
 
 ### 🔌 MCP servers
 
-Notion, Vercel, Sentry, Canva and Miro are each the vendor's own hosted server. Every one is authorized as Petri in the browser, so each vendor's consent screen is where he chooses what it may see, and none needed an app of his own. FAM is Petri's own read-only server, published on PyPI and run locally with `uvx`; the lab passes his portal credentials to Hermes as environment variables, and the MCP entry forwards them without storing their values in `config.yaml`.
+Notion, Vercel, Sentry, Canva and Miro are each the vendor's own hosted server. Every one is authorized as Petri in the browser, so each vendor's consent screen is where he chooses what it may see, and none needed an app of his own. FAM is Petri's own read-only server, published on PyPI and run locally with `uvx`; its portal credentials belong in Pepper's `.env`, and the MCP entry forwards them without storing their values in `config.yaml`. The live container still receives them from the lab's Compose environment until the credential cutover.
 
 Vercel is the one to be careful with: it can spend his money and read production secrets. Nothing is turned off here, because the restraint belongs in her personality — [SOUL.md](SOUL.md#constraints--guidelines) forbids the purchases outright.
 
