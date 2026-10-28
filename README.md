@@ -27,7 +27,7 @@ Every message, from Telegram, Discord or voice, goes through the Hermes gateway 
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Profile | What it is | Model | Talks on |
 |:---:|---|---|---|---|
 | 🐦 | [Pepper](profiles/pepper/CONFIG.md) | My general-purpose assistant: reminders, crons, GitHub, research, errands | OpenAI | Telegram · Discord · voice |
-| 🌿 | [Mint](profiles/mint/CONFIG.md) | Separate assistant, scaffolded but not live yet | OpenAI | Telegram · Discord (planned) |
+| 🌿 | [Mint](profiles/mint/CONFIG.md) | Separate assistant, scaffolded but not live yet | OpenAI | Telegram · Discord · voice (planned) |
 
 ## Philosophy
 
