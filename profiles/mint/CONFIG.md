@@ -1,6 +1,6 @@
 # 🌿 Mint
 
-> Mint is a separate assistant being prepared for Telegram, Discord and voice. He will use OpenAI for conversation and speech, and his own Modal sandbox for commands. His personality is deliberately minimal until the live profile is working; no other accounts or integrations are connected.
+> Mint is a separate assistant on Telegram, Discord and voice. He uses OpenAI for conversation and speech, and his own Modal sandbox for commands. His personality is deliberately minimal while it is being developed; no other accounts or integrations are connected.
 
 ## 💬 Platforms
 
@@ -136,12 +136,6 @@ None yet.
 ### 🧱 Plugins
 
 None yet.
-
-## 🚧 Not connected yet
-
-OpenAI · Modal · Telegram · Discord
-
-The live Mint profile has not been created. Each service needs its own credentials, and Pepper's gateway must serve Mint before either bot can answer.
 
 ## References
 

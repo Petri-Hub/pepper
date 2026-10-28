@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-28 · Live in the lab
+
+> *When I come back we bring the agent to life.*
+
+Created Mint as an empty Hermes profile in the lab, copied his private environment and SOUL, and applied the settings documented here. Pepper's default gateway now serves both profiles. Mint's Telegram and Discord adapters connected, his OpenAI key reached both selected models, and a disposable sandbox ran successfully in his separate Modal workspace. The bots still need a human conversation to verify replies in each app.
+
 ### 2026-10-28 · Pepper's baseline and a Cedar voice
 
 > *Use a GPT-5.6 fallback, medium reasoning, 500 max turns, Americana/São Paulo time, Pepper's display and checkpoints, and the same voice setup with Cedar instead of Marin.*
