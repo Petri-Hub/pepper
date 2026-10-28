@@ -27,6 +27,7 @@ Every message, from Telegram, Discord or voice, goes through the Hermes gateway 
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Profile | What it is | Model | Talks on |
 |:---:|---|---|---|---|
 | 🐦 | [Pepper](profiles/pepper/CONFIG.md) | My general-purpose assistant: reminders, crons, GitHub, research, errands | OpenAI | Telegram · Discord · voice |
+| 🌿 | [Mint](profiles/mint/CONFIG.md) | Separate assistant, scaffolded but not live yet | OpenAI | Telegram · Discord (planned) |
 
 ## Philosophy
 
@@ -48,8 +49,8 @@ The container, the ports and the secrets belong to the lab. Here lives who each 
 **What moves fast stays out.**  
 Skills, memories and reminders change every day, and Hermes takes care of them on its own. Keeping them here would only produce a copy that's always out of date.
 
-**No credentials.**  
-Only placeholders. The real values live in the lab and never reach this repository.
+**No committed credentials.**
+Tracked files hold placeholders only. Local, gitignored profile `.env` files hold values for manual setup; the live values are in the lab.
 
 ## What's inside
 
@@ -59,6 +60,7 @@ Only placeholders. The real values live in the lab and never reach this reposito
 ├── assets             # the diagram, as an editable Excalidraw file and its SVG
 ├── profiles
 │   └── <name>
+│       ├── .env           # optional local credentials; gitignored
 │       ├── .env.example   # the variables the agent needs, with placeholders
 │       ├── avatar.png     # its picture on every platform
 │       ├── CHANGELOG.md   # every change, in the words I asked for it
