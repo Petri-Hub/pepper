@@ -91,11 +91,11 @@ Tracked files hold placeholders only. Local, gitignored profile `.env` files hol
 
 ## Time tracking
 
-Each agent reports to a separate Wakapi user in the lab. Their time is refreshed here every night after Wakapi aggregates its data, and stays out of my own stats.
+Each agent reports to a separate Wakapi user in the lab. These cards show Wakapi's counted time over the last 30 days, refreshed nightly and kept out of my own stats. The current Wakapi version excludes AI app heartbeats from duration totals, so conversations and crons can be recorded without adding time here.
 
 ### 🐦 Pepper
 
-Her conversations and crons, and the coding she hands to Claude Code in her sandbox.
+Her counted coding activity, including work she hands to Claude Code in her sandbox.
 
 <!--START_SECTION:pepper-->
 
@@ -109,7 +109,7 @@ No activity tracked
 
 ### 🌿 Mint
 
-His conversations and crons, reported from his Hermes profile.
+His counted activity from his Hermes profile. His current conversation and cron heartbeats do not add to this total.
 
 <!--START_SECTION:mint-->
 
@@ -181,7 +181,7 @@ No activity tracked
 - ✅ Quieter chats: no displayed reasoning, tool progress, steering acknowledgments, long-running updates, shutdown/restart notices or cron wrapper
 - ✅ His full live profile is included in the lab's Restic backup; a manual snapshot and file-level restore were verified
 - ✅ His own Wakapi user and five-minute Hermes activity reporter in the lab
-- ✅ His Wakapi activity in this README, refreshed alongside Pepper's by one nightly workflow
+- ✅ His Wakapi card in this README, refreshed alongside Pepper's by one nightly workflow
 
 #### Next
 
