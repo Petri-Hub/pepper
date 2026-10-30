@@ -161,7 +161,6 @@ No activity tracked
 - ✅ Cron replies without wrappers, long-run updates or restart notices
 - ✅ Full Restic backup of his live profile, with a file restore tested
 - ✅ A five-minute Wakapi reporter and a nightly README card
-- ✅ Optional `/i-have-adhd` skill for focused, action-first replies
 - ✅ A subtler butler voice with direct answers and fewer stock closers
 
 #### Next
