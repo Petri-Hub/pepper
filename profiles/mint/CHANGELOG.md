@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-30 · A less scripted voice
+
+> *Check the humanizer skill and Wikipedia's signs of AI writing, then put some of those principles in Mint's SOUL so he sounds less AI-like.*
+
+Mint's SOUL now asks for direct answers, varied sentence rhythm and details from the conversation instead of stock openings, generic praise and repeat-the-point closers. Lists, summaries and recommendations are used when they help rather than as a fixed reply template. His butler tone remains subtle, and notes or reminders are offered when they solve a real loose end. The guidance draws on [Wikipedia's signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) and the local humanizer skill. The live SOUL was updated to match this file.
+
 ### 2026-10-30 · Optional ADHD response mode
 
 > *Install `i-have-adhd` on Mint, and forget about `i-am-burned-out`.*
