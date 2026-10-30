@@ -182,12 +182,12 @@ No activity tracked
 - ✅ His full live profile is included in the lab's Restic backup; a manual snapshot and file-level restore were verified
 - ✅ His own Wakapi user and five-minute Hermes activity reporter in the lab
 - ✅ His Wakapi card in this README, refreshed alongside Pepper's by one nightly workflow
+- ✅ The optional `i-have-adhd` response skill, available through `/i-have-adhd` when he needs a more action-focused reply
 
 #### Next
 
 - [ ] Adjust Mint's personality and conversational style so he sounds less like an AI.
 - [ ] Connect Mint's own Google access for Calendar, Gmail, Drive and other useful services, with an OAuth setup that does not require weekly reauthorization.
-- [ ] Try `i-have-adhd` as an optional response mode for low-energy days, and evaluate `i-am-burned-out` before adopting it.
 - [ ] Connect Mint to Vercel MCP for Bárbara's Next.js apps and deployments.
 
 ## References

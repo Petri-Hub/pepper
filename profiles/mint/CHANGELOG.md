@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-30 · Optional ADHD response mode
+
+> *Install `i-have-adhd` on Mint, and forget about `i-am-burned-out`.*
+
+Installed the upstream `i-have-adhd` skill in Mint's Hermes profile only, at commit `1ecea1993b7fce257ffbd686c070948b5e07eda6`. Hermes' security scan allowed it, and the enabled skill appears in Mint's list but not Pepper's. It is invoked with `/i-have-adhd` rather than changing his normal style by default. The `i-am-burned-out` idea was removed from the roadmap without being marked done.
+
 ### 2026-10-30 · His own Wakapi activity
 
 > *Mint has his own Wakapi user; add a job beside Wakapi like Pepper's, then merge and bring up the service.*
