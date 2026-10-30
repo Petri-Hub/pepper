@@ -6,7 +6,7 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 > *Mint has his own Wakapi user; add a job beside Wakapi like Pepper's, then merge and bring up the service.*
 
-The lab now runs `wakapi-mint` against Mint's own Hermes profile and Wakapi account, with a separate sync state and a five-minute Ofelia job. His API key is kept in the lab's ignored environment file, outside this repository. A manual sync succeeded, and Wakapi recorded 19 heartbeats for Mint under machine `mint`. The README activity card remains a separate follow-up.
+The lab now runs `wakapi-mint` against Mint's own Hermes profile and Wakapi account, with a separate sync state and a five-minute Ofelia job. His API key is kept in the lab's ignored environment file, outside this repository. A manual sync succeeded, and Wakapi recorded 19 heartbeats for Mint under machine `mint`. The README now shows a separate card updated from his Wakapi account by the same nightly workflow as Pepper's.
 
 ### 2026-10-30 · Silent busy messages for Mint
 

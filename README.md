@@ -91,7 +91,7 @@ Tracked files hold placeholders only. Local, gitignored profile `.env` files hol
 
 ## Time tracking
 
-Each agent reports to a separate Wakapi user in the lab. Their time is refreshed here every night and stays out of my own stats.
+Each agent reports to a separate Wakapi user in the lab. Their time is refreshed here every night after Wakapi aggregates its data, and stays out of my own stats.
 
 ### 🐦 Pepper
 
@@ -181,6 +181,7 @@ No activity tracked
 - ✅ Quieter chats: no displayed reasoning, tool progress, steering acknowledgments, long-running updates, shutdown/restart notices or cron wrapper
 - ✅ His full live profile is included in the lab's Restic backup; a manual snapshot and file-level restore were verified
 - ✅ His own Wakapi user and five-minute Hermes activity reporter in the lab
+- ✅ His Wakapi activity in this README, refreshed alongside Pepper's by one nightly workflow
 
 #### Next
 
@@ -188,7 +189,6 @@ No activity tracked
 - [ ] Connect Mint's own Google access for Calendar, Gmail, Drive and other useful services, with an OAuth setup that does not require weekly reauthorization.
 - [ ] Try `i-have-adhd` as an optional response mode for low-energy days, and evaluate `i-am-burned-out` before adopting it.
 - [ ] Connect Mint to Vercel MCP for Bárbara's Next.js apps and deployments.
-- [ ] Add Mint's Wakapi activity to this README.
 
 ## References
 
