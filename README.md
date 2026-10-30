@@ -127,68 +127,42 @@ No activity tracked
 
 #### Done
 
-- ✅ Hermes running in the lab, in a container of its own
-- ✅ OpenAI as the model provider, replacing OpenRouter
-- ✅ Telegram, where I talk to her day to day
-- ✅ Discord, where my friends can talk to her too
-- ✅ Voice, so she understands voice notes, answers out loud and holds live conversations
-- ✅ Her own GitHub App, working on my repositories through pull requests
-- ✅ Gmail, to read, send and sort my email
-- ✅ Google Calendar, to know my schedule and put things on it
-- ✅ Google Drive, to find, read and share my documents
-- ✅ The Google OAuth app in production, so her refresh token no longer expires every week
-- ✅ Notion, over MCP, reading and writing my pages and databases
-- ✅ Vercel, over MCP, for my deployments, logs and projects
-- ✅ Sentry, over MCP, for issues and stack traces
-- ✅ Canva, over MCP, for my designs and brand templates
-- ✅ Miro, over MCP, reading and editing my boards
-- ✅ FAM MCP, reading my university portal through my own server published on PyPI
-- ✅ MCP servers, so she can reach tools that speak the protocol
-- ✅ Crons and reminders, delivered to Telegram or Discord
-- ✅ A personality, with rules on who she trusts and what she never shares
-- ✅ Her own avatar, the same bird on every platform
-- ✅ This repository, keeping her configuration readable
-- ✅ Backups of who she is — her soul, settings, skills, crons and memories — on the pendrive that already holds the game saves
-- ✅ Modal as her terminal backend, so her shell commands run in a disposable cloud sandbox instead of on the lab host
-- ✅ A fallback model, so a rate limit or a provider error hands over to a second model instead of ending the turn
-- ✅ FAM's website, through skills of her own that sign in from the vault, read the inbox and find open activities
-- ✅ A Modal image of her own, carrying the Python libraries and the CLIs her skills reach for, and reporting her coding work to Wakapi and AI Memory
-- ✅ Claude Code in her sandbox, under my personal account, so she delegates coding to it instead of spending her own tokens
-- ✅ AI Memory as her long-term memory, the same wiki Claude Code writes to on every machine I code on
-- ✅ Wakapi tracking her own time, her conversations and crons as well as the coding she delegates, under a Wakapi user of her own
-- ✅ Her GitHub App and her Google account, both reaching her sandbox, so she works on GitHub and reads Gmail and Calendar from there
-- ✅ Spotify control, so she can play, pause and queue music for me
-- ✅ Skills from Hermes' catalog: Excalidraw diagrams, pixel art, animated PR diagrams, and video through Hyperframes
-- ✅ A morning report that does her own check-up, reads my calendar, mail and GitHub, and tells me what to do first, without waiting to be asked
-- ✅ A voice that sounds like her: *marin*, both in spoken replies and in live conversations
-- ✅ A `SOUL.md` rewritten from scratch, with who I am, my repositories, and what she should know without being told
-- ✅ Files from her sandbox reach the chat, and keep reaching it after a rebuild: the lab applies her patches to Hermes every time the container starts
-- ✅ A voice like one more friend from the group: casual and quick in Portuguese, joking back, and plain when it is serious
-- ✅ Proactive task execution, including when help is urgent
+- ✅ Hermes in the lab, with OpenAI and a fallback model
+- ✅ Telegram, Discord and voice chats
+- ✅ Her own GitHub App for pull requests
+- ✅ Gmail, Calendar and Drive through production Google OAuth
+- ✅ Notion, Vercel, Sentry, Canva and Miro over MCP
+- ✅ FAM MCP and website skills for university work
+- ✅ Crons and reminders sent to Telegram or Discord
+- ✅ Modal sandbox with a custom image and Claude Code
+- ✅ GitHub and Google access inside her sandbox
+- ✅ Sandbox files sent to chat and kept after rebuilds
+- ✅ AI Memory shared with Claude Code
+- ✅ Her own Wakapi account for coding and agent heartbeats
+- ✅ Backups of her profile, skills and memories
+- ✅ Spotify playback control
+- ✅ Excalidraw, pixel art and Hyperframes video skills
+- ✅ Morning report for health, calendar, mail and GitHub
+- ✅ Marin voice, casual Portuguese style and clear boundaries
 
 ### 🌿 Mint
 
 #### Done
 
-- ✅ A separate Hermes profile with his own OpenAI, Modal, Telegram and Discord credentials
-- ✅ Telegram and Discord bots connected and tested in conversation
-- ✅ OpenAI as the model provider, with GPT-6 Luna and GPT-5.6 Luna as a fallback
-- ✅ His own Modal workspace and sandbox, tested with a disposable command
-- ✅ A voice configuration using Cedar for spoken replies and live conversations
-- ✅ Medium reasoning, a 500-turn limit, São Paulo time, reply display and checkpoints
-- ✅ Built-in notes and reminders available in his profile, separate from Pepper's stores
-- ✅ His own SOUL, configuration, changelog and avatar in this repository
-- ✅ Quieter chats: no displayed reasoning, tool progress, steering acknowledgments, long-running updates, shutdown/restart notices or cron wrapper
-- ✅ His full live profile is included in the lab's Restic backup; a manual snapshot and file-level restore were verified
-- ✅ His own Wakapi user and five-minute Hermes activity reporter in the lab
-- ✅ His Wakapi card in this README, refreshed alongside Pepper's by one nightly workflow
-- ✅ The optional `i-have-adhd` response skill, available through `/i-have-adhd` when he needs a more action-focused reply
-- ✅ A less scripted voice, with direct answers and a subtle butler touch instead of stock greetings, template lists and repeated closers
+- ✅ Separate Hermes profile with OpenAI and a fallback model
+- ✅ Telegram, Discord and Cedar voice
+- ✅ His own Modal workspace and sandbox
+- ✅ Notes and reminders stored in his profile
+- ✅ Quiet chats without reasoning, progress or system notices
+- ✅ Full profile backup, with restore verified
+- ✅ Wakapi reporter and nightly README card
+- ✅ Optional `/i-have-adhd` response mode
+- ✅ Direct replies with a subtle butler voice
 
 #### Next
 
-- [ ] Connect Mint's own Google access for Calendar, Gmail, Drive and other useful services, with an OAuth setup that does not require weekly reauthorization.
-- [ ] Connect Mint to Vercel MCP for Bárbara's Next.js apps and deployments.
+- [ ] Google access for Gmail, Calendar and Drive with stable OAuth
+- [ ] Vercel MCP for Bárbara's Next.js apps
 
 ## References
 
