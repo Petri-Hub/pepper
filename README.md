@@ -113,7 +113,11 @@ His conversations and crons, reported from his Hermes profile.
 
 <!--START_SECTION:mint-->
 
-Mint's time will appear after the next update.
+```rust
+Total Time: 0 hrs 0 mins
+
+No activity tracked
+```
 
 <!--END_SECTION:mint-->
 
