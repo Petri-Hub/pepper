@@ -127,42 +127,47 @@ No activity tracked
 
 #### Done
 
-- ✅ Hermes in the lab, with OpenAI and a fallback model
-- ✅ Telegram, Discord and voice chats
-- ✅ Her own GitHub App for pull requests
-- ✅ Gmail, Calendar and Drive through production Google OAuth
-- ✅ Notion, Vercel, Sentry, Canva and Miro over MCP
-- ✅ FAM MCP and website skills for university work
-- ✅ Crons and reminders sent to Telegram or Discord
-- ✅ Modal sandbox with a custom image and Claude Code
-- ✅ GitHub and Google access inside her sandbox
-- ✅ Sandbox files sent to chat and kept after rebuilds
-- ✅ AI Memory shared with Claude Code
-- ✅ Her own Wakapi account for coding and agent heartbeats
-- ✅ Backups of her profile, skills and memories
-- ✅ Spotify playback control
-- ✅ Excalidraw, pixel art and Hyperframes video skills
-- ✅ Morning report for health, calendar, mail and GitHub
-- ✅ Marin voice, casual Portuguese style and clear boundaries
+- ✅ Hermes in the lab, using OpenAI with a fallback for provider errors
+- ✅ Telegram and Discord chats, voice notes and live conversations
+- ✅ Her GitHub App opens pull requests under her own identity
+- ✅ Gmail, Calendar and Drive through Google OAuth in production
+- ✅ Notion, Vercel and Sentry over MCP for pages, deployments and issues
+- ✅ Canva and Miro over MCP for designs, boards and templates
+- ✅ Read-only FAM MCP and website skills for inbox and assignments
+- ✅ Crons and reminders delivered through Telegram or Discord
+- ✅ A Modal sandbox with her own image, tools and Python libraries
+- ✅ Claude Code in that sandbox for larger coding tasks she delegates
+- ✅ GitHub and Google access inside the sandbox when she needs them
+- ✅ Sandbox files delivered to chat and retained after rebuilds
+- ✅ AI Memory as the wiki she shares with Claude Code across machines
+- ✅ Her own Wakapi account for agent heartbeats and coding activity
+- ✅ Backups of her soul, settings, skills, crons and memories
+- ✅ Spotify playback, pause and queue control from chat
+- ✅ Excalidraw, pixel art, animated PR diagrams and Hyperframes video
+- ✅ Morning report covering her health, calendar, mail and GitHub
+- ✅ *marin* for spoken replies and GPT-Live conversations
+- ✅ Casual Portuguese SOUL with clear trust and privacy boundaries
 
 ### 🌿 Mint
 
 #### Done
 
-- ✅ Separate Hermes profile with OpenAI and a fallback model
-- ✅ Telegram, Discord and Cedar voice
-- ✅ His own Modal workspace and sandbox
-- ✅ Notes and reminders stored in his profile
-- ✅ Quiet chats without reasoning, progress or system notices
-- ✅ Full profile backup, with restore verified
-- ✅ Wakapi reporter and nightly README card
-- ✅ Optional `/i-have-adhd` response mode
-- ✅ Direct replies with a subtle butler voice
+- ✅ Separate Hermes profile with his own OpenAI key and fallback model
+- ✅ Telegram and Discord bots, with Cedar for voice notes and live chat
+- ✅ His own Modal workspace and sandbox for shell commands
+- ✅ Medium reasoning, a 500-turn cap, São Paulo time and checkpoints
+- ✅ Notes and reminders stored separately from Pepper's profile
+- ✅ Reasoning, tool progress and busy/steering notices hidden in chat
+- ✅ Cron replies without wrappers, long-run updates or restart notices
+- ✅ Full Restic backup of his live profile, with a file restore tested
+- ✅ A five-minute Wakapi reporter and a nightly README card
+- ✅ Optional `/i-have-adhd` skill for focused, action-first replies
+- ✅ A subtler butler voice with direct answers and fewer stock closers
 
 #### Next
 
-- [ ] Google access for Gmail, Calendar and Drive with stable OAuth
-- [ ] Vercel MCP for Bárbara's Next.js apps
+- [ ] Google access for Gmail, Calendar and Drive without weekly reauthorization
+- [ ] Vercel MCP for Bárbara's Next.js apps and deployments
 
 ## References
 
