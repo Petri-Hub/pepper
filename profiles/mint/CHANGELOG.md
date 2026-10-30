@@ -2,6 +2,24 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-30 · His own Wakapi activity
+
+> *Mint has his own Wakapi user; add a job beside Wakapi like Pepper's, then merge and bring up the service.*
+
+The lab now runs `wakapi-mint` against Mint's own Hermes profile and Wakapi account, with a separate sync state and a five-minute Ofelia job. His API key is kept in the lab's ignored environment file, outside this repository. A manual sync succeeded, and Wakapi recorded 19 heartbeats for Mint under machine `mint`. The README activity card remains a separate follow-up.
+
+### 2026-10-30 · Silent busy messages for Mint
+
+> *Keep Pepper stating busy acknowledgments, and Mint not.*
+
+Mint now sets `display.busy_ack_enabled: false`, so he accepts messages during a run without sending the automatic busy reply. Pepper keeps the normal acknowledgment. This Hermes version reads that switch process-wide, so the shared gateway has a profile-aware source patch at `/opt/data/patches/hermes-mint-busy-ack.patch`; the lab reapplies it on container boot. A focused check confirmed the setting resolves to false for Mint and true for Pepper. The shared gateway was restarted and is running again.
+
+### 2026-10-30 · Quieter chats
+
+> *Mint needs a harsher cleanup: no thinking, cronjob wrapping, steering messages, “Working 5 min” messages or gateway shutdown messages on any platform. Remove the tool progress bubble too.*
+
+The live Mint profile now hides reasoning, steering acknowledgments, long-running status updates and tool progress bubbles on every platform. Steering and medium reasoning still work; only their chat presentation changes. Cron deliveries now send Mint's response without Hermes' title, job ID, separator and footer. Telegram and Discord have shutdown and restart notices disabled. The settings were read back from his profile, and the shared gateway was restarted to load the platform settings. Both Telegram adapters reconnected; no chat or cron run was triggered just to test the message appearance.
+
 ### 2026-10-28 · Clear roles and reminders
 
 > *The reminders are shared? What does that mean? You can mention my name, and do we need a separate maintainer paragraph in the identity?*

@@ -56,7 +56,7 @@ Tracked files hold placeholders only. Local, gitignored profile `.env` files hol
 
 ```sh
 ├── .claude/rules      # how agents write profiles and .env files here
-├── .github/workflows  # publishes Pepper's sandbox image, and refreshes her Wakapi card below
+├── .github/workflows  # publishes Pepper's sandbox image, and refreshes both Wakapi cards below
 ├── assets             # the diagram, as an editable Excalidraw file and its SVG
 ├── profiles
 │   └── <name>
@@ -89,11 +89,15 @@ Tracked files hold placeholders only. Local, gitignored profile `.env` files hol
 | <img src="https://cdn.simpleicons.org/modal/9198A1" width="20" height="20" alt="" /> | [Modal](https://modal.com/docs) | The cloud sandbox her shell commands run in, so nothing she executes touches the lab host |
 | <img src="https://cdn.simpleicons.org/docker" width="20" height="20" alt="" /> | [Docker](https://docs.docker.com/) | The container in the lab that Pepper lives in |
 
-## Activity
+## Time tracking
 
-Pepper's own time, from her Wakapi user in the lab: her conversations and crons, and the coding she hands to Claude Code in her sandbox. Refreshed every night, and never counted in my own stats.
+Each agent reports to a separate Wakapi user in the lab. Their time is refreshed here every night and stays out of my own stats.
 
-<!--START_SECTION:waka-->
+### 🐦 Pepper
+
+Her conversations and crons, and the coding she hands to Claude Code in her sandbox.
+
+<!--START_SECTION:pepper-->
 
 ```rust
 Total Time: 0 hrs 0 mins
@@ -101,7 +105,17 @@ Total Time: 0 hrs 0 mins
 No activity tracked
 ```
 
-<!--END_SECTION:waka-->
+<!--END_SECTION:pepper-->
+
+### 🌿 Mint
+
+His conversations and crons, reported from his Hermes profile.
+
+<!--START_SECTION:mint-->
+
+Mint's time will appear after the next update.
+
+<!--END_SECTION:mint-->
 
 ## Roadmap
 
@@ -118,6 +132,7 @@ No activity tracked
 - ✅ Gmail, to read, send and sort my email
 - ✅ Google Calendar, to know my schedule and put things on it
 - ✅ Google Drive, to find, read and share my documents
+- ✅ The Google OAuth app in production, so her refresh token no longer expires every week
 - ✅ Notion, over MCP, reading and writing my pages and databases
 - ✅ Vercel, over MCP, for my deployments, logs and projects
 - ✅ Sentry, over MCP, for issues and stack traces
@@ -147,11 +162,6 @@ No activity tracked
 - ✅ A voice like one more friend from the group: casual and quick in Portuguese, joking back, and plain when it is serious
 - ✅ Proactive task execution, including when help is urgent
 
-#### Next
-
-- [ ] Enable and connect the Google Classroom API.
-- [ ] Move the Google OAuth app to production to avoid frequent reauthorization.
-
 ### 🌿 Mint
 
 #### Done
@@ -164,17 +174,17 @@ No activity tracked
 - ✅ Medium reasoning, a 500-turn limit, São Paulo time, reply display and checkpoints
 - ✅ Built-in notes and reminders available in his profile, separate from Pepper's stores
 - ✅ His own SOUL, configuration, changelog and avatar in this repository
+- ✅ Quieter chats: no displayed reasoning, tool progress, steering acknowledgments, long-running updates, shutdown/restart notices or cron wrapper
+- ✅ His full live profile is included in the lab's Restic backup; a manual snapshot and file-level restore were verified
+- ✅ His own Wakapi user and five-minute Hermes activity reporter in the lab
 
 #### Next
 
-- [ ] Enable GitHub Issues on this repository and give Mint a way to open issues, so Bárbara and Mint can propose improvements.
+- [ ] Adjust Mint's personality and conversational style so he sounds less like an AI.
 - [ ] Connect Mint's own Google access for Calendar, Gmail, Drive and other useful services, with an OAuth setup that does not require weekly reauthorization.
-- [ ] Choose useful plugins from Pepper's setup and install them for Mint without sharing Pepper's accounts or credentials.
 - [ ] Try `i-have-adhd` as an optional response mode for low-energy days, and evaluate `i-am-burned-out` before adopting it.
 - [ ] Connect Mint to Vercel MCP for Bárbara's Next.js apps and deployments.
-- [ ] Give Mint his own Wakapi user and plugin, then add his activity to this README.
-- [ ] Decide whether Mint needs AI Memory, with Bárbara's projects and knowledge kept separate from Pepper's.
-- [ ] Include Mint's full live profile at `/opt/data/profiles/mint` in the lab backup alongside Pepper, and verify a restore.
+- [ ] Add Mint's Wakapi activity to this README.
 
 ## References
 
@@ -195,6 +205,6 @@ No activity tracked
 - [Modal](https://modal.com/docs): the cloud sandbox Hermes sends her terminal commands to
 - [Docker](https://docs.docker.com/): what runs Pepper's container in the lab
 - [lab](https://github.com/Petri-Hub/lab): the homelab that hosts her
-- [Wakapi](https://wakapi.dev): the self-hosted time tracker her coding reports to, and where this card's numbers come from
-- [waka-readme](https://github.com/athul/waka-readme): the action that writes the Activity card from Wakapi's stats
+- [Wakapi](https://wakapi.dev): the self-hosted time tracker where each agent reports activity
+- [waka-readme](https://github.com/athul/waka-readme): the action that updates both time tracking sections from Wakapi's stats
 - [ai-memory](https://github.com/akitaonrails/ai-memory): the memory server she shares with Claude Code, through the [community Hermes plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin)

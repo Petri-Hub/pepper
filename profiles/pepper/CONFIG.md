@@ -60,13 +60,22 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-Replies show up as they're being written instead of all at once, with Pepper's reasoning visible next to them, so it's easy to follow what she's doing and why. She can also react to messages with an emoji when a full reply isn't needed.
+Replies show up as they're being written instead of all at once, but her reasoning stays hidden on every platform so the chat shows what she says rather than how she arrived at it. She can also react to messages with an emoji when a full reply isn't needed.
 
 ```yaml
 display:
-  show_reasoning: true
+  show_reasoning: false
   streaming: true
   message_reactions: true
+```
+
+### ⏰ Scheduled replies
+
+Her scheduled reports arrive as she wrote them, without Hermes adding a cron title, job ID, separator or footer on any platform.
+
+```yaml
+cron:
+  wrap_response: false
 ```
 
 ### ⏪ Checkpoints
@@ -126,7 +135,7 @@ GITHUB_APP_PRIVATE_KEY_PATH=/opt/data/github-app.pem
 
 Pepper reads and writes Petri's Gmail, Calendar and Drive, and reaches Contacts, Sheets and Docs along the way. Hermes has no toolset for any of it — it ships a skill she drives herself — so nothing is enabled here and nothing is mapped by the lab. What makes it work is an OAuth client of Petri's own and a token beside her other files, profile-scoped so a second agent signs in as itself.
 
-While the consent screen is on "Testing", the token expires about once a week, and it has to be renewed in her own container, since a token written inside a sandbox is lost with it. That is kept on purpose: publishing the consent screen removes the expiry, but a leaked token would then stay valid for months, and hers is copied into every sandbox. The skill takes all of its scopes at once, so Google's consent screen is the only place to hand over less. What she may send, attach and share lives in [SOUL.md](SOUL.md#constraints--guidelines).
+The OAuth consent screen is In production so its refresh token no longer has the Testing mode's seven-day expiry. Google can still revoke a token, and a new sign-in must be done in her own container because a token written inside a sandbox is lost with it. Her refresh token is copied into every sandbox, so it must stay private. The skill requests all of its scopes at once; the consent screen is where Petri chooses which to grant. What she may send, attach and share lives in [SOUL.md](SOUL.md#constraints--guidelines).
 
 ```bash
 /opt/data/google_client_secret.json   # the OAuth client, downloaded from Google Cloud

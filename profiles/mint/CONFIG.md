@@ -57,13 +57,26 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-Mint streams replies, shows his reasoning, and can react to a message when a full reply is unnecessary.
+Mint streams replies and can react to a message when a full reply is unnecessary. His reasoning, tool progress bubbles and long-running status updates stay out of every chat. Messages sent while he is busy still reach him, but he sends no busy acknowledgment; Pepper continues to acknowledge hers. The installed Hermes version otherwise reads `busy_ack_enabled` as a process-wide setting, so the lab reapplies a profile-aware patch at `/opt/data/patches/hermes-mint-busy-ack.patch` on container boot. After a Hermes update, check whether it handles this setting per profile before retiring or rebuilding the patch.
 
 ```yaml
 display:
-  show_reasoning: true
+  show_reasoning: false
   streaming: true
   message_reactions: true
+  busy_ack_enabled: false
+  busy_steer_ack_enabled: false
+  long_running_notifications: false
+  tool_progress: false
+```
+
+### ⏰ Scheduled replies
+
+His scheduled replies arrive without Hermes adding a cron title, job ID, separator or footer on any platform.
+
+```yaml
+cron:
+  wrap_response: false
 ```
 
 ### ⏪ Checkpoints
@@ -109,14 +122,16 @@ wake_word:
 
 ### 📡 Messaging
 
-Mint gets his own Telegram and Discord bots. Numeric user allowlists restrict who can talk to each bot.
+Mint gets his own Telegram and Discord bots. Numeric user allowlists restrict who can talk to each bot. Gateway shutdown and restart notices stay out of both chats.
 
 ```yaml
 platforms:
   telegram:
     enabled: true
+    gateway_restart_notification: false
   discord:
     enabled: true
+    gateway_restart_notification: false
 ```
 
 ### 🧪 Sandbox
@@ -136,6 +151,10 @@ None yet.
 ### 🧱 Plugins
 
 None yet.
+
+### ⏱️ Wakapi
+
+The lab's separate `wakapi-mint` reporter reads only Mint's Hermes profile and sends his activity to his own Wakapi user every five minutes. Its sync state and API key stay separate from Pepper's; the key lives in the lab's ignored Wakapi environment file.
 
 ## 🚧 Not connected yet
 

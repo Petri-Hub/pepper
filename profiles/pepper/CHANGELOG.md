@@ -2,6 +2,18 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-30 · Quieter replies
+
+> *I want to deactivate two things in Pepper: the cronjob wrapping, in all platforms, and the thinking, I want to hide it in all platforms.*
+
+`display.show_reasoning` is now `false` in her live profile, with no per-platform override, so reasoning is hidden while the model still uses medium effort. `cron.wrap_response` is also `false`, so scheduled reports are delivered without Hermes' title, job ID, separator and footer. Both settings were read back from the live config. No delivered reply or cron run was triggered just to test their appearance.
+
+### 2026-10-30 · Google sign-in after publishing
+
+> *It's in production now. Do that for me please. You have SSH access. Give me the URLs and whatever, I paste back to you.*
+
+Petri moved the Google OAuth consent screen to In production. The old token had been issued in Testing mode and last saved on 1 October, so a new sign-in was started from Pepper's container and completed with the callback he provided. The new token was saved to `/opt/data/google_token.json`, has a refresh token and all eight scopes requested by the Google Workspace skill, and passed a live Calendar API check. No Hermes restart or client replacement was needed. The longer-lived refresh token is still copied into her sandboxes, so it must stay private.
+
 ### 2026-10-28 · Manual credential cutover
 
 > *Ignore the script for now. Let's do everything by hand.*
