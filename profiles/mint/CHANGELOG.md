@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-31 · His own sandbox image
+
+> *First we need a SBX image and publishing. Help me with that.*
+
+Added a small image under `sandbox/` with the Google Workspace skill's pinned Python libraries and a separate GitHub Actions workflow. It published `ghcr.io/petri-hub/mint-sandbox:cb30ede` and `:latest`; the versioned image was pulled anonymously and its Google imports passed. The image contains no credentials. Mint's live profile still uses Hermes' stock Modal image, and Google authorization remains pending.
+
 ### 2026-10-31 · Vercel over MCP
 
 > *Help me make Mint's Vercel MCP connection. You can base it on Pepper's.*

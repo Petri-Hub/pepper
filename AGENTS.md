@@ -20,7 +20,7 @@ The reader is a person, not a deploy script. Someone opening a profile should un
 │       ├── SOUL.md       # personality and rules, as the agent reads them
 │       ├── .env.example  # every variable it needs, with placeholders
 │       ├── avatar.png    # its picture on every platform
-│       └── sandbox/      # Pepper only: the image her Modal sandbox runs
+│       └── sandbox/      # optional: the image the agent's Modal sandbox runs
 ├── README.md             # the repository's front page and the list of profiles
 └── AGENTS.md
 ```

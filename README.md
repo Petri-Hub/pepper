@@ -56,7 +56,7 @@ Tracked files hold placeholders only. Local, gitignored profile `.env` files hol
 
 ```sh
 ├── .claude/rules      # how agents write profiles and .env files here
-├── .github/workflows  # publishes Pepper's sandbox image, and refreshes both Wakapi cards below
+├── .github/workflows  # publishes both sandbox images and refreshes the Wakapi cards below
 ├── assets             # the diagram, as an editable Excalidraw file and its SVG
 ├── profiles
 │   └── <name>
@@ -66,7 +66,7 @@ Tracked files hold placeholders only. Local, gitignored profile `.env` files hol
 │       ├── CHANGELOG.md   # every change, in the words I asked for it
 │       ├── CONFIG.md      # what's configured, and why, with the settings that do it
 │       ├── SOUL.md        # who the agent is, and the rules it follows
-│       └── sandbox        # Pepper's Modal image: the tools her terminal runs with
+│       └── sandbox        # optional Modal image: the tools the agent's terminal runs with
 └── AGENTS.md          # the conventions for working in this repository
 ```
 
@@ -163,6 +163,7 @@ No activity tracked
 - ✅ A five-minute Wakapi reporter and a nightly README card
 - ✅ A subtler butler voice with direct answers and fewer stock closers
 - ✅ Vercel MCP for her apps and deployments, authorized in Mint's own profile
+- ✅ A public Modal sandbox image with Google's Python libraries
 
 #### Next
 
