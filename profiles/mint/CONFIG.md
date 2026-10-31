@@ -136,7 +136,7 @@ platforms:
 
 ### 📬 Google Workspace
 
-Mint uses the same published Google OAuth app as Pepper, but has his own grant from the account chosen during consent. The Google Workspace skill provides Gmail, Calendar, Drive, Contacts, Sheets and Docs; its current version requests eight scopes together, and the token lives in Mint's profile, separate from Pepper's. The app is In production, so its refresh token does not have Testing mode's seven-day expiry, although Google can still revoke it.
+Mint uses the same published Google OAuth app as Pepper, but has his own grant from the account chosen during consent. The Google Workspace skill provides Gmail, Calendar, Drive, Contacts, Sheets and Docs; its current version requests eight scopes together, and the token lives in Mint's profile, separate from Pepper's. His local skill copy points terminal commands at `/root/.hermes`, the Modal path; `/opt/data/profiles/mint` exists only in the host container. The app is In production, so its refresh token does not have Testing mode's seven-day expiry, although Google can still revoke it.
 
 ```bash
 /opt/data/profiles/mint/google_client_secret.json   # a private copy of the shared OAuth client

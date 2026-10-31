@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-31 · Google checker in chat
+
+> *Mint says he cannot run the Google live auth check from Telegram.*
+
+The Telegram turn loaded the Google skill but tried its checker at the container path `/opt/data/profiles/mint`, which is absent from his Modal terminal. Mint's local skill copy now directs Google commands to `/root/.hermes` inside the sandbox, with the original skill file backed up beside it. A new Mint turn ran `setup.py --check` through the terminal at that path and reported a valid token. The earlier live Calendar check from the Modal sandbox also remains successful. Existing chat sessions may need `/new` to discard the old skill instructions.
+
 ### 2026-10-31 · Bárbara's Google access
 
 > *We could use the same Pepper production app.*
