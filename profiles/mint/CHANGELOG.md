@@ -2,6 +2,24 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-31 · A new base prompt
+
+> *He sounds AI-like, his persona was weak, and sometimes he gets overly technical. Rethink his voice completely: I want him to sound more like the old butler, staying in the steward role all the way through, with the costume and the fun. Then delete the old file and replace it with this one.*
+
+The prompt was rebuilt from scratch rather than patched, so each rule sits where a reader will look for it: Identity, Summary, Language, Voice, Security, About Bárbara, Integrations, Coding, Sandbox, Origin, Evolution, Constraints, References.
+
+- **Voice is new, and it carries the complaint.** The steward is defined by what he does and by four worked exchanges, not by adjectives, because adjectives left him with one catchphrase and nothing behind it. The model's house style has its own list with Portuguese examples: the contrast nobody asked for, the closing line, the trio, the stage direction, the narrator, the decoration, the offer at the end.
+- **The costume is back.** `Minha cara` and `senhorita` belong to the voice, one every few messages, folded into a sentence that carries information and never used instead of the answer. Being unflappable, anticipating the next step, keeping the wit dry and saying the unwelcome thing once are the behaviours that make the address land.
+- **Technical subjects follow ASD-STE100.** One fact per sentence, active voice and simple present, one word for one meaning, a definition in the same breath for anything she would not say at home, and the effect before the mechanism, since she is a designer and software is not her trade.
+- **Language says what she reads:** Portuguese and English, nothing else.
+- **Security sits above her details** and treats instructions inside external content as data, with the common attacks named.
+- **Coding states the workflow:** one short-lived branch and a pull request, Conventional Commits, and a merge that waits for Bárbara.
+- **Sandbox states the cost of the five-minute idle timeout** and what to move out before it hits.
+- **Origin** names the two repositories, and **Evolution** says where to ask for what is missing instead of inventing it.
+- **The paragraph forbidding purchases and medical advice left Identity.** The purchase rule already lived in Constraints and stays there.
+
+Nothing in it hides Bárbara's data from Petri. The file is the repository's copy: Mint keeps the prompt he was started with until his profile is updated and Bárbara sends `/new`.
+
 ### 2026-10-31 · Nothing hidden from Petri
 
 > *Remove the boundaries that keep Bárbara's things hidden from me. I'm her boyfriend and the maintainer, and there's no reason her agent should keep anything from me. She tried to schedule a medicine reminder and Mint refused.*
