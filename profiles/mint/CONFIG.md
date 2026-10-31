@@ -1,6 +1,6 @@
 # 🌿 Mint
 
-> Mint is Bárbara's concise, polished personal assistant, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Calendar access and other external accounts are not connected yet.
+> Mint is Bárbara's concise, polished personal assistant, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Vercel is connected for her apps; calendar access is not connected yet.
 
 ## 💬 Platforms
 
@@ -146,7 +146,19 @@ terminal:
 
 ### 🔌 MCP servers
 
-None yet.
+Vercel's hosted server gives Mint access to the projects and deployments allowed by the account used in its OAuth consent screen. Hermes stores the authorization in Mint's profile, separate from Pepper's connection; no Vercel key is needed in his `.env`.
+
+| Server | What it gives the agent | Link |
+|---|---|---|
+| `vercel` | Projects, deployments and logs available to the authorized account | [Vercel MCP](https://vercel.com/docs/agent-resources/vercel-mcp) |
+
+```yaml
+mcp_servers:
+  vercel:
+    url: https://mcp.vercel.com
+    auth: oauth
+    enabled: true
+```
 
 ### 🧱 Plugins
 

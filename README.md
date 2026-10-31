@@ -162,11 +162,11 @@ No activity tracked
 - ✅ Full Restic backup of his live profile, with a file restore tested
 - ✅ A five-minute Wakapi reporter and a nightly README card
 - ✅ A subtler butler voice with direct answers and fewer stock closers
+- ✅ Vercel MCP for her apps and deployments, authorized in Mint's own profile
 
 #### Next
 
 - [ ] Google access for Gmail, Calendar and Drive without weekly reauthorization
-- [ ] Vercel MCP for Bárbara's Next.js apps and deployments
 
 ## References
 

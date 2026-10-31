@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-31 · Vercel over MCP
+
+> *Help me make Mint's Vercel MCP connection. You can base it on Pepper's.*
+
+Installed Vercel's hosted MCP in Mint's live Hermes profile and completed browser OAuth for that profile, separate from Pepper's authorization. `hermes -p mint mcp test vercel` connected and discovered 238 tools. CONFIG.md records the endpoint and OAuth setting, the README marks the roadmap item done, and SOUL.md adds purchase, secret and production-change boundaries for the new access. No Vercel API key or `.env` variable was needed.
+
 ### 2026-10-30 · A less scripted voice
 
 > *Check the humanizer skill and Wikipedia's signs of AI writing, then put some of those principles in Mint's SOUL so he sounds less AI-like.*
