@@ -2,6 +2,24 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-31 · Mint on GitHub as himself
+
+> *We are almost finishing the GitHub configuration for Mint, Bárbara's agent, but I don't have any more Codex tokens. Can you help me continue?*
+
+Mint now reaches GitHub through his own App, *Mint, Bárabara's Bot*, owned by Petri and installed by Bárbara on her account across all four of her repositories. His commits and pull requests carry the bot's identity, separate from Pepper's.
+
+- The private key lives at `/opt/data/profiles/mint/github-app.pem`, readable only by `hermes`, and is listed in his `terminal.credential_files` so every sandbox receives it. It never entered this repository or his image.
+- His own copy of the `github-app-auth` skill sits in his profile's skills folder, with the App and installation IDs swapped and the instructions rewritten for Bárbara's account, her default branches and her say over merges.
+- The sandbox image gained PyJWT and cryptography, published as `ghcr.io/petri-hub/mint-sandbox:4dcb772`, and his `modal_image` now points at it.
+- His `.env` holds the App ID, installation ID and key path, and his stale `TERMINAL_MODAL_IMAGE` line was corrected to the same tag.
+- SOUL.md gained a GitHub section: branch and pull request always, merge only when Bárbara asks, and never print or store a token.
+
+Verified in his real sandbox: the key is mounted, `mint-token.py` mints a token, `/installation/repositories` returns HTTP 200 for her four repositories, and git's credential helper hands over a token without printing it. The shared gateway was restarted and both profiles reconnected.
+
+Two things still open: the App's display name on GitHub is `Mint, Bárabara's Bot`, a typo of Bárbara, which only Petri can fix in the App settings; and the key has to go into 1Password, since no agent stores it.
+
+A saved Modal snapshot keeps the filesystem it was built from, so the new image only applied after `modal_snapshots.json` in his profile was cleared.
+
 ### 2026-10-31 · Reload Google credentials in Telegram
 
 > *Google is not authenticated in this runtime—the expected token is missing.*

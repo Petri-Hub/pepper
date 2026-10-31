@@ -134,6 +134,18 @@ platforms:
     gateway_restart_notification: false
 ```
 
+### 🐙 GitHub App
+
+Mint works on GitHub as himself, through an App called *Mint, Bárabara's Bot* that Petri owns and Bárbara installed on her account across all of her repositories. His branches, commits and pull requests appear under the bot's name, so her history stays clear about what she wrote and what he did.
+
+There's no personal token and no login to keep alive: each task mints its own installation token, good for about an hour. The key is a file in his Hermes home, never in this repository or in his image, and Hermes copies it into every sandbox. What he may do with it lives in [SOUL.md](SOUL.md#github): a branch and a pull request, and a merge only when Bárbara asks for that one.
+
+```bash
+GITHUB_APP_ID=…
+GITHUB_APP_INSTALLATION_ID=…
+GITHUB_APP_PRIVATE_KEY_PATH=/opt/data/profiles/mint/github-app.pem
+```
+
 ### 📬 Google Workspace
 
 Mint uses the same published Google OAuth app as Pepper, but has his own grant from the account chosen during consent. The Google Workspace skill provides Gmail, Calendar, Drive, Contacts, Sheets and Docs; its current version requests eight scopes together, and the token lives in Mint's profile, separate from Pepper's. His local skill copy points terminal commands at `/root/.hermes`, the Modal path; `/opt/data/profiles/mint` exists only in the host container. The app is In production, so its refresh token does not have Testing mode's seven-day expiry, although Google can still revoke it.
@@ -145,16 +157,19 @@ Mint uses the same published Google OAuth app as Pepper, but has his own grant f
 
 ### 🧪 Sandbox
 
-Mint's shell runs in his own Modal account. His public image supplies the Google libraries, while the client and token files are copied only from his profile. The OAuth setup was completed in Mint's container so the durable token survives disposable sandboxes. On this Hermes build, a gateway already running before a credential file exists must be restarted to discover that new file for messaging sessions.
+Mint's shell runs in his own Modal account. His public image supplies the Google Workspace and GitHub App libraries, while the client, token and key files are copied only from his profile. The OAuth setup was completed in Mint's container so the durable token survives disposable sandboxes. On this Hermes build, a gateway already running before a credential file exists must be restarted to discover that new file for messaging sessions.
+
+A sandbox restored from a saved snapshot keeps the filesystem it was built with, so a new image only takes effect once the profile's `modal_snapshots.json` no longer points at an older one.
 
 ```yaml
 terminal:
   backend: modal
   modal_mode: direct
-  modal_image: ghcr.io/petri-hub/mint-sandbox:cb30ede
+  modal_image: ghcr.io/petri-hub/mint-sandbox:4dcb772
   credential_files:
     - google_token.json
     - google_client_secret.json
+    - github-app.pem
 ```
 
 ### 🔌 MCP servers

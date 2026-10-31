@@ -165,6 +165,7 @@ No activity tracked
 - ✅ Vercel MCP for her apps and deployments, authorized in Mint's own profile
 - ✅ A public Modal sandbox image with Google's Python libraries
 - ✅ Gmail, Calendar and Drive through Bárbara's separate Google OAuth grant
+- ✅ His own GitHub App, acting on Bárbara's repositories under the bot's name
 
 ## References
 
