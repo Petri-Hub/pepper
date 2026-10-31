@@ -136,7 +136,7 @@ platforms:
 
 ### 🐙 GitHub App
 
-Mint works on GitHub as himself, through an App called *Mint, Bárabara's Bot* that Petri owns and Bárbara installed on her account across all of her repositories. His branches, commits and pull requests appear under the bot's name, so her history stays clear about what she wrote and what he did.
+Mint works on GitHub as himself, through an App called *Mint, Bárbara's Bot* that Petri owns and Bárbara installed on her account across all of her repositories. His branches, commits and pull requests appear under the bot's name, so her history stays clear about what she wrote and what he did.
 
 There's no personal token and no login to keep alive: each task mints its own installation token, good for about an hour. The key is a file in his Hermes home, never in this repository or in his image, and Hermes copies it into every sandbox. What he may do with it lives in [SOUL.md](SOUL.md#github): a branch and a pull request, and a merge only when Bárbara asks for that one.
 

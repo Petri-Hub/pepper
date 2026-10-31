@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-31 · The App's name fixed
+
+> *https://github.com/settings/apps/mint-barbara-s-bot*
+
+Petri renamed the App in GitHub's settings, from `Mint, Bárabara's Bot` to `Mint, Bárbara's Bot`. The slug followed it, so the bot now commits as `mint-barbara-s-bot[bot]` with `350787602+mint-barbara-s-bot[bot]@users.noreply.github.com`. His skill was updated to match; the bot's user id and Bárbara's installation did not change, and commits made before the rename keep the old identity.
+
 ### 2026-10-31 · Mint on GitHub as himself
 
 > *We are almost finishing the GitHub configuration for Mint, Bárbara's agent, but I don't have any more Codex tokens. Can you help me continue?*
