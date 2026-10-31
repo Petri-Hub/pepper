@@ -1,0 +1,46 @@
+name: Publish Mint Image
+run-name: Publish Mint image from ${{ github.sha }}
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - profiles/mint/sandbox/**
+      - .github/workflows/publish-mint-image.yml
+  workflow_dispatch:
+
+concurrency:
+  group: publish-mint-image-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE: ghcr.io/petri-hub/mint-sandbox
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out
+        uses: actions/checkout@v5
+
+      - name: Build
+        run: docker build --pull --tag "$IMAGE:${GITHUB_SHA::7}" --tag "$IMAGE:latest" profiles/mint/sandbox
+
+      - name: Log in to GHCR
+        run: echo "$TOKEN" | docker login ghcr.io -u "$ACTOR" --password-stdin
+        env:
+          ACTOR: ${{ github.actor }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish
+        run: |
+          docker push "$IMAGE:${GITHUB_SHA::7}"
+          docker push "$IMAGE:latest"
+
+      - name: Summarize
+        run: echo "Published \`$IMAGE:${GITHUB_SHA::7}\`" >> "$GITHUB_STEP_SUMMARY"
