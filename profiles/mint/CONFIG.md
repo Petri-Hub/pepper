@@ -145,7 +145,7 @@ Mint uses the same published Google OAuth app as Pepper, but has his own grant f
 
 ### 🧪 Sandbox
 
-Mint's shell runs in his own Modal account. His public image supplies the Google libraries, while the client and token files are copied only from his profile. The OAuth setup was completed in Mint's container so the durable token survives disposable sandboxes.
+Mint's shell runs in his own Modal account. His public image supplies the Google libraries, while the client and token files are copied only from his profile. The OAuth setup was completed in Mint's container so the durable token survives disposable sandboxes. On this Hermes build, a gateway already running before a credential file exists must be restarted to discover that new file for messaging sessions.
 
 ```yaml
 terminal:

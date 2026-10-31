@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-31 · Reload Google credentials in Telegram
+
+> *Google is not authenticated in this runtime—the expected token is missing.*
+
+The new Telegram turn used the correct Modal skill path, but its sandbox still lacked `google_token.json`. Mint's token had been created after the shared gateway started, and this Hermes build caches its configured credential-file mounts in the gateway process. Restarted the shared Hermes container to reload Mint's token and client file. The gateway came back up, Vercel MCP still connects, and a fresh Telegram session ran `setup.py --check` in Modal and returned `AUTHENTICATED`.
+
 ### 2026-10-31 · Google checker in chat
 
 > *Mint says he cannot run the Google live auth check from Telegram.*
