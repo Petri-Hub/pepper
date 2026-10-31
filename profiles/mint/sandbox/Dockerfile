@@ -13,6 +13,14 @@ RUN python3 -m pip install --no-cache-dir --root-user-action=ignore \
     && python3 -c 'import googleapiclient.discovery, google.auth, google_auth_oauthlib.flow' \
     && rm /tmp/requirements-google.txt
 
+# The github-app-auth skill signs its own installation tokens with PyJWT; the
+# key file arrives from his profile at runtime, never in this image.
+COPY requirements-github.txt /tmp/requirements-github.txt
+RUN python3 -m pip install --no-cache-dir --root-user-action=ignore \
+      -r /tmp/requirements-github.txt \
+    && python3 -c 'import jwt, cryptography; from jwt.algorithms import RSAAlgorithm' \
+    && rm /tmp/requirements-github.txt
+
 LABEL org.opencontainers.image.title="mint-sandbox" \
       org.opencontainers.image.description="Modal sandbox for Mint's Hermes profile" \
       org.opencontainers.image.source="https://github.com/Petri-Hub/pepper"

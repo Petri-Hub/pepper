@@ -1,0 +1,4 @@
+# GitHub App auth: PyJWT signs the RS256 JWT, cryptography supplies the RSA
+# backend. Pins match the interpreter Hermes runs the skill with.
+PyJWT==2.13.0
+cryptography==50.0.0
