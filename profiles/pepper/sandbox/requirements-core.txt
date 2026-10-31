@@ -33,7 +33,7 @@ cryptography==50.0.1
 # --- Documents --------------------------------------------------------------
 # Small, and reached by the skills she actually uses weekly: reading a PDF
 # someone sent, filling a spreadsheet, producing a document.
-pypdf==6.19.0
+pypdf==6.21.2
 openpyxl==3.1.5
 python-docx==1.2.0
 python-pptx==1.0.2
