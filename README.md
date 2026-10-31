@@ -164,10 +164,7 @@ No activity tracked
 - ✅ A subtler butler voice with direct answers and fewer stock closers
 - ✅ Vercel MCP for her apps and deployments, authorized in Mint's own profile
 - ✅ A public Modal sandbox image with Google's Python libraries
-
-#### Next
-
-- [ ] Google access for Gmail, Calendar and Drive without weekly reauthorization
+- ✅ Gmail, Calendar and Drive through Bárbara's separate Google OAuth grant
 
 ## References
 

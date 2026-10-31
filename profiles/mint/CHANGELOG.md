@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-10-31 · Bárbara's Google access
+
+> *We could use the same Pepper production app.*
+
+Mint now has the Google Workspace skill, his published Modal image selected, and profile-scoped Google credential paths. Pepper's published OAuth client was copied into Mint's live profile without copying Pepper's account token. A new OAuth grant was saved under Mint's profile; `setup.py --check-live` succeeded both in the container and inside Mint's Modal sandbox. The token and client files reach only his sandbox, and the live SOUL now keeps Bárbara's Google content private from Petri's technical access. No lab compose change or `.env` variable was needed.
+
 ### 2026-10-31 · His own sandbox image
 
 > *First we need a SBX image and publishing. Help me with that.*

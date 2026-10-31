@@ -1,6 +1,6 @@
 # 🌿 Mint
 
-> Mint is Bárbara's concise, polished personal assistant, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Vercel is connected for her apps; calendar access is not connected yet.
+> Mint is Bárbara's concise, polished personal assistant, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Google Workspace and Vercel are connected to his profile.
 
 ## 💬 Platforms
 
@@ -134,14 +134,27 @@ platforms:
     gateway_restart_notification: false
 ```
 
+### 📬 Google Workspace
+
+Mint uses the same published Google OAuth app as Pepper, but has his own grant from the account chosen during consent. The Google Workspace skill provides Gmail, Calendar, Drive, Contacts, Sheets and Docs; its current version requests eight scopes together, and the token lives in Mint's profile, separate from Pepper's. The app is In production, so its refresh token does not have Testing mode's seven-day expiry, although Google can still revoke it.
+
+```bash
+/opt/data/profiles/mint/google_client_secret.json   # a private copy of the shared OAuth client
+/opt/data/profiles/mint/google_token.json           # Mint's separate account grant
+```
+
 ### 🧪 Sandbox
 
-Commands run in Modal under Mint's own token pair. Direct mode selects that account instead of a managed sandbox.
+Mint's shell runs in his own Modal account. His public image supplies the Google libraries, while the client and token files are copied only from his profile. The OAuth setup was completed in Mint's container so the durable token survives disposable sandboxes.
 
 ```yaml
 terminal:
   backend: modal
   modal_mode: direct
+  modal_image: ghcr.io/petri-hub/mint-sandbox:cb30ede
+  credential_files:
+    - google_token.json
+    - google_client_secret.json
 ```
 
 ### 🔌 MCP servers
@@ -167,12 +180,6 @@ None yet.
 ### ⏱️ Wakapi
 
 The lab's separate `wakapi-mint` reporter reads only Mint's Hermes profile and sends his activity to his own Wakapi user every five minutes. Its sync state and API key stay separate from Pepper's; the key lives in the lab's ignored Wakapi environment file.
-
-## 🚧 Not connected yet
-
-Calendar
-
-Mint can offer reminders and prepare event details, but cannot read or change a calendar until a calendar service is connected.
 
 ## References
 
