@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-01 · A key the tests can reach
+
+> *"I think we shouldn't base ourselves on .env, should us? Shouldn't we bind this API key in the environment or something?"*
+
+Right, and it is bound in the environment instead. A `.env` inside the checkout would have put a copy of the key in the repository, in the snapshot and one `git add -A` away from a commit. The lab sets it once in the sandbox's ignored `.env`, and compose passes it to the container as `JEST_ROBLOX_*`, which the game's Makefile already exports — so the checkout needs nothing and `make test-on-ocale` runs as written.
+
 ### 2026-11-01 · Tools for the work, not just a shell
 
 > *"I've noticed he ran loads of shell commands, I think it was creating friction for him."*
