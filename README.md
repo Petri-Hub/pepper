@@ -206,6 +206,7 @@ None listed.
 - ⬜ Run each project's checks before opening pull requests.
 - ⬜ Evaluate zrok for sharing Rojo development servers.
 - ⬜ Evaluate Tripwire MCP for Roblox management and permissions.
+- ⬜ Write skills that make Lemon's day-to-day Roblox work faster and easier.
 - ⬜ Write Lemon's Roblox SOUL for non-coders and release boundaries.
 - ⬜ Evaluate other MCP servers for the game workflow.
 
