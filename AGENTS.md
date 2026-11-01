@@ -10,8 +10,9 @@ The reader is a person, not a deploy script. Someone opening a profile should un
 .
 ├── .claude/rules/
 │   ├── configuration.md  # how a profile's documents are written
-│   └── environment.md    # how .env.example is written
-├── .github/workflows/    # publishes Pepper's sandbox image, and refreshes her Wakapi card
+│   ├── environment.md    # how .env.example is written
+│   └── readme.md         # how the front page and roadmap are written
+├── .github/workflows/    # publishes sandbox images and refreshes Wakapi cards
 ├── assets/               # the How it works diagram, as .excalidraw and .svg
 ├── profiles/
 │   └── <name>/

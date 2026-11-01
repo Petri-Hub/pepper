@@ -157,6 +157,10 @@ No activity tracked
 - ✅ *marin* for spoken replies and GPT-Live conversations
 - ✅ Casual Portuguese SOUL with clear trust and privacy boundaries
 
+#### Open
+
+None listed.
+
 ### 🌿 Mint
 
 #### Done
@@ -176,25 +180,32 @@ No activity tracked
 - ✅ Gmail, Calendar and Drive through Bárbara's separate Google OAuth grant
 - ✅ His own GitHub App, acting on Bárbara's repositories under the bot's name
 
+#### Open
+
+None listed.
+
 ### 🍋 Lemon
 
 #### Done
 
-- ✅ Prepare placeholder environment variables for DeepSeek and Discord.
-- ✅ Create a separate Hermes profile with a minimal SOUL, DeepSeek Flash and Hermes' general tools.
-- ✅ Connect Lemon's own Discord bot with an 18-person allowlist.
-- ✅ Run a separate Wakapi reporter for Lemon's Hermes activity.
+- ✅ Prepare DeepSeek and Discord environment placeholders.
+- ✅ Create a Hermes profile with DeepSeek Flash and general tools.
+- ✅ Connect Lemon's Discord bot with an 18-person allowlist.
+- ✅ Run Lemon's separate Wakapi activity reporter.
 
 #### Open
 
 - ⬜ Verify a reply in the Discord server.
-- ⬜ Give Lemon a dedicated workspace for [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe), with its pinned Rokit tools, Rojo, StyLua, Selene, Wally, Jest and pull request checks.
-- ⬜ Connect [roblox-assets-mcp](https://github.com/Petri-Hub/roblox-assets-mcp) for Creator Store search, previews and temporary asset download links.
-- ⬜ Create Lemon's own GitHub App for branches and pull requests in the game repository.
-- ⬜ Track coding work in Wakapi once Lemon has a development workspace.
-- ⬜ Evaluate zrok for exposing Rojo's development server to collaborators.
-- ⬜ Evaluate [Tripwire MCP](https://github.com/aliboIly/Tripwire) for Roblox management and define which actions Lemon may perform.
-- ⬜ Write Lemon's full Roblox collaboration SOUL for non-coding contributors, engineering checks and release boundaries; evaluate other MCP servers against that workflow.
+- ⬜ Give Lemon an isolated workspace for the Roblox game.
+- ⬜ Install the game's pinned tools in Lemon's workspace.
+- ⬜ Run the game's checks before Lemon opens pull requests.
+- ⬜ Connect Roblox Assets MCP for Creator Store assets.
+- ⬜ Create Lemon's GitHub App for game branches and pull requests.
+- ⬜ Track Lemon's coding time in Wakapi.
+- ⬜ Evaluate zrok for sharing Rojo development servers.
+- ⬜ Evaluate Tripwire MCP for Roblox management and permissions.
+- ⬜ Write Lemon's Roblox SOUL for non-coders and release boundaries.
+- ⬜ Evaluate other MCP servers for the game workflow.
 
 ## References
 
@@ -216,5 +227,8 @@ No activity tracked
 - [Docker](https://docs.docker.com/): what runs Pepper's container in the lab
 - [lab](https://github.com/Petri-Hub/lab): the homelab that hosts her
 - [Wakapi](https://wakapi.dev): the self-hosted time tracker where each agent reports activity
-- [waka-readme](https://github.com/athul/waka-readme): the action that updates both time tracking sections from Wakapi's stats
+- [waka-readme](https://github.com/athul/waka-readme): the action that updates the three time tracking sections from Wakapi's stats
 - [ai-memory](https://github.com/akitaonrails/ai-memory): the memory server she shares with Claude Code, through the [community Hermes plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin)
+- [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe): the game Lemon will help build
+- [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp): Creator Store search and asset delivery
+- [Tripwire MCP](https://github.com/aliboIly/Tripwire): Roblox platform management to evaluate for Lemon
