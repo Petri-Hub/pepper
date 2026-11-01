@@ -197,7 +197,9 @@ None listed.
 
 #### Open
 
-- ⬜ Give Lemon an isolated workspace for the Roblox game.
+- ⬜ Publish Lemon's development image from this repository.
+- ⬜ Run the image as a persistent Docker container in the lab.
+- ⬜ Connect Lemon's Hermes terminal to the container over SSH.
 - ⬜ Install the game's pinned tools in Lemon's workspace.
 - ⬜ Run the game's checks before Lemon opens pull requests.
 - ⬜ Create Lemon's GitHub App for game branches and pull requests.
