@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-01 · Sandbox WakaTime plugin pin
+
+> *I think you can upgrade the compose.yml file pin too.*
+
+The `Publish Pepper image` workflow failed on the last merge: `claude-code-wakatime` installs whatever the plugin marketplace's default branch holds, and it had moved to 4.1.2 while `compose.yml` still pinned 4.1.0. The pin now matches, checked against the marketplace manifest's published version. No other version moved. The image is published again once the workflow runs.
+
 ### 2026-10-30 · Quieter replies
 
 > *I want to deactivate two things in Pepper: the cronjob wrapping, in all platforms, and the thinking, I want to hide it in all platforms.*

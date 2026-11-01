@@ -77,7 +77,7 @@ services:
         # this pin is checked rather than chosen: a new upstream release fails
         # the build until it is bumped here.
         # https://github.com/wakatime/claude-code-wakatime/releases
-        WAKATIME_CLAUDE_PLUGIN_VERSION: 4.1.0
+        WAKATIME_CLAUDE_PLUGIN_VERSION: 4.1.2
 
     # Only for `docker compose run`: the credentials Hermes will mount from the
     # lab, taken from this machine instead. Building ignores it.
