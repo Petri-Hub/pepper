@@ -2,6 +2,14 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-01 · Tools for the work, not just a shell
+
+> *"I've noticed he ran loads of shell commands, I think it was creating friction for him."*
+
+His first real session was nineteen shell calls. Six were only looking around, `cat` read the files and heredocs wrote them, and `curl` piped through `python3` opened the pull request.
+
+He now has Hermes' file tools on Discord. They run as shell commands through his SSH backend, so they edit the game's files inside his sandbox rather than the container Hermes runs in. His image gained `gh`, `ripgrep` and `jq`; `gh` still has no App authentication of its own, so the minting skill stays, but a pull request is one command instead of a hand-built JSON body.
+
 ### 2026-11-01 · His own GitHub identity
 
 > *App ID: 5568797 / Key is at Downloads. / Installation ID: 177566137.*

@@ -34,12 +34,14 @@ platforms:
 
 ### 🧰 Tools
 
-Lemon can research, analyze images, keep task lists, remember, ask for clarification, use Roblox Assets MCP and run commands in his own workspace on Discord.
+Lemon can research, analyze images, keep task lists, remember, ask for clarification, use Roblox Assets MCP, run commands in his own workspace and read, write, patch and search files directly on Discord.
 
 ```yaml
 platform_toolsets:
-  discord: [web, vision, todo, memory, clarify, roblox-assets, terminal]
+  discord: [web, vision, todo, memory, clarify, roblox-assets, terminal, file]
 ```
+
+The file tools matter more than they look. Hermes runs every one of them as a shell command through the active terminal backend, so they reach his sandbox over SSH and edit the game's files there, never the container Hermes runs in. Without them he has only a shell, and reading a file or changing three lines means `cat` and a heredoc.
 
 ### 🖥️ Workspace
 
@@ -57,6 +59,8 @@ terminal:
 ```
 
 The private key lives in his profile directory, never in this repository, and the public half sits in the lab's `authorized_keys`. The workspace and the container's SSH host key are on the lab's persistent storage, and the lab backs both up every six hours.
+
+The image carries what his day-to-day work needs beyond a shell: `gh`, which spends the installation token described below, `ripgrep` for searching the game's code, and `jq` for API output. The Roblox toolchain is not baked in — each project pins its own versions in `rokit.toml` and `rokit install` fetches them — so replacing the container costs a `rokit install`, not the toolchain's version choice.
 
 ### 🐙 GitHub App
 
