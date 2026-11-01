@@ -1,5 +1,5 @@
 name: Update Wakapi Cards
-run-name: Update Pepper and Mint Wakapi cards
+run-name: Update Pepper, Mint and Lemon Wakapi cards
 
 on:
   schedule:
@@ -48,3 +48,17 @@ jobs:
           SHOW_TOTAL: true
           CODE_LANG: rust
           COMMIT_MESSAGE: "chore: update Mint's Wakapi card"
+
+      - name: Update Lemon's card
+        uses: athul/waka-readme@8539bedb8277066fc9fe1b47d1f9b108eb866494  # v0.3.1
+        with:
+          WAKATIME_API_KEY: ${{ secrets.LEMON_WAKAPI_API_KEY }}
+          API_BASE_URL: https://lab-wakapi.petri.zip/api
+          SECTION_NAME: lemon
+          TIME_RANGE: last_30_days
+          LANG_COUNT: 7
+          BLOCKS: "░▒▓█"
+          SHOW_TIME: true
+          SHOW_TOTAL: true
+          CODE_LANG: rust
+          COMMIT_MESSAGE: "chore: update Lemon's Wakapi card"
