@@ -2,6 +2,16 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-01 · His own GitHub identity
+
+> *App ID: 5568797 / Key is at Downloads. / Installation ID: 177566137.*
+
+Lemon now works on GitHub as `lemon-podcast-3-0-s-bot[bot]`, installed on `Petri-Hub/roblox-with-swe` alone, with write on contents, pull requests, issues, actions and workflows. The key lives in the lab's `secrets/` and reaches his profile home, from where Hermes carries it into his sandbox; the mount was the only reason the container needed recreating.
+
+His `github-app-auth` skill is his own copy rather than Pepper's: his App and installation IDs, his bot name and noreply address, and the rules that fit one repository — branch from `staging`, which is the default branch, and leave merging to Petri. Its minting script was rewritten to sign with `openssl`, because his sandbox has neither PyJWT nor `cryptography`; a bare `python3` runs it now. His `SOUL.md` says he can branch, commit and open pull requests, and cannot run the game's automated tests or publish.
+
+Also: his avatar was 2.7 MB at 2048×2048, over Discord's image limit, and is now 399 KB at 1024×1024.
+
 ### 2026-11-01 · Workspace and terminal live
 
 > *I've merged the 'lab' PR, and the Restic password is in my clipboard. SSH keys were generated at ~/.ssh/personal. I think you can start leveraging things.*

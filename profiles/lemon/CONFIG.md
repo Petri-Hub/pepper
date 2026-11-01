@@ -52,9 +52,27 @@ terminal:
   ssh_user: lemon
   ssh_key: /opt/data/profiles/lemon/ssh/lemon_sandbox_ed25519
   cwd: /home/lemon/workspace
+  credential_files:
+    - github-app.pem
 ```
 
 The private key lives in his profile directory, never in this repository, and the public half sits in the lab's `authorized_keys`. The workspace and the container's SSH host key are on the lab's persistent storage, and the lab backs both up every six hours.
+
+### 🐙 GitHub App
+
+Lemon works on GitHub as himself, through an App installed on the single repository that matters: the game. His branches, commits and pull requests show up as his bot instead of Petri's account, and the narrow installation means the rest of the account is unreachable with his identity.
+
+There is no personal token and nothing to keep signed in. For each task he mints one token from his own key, lasting about an hour and limited to the permissions that task needs. The key is mounted read-only from the lab's `secrets/` into his profile home, so it never reaches the data volume or the backups, and Hermes carries it into his sandbox where `git push` runs.
+
+```text
+App ID         5568797
+Installation   177566137
+Key            secrets/lemon-github-app.pem → /opt/data/profiles/lemon/github-app.pem (read-only)
+```
+
+Those identifiers live in the `github-app-auth` skill in his profile, which is what actually mints a token, not in his `.env` — nothing else reads them. The skill stays on the live agent because it changes with the workflow, not with this repository. It signs its JWT with `openssl`, because his sandbox image has neither PyJWT nor the `cryptography` package.
+
+The repository's default branch is `staging`, and every change he makes is a branch and a pull request against it. Merging stays Petri's call.
 
 ### 🔌 MCP servers
 
@@ -83,7 +101,7 @@ The lab's separate `wakapi-lemon` reporter reads Lemon's Hermes profile and send
 
 ## 🚧 Not connected yet
 
-GitHub App · zrok · Tripwire MCP. Lemon knows these connections are not available yet.
+zrok · Tripwire MCP. Lemon knows these connections are not available yet.
 
 ## References
 

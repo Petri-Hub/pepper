@@ -199,11 +199,11 @@ None listed.
 - ✅ Run his image as a persistent container in the lab.
 - ✅ Connect his terminal to that container over SSH.
 - ✅ Keep the game's repository in his workspace.
+- ✅ Create Lemon's GitHub App for branches and pull requests.
 
 #### Open
 
 - ⬜ Run each project's checks before opening pull requests.
-- ⬜ Create Lemon's GitHub App for branches and pull requests.
 - ⬜ Evaluate zrok for sharing Rojo development servers.
 - ⬜ Evaluate Tripwire MCP for Roblox management and permissions.
 - ⬜ Write Lemon's Roblox SOUL for non-coders and release boundaries.
