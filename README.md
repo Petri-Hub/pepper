@@ -194,15 +194,16 @@ None listed.
 - ✅ Verify Lemon replies in the Discord server.
 - ✅ Run Lemon's separate Wakapi activity reporter.
 - ✅ Connect Roblox Assets MCP for Creator Store assets.
+- ✅ Build Lemon's reusable image with Git, Make, Rokit and SSH.
 
 #### Open
 
 - ⬜ Publish Lemon's development image from this repository.
 - ⬜ Run the image as a persistent Docker container in the lab.
 - ⬜ Connect Lemon's Hermes terminal to the container over SSH.
-- ⬜ Install the game's pinned tools in Lemon's workspace.
-- ⬜ Run the game's checks before Lemon opens pull requests.
-- ⬜ Create Lemon's GitHub App for game branches and pull requests.
+- ⬜ Keep each Roblox repository in Lemon's workspace.
+- ⬜ Run each project's checks before opening pull requests.
+- ⬜ Create Lemon's GitHub App for branches and pull requests.
 - ⬜ Evaluate zrok for sharing Rojo development servers.
 - ⬜ Evaluate Tripwire MCP for Roblox management and permissions.
 - ⬜ Write Lemon's Roblox SOUL for non-coders and release boundaries.

@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-01 · Persistent Roblox development image prepared
+
+> *Create a reusable image for Lemon's Roblox projects, using roblox-with-swe to check its toolchain, and leave GitHub integration for later.*
+
+Added an SSH-ready Docker image and a publishing workflow. The image contains Git, Make, pre-commit and Rokit; projects with Rokit manifests install their own pinned tools. SSH host keys stay outside the image for a persistent lab container. Format, lint and build checks were verified with roblox-with-swe. Open Cloud tests still need runtime credentials; Studio tests remain on a tester's machine. The image is not yet connected to Lemon's live Hermes profile.
+
 ### 2026-11-01 · Roblox Assets MCP connected
 
 > *The Discord is working, reply is OK. Tracking is done. Can you wire my Roblox Assets MCP?*
