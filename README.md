@@ -191,17 +191,16 @@ None listed.
 - ✅ Prepare DeepSeek and Discord environment placeholders.
 - ✅ Create a Hermes profile with DeepSeek Flash and general tools.
 - ✅ Connect Lemon's Discord bot with an 18-person allowlist.
+- ✅ Verify Lemon replies in the Discord server.
 - ✅ Run Lemon's separate Wakapi activity reporter.
+- ✅ Connect Roblox Assets MCP for Creator Store assets.
 
 #### Open
 
-- ⬜ Verify a reply in the Discord server.
 - ⬜ Give Lemon an isolated workspace for the Roblox game.
 - ⬜ Install the game's pinned tools in Lemon's workspace.
 - ⬜ Run the game's checks before Lemon opens pull requests.
-- ⬜ Connect Roblox Assets MCP for Creator Store assets.
 - ⬜ Create Lemon's GitHub App for game branches and pull requests.
-- ⬜ Track Lemon's coding time in Wakapi.
 - ⬜ Evaluate zrok for sharing Rojo development servers.
 - ⬜ Evaluate Tripwire MCP for Roblox management and permissions.
 - ⬜ Write Lemon's Roblox SOUL for non-coders and release boundaries.

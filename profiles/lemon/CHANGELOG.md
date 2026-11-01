@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-01 · Roblox Assets MCP connected
+
+> *The Discord is working, reply is OK. Tracking is done. Can you wire my Roblox Assets MCP?*
+
+Added the Roblox Open Cloud key to Lemon's ignored local and live profile environments, connected `roblox-assets-mcp` through `uvx`, and enabled its three tools on Discord. The server started and discovered all three tools. Lemon can find and inspect assets; importing them into the game still needs his isolated workspace. The roadmap now records Discord replies and Wakapi tracking as done.
+
 ### 2026-11-01 · Lemon's Wakapi card
 
 > *Add the Wakapi tracking of Lemon in the README.md, exactly like the ones from the other agents.*

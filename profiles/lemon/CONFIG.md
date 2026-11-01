@@ -34,16 +34,29 @@ platforms:
 
 ### 🧰 Tools
 
-Lemon can research, analyze images, keep task lists, remember and ask for clarification on Discord. His terminal and file tools would otherwise run inside the shared Hermes container, so coding access waits for an isolated development workspace.
+Lemon can research, analyze images, keep task lists, remember, ask for clarification and use Roblox Assets MCP on Discord. His terminal and file tools would otherwise run inside the shared Hermes container, so coding access waits for an isolated development workspace.
 
 ```yaml
 platform_toolsets:
-  discord: [web, vision, todo, memory, clarify, no_mcp]
+  discord: [web, vision, todo, memory, clarify, roblox-assets]
 ```
 
 ### 🔌 MCP servers
 
-None yet. · [MCP](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp)
+Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metadata and request temporary download links. The server runs in his Hermes profile with its own Roblox Open Cloud key; he cannot place downloaded assets into the game until his isolated workspace is ready.
+
+| Server | What it gives the agent | Link |
+|---|---|---|
+| `roblox-assets` | Creator Store search, details and temporary asset URLs | [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp) |
+
+```yaml
+mcp_servers:
+  roblox-assets:
+    command: uvx
+    args: [roblox-assets-mcp]
+    env:
+      ROBLOX_API_KEY: "${ROBLOX_API_KEY}"
+```
 
 ### 🧱 Plugins
 
@@ -55,7 +68,7 @@ The lab's separate `wakapi-lemon` reporter reads Lemon's Hermes profile and send
 
 ## 🚧 Not connected yet
 
-Roblox development workspace · Roblox Assets MCP · GitHub App · zrok · Tripwire MCP. Lemon knows these connections are not available yet.
+Roblox development workspace · GitHub App · zrok · Tripwire MCP. Lemon knows these connections are not available yet.
 
 ## References
 
