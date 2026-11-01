@@ -28,6 +28,7 @@ Every message, from Telegram, Discord or voice, goes through the Hermes gateway 
 |:---:|---|---|---|---|
 | <img src="profiles/pepper/avatar.png" width="48" height="48" alt="Pepper avatar" /> | [Pepper](profiles/pepper/CONFIG.md) | My general-purpose assistant: reminders, crons, GitHub, research, errands | OpenAI | Telegram · Discord · voice |
 | <img src="profiles/mint/avatar.png" width="48" height="48" alt="Mint avatar" /> | [Mint](profiles/mint/CONFIG.md) | Bárbara's personal assistant for everyday help and design work | OpenAI | Telegram · Discord · voice |
+| <img src="profiles/lemon/avatar.png" width="48" height="48" alt="Lemon avatar" /> | [Lemon](profiles/lemon/CONFIG.md) | Discord companion for a collaborative Roblox game, starting with conversation | DeepSeek | Discord |
 
 ## Philosophy
 
@@ -121,6 +122,20 @@ No activity tracked
 
 <!--END_SECTION:mint-->
 
+### 🍋 Lemon
+
+His counted activity from his Hermes profile. Conversation heartbeats do not add to this total; coding activity will appear once his workspace is connected.
+
+<!--START_SECTION:lemon-->
+
+```rust
+Total Time: 0 hrs 0 mins
+
+No activity tracked
+```
+
+<!--END_SECTION:lemon-->
+
 ## Roadmap
 
 ### 🐦 Pepper
@@ -166,6 +181,26 @@ No activity tracked
 - ✅ A public Modal sandbox image with Google's Python libraries
 - ✅ Gmail, Calendar and Drive through Bárbara's separate Google OAuth grant
 - ✅ His own GitHub App, acting on Bárbara's repositories under the bot's name
+
+### 🍋 Lemon
+
+#### First conversation
+
+- ✅ Prepare placeholder environment variables for DeepSeek and Discord.
+- ✅ Create a separate Hermes profile with a minimal SOUL, DeepSeek Flash and Hermes' general tools.
+- ✅ Connect Lemon's own Discord bot with an 18-person allowlist.
+- ⬜ Verify a reply in the Discord server.
+
+#### Roblox collaboration
+
+- ⬜ Give Lemon a dedicated workspace for [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe), with its pinned Rokit tools, Rojo, StyLua, Selene, Wally, Jest and pull request checks.
+- ⬜ Connect [roblox-assets-mcp](https://github.com/Petri-Hub/roblox-assets-mcp) for Creator Store search, previews and temporary asset download links.
+- ⬜ Create Lemon's own GitHub App for branches and pull requests in the game repository.
+- ✅ Run a separate Wakapi reporter for Lemon's Hermes activity.
+- ⬜ Track coding work in Wakapi once Lemon has a development workspace.
+- ⬜ Evaluate zrok for exposing Rojo's development server to collaborators.
+- ⬜ Evaluate [Tripwire MCP](https://github.com/aliboIly/Tripwire) for Roblox management and define which actions Lemon may perform.
+- ⬜ Write Lemon's full Roblox collaboration SOUL for non-coding contributors, engineering checks and release boundaries; evaluate other MCP servers against that workflow.
 
 ## References
 
