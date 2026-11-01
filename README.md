@@ -196,12 +196,12 @@ None listed.
 - ✅ Connect Roblox Assets MCP for Creator Store assets.
 - ✅ Build Lemon's reusable image with Git, Make, Rokit and SSH.
 - ✅ Publish Lemon's development image to GHCR on merge.
+- ✅ Run his image as a persistent container in the lab.
+- ✅ Connect his terminal to that container over SSH.
+- ✅ Keep the game's repository in his workspace.
 
 #### Open
 
-- ⬜ Run the image as a persistent Docker container in the lab.
-- ⬜ Connect Lemon's Hermes terminal to the container over SSH.
-- ⬜ Keep each Roblox repository in Lemon's workspace.
 - ⬜ Run each project's checks before opening pull requests.
 - ⬜ Create Lemon's GitHub App for branches and pull requests.
 - ⬜ Evaluate zrok for sharing Rojo development servers.

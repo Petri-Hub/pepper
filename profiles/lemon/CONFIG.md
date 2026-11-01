@@ -1,6 +1,6 @@
 # 🍋 Lemon
 
-> Lemon is a Discord agent being prepared for collaboration on a Roblox game. He speaks plainly with the invited group and can research, plan and remember things with Hermes' general tools. DeepSeek powers his replies; the isolated coding workspace, Roblox connections and fuller personality will come later.
+> Lemon is a Discord agent being prepared for collaboration on a Roblox game. He speaks plainly with the invited group, can research, plan and remember things with Hermes' general tools, and codes in his own workspace over SSH. DeepSeek powers his replies; the Roblox connections and fuller personality will come later.
 
 ## 💬 Platforms
 
@@ -34,16 +34,31 @@ platforms:
 
 ### 🧰 Tools
 
-Lemon can research, analyze images, keep task lists, remember, ask for clarification and use Roblox Assets MCP on Discord. His terminal and file tools would otherwise run inside the shared Hermes container, so coding access waits for an isolated development workspace.
+Lemon can research, analyze images, keep task lists, remember, ask for clarification, use Roblox Assets MCP and run commands in his own workspace on Discord.
 
 ```yaml
 platform_toolsets:
-  discord: [web, vision, todo, memory, clarify, roblox-assets]
+  discord: [web, vision, todo, memory, clarify, roblox-assets, terminal]
 ```
+
+### 🖥️ Workspace
+
+His commands run in a container of their own in the lab, not in the one Hermes shares with every profile. The lab starts his image as `lemon-sandbox` on the Docker network, publishing no port, and Hermes reaches it over SSH with a key that belongs to him. Commands start in `/home/lemon/workspace`, where the game's repository is checked out; only the `lemon` user can log in, and only with that key.
+
+```yaml
+terminal:
+  backend: ssh
+  ssh_host: lemon-sandbox
+  ssh_user: lemon
+  ssh_key: /opt/data/profiles/lemon/ssh/lemon_sandbox_ed25519
+  cwd: /home/lemon/workspace
+```
+
+The private key lives in his profile directory, never in this repository, and the public half sits in the lab's `authorized_keys`. The workspace and the container's SSH host key are on the lab's persistent storage, and the lab backs both up every six hours.
 
 ### 🔌 MCP servers
 
-Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metadata and request temporary download links. The server runs in his Hermes profile with its own Roblox Open Cloud key; he cannot place downloaded assets into the game until his isolated workspace is ready.
+Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metadata and request temporary download links. The server runs in his Hermes profile with its own Roblox Open Cloud key. Assets can be fetched into his workspace; getting them into the game still needs a Studio session or an Open Cloud path he does not have yet.
 
 | Server | What it gives the agent | Link |
 |---|---|---|
@@ -64,14 +79,15 @@ None yet.
 
 ### ⏱️ Wakapi
 
-The lab's separate `wakapi-lemon` reporter reads Lemon's Hermes profile and sends activity to his own Wakapi user every five minutes. Its API key and sync state stay in the lab, separate from Pepper's and Mint's. Coding time will be tracked once Lemon has a development workspace.
+The lab's separate `wakapi-lemon` reporter reads Lemon's Hermes profile and sends activity to his own Wakapi user every five minutes. Its API key and sync state stay in the lab, separate from Pepper's and Mint's.
 
 ## 🚧 Not connected yet
 
-Roblox development workspace · GitHub App · zrok · Tripwire MCP. Lemon knows these connections are not available yet.
+GitHub App · zrok · Tripwire MCP. Lemon knows these connections are not available yet.
 
 ## References
 
 - [Environment variables](.env.example): every variable Lemon needs, with placeholders instead of real values
 - [Changelog](CHANGELOG.md): every change made to him, in the words it was asked for
 - [Soul](SOUL.md): who he is, how he talks and the rules he follows
+- [Lemon sandbox](https://github.com/Petri-Hub/lab/tree/main/sandboxes/lemon-sandbox): the container his commands run in, in the lab

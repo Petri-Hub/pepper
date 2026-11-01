@@ -2,6 +2,14 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-01 · Workspace and terminal live
+
+> *I've merged the 'lab' PR, and the Restic password is in my clipboard. SSH keys were generated at ~/.ssh/personal. I think you can start leveraging things.*
+
+Lemon's container now runs in the lab and his terminal reaches it. The image published earlier is pulled as `lemon-sandbox` on the lab network with no host port; his workspace and the container's SSH host key persist, and the new `restic-lemon-sandbox` job initialized its repository and took a first snapshot with the password from the clipboard. Only the toolchain output each project regenerates is left out of the snapshot.
+
+His terminal uses Hermes' SSH backend, configured in `config.yaml` rather than `.env` because that file is for credentials: `lemon-sandbox`, user `lemon`, key in his profile directory, starting in `/home/lemon/workspace`. The `terminal` toolset is now enabled on Discord, and his `SOUL.md` says what he can and cannot do with it. The game's repository is checked out in the workspace, where `rokit install`, `wally install`, `make format-check`, `make lint` and `make build` all passed. Pull requests, automated game tests and publishing still need the GitHub App and Roblox credentials.
+
 ### 2026-11-01 · Persistent Roblox development image prepared
 
 > *Create a reusable image for Lemon's Roblox projects, using roblox-with-swe to check its toolchain, and leave GitHub integration for later.*
