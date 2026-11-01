@@ -195,10 +195,10 @@ None listed.
 - ✅ Run Lemon's separate Wakapi activity reporter.
 - ✅ Connect Roblox Assets MCP for Creator Store assets.
 - ✅ Build Lemon's reusable image with Git, Make, Rokit and SSH.
+- ✅ Publish Lemon's development image to GHCR on merge.
 
 #### Open
 
-- ⬜ Publish Lemon's development image from this repository.
 - ⬜ Run the image as a persistent Docker container in the lab.
 - ⬜ Connect Lemon's Hermes terminal to the container over SSH.
 - ⬜ Keep each Roblox repository in Lemon's workspace.
