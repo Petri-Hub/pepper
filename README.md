@@ -184,19 +184,19 @@ No activity tracked
 
 ### 🍋 Lemon
 
-#### First conversation
+#### Done
 
 - ✅ Prepare placeholder environment variables for DeepSeek and Discord.
 - ✅ Create a separate Hermes profile with a minimal SOUL, DeepSeek Flash and Hermes' general tools.
 - ✅ Connect Lemon's own Discord bot with an 18-person allowlist.
+- ✅ Run a separate Wakapi reporter for Lemon's Hermes activity.
+
+#### Open
+
 - ⬜ Verify a reply in the Discord server.
-
-#### Roblox collaboration
-
 - ⬜ Give Lemon a dedicated workspace for [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe), with its pinned Rokit tools, Rojo, StyLua, Selene, Wally, Jest and pull request checks.
 - ⬜ Connect [roblox-assets-mcp](https://github.com/Petri-Hub/roblox-assets-mcp) for Creator Store search, previews and temporary asset download links.
 - ⬜ Create Lemon's own GitHub App for branches and pull requests in the game repository.
-- ✅ Run a separate Wakapi reporter for Lemon's Hermes activity.
 - ⬜ Track coding work in Wakapi once Lemon has a development workspace.
 - ⬜ Evaluate zrok for exposing Rojo's development server to collaborators.
 - ⬜ Evaluate [Tripwire MCP](https://github.com/aliboIly/Tripwire) for Roblox management and define which actions Lemon may perform.
