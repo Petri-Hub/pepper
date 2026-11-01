@@ -96,8 +96,6 @@ Each agent reports to a separate Wakapi user in the lab. These cards show Wakapi
 
 ### 🐦 Pepper
 
-Her counted coding activity, including work she hands to Claude Code in her sandbox.
-
 <!--START_SECTION:pepper-->
 
 ```rust
@@ -110,8 +108,6 @@ No activity tracked
 
 ### 🌿 Mint
 
-His counted activity from his Hermes profile. His current conversation and cron heartbeats do not add to this total.
-
 <!--START_SECTION:mint-->
 
 ```rust
@@ -123,8 +119,6 @@ No activity tracked
 <!--END_SECTION:mint-->
 
 ### 🍋 Lemon
-
-His counted activity from his Hermes profile. Conversation heartbeats do not add to this total; coding activity will appear once his workspace is connected.
 
 <!--START_SECTION:lemon-->
 
