@@ -64,6 +64,8 @@ The image carries what his day-to-day work needs beyond a shell: `gh`, which spe
 
 The game's regression tests need an Open Cloud key. The lab keeps it in the sandbox's ignored `.env` and passes it to the container as `JEST_ROBLOX_*`, the names the project's Makefile already exports, so no checkout holds a copy of it and nothing is committed by accident.
 
+An SSH session does not inherit the container's environment: sshd builds a fresh one and PAM reads only `/etc/environment`. The entrypoint therefore writes the three variables there before starting sshd, so a login sees the same key a Docker command does.
+
 ### 🐙 GitHub App
 
 Lemon works on GitHub as himself, through an App installed on the single repository that matters: the game. His branches, commits and pull requests show up as his bot instead of Petri's account, and the narrow installation means the rest of the account is unreachable with his identity.

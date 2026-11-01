@@ -6,7 +6,9 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 > *"I think we shouldn't base ourselves on .env, should us? Shouldn't we bind this API key in the environment or something?"*
 
-Right, and it is bound in the environment instead. A `.env` inside the checkout would have put a copy of the key in the repository, in the snapshot and one `git add -A` away from a commit. The lab sets it once in the sandbox's ignored `.env`, and compose passes it to the container as `JEST_ROBLOX_*`, which the game's Makefile already exports — so the checkout needs nothing and `make test-on-ocale` runs as written.
+Right, and it is bound in the environment instead. A `.env` inside the checkout would have put a copy of the key in the repository, in the snapshot and one `git add -A` away from a commit. The lab sets it once in the sandbox's ignored `.env`, and compose passes it to the container as `JEST_ROBLOX_*`, which the game's Makefile already exports — so the checkout needs nothing.
+
+It reached nothing at first. An SSH session does not inherit the container's environment, and Lemon searched everywhere for a key that was never in his shell; the tests had only ever run through `docker exec`. The entrypoint now writes the three variables into `/etc/environment`, which `pam_env` reads, so his own commands see them too.
 
 ### 2026-11-01 · Tools for the work, not just a shell
 
