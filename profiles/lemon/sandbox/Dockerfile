@@ -4,6 +4,8 @@ ARG ROKIT_VERSION=1.2.0
 ARG ROKIT_SHA256=951a7f3ec3d2a5e021fd1867d32f69f010ee4c2927f644b759578afc59c65fc0
 ARG GH_VERSION=2.103.3
 ARG GH_SHA256=4c806978ffce1cec70853302a56d70ac6da4f19bae7adca4e1a8ab00633dd91d
+ARG ZROK_VERSION=2.0.9
+ARG ZROK_SHA256=cce814e1f0036ea9bd6fc58363bd2b52468db903781d44defcf755349fca333f
 
 ENV DEBIAN_FRONTEND=noninteractive \
     HOME=/home/lemon \
@@ -16,6 +18,7 @@ RUN apt-get update \
     && useradd --create-home --shell /bin/bash lemon \
     && install -d -o lemon -g lemon -m 0755 /home/lemon/workspace \
     && install -d -o lemon -g lemon -m 0700 /home/lemon/.ssh \
+    && install -d -o lemon -g lemon -m 0700 /home/lemon/.zrok2 \
     && install -d -m 0700 /var/lib/lemon/ssh \
     && printf '%s\n' 'export PATH="$HOME/.rokit/bin:$PATH"' > /etc/profile.d/lemon-rokit.sh \
     && rm -f /etc/ssh/ssh_host_*
@@ -39,6 +42,14 @@ RUN test "$(dpkg --print-architecture)" = amd64 \
     && tar -xzOf /tmp/gh.tar.gz "gh_${GH_VERSION}_linux_amd64/bin/gh" > /usr/local/bin/gh \
     && chmod 0755 /usr/local/bin/gh \
     && rm /tmp/gh.tar.gz
+
+RUN test "$(dpkg --print-architecture)" = amd64 \
+    && curl -fsSL -o /tmp/zrok.tar.gz \
+        "https://github.com/openziti/zrok/releases/download/v${ZROK_VERSION}/zrok_${ZROK_VERSION}_linux_amd64.tar.gz" \
+    && echo "${ZROK_SHA256}  /tmp/zrok.tar.gz" | sha256sum -c - \
+    && tar -xzOf /tmp/zrok.tar.gz zrok2 > /usr/local/bin/zrok2 \
+    && chmod 0755 /usr/local/bin/zrok2 \
+    && rm /tmp/zrok.tar.gz
 
 USER lemon
 RUN rokit self-install

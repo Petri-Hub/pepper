@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-01 · Prepare zrok in Lemon's image
+
+> *"Create an image with ZROK2 installed, start the container, run some commands there and enable it."*
+
+Added a pinned zrok2 binary to Lemon's image. The lab still needs a persistent mount for his zrok environment before the updated container can be enabled with the account token from 1Password; no token or enabled state is in the image. Starting a Rojo share from a Discord thread is still separate work.
+
 ### 2026-11-01 · A key the tests can reach
 
 > *"I think we shouldn't base ourselves on .env, should us? Shouldn't we bind this API key in the environment or something?"*
