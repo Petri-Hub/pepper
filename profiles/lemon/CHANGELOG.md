@@ -6,7 +6,7 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 > *"Create the skeleton of things here. I'm going to create the API key on a Hermes project. Consider for now only a PR."*
 
-Added Lemon's Langfuse key names, US Cloud URL and metadata-only capture choice to the public environment example. His profile specifies the bundled `observability/langfuse` plugin used by the live Hermes version, with a Lemon-specific Ingestion key in the shared Hermes project; a future Hermes update migrates it to the official catalog plugin. The Langfuse SDK is installed, the credentials are in Lemon's private live profile and the plugin is enabled there. The shared gateway has not restarted yet, so a trace still needs live verification before this PR merges.
+Added Lemon's Langfuse key names, US Cloud URL and metadata-only capture choice to the public environment example. His profile specifies the bundled `observability/langfuse` plugin used by the live Hermes version, with a Lemon-specific Ingestion key in the shared Hermes project; a future Hermes update migrates it to the official catalog plugin. The Langfuse 4.x SDK is installed in Hermes' durable package target, the credentials are in Lemon's private live profile, and the plugin is enabled there. After Petri confirmed the interruption, the shared gateway restarted, all three profiles came back, and a Lemon test turn produced a trace Petri saw in Langfuse. The key received HTTP 403 when used to read observations, consistent with its ingestion-only scope.
 
 ### 2026-11-01 · Prepare zrok in Lemon's image
 
