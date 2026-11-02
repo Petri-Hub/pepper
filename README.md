@@ -207,7 +207,7 @@ No activity tracked
 
 - [Hermes Agent](https://hermes-agent.nousresearch.com/docs/): the documentation for the framework every profile runs on
 - [Hermes Agent on GitHub](https://github.com/NousResearch/hermes-agent): the source code, from [Nous Research](https://nousresearch.com)
-- [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse): profile-scoped tracing for Lemon
+- [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse): Lemon's tracing integration and its catalog successor
 - [OpenAI API Platform](https://platform.openai.com/docs): the models behind Pepper's thinking, transcription and voice
 - [Telegram Bot API](https://core.telegram.org/bots/api): how Pepper's Telegram bot talks to Telegram
 - [Discord Developer Portal](https://discord.com/developers/applications): where Pepper's Discord bot is registered

@@ -6,7 +6,7 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 > *"Create the skeleton of things here. I'm going to create the API key on a Hermes project. Consider for now only a PR."*
 
-Added Lemon's Langfuse key names, US Cloud URL and metadata-only capture choice to the public environment example. His profile now specifies Hermes' official plugin with a Lemon-specific Ingestion key in the shared Hermes project, and the README records the integration as part of his configuration. Live rollout and trace verification are separate operational steps after review.
+Added Lemon's Langfuse key names, US Cloud URL and metadata-only capture choice to the public environment example. His profile specifies the bundled `observability/langfuse` plugin used by the live Hermes version, with a Lemon-specific Ingestion key in the shared Hermes project; a future Hermes update migrates it to the official catalog plugin. The Langfuse SDK is installed, the credentials are in Lemon's private live profile and the plugin is enabled there. The shared gateway has not restarted yet, so a trace still needs live verification before this PR merges.
 
 ### 2026-11-01 · Prepare zrok in Lemon's image
 

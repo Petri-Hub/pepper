@@ -103,16 +103,16 @@ mcp_servers:
 
 ### 🧱 Plugins
 
-Lemon uses Hermes' official Langfuse plugin to record turns, model calls and tool calls in the shared Hermes project in Langfuse Cloud's US region. His own project API key has **Ingestion** permission; future agents can join the same project with separate keys and per-profile plugin installations. Langfuse traces carry profile metadata so the agents can be filtered apart. Metadata-only capture retains timing, token usage and cost without sending prompts, Discord messages or tool payloads. End-user attribution stays off. The keys belong to Lemon's live `/opt/data/profiles/lemon/.env`, and the catalog plugin is installed with `hermes -p lemon plugins install langfuse`.
+Lemon uses Hermes' bundled `observability/langfuse` plugin to record turns, model calls and tool calls in the shared Hermes project in Langfuse Cloud's US region. The current Hermes image bundles this plugin; newer versions migrate enabled profiles to the official catalog plugin named `langfuse`. His own project API key has **Ingestion** permission; future agents can join the same project with separate keys and per-profile plugin installations. Langfuse traces carry profile metadata so the agents can be filtered apart. Metadata-only capture retains timing, token usage and cost without sending prompts, Discord messages or tool payloads. End-user attribution stays off. The keys belong to Lemon's live `/opt/data/profiles/lemon/.env`, and the bundled plugin is enabled with `hermes -p lemon plugins enable observability/langfuse`.
 
 | Plugin | What it gives the agent | Link |
 |---|---|---|
-| `langfuse` | Profile-scoped traces of turns, model calls, tools, usage and cost | [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse) |
+| `observability/langfuse` | Profile-scoped traces of turns, model calls, tools, usage and cost | [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse) |
 
 ```yaml
 plugins:
   enabled:
-    - langfuse
+    - observability/langfuse
 ```
 
 ```bash
