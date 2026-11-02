@@ -6,6 +6,12 @@
 
 Start with the relevant profile and the root README. Keep the profile documents and README aligned when a change affects more than one of them. Use this repository as the starting point for configuration work. Check the live agent when the task depends on its current state, a deployment result or a suspected mismatch; a routine documentation change does not need a live comparison.
 
+## Pull request workflow
+
+Prepare a configuration PR as the complete proposed state. The profile, environment example, changelog and README should describe the intended working setup together, as though the PR were ready to become the record of that setup. Do not leave an integration in the open roadmap or describe it as a temporary plan solely because the PR is awaiting review, credentials or live deployment. Be clear about any live result that has not been verified yet.
+
+After Petri gives the OK, apply the configuration to the running agent and verify it there. A restart or container recreation still needs the separate confirmation described below. If the live setup reveals a missing setting, activation step or documentation change, add it to the same PR and verify again. Merge the PR only when the live configuration works and the repository describes what is running. If verification cannot be completed, leave the PR open and report what is blocking it.
+
 ## Structure
 
 ```text
@@ -34,7 +40,6 @@ Hermes runs all three profiles in Docker. Pepper and Mint use OpenAI models and 
 - **Protect credentials.** Never expose a real token, key, password or other credential in a tracked file, command output, chat or log. Use variable names and placeholders only. If work needs a real credential, or one appears where it could be exposed, stop and tell Petri what needs attention without repeating its value.
 - **Keep personal information private.** This repository is public. Leave out details that feel too personal, and tell Petri what kind of information you filtered. Rewrite or include a detail only after he agrees to the specific public wording.
 - **Keep changing state out.** Hermes manages skills, memories, reminders and other state that changes through use. Record stable choices and reasons here without duplicating that state.
-- **Document the completed configuration in a PR.** When a PR defines an integration, update the profile, environment example, changelog and README as one coherent target state. Do not describe it as planned or leave it in the open roadmap solely because the PR has not merged or credentials and live deployment will follow review. Keep claims about live verification accurate when deployment status matters.
 - **Avoid patching Hermes.** Prefer supported configuration and integrations. If a problem can only be solved by changing Hermes' code, explain the proposed patch and stop until Petri approves it.
 - **Confirm restarts.** Before restarting or recreating the running agent or its container, including as a side effect of another change, tell Petri what will be interrupted and wait for his confirmation.
 
