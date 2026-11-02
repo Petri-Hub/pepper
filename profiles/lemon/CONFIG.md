@@ -105,7 +105,9 @@ mcp_servers:
 
 Lemon uses Hermes' bundled `observability/langfuse` plugin to record turns, model calls and tool calls in the shared Hermes project in Langfuse Cloud's US region. The live Hermes version bundles it; a future update migrates enabled profiles to the official catalog plugin named `langfuse`. Its Python SDK is installed in Hermes' durable package target at version 4.x, and the bundled plugin is enabled only for Lemon with `hermes -p lemon plugins enable observability/langfuse`.
 
-Lemon's own project API key has **Ingestion** permission and lives in `/opt/data/profiles/lemon/.env`; future agents can join the same project with separate keys and per-profile installations. Traces carry profile metadata for filtering. Metadata-only capture retains timing, token usage and cost without sending prompts, Discord messages or tool payloads. End-user attribution stays off.
+Lemon's own project API key has **Ingestion** permission and lives in `/opt/data/profiles/lemon/.env`; future agents can join the same project with separate keys and per-profile installations. Traces carry profile metadata for filtering. End-user attribution stays off.
+
+The plugin reads capture settings from the shared gateway process, so the [lab Compose service](https://github.com/Petri-Hub/lab/blob/main/services/apps/hermes/compose.yml) sets `HERMES_LANGFUSE_CAPTURE=full`, `HERMES_LANGFUSE_MAX_CHARS=100000` and `HERMES_LANGFUSE_MAX_DEPTH=10`. This exports raw prompts, replies and tool payloads, including any credentials they contain, and applies to any future profile that enables the plugin in this gateway. Long fields can still be truncated, collections stop at 50 items, and `read_file` results keep a head-and-tail preview rather than the entire file.
 
 | Plugin | What it gives the agent | Link |
 |---|---|---|
@@ -121,7 +123,6 @@ plugins:
 HERMES_LANGFUSE_PUBLIC_KEY=…
 HERMES_LANGFUSE_SECRET_KEY=…
 HERMES_LANGFUSE_BASE_URL=https://us.cloud.langfuse.com
-HERMES_LANGFUSE_CAPTURE=metadata
 ```
 
 ### ⏱️ Wakapi

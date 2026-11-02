@@ -192,7 +192,7 @@ No activity tracked
 - ✅ Connect his terminal to that container over SSH.
 - ✅ Keep the game's repository in his workspace.
 - ✅ Create Lemon's GitHub App for branches and pull requests.
-- ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and metadata-only capture.
+- ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and raw content capture.
 
 #### Open
 

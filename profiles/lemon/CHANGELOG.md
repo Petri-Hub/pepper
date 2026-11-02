@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Capture full Langfuse context
+
+> *"Listen, we're only using 'metadata'? I need full context."*
+
+The bundled plugin reads capture mode and payload limits from the shared gateway environment, not Lemon's profile `.env`. The earlier profile-only `metadata` setting therefore did not control the running plugin; with no gateway setting, the plugin used its `sanitized` default. Removed that misleading profile variable and set raw `full` capture in the lab's Hermes Compose service, with larger per-field and nesting limits. This sends prompts, replies and tool payloads without secret redaction; the plugin still truncates very long content, limits collections to 50 items and summarizes large file reads. Only Lemon enables the plugin today, but another enabled profile in the same gateway would inherit these capture settings.
+
 ### 2026-11-02 · Prepare Langfuse tracing
 
 > *"Create the skeleton of things here. I'm going to create the API key on a Hermes project. Consider for now only a PR."*
