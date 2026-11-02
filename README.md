@@ -195,6 +195,7 @@ No activity tracked
 
 #### Open
 
+- ⬜ Connect Lemon's Hermes profile to Langfuse Cloud for metadata-only tracing.
 - ⬜ Run each project's checks before opening pull requests.
 - ⬜ Evaluate zrok for sharing Rojo development servers.
 - ⬜ Evaluate Tripwire MCP for Roblox management and permissions.
@@ -206,6 +207,7 @@ No activity tracked
 
 - [Hermes Agent](https://hermes-agent.nousresearch.com/docs/): the documentation for the framework every profile runs on
 - [Hermes Agent on GitHub](https://github.com/NousResearch/hermes-agent): the source code, from [Nous Research](https://nousresearch.com)
+- [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse): profile-scoped tracing for Lemon when its project key is ready
 - [OpenAI API Platform](https://platform.openai.com/docs): the models behind Pepper's thinking, transcription and voice
 - [Telegram Bot API](https://core.telegram.org/bots/api): how Pepper's Telegram bot talks to Telegram
 - [Discord Developer Portal](https://discord.com/developers/applications): where Pepper's Discord bot is registered

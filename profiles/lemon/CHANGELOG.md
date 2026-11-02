@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Prepare Langfuse tracing
+
+> *"Create the skeleton of things here. I'm going to create the API key on a Hermes project. Consider for now only a PR."*
+
+Added Lemon's Langfuse key names, US Cloud URL and metadata-only capture choice to the public environment example. The profile documents the official per-profile plugin, the Ingestion key permission, and the shared Hermes project plan; the roadmap keeps the connection open. No key, plugin, live profile or gateway was changed. After the key is stored in 1Password, the live profile still needs its values, a plugin install, a confirmed shared-gateway restart and a test trace.
+
 ### 2026-11-01 · Prepare zrok in Lemon's image
 
 > *"Create an image with ZROK2 installed, start the container, run some commands there and enable it."*

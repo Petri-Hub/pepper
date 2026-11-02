@@ -103,7 +103,9 @@ mcp_servers:
 
 ### 🧱 Plugins
 
-None yet.
+None yet. The official [Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse) is prepared for Lemon but has not been installed or enabled. It will send turn, model and tool telemetry to the Hermes project in Langfuse Cloud's US region. `HERMES_LANGFUSE_CAPTURE=metadata` keeps prompts, Discord messages and tool payloads out of the traces while retaining timing, token usage and cost. End-user attribution stays off.
+
+Create an **Ingestion** project API key for Lemon and keep its public and secret values in his live `/opt/data/profiles/lemon/.env`, alongside the base URL and capture mode listed in [.env.example](.env.example). Install it in Lemon's profile with `hermes -p lemon plugins install langfuse`; verify that `hermes -p lemon plugins list` shows it enabled, then restart the shared Hermes gateway and check a Lemon turn in Langfuse. The gateway restart interrupts Pepper, Mint and Lemon and requires Petri's confirmation. Other agents can use the same Langfuse project later with their own keys and per-profile plugin installations; traces include profile metadata for filtering.
 
 ### ⏱️ Wakapi
 
@@ -111,7 +113,7 @@ The lab's separate `wakapi-lemon` reporter reads Lemon's Hermes profile and send
 
 ## 🚧 Not connected yet
 
-zrok · Tripwire MCP. Lemon knows these connections are not available yet.
+Langfuse · zrok · Tripwire MCP. Lemon knows these connections are not available yet.
 
 ## References
 
