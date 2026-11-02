@@ -157,10 +157,6 @@ No activity tracked
 - ✅ *marin* for spoken replies and GPT-Live conversations
 - ✅ Casual Portuguese SOUL with clear trust and privacy boundaries
 
-#### Open
-
-None listed.
-
 ### 🌿 Mint
 
 #### Done
@@ -179,10 +175,6 @@ None listed.
 - ✅ A public Modal sandbox image with Google's Python libraries
 - ✅ Gmail, Calendar and Drive through Bárbara's separate Google OAuth grant
 - ✅ His own GitHub App, acting on Bárbara's repositories under the bot's name
-
-#### Open
-
-None listed.
 
 ### 🍋 Lemon
 

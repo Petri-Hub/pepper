@@ -1,80 +1,44 @@
 # Pepper — Agent Guide
 
-This repository describes the [Hermes](https://hermes-agent.nousresearch.com/docs/) agents that run in Petri's homelab. The [lab](https://github.com/Petri-Hub/lab) runs the container: image, ports, resource limits and secrets. This repository records what runs inside it, one folder per agent: who the agent is, why each setting was chosen, and the settings themselves.
+> Pepper is the public record of the Hermes agents in Petri's lab: Pepper, Mint and Lemon. Each profile explains who the agent is, what it can do and why its settings were chosen. This repository holds their profiles, personalities and sandbox images; the lab repository runs the containers, networking, backups and secret mounts.
 
-The reader is a person, not a deploy script. Someone opening a profile should understand what the agent does, where it talks and why, without knowing Hermes.
+## Working in this repository
+
+Start with the relevant profile and the root README. Keep the profile documents and README aligned when a change affects more than one of them. Use this repository as the starting point for configuration work. Check the live agent when the task depends on its current state, a deployment result or a suspected mismatch; a routine documentation change does not need a live comparison.
 
 ## Structure
 
-```
+```text
 .
-├── .claude/rules/
-│   ├── configuration.md  # how a profile's documents are written
-│   ├── environment.md    # how .env.example is written
-│   └── readme.md         # how the front page and roadmap are written
-├── .github/workflows/    # publishes sandbox images and refreshes Wakapi cards
-├── assets/               # the How it works diagram, as .excalidraw and .svg
+├── .claude/rules/        # guidance for profile documents and the README
+├── .github/workflows/   # sandbox image publishing and Wakapi cards
+├── assets/              # diagrams and other README assets
 ├── profiles/
 │   └── <name>/
-│       ├── CONFIG.md     # who the agent is and every setting, with the reason for it
-│       ├── CHANGELOG.md  # every change, in the words it was asked for
-│       ├── SOUL.md       # personality and rules, as the agent reads them
-│       ├── .env.example  # every variable it needs, with placeholders
-│       ├── avatar.png    # its picture on every platform
-│       └── sandbox/      # optional: the image the agent's Modal sandbox runs
-├── README.md             # the repository's front page and the list of profiles
-└── AGENTS.md
+│       ├── CONFIG.md     # chosen settings and their reasons
+│       ├── CHANGELOG.md  # why the profile changed
+│       ├── SOUL.md       # the agent's own instructions
+│       ├── .env.example  # required variable names and placeholders
+│       ├── avatar.png    # the agent's picture
+│       └── sandbox/      # optional development image
+├── README.md            # front page and profile roadmaps
+└── AGENTS.md            # guidance for working in this repository
 ```
 
-The rules in `.claude/rules/` hold the details of each document. This file holds what applies everywhere.
+## Technologies
 
-## Where the agents live
+Hermes runs all three profiles in Docker. Pepper and Mint use OpenAI models and Modal sandboxes; Lemon uses DeepSeek and a dedicated SSH sandbox for Roblox development. MCP connects external tools, AI Memory keeps long-term context, and GitHub Actions publishes sandbox images and refreshes the Wakapi activity cards.
 
-All profiles run in one container, `hermes`, on the lab host.
+## Constraints and guidelines
 
-| Profile | Home inside the container |
-|---|---|
-| `pepper` | `/opt/data`, since she is Hermes' default profile |
-| any other | `/opt/data/profiles/<name>` |
+- **Protect credentials.** Never expose a real token, key, password or other credential in a tracked file, command output, chat or log. Use variable names and placeholders only. If work needs a real credential, or one appears where it could be exposed, stop and tell Petri what needs attention without repeating its value.
+- **Keep personal information private.** This repository is public. Leave out details that feel too personal, and tell Petri what kind of information you filtered. Rewrite or include a detail only after he agrees to the specific public wording.
+- **Keep changing state out.** Hermes manages skills, memories, reminders and other state that changes through use. Record stable choices and reasons here without duplicating that state.
+- **Avoid patching Hermes.** Prefer supported configuration and integrations. If a problem can only be solved by changing Hermes' code, explain the proposed patch and stop until Petri approves it.
+- **Confirm restarts.** Before restarting or recreating the running agent or its container, including as a side effect of another change, tell Petri what will be interrupted and wait for his confirmation.
 
-To reach it, Tailscale must be on Petri's **personal** account. The work account can't see the lab, and SSH simply times out.
+## Related projects
 
-```bash
-tailscale switch personal
-ssh lab
-docker exec hermes <command>
-```
-
-The lab's own repository is not edited from here. When a change needs something there, like a new `HERMES_*` variable or a compose mapping, say exactly what and leave it to Petri.
-
-## Principles
-
-**Record decisions, not files.** Hermes fills most of an agent's configuration with defaults. Only what someone chose is written down, next to the reason it was chosen. A shorter description that produces the same agent is the goal.
-
-**Check, don't remember.** Before recording a setting, compare it with the live agent. Before calling something a default or saying what a feature does, check Hermes' docs or its source in the container. Say plainly when something could not be verified.
-
-**The live agent is in use.** Reading from it is fine. Changing it, restarting it or writing to its files needs Petri's go-ahead first, every time.
-
-**No committed credentials, ever.** Tokens, API keys, private keys, password hashes and session secrets never enter tracked files. A local, gitignored `profiles/<name>/.env` may hold values for manual setup; keep it private and never stage it. Identifiers are fine: chat IDs, user IDs, an App ID. When looking at a live `.env`, read key names only, never values.
-
-**The repository is public.** Anyone can read `Petri-Hub/pepper` and its whole history, so nothing personal enters it: not Petri's routine, where he lives, his finances or his family, not what his private repositories hold, not former employers or clients, and not the people close to him, who are never named. Write "a friend" or "his friends" instead. What an agent needs to know privately lives in its memory on the live agent, not in `SOUL.md`. A new commit cannot take a slip back, because the history keeps it, so check before committing.
-
-**One branch.** `main` is the only branch, and commits land on it directly. This is documentation for one reader, not software with releases to stage, so a `develop` branch or a long-lived feature branch only adds a merge to do later. A pull request is for when Petri asks for one.
-
-**Things that move fast stay out.** Skills, memories and reminders created from chat change every day and are managed by Hermes itself. A copy here would always be out of date.
-
-## Changing a profile
-
-1. Understand the ask, and ask back when it's unclear which setting it means.
-2. Check the current state on the live agent.
-3. Update `CONFIG.md`: the section, its reason and its YAML, following `.claude/rules/configuration.md`.
-4. If a variable is involved, update `.env.example` following `.claude/rules/environment.md`, and say which live profile `.env` needs its value.
-5. Add an entry at the top of the profile's `CHANGELOG.md`, with the ask in Petri's words.
-6. If the change also has to reach the live agent, say so, and apply it only once Petri agrees.
-
-## Adding a profile
-
-1. Create `profiles/<name>/` with the five files, using `profiles/pepper/` as the model.
-2. Copy `SOUL.md` from the live profile, if it already exists.
-3. Add a row to the Profiles table in the root `README.md`.
-4. Start the changelog with the profile's first entry.
+- [lab](https://github.com/Petri-Hub/lab) runs the Hermes container and Lemon's development sandbox.
+- [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe) is the game Lemon helps build.
+- [Hermes](https://hermes-agent.nousresearch.com/docs/) documents the agent framework and supported configuration.

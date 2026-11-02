@@ -17,7 +17,7 @@ paths:
 | Rule | Directive |
 |---|---|
 | **Record choices with reasons** | Explain each chosen Hermes setting beside the YAML that produces it — a copied default hides the decision a reader needs to understand. |
-| **Verify before writing** | Compare settings with the live profile and check Hermes documentation or source for defaults — assumptions drift as Hermes changes. |
+| **Verify what the change depends on** | Use the repository as the starting point. Check the live profile when current behavior, deployment state or suspected drift matters; check Hermes documentation or source before claiming a setting is a default. |
 | **Keep profile documents aligned** | Update CONFIG, the environment example, SOUL and changelog as the change requires — a partial profile leaves setup instructions unreliable. |
 | **Keep public data safe** | Use placeholders for credentials and keep private context in live memory — Git history preserves public slips permanently. |
 | **Add profiles to README** | Add a Profiles-table row linking to CONFIG — GitHub does not render a folder's CONFIG as its front page. |
