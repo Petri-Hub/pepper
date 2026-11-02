@@ -2,6 +2,20 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Capture full Langfuse context
+
+> *"Listen, we're only using 'metadata'? I need full context."*
+
+The bundled plugin reads capture mode and payload limits from the shared gateway environment, not Lemon's profile `.env`. The earlier profile-only `metadata` setting therefore did not control the running plugin; with no gateway setting, the plugin used its `sanitized` default. Removed that misleading profile variable and set raw `full` capture in the lab's Hermes Compose service, with larger per-field and nesting limits. This sends prompts, replies and tool payloads without secret redaction; the plugin still truncates very long content, limits collections to 50 items and summarizes large file reads. Only Lemon enables the plugin today, but another enabled profile in the same gateway would inherit these capture settings.
+
+After the lab PR merged, Hermes was recreated from the same image with the same data mount. All three profiles came back, the Langfuse SDK remained available and all three lab patches reapplied. A Lemon test turn completed; Petri saw its marker in the Langfuse generation and `capture_mode: full` on the trace.
+
+### 2026-11-02 · Prepare Langfuse tracing
+
+> *"Create the skeleton of things here. I'm going to create the API key on a Hermes project. Consider for now only a PR."*
+
+Added Lemon's Langfuse key names, US Cloud URL and metadata-only capture choice to the public environment example. His profile specifies the bundled `observability/langfuse` plugin used by the live Hermes version, with a Lemon-specific Ingestion key in the shared Hermes project; a future Hermes update migrates it to the official catalog plugin. The Langfuse 4.x SDK is installed in Hermes' durable package target, the credentials are in Lemon's private live profile, and the plugin is enabled there. After Petri confirmed the interruption, the shared gateway restarted, all three profiles came back, and a Lemon test turn produced a trace Petri saw in Langfuse. The key received HTTP 403 when used to read observations, consistent with its ingestion-only scope.
+
 ### 2026-11-01 · Prepare zrok in Lemon's image
 
 > *"Create an image with ZROK2 installed, start the container, run some commands there and enable it."*

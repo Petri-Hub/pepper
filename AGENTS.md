@@ -6,6 +6,12 @@
 
 Start with the relevant profile and the root README. Keep the profile documents and README aligned when a change affects more than one of them. Use this repository as the starting point for configuration work. Check the live agent when the task depends on its current state, a deployment result or a suspected mismatch; a routine documentation change does not need a live comparison.
 
+## Pull request workflow
+
+Prepare a configuration PR as the complete proposed state. The profile, environment example, changelog and README should describe the intended working setup together, as though the PR were ready to become the record of that setup. Do not leave an integration in the open roadmap or describe it as a temporary plan solely because the PR is awaiting review, credentials or live deployment. Be clear about any live result that has not been verified yet.
+
+After Petri gives the OK, apply the configuration to the running agent and verify it there. A restart or container recreation still needs the separate confirmation described below. If the live setup reveals a missing setting, activation step or documentation change, add it to the same PR and verify again. Merge the PR only when the live configuration works and the repository describes what is running. If verification cannot be completed, leave the PR open and report what is blocking it.
+
 ## Structure
 
 ```text
