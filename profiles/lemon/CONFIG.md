@@ -151,7 +151,7 @@ skills:
 
 ### 🖥️ Workspace
 
-Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries `gh`, `ripgrep`, `jq` and Rokit; the project pins its Roblox tools separately.
+Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately.
 
 The workspace can run the game's automated tests through OCALE, alongside formatting, linting and build checks.
 

@@ -2,6 +2,38 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-03 · Require test settings at sandbox startup
+
+> *"Make it wipe old data, and you can fail if some of those keys are missing."*
+
+The entrypoint replaces `/etc/environment` with the three Open Cloud test settings and stops startup if any are missing or empty. The revised image has not been applied to the live sandbox.
+
+### 2026-11-03 · Install sandbox tools directly
+
+> *"Let's use the direct version without Mise. Can we keep the SSH config inside the Dockerfile?"*
+
+The image installs pinned and checksum-verified releases of Rokit and `cloudflared` directly. Rokit continues to manage each Roblox project's own tools. The Dockerfile also writes the SSH server settings, replacing the separate configuration file. The revised image has not been applied to the live sandbox.
+
+An SSH connection to the local test container showed that direct commands did not inherit the Rokit shims on `PATH`; the SSH configuration now supplies that path to sessions.
+
+### 2026-11-03 · Remove the GitHub CLI
+
+> *"He can't use the GitHub skill, we've tested it in the past. Let's remove GH; this is noise."*
+
+Removed `gh` from the sandbox image. Lemon's GitHub App authentication skill uses its token helper, Git and the GitHub API instead. The updated image has not yet been applied to the live sandbox.
+
+### 2026-11-03 · Remove zrok from the sandbox image
+
+> *"Drop ZROK 100%. We're going to use only Cloudflare Quick Tunnels."*
+
+Removed zrok's binary, version pins and state directory from the image, and removed its setup instructions. Rojo Share uses Cloudflare Quick Tunnels through `cloudflared`. The revised image has not been deployed to the live sandbox.
+
+### 2026-11-03 · Give the workspace a starting layout
+
+> *"The Dockerfile, in its base, should create the tree structure."*
+
+The sandbox entrypoint creates `scratchpad`, `tools`, `projects` and `sessions` inside the persistent workspace as the Lemon user. It runs after the lab's bind mount is in place and leaves existing files and directories alone. Existing checkouts are not moved. The updated image has not yet been applied to the live sandbox.
+
 ### 2026-11-03 · Clean up the profile prose and test claim
 
 > *"He can perform automated tests using OCALE. Tripwire is out of scope for now, not planned. Make a general passthrough through the files."*

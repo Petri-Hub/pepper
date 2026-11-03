@@ -1,29 +1,44 @@
 FROM debian:bookworm-slim
 
+# Image metadata — identify Lemon's development sandbox and its source
+LABEL org.opencontainers.image.title="lemon-sandbox" \
+      org.opencontainers.image.description="Persistent Roblox development workspace for Lemon" \
+      org.opencontainers.image.source="https://github.com/Petri-Hub/pepper"
+
+# Pinned releases — verify downloads against their published checksums
 ARG ROKIT_VERSION=1.2.0
 ARG ROKIT_SHA256=951a7f3ec3d2a5e021fd1867d32f69f010ee4c2927f644b759578afc59c65fc0
-ARG GH_VERSION=2.103.3
-ARG GH_SHA256=4c806978ffce1cec70853302a56d70ac6da4f19bae7adca4e1a8ab00633dd91d
-ARG ZROK_VERSION=2.0.9
-ARG ZROK_SHA256=cce814e1f0036ea9bd6fc58363bd2b52468db903781d44defcf755349fca333f
+ARG CLOUDFLARED_VERSION=2026.10.7
+ARG CLOUDFLARED_SHA256=1f99fb518b83dec2ba8d870a7cc991d82a77e6196295a3d2754ba17ab9f91872
 
+# Environment — Lemon's home and Rokit shims for project tools
 ENV DEBIAN_FRONTEND=noninteractive \
     HOME=/home/lemon \
     PATH=/home/lemon/.rokit/bin:${PATH}
 
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-        ca-certificates curl git jq make openssh-server pre-commit ripgrep unzip \
-    && rm -rf /var/lib/apt/lists/* \
-    && useradd --create-home --shell /bin/bash lemon \
-    && install -d -o lemon -g lemon -m 0755 /home/lemon/workspace \
-    && install -d -o lemon -g lemon -m 0700 /home/lemon/.ssh \
-    && install -d -o lemon -g lemon -m 0700 /home/lemon/.zrok2 \
-    && install -d -m 0700 /var/lib/lemon/ssh \
-    && printf '%s\n' 'export PATH="$HOME/.rokit/bin:$PATH"' > /etc/profile.d/lemon-rokit.sh \
+# System packages — remove generated SSH host keys in the same image layer
+RUN apt-get update && apt-get install --no-install-recommends -y \
+        ca-certificates \
+        curl \
+        git \
+        jq \
+        make \
+        openssh-server \
+        pre-commit \
+        ripgrep \
+        unzip \
     && rm -f /etc/ssh/ssh_host_*
 
-# Each project selects its own tool versions in its rokit.toml.
+# Package indexes — remove them after installation
+RUN rm -rf /var/lib/apt/lists/*
+
+# Base workspace — Lemon user, persistent paths and shell configuration
+RUN useradd --create-home --shell /bin/bash lemon \
+    && install -d -o lemon -g lemon -m 0755 /home/lemon/workspace \
+    && install -d -o lemon -g lemon -m 0700 /home/lemon/.ssh \
+    && install -d -m 0700 /var/lib/lemon/ssh
+
+# Rokit — projects pin their own Roblox tool versions
 RUN test "$(dpkg --print-architecture)" = amd64 \
     && curl -fsSL -o /tmp/rokit.zip \
         "https://github.com/rojo-rbx/rokit/releases/download/v${ROKIT_VERSION}/rokit-${ROKIT_VERSION}-linux-x86_64.zip" \
@@ -32,35 +47,36 @@ RUN test "$(dpkg --print-architecture)" = amd64 \
     && chmod 0755 /usr/local/bin/rokit \
     && rm /tmp/rokit.zip
 
-# gh is not in Debian's repositories, so its release tarball is pinned the same
-# way rokit's is. It never logs in on its own: it spends the installation token
-# the GitHub App skill mints.
+# Cloudflare Quick Tunnels — cloudflared is used by Rojo Share
 RUN test "$(dpkg --print-architecture)" = amd64 \
-    && curl -fsSL -o /tmp/gh.tar.gz \
-        "https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION}_linux_amd64.tar.gz" \
-    && echo "${GH_SHA256}  /tmp/gh.tar.gz" | sha256sum -c - \
-    && tar -xzOf /tmp/gh.tar.gz "gh_${GH_VERSION}_linux_amd64/bin/gh" > /usr/local/bin/gh \
-    && chmod 0755 /usr/local/bin/gh \
-    && rm /tmp/gh.tar.gz
+    && curl -fsSL -o /tmp/cloudflared \
+        "https://github.com/cloudflare/cloudflared/releases/download/${CLOUDFLARED_VERSION}/cloudflared-linux-amd64" \
+    && echo "${CLOUDFLARED_SHA256}  /tmp/cloudflared" | sha256sum -c - \
+    && install -m 0755 /tmp/cloudflared /usr/local/bin/cloudflared \
+    && rm /tmp/cloudflared
 
-RUN test "$(dpkg --print-architecture)" = amd64 \
-    && curl -fsSL -o /tmp/zrok.tar.gz \
-        "https://github.com/openziti/zrok/releases/download/v${ZROK_VERSION}/zrok_${ZROK_VERSION}_linux_amd64.tar.gz" \
-    && echo "${ZROK_SHA256}  /tmp/zrok.tar.gz" | sha256sum -c - \
-    && tar -xzOf /tmp/zrok.tar.gz zrok2 > /usr/local/bin/zrok2 \
-    && chmod 0755 /usr/local/bin/zrok2 \
-    && rm /tmp/zrok.tar.gz
-
+# Rokit shims — install them in Lemon's home as his own user
 USER lemon
 RUN rokit self-install
 
+# SSH — configure the server
 USER root
-COPY sshd.conf /etc/ssh/sshd_config.d/lemon.conf
+RUN printf '%s\n' \
+    'HostKey /var/lib/lemon/ssh/ssh_host_ed25519_key' \
+    'PasswordAuthentication no' \
+    'KbdInteractiveAuthentication no' \
+    'PermitRootLogin no' \
+    'PubkeyAuthentication yes' \
+    'AllowUsers lemon' \
+    'AllowTcpForwarding no' \
+    'X11Forwarding no' \
+    'SetEnv PATH=/home/lemon/.rokit/bin:/usr/local/bin:/usr/bin:/bin' \
+    > /etc/ssh/sshd_config.d/lemon.conf
+
+# Entrypoint — prepare the sandbox when the container starts
 COPY --chmod=0755 entrypoint.sh /usr/local/bin/lemon-entrypoint
 
+# Runtime — start SSH with the persistent workspace as the working directory
 WORKDIR /home/lemon/workspace
 EXPOSE 22
-LABEL org.opencontainers.image.title="lemon-sandbox" \
-      org.opencontainers.image.description="Persistent Roblox development workspace for Lemon" \
-      org.opencontainers.image.source="https://github.com/Petri-Hub/pepper"
 ENTRYPOINT ["/usr/local/bin/lemon-entrypoint"]
