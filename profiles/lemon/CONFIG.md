@@ -40,6 +40,15 @@ agent:
   max_turns: 500
 ```
 
+### 🔒 Conversation search
+
+Hermes' `session_search` can read conversations from another profile, so it is disabled across Lemon's chats and scheduled runs to keep the agents' histories separate. His Discord list already omitted it, but scheduled runs otherwise inherited it from Hermes' defaults.
+
+```yaml
+agent:
+  disabled_toolsets: [session_search]
+```
+
 ### 🕒 Timezone
 
 São Paulo time, so anything scheduled for the group fires at the hour Petri means, not in UTC.
@@ -82,16 +91,14 @@ platforms:
 
 ### 🧰 Tools
 
-Lemon can research, analyze images, keep task lists, remember, ask for clarification, use Roblox Assets MCP, run commands in his own workspace and read, write, patch and search files directly on Discord.
+Lemon can research, analyze images, keep task lists, remember, ask for clarification, use Roblox Assets MCP, run commands in his own workspace and read, write, patch and search files directly on Discord. He can also load and manage skills, including his GitHub App workflow, and use `execute_code` to script repeated web, file and terminal calls in his SSH sandbox. That tool does not call Roblox Assets MCP. The list is explicit, so a toolset Hermes adds later does not reach him on its own.
+
+The file tools run as shell commands through the active terminal backend, so they edit the game's files in his SSH sandbox rather than inside Hermes' container.
 
 ```yaml
 platform_toolsets:
-  discord: [web, vision, todo, memory, clarify, roblox-assets, terminal, file]
+  discord: [web, vision, todo, memory, clarify, roblox-assets, terminal, file, code_execution, skills]
 ```
-
-The list is explicit, so a toolset Hermes adds later does not reach him on its own. It also leaves out Hermes' code execution tool, `execute_code`, which would let him script several tool calls in one turn; he calls tools one at a time.
-
-The file tools matter more than they look. Hermes runs every one of them as a shell command through the active terminal backend, so they reach his sandbox over SSH and edit the game's files there, never the container Hermes runs in. Without them he has only a shell, and reading a file or changing three lines means `cat` and a heredoc.
 
 ### 🖥️ Workspace
 

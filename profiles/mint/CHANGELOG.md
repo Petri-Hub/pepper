@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Keep conversation histories separate
+
+> *"Remove session search from the agents, but keep skills and skill management available."*
+
+`agent.disabled_toolsets: [session_search]` now removes conversation search from every Mint platform, including scheduled runs and CLI sessions. His platform toolsets still follow Hermes' defaults, which provide `skills` and `skill_manage`.
+
 ### 2026-11-02 · Checkpoints out
 
 > *"Remove those checkpoints as they don't make sense."*

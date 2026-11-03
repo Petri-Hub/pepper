@@ -47,6 +47,15 @@ agent:
   max_turns: 500
 ```
 
+### 🔒 Conversation search
+
+Hermes' `session_search` can read conversations from another profile, so it is disabled across Mint's chats and scheduled runs to keep the agents' histories separate. His default toolsets still include skills and skill management.
+
+```yaml
+agent:
+  disabled_toolsets: [session_search]
+```
+
 ### 🕒 Timezone
 
 Americana follows São Paulo time, so reminders and other scheduled work use the local hour.

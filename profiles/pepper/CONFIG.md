@@ -50,6 +50,15 @@ agent:
   max_turns: 500
 ```
 
+### 🔒 Conversation search
+
+Hermes' `session_search` can read conversations from another profile, so it is disabled across Pepper's chats and scheduled runs to keep the agents' histories separate. Her saved platform tool lists also leave it out; her skills and skill management remain available.
+
+```yaml
+agent:
+  disabled_toolsets: [session_search]
+```
+
 ### 🕒 Timezone
 
 São Paulo time, so reminders and scheduled tasks fire at the hour Petri means, not in UTC.
