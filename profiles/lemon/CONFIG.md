@@ -1,6 +1,6 @@
 # 🍋 Lemon
 
-> Lemon helps a Discord group build a Roblox game. He speaks plainly with coders and non-coders, researches ideas and assets, and works on the game's code in his own SSH workspace. DeepSeek powers his replies; Petri decides when changes merge or the game is published.
+> Lemon helps a Discord group build a Roblox game. He speaks plainly with coders and non-coders, researches ideas and assets, and works on the game's code in his own SSH workspace. DeepSeek powers his replies; he merges his changes after the required checks pass.
 
 ## 💬 Platforms
 
@@ -111,7 +111,17 @@ platform_toolsets:
 
 ### 📚 Skills
 
-Lemon keeps skills for game development, research, creative work, media and documents, including his local GitHub App and code execution workflows. The listed skills are hidden from his prompt but remain installed; new skills are enabled unless explicitly disabled.
+Lemon keeps skills for game development, research, creative work, media and documents, including his local GitHub App and code execution workflows. The shared skills below live in this repository and apply across projects.
+
+| Skill | Purpose |
+|---|---|
+| [`assets-search`](skills/assets-search/SKILL.md) | Find and evaluate Roblox Creator Store assets. |
+| [`assets-answering`](skills/assets-answering/SKILL.md) | Present labeled asset previews in Discord. |
+| [`onboarding`](skills/onboarding/SKILL.md) | Introduce Lemon and help collaborators connect Studio. |
+
+Run [`sync-skills.sh`](sync-skills.sh) with Lemon's existing profile skills directory as its argument when applying this configuration; it requires `rsync` and write access to that directory. It replaces those three skill directories in full, including files Lemon changed or added inside them. His other skills remain managed by Hermes. The sandbox image supplies the asset-labeling helper used by `assets-answering`.
+
+The listed disabled skills are hidden from his prompt but remain installed; new skills are enabled unless explicitly disabled. Project-specific skills belong to each project; their discovery from Lemon's SSH workspace still needs verification.
 
 ```yaml
 skills:
@@ -151,7 +161,7 @@ skills:
 
 ### 🖥️ Workspace
 
-Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries `gh`, `ripgrep`, `jq` and Rokit; the project pins its Roblox tools separately.
+Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately.
 
 The workspace can run the game's automated tests through OCALE, alongside formatting, linting and build checks.
 
@@ -168,7 +178,7 @@ terminal:
 
 ### 🐙 GitHub App
 
-Lemon uses a GitHub App installed only on the game repository. Its short-lived tokens let him create branches and pull requests under his bot identity. The private key is mounted read-only from the lab and copied into his sandbox for Git operations. He opens pull requests against `staging`; Petri decides when they merge.
+Lemon uses a GitHub App installed only on the game repository. Its short-lived tokens let him create branches and pull requests under his bot identity. The private key is mounted read-only from the lab and copied into his sandbox for Git operations. He opens pull requests against `staging` and merges them after the required checks pass.
 
 ```text
 App ID         5568797

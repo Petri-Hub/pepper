@@ -30,7 +30,9 @@ After Petri gives the OK, apply the configuration to the running agent and verif
 │       ├── SOUL.md       # the agent's own instructions
 │       ├── .env.example  # required variable names and placeholders
 │       ├── avatar.png    # the agent's picture
-│       └── sandbox/      # optional development image
+│       ├── sandbox/      # optional development image
+│       ├── skills/       # optional repository-managed shared skills
+│       └── sync-skills.sh # optional skill deployment helper
 ├── README.md            # front page and profile roadmaps
 └── AGENTS.md            # guidance for working in this repository
 ```
@@ -43,7 +45,7 @@ Hermes runs all three profiles in Docker. Pepper and Mint use OpenAI models and 
 
 - **Protect credentials.** Never expose a real token, key, password or other credential in a tracked file, command output, chat or log. Use variable names and placeholders only. If work needs a real credential, or one appears where it could be exposed, stop and tell Petri what needs attention without repeating its value.
 - **Keep personal information private.** This repository is public. Leave out details that feel too personal, and tell Petri what kind of information you filtered. Rewrite or include a detail only after he agrees to the specific public wording.
-- **Keep changing state out.** Hermes manages skills, memories, reminders and other state that changes through use. Record stable choices and reasons here without duplicating that state.
+- **Keep changing state out.** Hermes manages day-to-day skills, memories, reminders and other state that changes through use. Selected shared skills can live here when this repository is their maintained source; applying them replaces the agent's copies.
 - **Avoid patching Hermes.** Prefer supported configuration and integrations. If a problem can only be solved by changing Hermes' code, explain the proposed patch and stop until Petri approves it.
 - **Confirm restarts.** Before restarting or recreating the running agent or its container, including as a side effect of another change, tell Petri what will be interrupted and wait for his confirmation.
 

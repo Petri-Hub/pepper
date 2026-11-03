@@ -48,7 +48,7 @@ Each profile keeps a changelog written in the words I used to ask for it, so mon
 The container, the ports and the secrets belong to the lab. Here lives who each agent is: the personality, the model, the platforms and how it behaves.
 
 **What moves fast stays out.**  
-Skills, memories and reminders change every day, and Hermes takes care of them on its own. Keeping them here would only produce a copy that's always out of date.
+Hermes manages day-to-day skills, memories and reminders. Selected shared skills live here when this repository is their maintained source; applying them replaces the agent's copies.
 
 **No committed credentials.**
 Tracked files hold placeholders only. Local, gitignored profile `.env` files hold values for manual setup; the live values are in the lab.
@@ -67,7 +67,9 @@ Tracked files hold placeholders only. Local, gitignored profile `.env` files hol
 │       ├── CHANGELOG.md   # every change, in the words I asked for it
 │       ├── CONFIG.md      # what's configured, and why, with the settings that do it
 │       ├── SOUL.md        # who the agent is, and the rules it follows
-│       └── sandbox        # optional Modal image: the tools the agent's terminal runs with
+│       ├── sandbox        # optional image for the agent's terminal
+│       ├── skills         # optional repository-managed shared skills
+│       └── sync-skills.sh # optional skill deployment helper
 └── AGENTS.md          # the conventions for working in this repository
 ```
 
@@ -195,6 +197,7 @@ No activity tracked
 - ✅ Connect his terminal to that container over SSH.
 - ✅ Skills and skill management available in Discord.
 - ✅ Curate his skill index for game development and creative work.
+- ✅ Define his Roblox SOUL and shared and project-specific collaboration skills.
 - ✅ Disable built-in memory and user profile while his role takes shape.
 - ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.
@@ -209,8 +212,8 @@ No activity tracked
 
 #### Open
 
-- ⬜ Write skills that make Lemon's day-to-day Roblox work faster and easier.
-- ⬜ Write Lemon's Roblox SOUL for non-coders and release boundaries.
+- ⬜ Evaluate whether direct Git workflows need a workspace helper after trying them.
+- ⬜ Make project skills discoverable from Lemon's SSH worktrees.
 - ⬜ Evaluate whether Luau LSP adds useful type checks beyond Selene.
 - ⬜ Evaluate other MCP servers for the game workflow.
 
