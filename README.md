@@ -196,6 +196,7 @@ No activity tracked
 - ✅ Connect his terminal to that container over SSH.
 - ✅ Skills and skill management available in Discord.
 - ✅ Curate his skill index for game development and creative work.
+- ✅ Disable built-in memory and user profile while his role takes shape.
 - ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.
 - ✅ Keep the game's repository in his workspace.

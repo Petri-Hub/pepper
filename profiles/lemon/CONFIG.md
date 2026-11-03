@@ -1,6 +1,6 @@
 # 🍋 Lemon
 
-> Lemon is a Discord agent being prepared for collaboration on a Roblox game. He speaks plainly with the invited group, can research, plan and remember things with Hermes' general tools, and codes in his own workspace over SSH. DeepSeek powers his replies; the Roblox connections and fuller personality will come later.
+> Lemon is a Discord agent being prepared for collaboration on a Roblox game. He speaks plainly with the invited group, can research and plan with Hermes' general tools, and codes in his own workspace over SSH. DeepSeek powers his replies; the Roblox connections and fuller personality will come later.
 
 ## 💬 Platforms
 
@@ -49,6 +49,16 @@ agent:
   disabled_toolsets: [session_search]
 ```
 
+### 🧠 Built-in memory
+
+Lemon's built-in agent notes and user profile are off while his role is still taking shape. Hermes does not inject `MEMORY.md` or `USER.md` into new sessions or expose the built-in memory tool when both switches are off. The existing files stay in his private profile so they can be reviewed or restored later. Skills remain available for reusable workflows.
+
+```yaml
+memory:
+  memory_enabled: false
+  user_profile_enabled: false
+```
+
 ### 🕒 Timezone
 
 São Paulo time, so anything scheduled for the group fires at the hour Petri means, not in UTC.
@@ -94,13 +104,13 @@ platforms:
 
 ### 🧰 Tools
 
-Lemon can research, analyze images, keep task lists, remember, ask for clarification, use Roblox Assets MCP, run commands in his own workspace and read, write, patch and search files directly on Discord. He can also load and manage skills, including his GitHub App workflow, and use `execute_code` to script repeated web, file and terminal calls in his SSH sandbox. That tool does not call Roblox Assets MCP. The list is explicit, so a toolset Hermes adds later does not reach him on its own.
+Lemon can research, analyze images, keep task lists, ask for clarification, use Roblox Assets MCP, run commands in his own workspace and read, write, patch and search files directly on Discord. He can also load and manage skills, including his GitHub App workflow, and use `execute_code` to script repeated web, file and terminal calls in his SSH sandbox. That tool does not call Roblox Assets MCP. The list is explicit, so a toolset Hermes adds later does not reach him on its own.
 
 The file tools run as shell commands through the active terminal backend, so they edit the game's files in his SSH sandbox rather than inside Hermes' container.
 
 ```yaml
 platform_toolsets:
-  discord: [web, vision, todo, memory, clarify, roblox-assets, terminal, file, code_execution, skills]
+  discord: [web, vision, todo, clarify, roblox-assets, terminal, file, code_execution, skills]
 ```
 
 ### 📚 Skills
