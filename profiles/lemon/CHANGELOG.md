@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Show full code in Discord progress
+
+> *"Code execution works, but the code shown in Discord still looks cut off."*
+
+`display.tool_progress: verbose` showed full terminal commands, but Discord's default 40-character `tool_preview_length` still shortened `execute_code` arguments. Lemon's Discord display override now sets that length to `0`, leaving the tool call preview uncapped; Discord can split a long progress message at its own message limit. The code execution itself was already running in full.
+
 ### 2026-11-02 · Skills and code execution in Discord
 
 > *"Every agent needs skills and skill_manage. Add code_execution for Lemon, and remove session search from all three."*

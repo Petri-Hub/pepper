@@ -194,21 +194,20 @@ No activity tracked
 - ✅ Publish Lemon's development image to GHCR on merge.
 - ✅ Run his image as a persistent container in the lab.
 - ✅ Connect his terminal to that container over SSH.
-- ✅ Skills and code execution available in Discord.
+- ✅ Skills and skill management available in Discord.
+- ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.
 - ✅ Keep the game's repository in his workspace.
 - ✅ Create Lemon's GitHub App for branches and pull requests.
 - ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and raw content capture.
 - ✅ Medium reasoning, a 500-turn cap and São Paulo time.
-- ✅ Thinking and full tool commands visible in Discord.
+- ✅ Thinking and full tool arguments visible in Discord.
 - ✅ Cron replies without Hermes wrappers.
 - ✅ Gateway shutdown and restart notices left on.
 - ✅ Home channel set to Pepper's Discord channel.
 
 #### Open
 
-- ⬜ Run each project's checks before opening pull requests.
-- ⬜ Evaluate Tripwire MCP for Roblox management and permissions.
 - ⬜ Write skills that make Lemon's day-to-day Roblox work faster and easier.
 - ⬜ Write Lemon's Roblox SOUL for non-coders and release boundaries.
 - ⬜ Evaluate other MCP servers for the game workflow.

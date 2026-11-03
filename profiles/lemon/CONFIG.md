@@ -59,12 +59,15 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-For now his thinking stays on screen, so the group can see how he reads a request; Hermes hides it on Discord by default. The commands he runs are not shortened either: the default cuts each one to a 40-character line, and `verbose` sends the whole command in a code block instead.
+For now his thinking stays on screen, so the group can see how he reads a request; Hermes hides it on Discord by default. Verbose tool progress shows full terminal commands, and Discord's usual 40-character preview would still cut `execute_code` arguments. Removing that preview cap on Discord lets the group see the code he runs; Discord splits messages that exceed its own length limit.
 
 ```yaml
 display:
   show_reasoning: true
   tool_progress: verbose
+  platforms:
+    discord:
+      tool_preview_length: 0
 ```
 
 ### ⏰ Scheduled replies
