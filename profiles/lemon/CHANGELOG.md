@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Skills and code execution in Discord
+
+> *"Every agent needs skills and skill_manage. Add code_execution for Lemon, and remove session search from all three."*
+
+Lemon's Discord list now includes `skills` and `code_execution`. He can load and manage his own skills and script repeated web, file and terminal calls in his SSH sandbox; `execute_code` does not call Roblox Assets MCP. `agent.disabled_toolsets: [session_search]` also removes conversation search from scheduled runs and CLI sessions, where Hermes' defaults would otherwise provide it.
+
 ### 2026-11-02 · Checkpoints out of all three profiles
 
 > *"Remove those checkpoints as they don't make sense."*

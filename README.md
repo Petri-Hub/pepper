@@ -149,6 +149,8 @@ No activity tracked
 - ✅ GitHub and Google access inside the sandbox when she needs them
 - ✅ Sandbox files delivered to chat and retained after rebuilds
 - ✅ AI Memory as the wiki she shares with Claude Code across machines
+- ✅ Skills and skill management available in chat and scheduled work
+- ✅ Hermes session search disabled across her profile
 - ✅ Her own Wakapi account for agent heartbeats and coding activity
 - ✅ Backups of her soul, settings, skills, crons and memories
 - ✅ Spotify playback, pause and queue control from chat
@@ -166,6 +168,8 @@ No activity tracked
 - ✅ His own Modal workspace and sandbox for shell commands
 - ✅ Medium reasoning, a 500-turn cap and São Paulo time
 - ✅ Notes and reminders stored separately from Pepper's profile
+- ✅ Skills and skill management available in chat and scheduled work
+- ✅ Hermes session search disabled across his profile
 - ✅ Reasoning, tool progress and busy/steering notices hidden in chat
 - ✅ Cron replies without wrappers, long-run updates or restart notices
 - ✅ Full Restic backup of his live profile, with a file restore tested
@@ -190,6 +194,8 @@ No activity tracked
 - ✅ Publish Lemon's development image to GHCR on merge.
 - ✅ Run his image as a persistent container in the lab.
 - ✅ Connect his terminal to that container over SSH.
+- ✅ Skills and code execution available in Discord.
+- ✅ Hermes session search disabled across his profile.
 - ✅ Keep the game's repository in his workspace.
 - ✅ Create Lemon's GitHub App for branches and pull requests.
 - ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and raw content capture.
