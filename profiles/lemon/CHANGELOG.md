@@ -2,6 +2,18 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-03 · Keep shared skills with Lemon's profile
+
+> *"Keep a skills folder at the side of sandbox. These are hard-replaced files."*
+
+Added the shared asset search, asset presentation and onboarding skills to this repository. Applying them replaces the matching live skill directories, including Lemon's edits; other skills stay with Hermes. The sandbox image supplies Pillow and the labeling helper. Project-specific skills live in the game repository. The skills, image and SOUL have not been applied or verified live.
+
+### 2026-11-03 · Give Lemon a foundation for collaboration
+
+> *"Think about his SOUL, what lives there, what lives in project skills, and how to make his environment understandable."*
+
+Rewrote Lemon's SOUL around his Discord collaboration, thread-owned worktrees, previews, coding, assets and project knowledge. Lemon merges his own pull requests after required checks pass, without a code review, and defaults to Brazilian Portuguese when the conversation language is unclear. The SOUL describes the intended workspace and assumes a future `lemon-workspace` CLI; the CLI, project skills and asset labeling tool still need to be built and verified before this SOUL can be applied live. Detailed project procedures belong in those skills. The running profile has not been changed.
+
 ### 2026-11-03 · Require test settings at sandbox startup
 
 > *"Make it wipe old data, and you can fail if some of those keys are missing."*

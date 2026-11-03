@@ -20,11 +20,13 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update && apt-get install --no-install-recommends -y \
         ca-certificates \
         curl \
+        fonts-dejavu-core \
         git \
         jq \
         make \
         openssh-server \
         pre-commit \
+        python3-pil \
         ripgrep \
         unzip \
     && rm -f /etc/ssh/ssh_host_*
@@ -74,7 +76,10 @@ RUN printf '%s\n' \
     > /etc/ssh/sshd_config.d/lemon.conf
 
 # Entrypoint — prepare the sandbox when the container starts
-COPY --chmod=0755 entrypoint.sh /usr/local/bin/lemon-entrypoint
+COPY --chmod=0755 sandbox/entrypoint.sh /usr/local/bin/lemon-entrypoint
+
+# Asset previews — label thumbnails with their option and asset ID
+COPY --chmod=0755 skills/assets-answering/scripts/label-preview.py /usr/local/bin/lemon-label-preview
 
 # Runtime — start SSH with the persistent workspace as the working directory
 WORKDIR /home/lemon/workspace

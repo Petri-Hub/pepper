@@ -1,13 +1,13 @@
 # Lemon's development image
 
-This image gives Lemon a persistent Linux workspace with SSH access. It includes Git, Make, pre-commit, Rokit and `cloudflared`. For a project with a `rokit.toml`, run `rokit install` in its checkout to install its pinned tools. The image has no game-specific tool versions or source files; projects can add other tools as needed.
+This image gives Lemon a persistent Linux workspace with SSH access. It includes Git, Make, pre-commit, Rokit and `cloudflared`, plus an asset-preview labeling helper with Pillow. For a project with a `rokit.toml`, run `rokit install` in its checkout to install its pinned tools. The image has no game-specific tool versions or source files; projects can add other tools as needed.
 
 The image currently targets Linux x86-64, matching the lab host and GitHub Actions runner.
 
 ## Check the toolchain locally
 
 ```bash
-docker build -t lemon-sandbox:dev profiles/lemon/sandbox
+docker build -f profiles/lemon/sandbox/Dockerfile -t lemon-sandbox:dev profiles/lemon
 docker run --rm --user lemon --entrypoint /bin/bash \
   --mount "type=bind,src=$(realpath ../roblox-with-swe),dst=/home/lemon/workspace/roblox-with-swe" \
   lemon-sandbox:dev -lc 'cd roblox-with-swe && rokit install --no-trust-check && wally install && make format-check && make lint && make build'
