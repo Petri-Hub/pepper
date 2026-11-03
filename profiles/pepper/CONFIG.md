@@ -78,15 +78,6 @@ cron:
   wrap_response: false
 ```
 
-### ⏪ Checkpoints
-
-Before Pepper changes files, Hermes takes a snapshot, so anything she breaks can be rolled back.
-
-```yaml
-checkpoints:
-  enabled: true
-```
-
 ### 🎙️ Voice
 
 Everything voice goes through OpenAI, with the same key as the model, good quality and a fair price. Voice notes on Telegram and Discord are transcribed before Pepper reads them, and when she answers out loud, OpenAI speaks for her, in the *marin* voice. *Cedar* and, before it, Hermes' default *alloy* didn't sound like her, so one voice was picked for both ways she talks: *marin* exists in OpenAI's text-to-speech and in GPT-Live, the model behind her live conversations. In Hermes' CLI, TUI and desktop app she can also hold those live conversations, listening while she talks, and saying *hey pepper* opens a fresh voice session without touching anything. Those last two don't work on Telegram or Discord. The phrase is listened for by *sherpa*, because it takes any phrase as plain text, and the default engine, openWakeWord, can't be installed in the container's Python. The lab has no microphone, so the desktop app streams its own to the lab and the listening happens there; the app has to be open for it to work. Her live voice is Hermes' own default for that mode, so the YAML leaves it out.

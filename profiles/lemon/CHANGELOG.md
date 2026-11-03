@@ -2,6 +2,30 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Checkpoints out of all three profiles
+
+> *"Remove those checkpoints as they don't make sense."*
+
+The snapshots never ran. Hermes skips them when the file tools work through a container backend, which covers Pepper's and Mint's Modal sandboxes and Lemon's SSH one alike, so there was no restore point to keep. The three sections are gone, `checkpoints.enabled` is unset on the live profiles, and the roadmap no longer lists them.
+
+### 2026-11-02 · The settings Pepper and Mint already had
+
+> *"Lemon needs the configuration the other two already have: medium reasoning, a 500-turn cap, São Paulo time, cron replies without wrappers, checkpoints and gateway shutdown warnings. Oh, and show his thinking for now — and turn on his verbosity so I can see more of the commands he runs in Discord."*
+
+DeepSeek Flash accepts four reasoning levels, and `agent.reasoning_effort: medium` now asks for the middle one instead of Hermes' own default. `agent.max_turns: 500` caps a single message at 500 steps; Hermes runs without a limit otherwise. `timezone: America/Sao_Paulo` puts scheduled work on the group's clock.
+
+`display.show_reasoning: true` keeps his thinking on screen for now; Discord hides it by default. `display.tool_progress: verbose` prints each command in full, in a code block, where Discord's default `all` mode keeps a 40-character one-line preview. `cron.wrap_response: false` delivers a scheduled reply without Hermes' title, job ID, separator and footer.
+
+Gateway restart notices stay enabled, which is Hermes' default and the opposite of Mint's choice. A running task's chat gets the shutdown warning. Lemon's home channel is the same Discord channel as Pepper's, where a default Discord delivery lands; this Hermes version's home-channel broadcast and restart notice read the default profile, so they do not reach his home on their own.
+
+Applied to the live profile with `hermes -p lemon config set`, after a config backup, then the shared gateway was restarted. Six platform connections came back, the values read back from the file, and the display resolver returns `show_reasoning: true` with `tool_progress: verbose` for Discord. No message was sent to Discord just to watch it render.
+
+### 2026-11-02 · zrok out of the pending list
+
+> *"Remove ZROK from the Not connected yet, we will drop from his Dockerfile in a moment."*
+
+Removed zrok from Lemon's pending connections and from the workspace description, and dropped the roadmap item that still planned to evaluate it. His image installs `zrok2` until the separate Dockerfile change removes it.
+
 ### 2026-11-02 · Capture full Langfuse context
 
 > *"Listen, we're only using 'metadata'? I need full context."*

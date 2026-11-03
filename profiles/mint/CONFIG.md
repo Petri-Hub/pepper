@@ -79,15 +79,6 @@ cron:
   wrap_response: false
 ```
 
-### ⏪ Checkpoints
-
-Hermes snapshots files before Mint changes them, so a mistake can be rolled back.
-
-```yaml
-checkpoints:
-  enabled: true
-```
-
 ### 🎙️ Voice
 
 OpenAI transcribes voice notes and speaks Mint's replies in Cedar. GPT-Live also uses Cedar for live conversations, while `hey mint` is the wake phrase on supported clients; Telegram and Discord use voice notes and spoken replies rather than GPT-Live or wake-word sessions.

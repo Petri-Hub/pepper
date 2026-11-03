@@ -22,14 +22,62 @@ model:
   default: deepseek-flash
 ```
 
+### 🤔 Reasoning
+
+Medium effort. DeepSeek Flash thinks at one of four levels, and the middle one is enough to plan a change or read unfamiliar code without making every chat reply slow and expensive.
+
+```yaml
+agent:
+  reasoning_effort: medium
+```
+
+### 🔁 Turn limit
+
+A single message can take Lemon at most 500 steps, like tool calls and searches, before he stops. Hermes has no limit by default, and a cap keeps a task that went wrong from quietly burning through the credits.
+
+```yaml
+agent:
+  max_turns: 500
+```
+
+### 🕒 Timezone
+
+São Paulo time, so anything scheduled for the group fires at the hour Petri means, not in UTC.
+
+```yaml
+timezone: America/Sao_Paulo
+```
+
+### 💭 Replies
+
+For now his thinking stays on screen, so the group can see how he reads a request; Hermes hides it on Discord by default. The commands he runs are not shortened either: the default cuts each one to a 40-character line, and `verbose` sends the whole command in a code block instead.
+
+```yaml
+display:
+  show_reasoning: true
+  tool_progress: verbose
+```
+
+### ⏰ Scheduled replies
+
+His scheduled replies arrive as he wrote them, without Hermes adding a cron title, job ID, separator or footer on any platform.
+
+```yaml
+cron:
+  wrap_response: false
+```
+
 ### 📡 Messaging
 
 Lemon has his own Discord bot. The bot token and the 18 invited users' numeric IDs live in his profile's `.env`, so only those people can talk to him.
+
+He is also allowed to say when the gateway is going offline or is back. A chat where a task is running gets the warning; his home channel is the same Discord channel as Pepper's, which is where a default Discord delivery lands. The switch is Hermes' default, recorded because Mint turns his off.
 
 ```yaml
 platforms:
   discord:
     enabled: true
+    gateway_restart_notification: true
 ```
 
 ### 🧰 Tools
@@ -40,6 +88,8 @@ Lemon can research, analyze images, keep task lists, remember, ask for clarifica
 platform_toolsets:
   discord: [web, vision, todo, memory, clarify, roblox-assets, terminal, file]
 ```
+
+The list is explicit, so a toolset Hermes adds later does not reach him on its own. It also leaves out Hermes' code execution tool, `execute_code`, which would let him script several tool calls in one turn; he calls tools one at a time.
 
 The file tools matter more than they look. Hermes runs every one of them as a shell command through the active terminal backend, so they reach his sandbox over SSH and edit the game's files there, never the container Hermes runs in. Without them he has only a shell, and reading a file or changing three lines means `cat` and a heredoc.
 
@@ -60,9 +110,7 @@ terminal:
 
 The private key lives in his profile directory, never in this repository, and the public half sits in the lab's `authorized_keys`. The workspace and the container's SSH host key are on the lab's persistent storage, and the lab backs both up every six hours.
 
-The image carries what his day-to-day work needs beyond a shell: `gh`, which spends the installation token described below, `ripgrep` for searching the game's code, `jq` for API output, and `zrok2` for sharing a Rojo server when that connection is set up. The Roblox toolchain is not baked in — each project pins its own versions in `rokit.toml` and `rokit install` fetches them — so replacing the container costs a `rokit install`, not the toolchain's version choice.
-
-zrok is not enabled yet. The lab still needs persistent storage for `/home/lemon/.zrok2`, separate from the backed-up workspace, before Petri enables Lemon's environment once with the account token from 1Password. The image has neither that token nor an enabled environment.
+The image carries what his day-to-day work needs beyond a shell: `gh`, which spends the installation token described below, `ripgrep` for searching the game's code, and `jq` for API output. The Roblox toolchain is not baked in — each project pins its own versions in `rokit.toml` and `rokit install` fetches them — so replacing the container costs a `rokit install`, not the toolchain's version choice.
 
 The game's regression tests need an Open Cloud key. The lab keeps it in the sandbox's ignored `.env` and passes it to the container as `JEST_ROBLOX_*`, the names the project's Makefile already exports, so no checkout holds a copy of it and nothing is committed by accident.
 
@@ -131,7 +179,7 @@ The lab's separate `wakapi-lemon` reporter reads Lemon's Hermes profile and send
 
 ## 🚧 Not connected yet
 
-zrok · Tripwire MCP. Lemon knows these connections are not available yet.
+Tripwire MCP. Lemon knows this connection is not available yet.
 
 ## References
 
