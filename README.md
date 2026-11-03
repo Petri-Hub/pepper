@@ -193,11 +193,15 @@ No activity tracked
 - ✅ Keep the game's repository in his workspace.
 - ✅ Create Lemon's GitHub App for branches and pull requests.
 - ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and raw content capture.
+- ✅ Medium reasoning, a 500-turn cap, São Paulo time and checkpoints.
+- ✅ Thinking and full tool commands visible in Discord.
+- ✅ Cron replies without Hermes wrappers.
+- ✅ Gateway shutdown and restart notices left on.
+- ✅ Home channel set to Pepper's Discord channel.
 
 #### Open
 
 - ⬜ Run each project's checks before opening pull requests.
-- ⬜ Evaluate zrok for sharing Rojo development servers.
 - ⬜ Evaluate Tripwire MCP for Roblox management and permissions.
 - ⬜ Write skills that make Lemon's day-to-day Roblox work faster and easier.
 - ⬜ Write Lemon's Roblox SOUL for non-coders and release boundaries.
