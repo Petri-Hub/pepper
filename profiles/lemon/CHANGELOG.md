@@ -2,6 +2,14 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Turn off Lemon's built-in memory
+
+> *"Let's deactivate both. We're still setting him up."*
+
+Set `memory.memory_enabled` and `memory.user_profile_enabled` to `false` and removed `memory` from his Discord toolsets. Hermes no longer injects his `MEMORY.md` or `USER.md` into new sessions or offers the built-in memory tool. Their private files were kept so Petri can review them later. This does not change Lemon's skills or skill management.
+
+Applied to the live Lemon profile without restarting the shared gateway. The runtime reported both memory flags off and no Discord memory tool; `skills_list`, `skill_view` and `skill_manage` remained available. Both memory files were still present on disk.
+
 ### 2026-11-02 · Curate Lemon's skill index
 
 > *"Keep the creative, research, document and coding skills we selected, including competitor-news-monitor, but remove TDD and the unrelated bundled skills."*
