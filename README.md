@@ -164,7 +164,7 @@ No activity tracked
 - ✅ Separate Hermes profile with his own OpenAI key and fallback model
 - ✅ Telegram and Discord bots, with Cedar for voice notes and live chat
 - ✅ His own Modal workspace and sandbox for shell commands
-- ✅ Medium reasoning, a 500-turn cap, São Paulo time and checkpoints
+- ✅ Medium reasoning, a 500-turn cap and São Paulo time
 - ✅ Notes and reminders stored separately from Pepper's profile
 - ✅ Reasoning, tool progress and busy/steering notices hidden in chat
 - ✅ Cron replies without wrappers, long-run updates or restart notices
@@ -193,7 +193,7 @@ No activity tracked
 - ✅ Keep the game's repository in his workspace.
 - ✅ Create Lemon's GitHub App for branches and pull requests.
 - ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and raw content capture.
-- ✅ Medium reasoning, a 500-turn cap, São Paulo time and checkpoints.
+- ✅ Medium reasoning, a 500-turn cap and São Paulo time.
 - ✅ Thinking and full tool commands visible in Discord.
 - ✅ Cron replies without Hermes wrappers.
 - ✅ Gateway shutdown and restart notices left on.

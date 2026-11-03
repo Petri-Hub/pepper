@@ -67,15 +67,6 @@ cron:
   wrap_response: false
 ```
 
-### ⏪ Checkpoints
-
-Hermes snapshots the files it is about to change, so a mistake can be rolled back. Those snapshots cover the machine Hermes runs in, not the sandbox where his file tools and terminal work over SSH, so `/rollback` has no copy of his workspace yet; it is enabled so it applies if that changes.
-
-```yaml
-checkpoints:
-  enabled: true
-```
-
 ### 📡 Messaging
 
 Lemon has his own Discord bot. The bot token and the 18 invited users' numeric IDs live in his profile's `.env`, so only those people can talk to him.

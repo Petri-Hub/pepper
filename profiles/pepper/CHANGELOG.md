@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Checkpoints out
+
+> *"Remove those checkpoints as they don't make sense."*
+
+Hermes skips its filesystem snapshots when the file tools run through a container backend, and Pepper's terminal is a Modal sandbox, so nothing was ever snapshotted and `/rollback` had nothing to restore. The section and the setting are gone, and the live profile no longer enables checkpoints.
+
 ### 2026-11-01 · Sandbox WakaTime plugin pin
 
 > *I think you can upgrade the compose.yml file pin too.*

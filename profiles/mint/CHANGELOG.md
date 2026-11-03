@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Checkpoints out
+
+> *"Remove those checkpoints as they don't make sense."*
+
+Mint's file tools run in a Modal sandbox, and Hermes skips its filesystem snapshots for container backends, so the setting never took a snapshot. The section and the setting are gone, and the roadmap no longer lists them.
+
 ### 2026-10-31 · A new base prompt
 
 > *He sounds AI-like, his persona was weak, and sometimes he gets overly technical. Rethink his voice completely: I want him to sound more like the old butler, staying in the steward role all the way through, with the costume and the fun. Then delete the old file and replace it with this one.*
