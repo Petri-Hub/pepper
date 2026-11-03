@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-03 · Clean up the profile prose and test claim
+
+> *"He can perform automated tests using OCALE. Tripwire is out of scope for now, not planned. Make a general passthrough through the files."*
+
+Shortened `CONFIG.md` to focus on current choices and added Lemon's OCALE test capability to it and `SOUL.md`. Removed Tripwire from the pending list and README references. Configuration values and the live agent were not changed as part of this documentation PR; the proposed soul must be applied and verified before merge.
+
 ### 2026-11-02 · Turn off Lemon's built-in memory
 
 > *"Let's deactivate both. We're still setting him up."*

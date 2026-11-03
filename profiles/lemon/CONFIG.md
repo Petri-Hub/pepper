@@ -1,6 +1,6 @@
 # 🍋 Lemon
 
-> Lemon is a Discord agent being prepared for collaboration on a Roblox game. He speaks plainly with the invited group, can research and plan with Hermes' general tools, and codes in his own workspace over SSH. DeepSeek powers his replies; the Roblox connections and fuller personality will come later.
+> Lemon helps a Discord group build a Roblox game. He speaks plainly with coders and non-coders, researches ideas and assets, and works on the game's code in his own SSH workspace. DeepSeek powers his replies; Petri decides when changes merge or the game is published.
 
 ## 💬 Platforms
 
@@ -14,7 +14,7 @@
 
 ### 🧠 Model
 
-DeepSeek Flash gives Lemon an inexpensive starting point for Discord conversation while his development workflow is still being designed. His own API key lives in his profile's `.env`.
+DeepSeek Flash keeps Lemon's Discord conversations and coding help inexpensive. His API key stays in his private profile.
 
 ```yaml
 model:
@@ -24,7 +24,7 @@ model:
 
 ### 🤔 Reasoning
 
-Medium effort. DeepSeek Flash thinks at one of four levels, and the middle one is enough to plan a change or read unfamiliar code without making every chat reply slow and expensive.
+Medium effort helps Lemon plan changes and read unfamiliar code without slowing every reply.
 
 ```yaml
 agent:
@@ -33,7 +33,7 @@ agent:
 
 ### 🔁 Turn limit
 
-A single message can take Lemon at most 500 steps, like tool calls and searches, before he stops. Hermes has no limit by default, and a cap keeps a task that went wrong from quietly burning through the credits.
+The 500-step cap stops a runaway task from consuming credits indefinitely.
 
 ```yaml
 agent:
@@ -42,7 +42,7 @@ agent:
 
 ### 🔒 Conversation search
 
-Hermes' `session_search` can read conversations from another profile, so it is disabled across Lemon's chats and scheduled runs to keep the agents' histories separate. His Discord list already omitted it, but scheduled runs otherwise inherited it from Hermes' defaults.
+Hermes' `session_search` can read another profile's conversations, so Lemon disables it across chats and scheduled runs.
 
 ```yaml
 agent:
@@ -51,7 +51,7 @@ agent:
 
 ### 🧠 Built-in memory
 
-Lemon's built-in agent notes and user profile are off while his role is still taking shape. Hermes does not inject `MEMORY.md` or `USER.md` into new sessions or expose the built-in memory tool when both switches are off. The existing files stay in his private profile so they can be reviewed or restored later. Skills remain available for reusable workflows.
+Lemon's built-in agent notes and user profile are off while his role takes shape. New sessions omit both memory blocks and the built-in memory tool; the private files remain available for later review. His skills remain enabled.
 
 ```yaml
 memory:
@@ -69,7 +69,7 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-For now his thinking stays on screen, so the group can see how he reads a request; Hermes hides it on Discord by default. Verbose tool progress shows full terminal commands, and Discord's usual 40-character preview would still cut `execute_code` arguments. Removing that preview cap on Discord lets the group see the code he runs; Discord splits messages that exceed its own length limit.
+Lemon shows reasoning and verbose tool progress in Discord so the group can see how he approaches a request. The preview cap is removed to show full `execute_code` arguments, subject to Discord's message limit.
 
 ```yaml
 display:
@@ -91,9 +91,7 @@ cron:
 
 ### 📡 Messaging
 
-Lemon has his own Discord bot. The bot token and the 18 invited users' numeric IDs live in his profile's `.env`, so only those people can talk to him.
-
-He is also allowed to say when the gateway is going offline or is back. A chat where a task is running gets the warning; his home channel is the same Discord channel as Pepper's, which is where a default Discord delivery lands. The switch is Hermes' default, recorded because Mint turns his off.
+Lemon's Discord bot accepts messages from an 18-person allowlist, with IDs and token in his private `.env`. Gateway restart notices remain on; his home channel is Pepper's Discord channel, though this Hermes version sends home-channel notices only for the default profile.
 
 ```yaml
 platforms:
@@ -104,9 +102,7 @@ platforms:
 
 ### 🧰 Tools
 
-Lemon can research, analyze images, keep task lists, ask for clarification, use Roblox Assets MCP, run commands in his own workspace and read, write, patch and search files directly on Discord. He can also load and manage skills, including his GitHub App workflow, and use `execute_code` to script repeated web, file and terminal calls in his SSH sandbox. That tool does not call Roblox Assets MCP. The list is explicit, so a toolset Hermes adds later does not reach him on its own.
-
-The file tools run as shell commands through the active terminal backend, so they edit the game's files in his SSH sandbox rather than inside Hermes' container.
+Lemon's Discord tools cover research, image analysis, tasks, Roblox assets, terminal and file access, code execution, and skill management. Terminal and file tools work in his SSH sandbox. `execute_code` can script repeated web, file and terminal calls, but cannot call Roblox Assets MCP.
 
 ```yaml
 platform_toolsets:
@@ -115,7 +111,7 @@ platform_toolsets:
 
 ### 📚 Skills
 
-Lemon keeps skills for game development, research, creative work, shared media and common documents. His local `github-app-auth` and `code-execution-sandbox` skills stay available. The other installed skills below are disabled across his profile, so they do not appear in his skill index or load when a task only loosely matches them. Disabling a skill does not remove it from disk. New skills are enabled by default unless Lemon disables them later.
+Lemon keeps skills for game development, research, creative work, media and documents, including his local GitHub App and code execution workflows. The listed skills are hidden from his prompt but remain installed; new skills are enabled unless explicitly disabled.
 
 ```yaml
 skills:
@@ -155,7 +151,9 @@ skills:
 
 ### 🖥️ Workspace
 
-His commands run in a container of their own in the lab, not in the one Hermes shares with every profile. The lab starts his image as `lemon-sandbox` on the Docker network, publishing no port, and Hermes reaches it over SSH with a key that belongs to him. Commands start in `/home/lemon/workspace`, where the game's repository is checked out; only the `lemon` user can log in, and only with that key.
+Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries `gh`, `ripgrep`, `jq` and Rokit; the project pins its Roblox tools separately.
+
+The workspace can run the game's automated tests through OCALE, alongside formatting, linting and build checks.
 
 ```yaml
 terminal:
@@ -168,19 +166,9 @@ terminal:
     - github-app.pem
 ```
 
-The private key lives in his profile directory, never in this repository, and the public half sits in the lab's `authorized_keys`. The workspace and the container's SSH host key are on the lab's persistent storage, and the lab backs both up every six hours.
-
-The image carries what his day-to-day work needs beyond a shell: `gh`, which spends the installation token described below, `ripgrep` for searching the game's code, and `jq` for API output. The Roblox toolchain is not baked in — each project pins its own versions in `rokit.toml` and `rokit install` fetches them — so replacing the container costs a `rokit install`, not the toolchain's version choice.
-
-The game's regression tests need an Open Cloud key. The lab keeps it in the sandbox's ignored `.env` and passes it to the container as `JEST_ROBLOX_*`, the names the project's Makefile already exports, so no checkout holds a copy of it and nothing is committed by accident.
-
-An SSH session does not inherit the container's environment: sshd builds a fresh one and PAM reads only `/etc/environment`. The entrypoint therefore writes the three variables there before starting sshd, so a login sees the same key a Docker command does.
-
 ### 🐙 GitHub App
 
-Lemon works on GitHub as himself, through an App installed on the single repository that matters: the game. His branches, commits and pull requests show up as his bot instead of Petri's account, and the narrow installation means the rest of the account is unreachable with his identity.
-
-There is no personal token and nothing to keep signed in. For each task he mints one token from his own key, lasting about an hour and limited to the permissions that task needs. The key is mounted read-only from the lab's `secrets/` into his profile home, so it never reaches the data volume or the backups, and Hermes carries it into his sandbox where `git push` runs.
+Lemon uses a GitHub App installed only on the game repository. Its short-lived tokens let him create branches and pull requests under his bot identity. The private key is mounted read-only from the lab and copied into his sandbox for Git operations. He opens pull requests against `staging`; Petri decides when they merge.
 
 ```text
 App ID         5568797
@@ -188,9 +176,7 @@ Installation   177566137
 Key            secrets/lemon-github-app.pem → /opt/data/profiles/lemon/github-app.pem (read-only)
 ```
 
-Those identifiers live in the `github-app-auth` skill in his profile, which is what actually mints a token, not in his `.env` — nothing else reads them. The skill stays on the live agent because it changes with the workflow, not with this repository. It signs its JWT with `openssl`, because his sandbox image has neither PyJWT nor the `cryptography` package.
-
-The repository's default branch is `staging`, and every change he makes is a branch and a pull request against it. Merging stays Petri's call.
+The `github-app-auth` skill holds these identifiers and mints the tokens. Hermes manages the skill outside this repository.
 
 ### 🔌 MCP servers
 
@@ -211,11 +197,7 @@ mcp_servers:
 
 ### 🧱 Plugins
 
-Lemon uses Hermes' bundled `observability/langfuse` plugin to record turns, model calls and tool calls in the shared Hermes project in Langfuse Cloud's US region. The live Hermes version bundles it; a future update migrates enabled profiles to the official catalog plugin named `langfuse`. Its Python SDK is installed in Hermes' durable package target at version 4.x, and the bundled plugin is enabled only for Lemon with `hermes -p lemon plugins enable observability/langfuse`.
-
-Lemon's own project API key has **Ingestion** permission and lives in `/opt/data/profiles/lemon/.env`; future agents can join the same project with separate keys and per-profile installations. Traces carry profile metadata for filtering. End-user attribution stays off.
-
-The plugin reads capture settings from the shared gateway process, so the [lab Compose service](https://github.com/Petri-Hub/lab/blob/main/services/apps/hermes/compose.yml) sets `HERMES_LANGFUSE_CAPTURE=full`, `HERMES_LANGFUSE_MAX_CHARS=100000` and `HERMES_LANGFUSE_MAX_DEPTH=10`. This exports raw prompts, replies and tool payloads, including any credentials they contain, and applies to any future profile that enables the plugin in this gateway. Long fields can still be truncated, collections stop at 50 items, and `read_file` results keep a head-and-tail preview rather than the entire file.
+Hermes' `observability/langfuse` plugin records Lemon's turns, model calls and tools in a shared Langfuse project. His own Ingestion key stays in his private profile, traces carry profile metadata, and end-user attribution is off. The lab configures full capture for the gateway, including raw prompts, replies and tool payloads; any profile enabling the plugin shares that capture setting.
 
 | Plugin | What it gives the agent | Link |
 |---|---|---|
@@ -235,11 +217,7 @@ HERMES_LANGFUSE_BASE_URL=https://us.cloud.langfuse.com
 
 ### ⏱️ Wakapi
 
-The lab's separate `wakapi-lemon` reporter reads Lemon's Hermes profile and sends activity to his own Wakapi user every five minutes. Its API key and sync state stay in the lab, separate from Pepper's and Mint's.
-
-## 🚧 Not connected yet
-
-Tripwire MCP. Lemon knows this connection is not available yet.
+The lab's `wakapi-lemon` reporter sends Lemon's activity to his own Wakapi user every five minutes, separate from Pepper's and Mint's stats.
 
 ## References
 

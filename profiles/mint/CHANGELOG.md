@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-03 · Clean up the profile prose
+
+> *"The CONFIG.md files accumulated a lot of information. Make a general passthrough through the files."*
+
+Shortened Mint's `CONFIG.md` explanations to the current choice and reason. Setup and incident details remain in older changelog entries or the lab repository. Configuration values and the live profile were not changed.
+
 ### 2026-11-02 · Keep conversation histories separate
 
 > *"Remove session search from the agents, but keep skills and skill management available."*
