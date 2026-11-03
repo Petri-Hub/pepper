@@ -194,7 +194,8 @@ No activity tracked
 - ✅ Publish Lemon's development image to GHCR on merge.
 - ✅ Run his image as a persistent container in the lab.
 - ✅ Connect his terminal to that container over SSH.
-- ✅ Skills and code execution available in Discord.
+- ✅ Skills and skill management available in Discord.
+- ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.
 - ✅ Keep the game's repository in his workspace.
 - ✅ Create Lemon's GitHub App for branches and pull requests.
