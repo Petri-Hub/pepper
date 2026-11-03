@@ -1,6 +1,6 @@
 # 🐦 Pepper
 
-> Petri's general-purpose assistant, who works as a coordinator with hands: she does small things herself and hands large coding work to Claude Code. She talks like one more friend from his group, casual and quick in Portuguese and plain when something is serious, and answers in whatever language she's spoken to. She lives on Telegram, Discord and voice, runs reminders, opens pull requests across Petri-Hub as her own GitHub App, and works his Gmail, Calendar and Drive. She never buys anything, and nothing goes out under his name before he has seen it. With anyone who isn't Petri, his money, documents, inbox and private repos stay off limits.
+> Petri's general-purpose assistant for reminders, research, coding and everyday tasks. She talks casually with his group in their language, and plainly when something is serious. She works through Telegram, Discord and voice, with her own GitHub App and access to his Google Workspace. She never buys anything or sends something under his name without his review, and keeps his private accounts and documents away from everyone else.
 
 ## 💬 Platforms
 
@@ -15,9 +15,7 @@
 
 ### 🧠 Model
 
-OpenAI, because it's the easiest to set up and it runs on prepaid credits: when they run out, Pepper stops, so there's no pay-as-you-go bill that can grow without limit. GPT-6 Luna is a good mid-tier model for almost everything she does, and it gets replaced whenever a better one comes out — which is exactly what happened to GPT-5.6 Luna, beaten by its own successor on both score and price.
-
-GPT-5.6 Luna sits behind it as a fallback — not for quality, but because a new model gets a smaller hourly allowance until it earns a bigger one, and Luna runs out sooner than everything else on the account.
+OpenAI's prepaid credits put a limit on model spending. GPT-6 Luna handles everyday work; GPT-5.6 Luna is the fallback when the primary model is unavailable.
 
 ```yaml
 model:
@@ -43,7 +41,7 @@ agent:
 
 ### 🔁 Turn limit
 
-A single message can take Pepper at most 500 steps, like tool calls and searches, before she stops. Hermes has no limit by default, and a cap keeps a task that went wrong from quietly burning through the credits.
+The 500-step cap stops a task that runs away from consuming credits indefinitely.
 
 ```yaml
 agent:
@@ -89,7 +87,7 @@ cron:
 
 ### 🎙️ Voice
 
-Everything voice goes through OpenAI, with the same key as the model, good quality and a fair price. Voice notes on Telegram and Discord are transcribed before Pepper reads them, and when she answers out loud, OpenAI speaks for her, in the *marin* voice. *Cedar* and, before it, Hermes' default *alloy* didn't sound like her, so one voice was picked for both ways she talks: *marin* exists in OpenAI's text-to-speech and in GPT-Live, the model behind her live conversations. In Hermes' CLI, TUI and desktop app she can also hold those live conversations, listening while she talks, and saying *hey pepper* opens a fresh voice session without touching anything. Those last two don't work on Telegram or Discord. The phrase is listened for by *sherpa*, because it takes any phrase as plain text, and the default engine, openWakeWord, can't be installed in the container's Python. The lab has no microphone, so the desktop app streams its own to the lab and the listening happens there; the app has to be open for it to work. Her live voice is Hermes' own default for that mode, so the YAML leaves it out.
+OpenAI transcribes voice notes on Telegram and Discord and speaks Pepper's replies in *marin*, the voice Petri chose for both spoken replies and live conversations. GPT-Live and the *hey pepper* wake phrase work in supported CLI, TUI and desktop sessions, not in Telegram or Discord chats. Sherpa recognizes that phrase because it accepts custom text; the desktop app supplies the microphone when Hermes runs in the lab.
 
 ```yaml
 stt:
@@ -133,9 +131,7 @@ GITHUB_APP_PRIVATE_KEY_PATH=/opt/data/github-app.pem
 
 ### 📬 Google Workspace
 
-Pepper reads and writes Petri's Gmail, Calendar and Drive, and reaches Contacts, Sheets and Docs along the way. Hermes has no toolset for any of it — it ships a skill she drives herself — so nothing is enabled here and nothing is mapped by the lab. What makes it work is an OAuth client of Petri's own and a token beside her other files, profile-scoped so a second agent signs in as itself.
-
-The OAuth consent screen is In production so its refresh token no longer has the Testing mode's seven-day expiry. Google can still revoke a token, and a new sign-in must be done in her own container because a token written inside a sandbox is lost with it. Her refresh token is copied into every sandbox, so it must stay private. The skill requests all of its scopes at once; the consent screen is where Petri chooses which to grant. What she may send, attach and share lives in [SOUL.md](SOUL.md#constraints--guidelines).
+The Google Workspace skill gives Pepper Gmail, Calendar, Drive, Contacts, Sheets and Docs through Petri's own OAuth grant. Its client and renewable token live in her private profile and are copied into her sandbox. The consent screen is In production, and her [SOUL.md](SOUL.md#constraints--guidelines) limits what she may send or share.
 
 ```bash
 /opt/data/google_client_secret.json   # the OAuth client, downloaded from Google Cloud
@@ -144,9 +140,7 @@ The OAuth consent screen is In production so its refresh token no longer has the
 
 ### 🎵 Spotify
 
-Pepper can play, pause, queue and search music, and read and edit playlists and the library, through Hermes' own Spotify tools. They run on a Spotify developer app of Petri's, signed in once with his account, and they only work with a Premium account and a device that is open, like his phone. They are on for Telegram, Discord and her scheduled runs, and off everywhere else. Her scheduled runs matter because the morning report checks that Spotify is connected, and Hermes leaves Spotify out of a cron run unless it is asked for by name. The report only needs to list devices, but the toolset also plays and queues, and that run reads email and GitHub text, so the report should touch nothing else.
-
-Turning the toolset on made Hermes write out the full tool list for those platforms instead of the `hermes-telegram` and `hermes-discord` bundles, so a tool Hermes adds later will not reach them on its own. The cron list is her current cron tools plus `spotify`, checked beforehand so that Notion, Miro, Sentry, Vercel and Canva stayed in.
+Hermes' Spotify tools let Pepper control playback and manage Petri's playlists and library when a Premium account and active device are available. Spotify is enabled in Telegram, Discord and scheduled runs because her morning report checks the connection. These explicit lists also freeze the other toolsets available on each platform.
 
 ```yaml
 platform_toolsets:
@@ -155,17 +149,9 @@ platform_toolsets:
   cron:     [browser, clarify, code_execution, …, spotify, …]
 ```
 
-The app's redirect URI is `http://127.0.0.1:43827/spotify/callback`, and its token is renewed by Hermes itself. The Client ID is saved with that token in her data folder, so there is no variable for it.
-
 ### 📦 Modal
 
-Her shell commands run in a disposable Modal sandbox rather than inside her own container, so a build that goes wrong burns a cloud VM instead of the laptop the lab runs on. Hermes itself does not move: only the terminal does. Modal's free tier stops rather than bills when it runs out, which is the same reason OpenAI was picked.
-
-Her credentials and skills travel into each sandbox and nothing she writes there comes back, so anything worth keeping goes to a repository or a message before the command ends. The token pair is profile-scoped, so a second agent brings its own Modal account.
-
-The sandbox runs [her own image](sandbox/), built from this repository and public because Modal pulls it without credentials. It carries the libraries her skills need, the tools to render video, and Claude Code, Codex and OpenCode, so she can hand coding work to an agent signed in as Petri instead of spending her own tokens. Their work reports to Wakapi under her own user, as machine `pepper`, so it never counts in Petri's stats, and to ai-memory. Claude Code is the one signed in today; Codex and OpenCode are installed without a login.
-
-The image holds no secrets. Each one is a file in her data folder, which Hermes copies into every sandbox. The GitHub key and the Google files are listed here too: the skills ask for them, but only this list gets them there reliably.
+Pepper runs shell and file work in a disposable Modal sandbox, isolated from the lab host and paid for by her own Modal account. Her [public image](sandbox/) supplies tools and libraries; Hermes copies only the listed private credential files into it. Work she wants to keep must reach a repository or chat before the sandbox ends. The lab applies Hermes patches for sandbox file delivery and file-tool routing.
 
 ```yaml
 terminal:
@@ -188,27 +174,9 @@ MODAL_TOKEN_ID=…
 MODAL_TOKEN_SECRET=…
 ```
 
-```
-/opt/data/sandbox/credentials/claude-code-oauth-token   # from claude setup-token, valid for a year
-/opt/data/sandbox/credentials/wakapi-url                # https://lab-wakapi.petri.zip/api
-/opt/data/sandbox/credentials/wakapi-api-key            # her own Wakapi user's key, so her time stays out of his stats
-/opt/data/sandbox/credentials/ai-memory-url             # https://lab-ai-memory.petri.zip
-/opt/data/sandbox/credentials/ai-memory-auth-token      # the lab's ai-memory token
-```
-
-### 🩹 Patches to Hermes
-
-Two faults in Hermes' own code stopped her sandbox from working properly: a file she made there never reached the chat, and her file tools hung until they timed out. Each has a patch, kept on her data folder in `patches/`, and the lab runs a boot script that applies them every time the container starts. The image is `:latest`, so without the script a rebuild would bring both faults back; a patch that no longer fits a newer Hermes is skipped and named in the boot log, never forced.
-
-```yaml
-# the lab's compose, in the hermes service
-volumes:
-  - ./configuration/03-apply-patches:/etc/cont-init.d/03-apply-patches:ro
-```
-
 ### ✍️ File tools
 
-Her file tools write into the Modal sandbox, not into her container, so Hermes' guard that limits them to `/opt/data` was checking the wrong filesystem and only denied her own scratch folders. It is switched off, and the credential and session files stay protected on their own. Their content travels inside one command, so a file over roughly 64 KB fails, and her personality tells her to build a big one in the terminal.
+File tools write in Modal, so the lab clears Hermes' container-local safe root for this backend. Pepper's [SOUL.md](SOUL.md#limitations) tells her to use terminal commands for files too large for a single file-tool call.
 
 ```yaml
 # the lab's compose, in the hermes service
@@ -218,9 +186,7 @@ environment:
 
 ### 🔌 MCP servers
 
-Notion, Vercel, Sentry, Canva and Miro are each the vendor's own hosted server. Every one is authorized as Petri in the browser, so each vendor's consent screen is where he chooses what it may see, and none needed an app of his own. FAM is Petri's own read-only server, published on PyPI and run locally with `uvx`; its portal credentials live in Pepper's `.env`, and the MCP entry forwards them without storing their values in `config.yaml`.
-
-Vercel is the one to be careful with: it can spend his money and read production secrets. Nothing is turned off here, because the restraint belongs in her personality — [SOUL.md](SOUL.md#constraints--guidelines) forbids the purchases outright.
+Notion, Vercel, Sentry, Canva and Miro use their hosted MCP servers and Petri's separate OAuth grants. FAM is his read-only portal server, with credentials kept in Pepper's private `.env`. Vercel can affect production and spending, so [SOUL.md](SOUL.md#constraints--guidelines) restricts what she may do with it.
 
 | Server | What it gives the agent | Link |
 |---|---|---|
@@ -271,9 +237,7 @@ mcp_servers:
 
 ### 🧱 Plugins
 
-ai-memory is her long-term memory, the same wiki Claude Code writes to on every machine Petri codes on, so she remembers what was decided in any repository and not only what was said to her. Before each reply she searches it and gets the top matches in context, and each conversation is sent back to it when it ends. The search covers the whole wiki, work projects included, and that was a deliberate choice. It runs in every conversation, his friends' included, and [SOUL.md](SOUL.md)'s list of what is his alone doesn't name ai-memory yet.
-
-She reaches it on the lab's internal network rather than its public address. It's a community plugin with no license, pinned to the commit that was read before installing it.
+ai-memory is Pepper's long-term wiki. The community plugin recalls context before replies and sends her turns and session endings back to the lab server. Its search covers every project, including private work, even when friends talk to her; this access choice needs separate review if that boundary changes.
 
 | Plugin | What it gives the agent | Link |
 |---|---|---|
@@ -294,16 +258,6 @@ memory:
 
 ```bash
 AI_MEMORY_AUTH_TOKEN=…
-```
-
-She also has five official skills from Hermes' catalog, installed on purpose and not made from chat: `excalidraw` for hand-drawn diagrams, `pixel-art` for retro art, `pr-lens` for animated diagrams of code changes, and `hyperframes` and `brag` for videos. The two video skills need Node, FFmpeg and a headless Chrome, which her sandbox image carries.
-
-```bash
-hermes skills install official/creative/excalidraw
-hermes skills install official/creative/pixel-art
-hermes skills install official/software-development/pr-lens
-hermes skills install official/creative/hyperframes
-hermes skills install official/creative/brag
 ```
 
 ## References

@@ -6,6 +6,10 @@
 
 Start with the relevant profile and the root README. Keep the profile documents and README aligned when a change affects more than one of them. Use this repository as the starting point for configuration work. Check the live agent when the task depends on its current state, a deployment result or a suspected mismatch; a routine documentation change does not need a live comparison.
 
+## Live agent access
+
+Pepper, Mint and Lemon run as Hermes profiles in Petri's homelab. The lab host is reachable over Tailscale SSH, so use that connection to inspect the running agent when live state matters. The [lab repository](https://github.com/Petri-Hub/lab) owns the host and container setup.
+
 ## Pull request workflow
 
 Prepare a configuration PR as the complete proposed state. The profile, environment example, changelog and README should describe the intended working setup together, as though the PR were ready to become the record of that setup. Do not leave an integration in the open roadmap or describe it as a temporary plan solely because the PR is awaiting review, credentials or live deployment. Be clear about any live result that has not been verified yet.

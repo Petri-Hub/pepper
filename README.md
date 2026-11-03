@@ -17,10 +17,10 @@
 ## How it works
 
 <p align="center">
-  <img src="assets/how-it-works.svg" alt="Telegram, Discord and voice reach the Hermes gateway in the lab's hermes container, which hands every message to Pepper or to another profile. Pepper thinks with OpenAI, uses her built-in tools for GitHub, Google and Spotify, reaches Notion, Vercel, Sentry, Canva and Miro over MCP, and runs her shell in a Modal sandbox with Claude Code. Beside her in the lab, AI Memory keeps the wiki she shares with Claude Code and Wakapi tracks her time. The lab repo runs the container, and this repo describes every profile." />
+  <img src="assets/how-it-works.svg" alt="Telegram, Discord and voice reach the Hermes gateway in the lab's hermes container, which routes messages to Pepper or another profile. Pepper thinks with OpenAI, uses tools for GitHub, Google and Spotify, reaches Notion, Vercel, Sentry, Canva and Miro over MCP, and runs her shell in a Modal sandbox. AI Memory keeps long-term context and Wakapi tracks agent activity. The lab runs the container; this repo describes the profiles." />
 </p>
 
-Every message, from Telegram, Discord or voice, goes through the Hermes gateway to Pepper, who thinks with OpenAI. She works through her built-in tools and her MCP servers, runs her shell in a Modal sandbox where she hands big coding jobs to Claude Code, and remembers through the AI Memory wiki beside her in the lab. The lab repository keeps the container running, and this one describes who each profile is.
+Messages from Telegram, Discord and voice reach Pepper through the Hermes gateway. She uses OpenAI, her own tools and MCP connections, with a Modal sandbox for shell work and AI Memory for long-term context. The lab runs the container; this repository describes the agents.
 
 ## Profiles
 
@@ -28,7 +28,7 @@ Every message, from Telegram, Discord or voice, goes through the Hermes gateway 
 |:---:|---|---|---|---|
 | <img src="profiles/pepper/avatar.png" width="48" height="48" alt="Pepper avatar" /> | [Pepper](profiles/pepper/CONFIG.md) | My general-purpose assistant: reminders, crons, GitHub, research, errands | OpenAI | Telegram · Discord · voice |
 | <img src="profiles/mint/avatar.png" width="48" height="48" alt="Mint avatar" /> | [Mint](profiles/mint/CONFIG.md) | Bárbara's personal assistant for everyday help and design work | OpenAI | Telegram · Discord · voice |
-| <img src="profiles/lemon/avatar.png" width="48" height="48" alt="Lemon avatar" /> | [Lemon](profiles/lemon/CONFIG.md) | Discord companion for a collaborative Roblox game, starting with conversation | DeepSeek | Discord |
+| <img src="profiles/lemon/avatar.png" width="48" height="48" alt="Lemon avatar" /> | [Lemon](profiles/lemon/CONFIG.md) | Discord collaborator for a Roblox game, with his own development workspace | DeepSeek | Discord |
 
 ## Philosophy
 
@@ -145,10 +145,9 @@ No activity tracked
 - ✅ Read-only FAM MCP and website skills for inbox and assignments
 - ✅ Crons and reminders delivered through Telegram or Discord
 - ✅ A Modal sandbox with her own image, tools and Python libraries
-- ✅ Claude Code in that sandbox for larger coding tasks she delegates
 - ✅ GitHub and Google access inside the sandbox when she needs them
 - ✅ Sandbox files delivered to chat and retained after rebuilds
-- ✅ AI Memory as the wiki she shares with Claude Code across machines
+- ✅ AI Memory for long-term context across her conversations
 - ✅ Skills and skill management available in chat and scheduled work
 - ✅ Hermes session search disabled across her profile
 - ✅ Her own Wakapi account for agent heartbeats and coding activity
@@ -237,8 +236,7 @@ No activity tracked
 - [lab](https://github.com/Petri-Hub/lab): the homelab that hosts her
 - [Wakapi](https://wakapi.dev): the self-hosted time tracker where each agent reports activity
 - [waka-readme](https://github.com/athul/waka-readme): the action that updates the three time tracking sections from Wakapi's stats
-- [ai-memory](https://github.com/akitaonrails/ai-memory): the memory server she shares with Claude Code, through the [community Hermes plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin)
-- [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe): the game Lemon will help build
+- [ai-memory](https://github.com/akitaonrails/ai-memory): long-term context for Pepper through the [community Hermes plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin)
+- [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe): the game Lemon helps build
 - [Luau LSP](https://github.com/JohnnyMorganz/luau-lsp): type analysis to evaluate for Lemon's game workflow
 - [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp): Creator Store search and asset delivery
-- [Tripwire MCP](https://github.com/aliboIly/Tripwire): Roblox platform management to evaluate for Lemon

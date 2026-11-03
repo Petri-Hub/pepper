@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-03 · Clean up the profile prose
+
+> *"I'm not using any coding agent with Pepper. Make a general passthrough through the files so we can open a new PR."*
+
+Shortened `CONFIG.md` to focus on current settings and their reasons, leaving operational history here and lab details in the lab repository. Pepper's `SOUL.md`, the README and its diagram no longer say she delegates coding to Claude Code or shares AI Memory with it. Her coding instructions now describe work with her own tools and Modal sandbox. The configuration values and live agent were not changed as part of this documentation PR; the proposed soul must be applied and verified before merge.
+
 ### 2026-11-02 · Keep conversation histories separate
 
 > *"Remove session search from the agents, but keep skills and skill management available."*

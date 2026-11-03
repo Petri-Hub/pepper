@@ -15,7 +15,7 @@
 
 ### 🧠 Model
 
-OpenAI with GPT-6 Luna, the same starting model as Pepper. GPT-5.6 Luna is the fallback when the main model is unavailable; Mint uses his own API key for both.
+GPT-6 Luna handles Mint's everyday questions and tasks, with GPT-5.6 Luna as a fallback. Both use his own OpenAI key.
 
 ```yaml
 model:
@@ -31,7 +31,7 @@ fallback_model:
 
 ### 🤔 Reasoning
 
-Medium effort, matching Pepper's starting point for everyday questions and tasks.
+Medium effort gives Mint room to reason through a task without slowing simple replies too much.
 
 ```yaml
 agent:
@@ -49,7 +49,7 @@ agent:
 
 ### 🔒 Conversation search
 
-Hermes' `session_search` can read conversations from another profile, so it is disabled across Mint's chats and scheduled runs to keep the agents' histories separate. His default toolsets still include skills and skill management.
+Hermes' `session_search` can read another profile's conversations, so Mint disables it across chats and scheduled runs. Skills and skill management remain available.
 
 ```yaml
 agent:
@@ -66,7 +66,7 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-Mint streams replies and can react to a message when a full reply is unnecessary. His reasoning, tool progress bubbles and long-running status updates stay out of every chat. Messages sent while he is busy still reach him, but he sends no busy acknowledgment; Pepper continues to acknowledge hers. The installed Hermes version otherwise reads `busy_ack_enabled` as a process-wide setting, so the lab reapplies a profile-aware patch at `/opt/data/patches/hermes-mint-busy-ack.patch` on container boot. After a Hermes update, check whether it handles this setting per profile before retiring or rebuilding the patch.
+Mint streams replies and can react without sending a full message. He hides reasoning, tool progress and long-running status updates, and sends no acknowledgment when busy. A lab patch makes the busy setting profile-specific in this Hermes version.
 
 ```yaml
 display:
@@ -90,7 +90,7 @@ cron:
 
 ### 🎙️ Voice
 
-OpenAI transcribes voice notes and speaks Mint's replies in Cedar. GPT-Live also uses Cedar for live conversations, while `hey mint` is the wake phrase on supported clients; Telegram and Discord use voice notes and spoken replies rather than GPT-Live or wake-word sessions.
+OpenAI transcribes Mint's voice notes and speaks his replies in Cedar. GPT-Live uses the same voice, and *hey mint* starts a session on supported clients; Telegram and Discord use voice notes instead.
 
 ```yaml
 stt:
@@ -136,9 +136,7 @@ platforms:
 
 ### 🐙 GitHub App
 
-Mint works on GitHub as himself, through an App called *Mint, Bárbara's Bot* that Petri owns and Bárbara installed on her account across all of her repositories. His branches, commits and pull requests appear under the bot's name, so her history stays clear about what she wrote and what he did.
-
-There's no personal token and no login to keep alive: each task mints its own installation token, good for about an hour. The key is a file in his Hermes home, never in this repository or in his image, and Hermes copies it into every sandbox. What he may do with it lives in [SOUL.md](SOUL.md#github): a branch and a pull request, and a merge only when Bárbara asks for that one.
+Mint's GitHub App works on Bárbara's repositories under his bot identity, so his changes are distinct from hers. He mints a short-lived installation token for each task; the private key stays in his Hermes profile and reaches the sandbox only as a credential file. [SOUL.md](SOUL.md#github) defines his branch, pull request and merge boundaries.
 
 ```bash
 GITHUB_APP_ID=…
@@ -148,7 +146,7 @@ GITHUB_APP_PRIVATE_KEY_PATH=/opt/data/profiles/mint/github-app.pem
 
 ### 📬 Google Workspace
 
-Mint uses the same published Google OAuth app as Pepper, but has his own grant from the account chosen during consent. The Google Workspace skill provides Gmail, Calendar, Drive, Contacts, Sheets and Docs; its current version requests eight scopes together, and the token lives in Mint's profile, separate from Pepper's. His local skill copy points terminal commands at `/root/.hermes`, the Modal path; `/opt/data/profiles/mint` exists only in the host container. The app is In production, so its refresh token does not have Testing mode's seven-day expiry, although Google can still revoke it.
+Mint uses the same published Google OAuth client as Pepper, with his own grant and token in his private profile. The Google Workspace skill gives him Gmail, Calendar, Drive, Contacts, Sheets and Docs. The consent screen is In production, so the Testing mode's seven-day refresh-token expiry does not apply.
 
 ```bash
 /opt/data/profiles/mint/google_client_secret.json   # a private copy of the shared OAuth client
@@ -157,9 +155,7 @@ Mint uses the same published Google OAuth app as Pepper, but has his own grant f
 
 ### 🧪 Sandbox
 
-Mint's shell runs in his own Modal account. His public image supplies the Google Workspace and GitHub App libraries, while the client, token and key files are copied only from his profile. The OAuth setup was completed in Mint's container so the durable token survives disposable sandboxes. On this Hermes build, a gateway already running before a credential file exists must be restarted to discover that new file for messaging sessions.
-
-A sandbox restored from a saved snapshot keeps the filesystem it was built with, so a new image only takes effect once the profile's `modal_snapshots.json` no longer points at an older one.
+Mint's shell runs in his own Modal account and public image. Hermes copies only his Google and GitHub credential files into each sandbox, keeping them separate from Pepper's.
 
 ```yaml
 terminal:
@@ -194,7 +190,7 @@ None yet.
 
 ### ⏱️ Wakapi
 
-The lab's separate `wakapi-mint` reporter reads only Mint's Hermes profile and sends his activity to his own Wakapi user every five minutes. Its sync state and API key stay separate from Pepper's; the key lives in the lab's ignored Wakapi environment file.
+The lab's `wakapi-mint` reporter sends Mint's activity to his own Wakapi user every five minutes, separate from Pepper's stats.
 
 ## References
 
