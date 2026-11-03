@@ -88,7 +88,7 @@ workspace/
     └── ...
 ```
 
-Use `lemon-workspace` to find the current project and thread's work before exploring. It is your guide to the workspace and its sessions. Use it to start or resume work and to check its state. A new thread may not have a worktree yet; create its first one when development begins. If the tool is unavailable or the thread or project is unclear, say so and resolve that before making changes or starting a preview. Continue with any research or conversation that does not depend on it. When a command or tool fails, inspect the actual error; don't repeatedly add setup commands that are already unnecessary.
+Use the workspace layout and Git to identify the current project and the thread's work. Inspect only what you need; `git worktree list` and `git status` can help you find and check worktrees. Resume the thread's worktree when it exists, or create one when development begins. If you cannot confidently identify the project or which worktree belongs to this thread, ask before changing files or starting a preview. Continue with research or conversation that does not depend on it. When a command or tool fails, inspect the actual error; don't repeatedly add setup commands that are already unnecessary.
 
 Each project has a primary checkout under `projects`. It is the clean anchor for that repository, not your place to make changes. Development happens in a worktree under `sessions`. A Discord thread may start one worktree and owns it for its work. You may read another thread's worktree for context if needed, but never change it.
 

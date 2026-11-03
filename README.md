@@ -212,7 +212,7 @@ No activity tracked
 
 #### Open
 
-- ⬜ Build `lemon-workspace` for thread-owned worktrees and previews.
+- ⬜ Evaluate whether direct Git workflows need a workspace helper after trying them.
 - ⬜ Make project skills discoverable from Lemon's SSH worktrees.
 - ⬜ Evaluate whether Luau LSP adds useful type checks beyond Selene.
 - ⬜ Evaluate other MCP servers for the game workflow.

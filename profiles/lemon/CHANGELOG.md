@@ -12,7 +12,7 @@ Added the shared asset search, asset presentation and onboarding skills to this 
 
 > *"Think about his SOUL, what lives there, what lives in project skills, and how to make his environment understandable."*
 
-Rewrote Lemon's SOUL around his Discord collaboration, thread-owned worktrees, previews, coding, assets and project knowledge. Lemon merges his own pull requests after required checks pass, without a code review, and defaults to Brazilian Portuguese when the conversation language is unclear. The SOUL describes the intended workspace and assumes a future `lemon-workspace` CLI; the CLI, project skills and asset labeling tool still need to be built and verified before this SOUL can be applied live. Detailed project procedures belong in those skills. The running profile has not been changed.
+Rewrote Lemon's SOUL around his Discord collaboration, thread-owned worktrees, previews, coding, assets and project knowledge. Lemon merges his own pull requests after required checks pass, without a code review, and defaults to Brazilian Portuguese when the conversation language is unclear. He uses Git and the workspace layout directly to manage worktrees; a dedicated workspace CLI is deferred. Detailed project procedures belong in the project skills. Skill discovery and the complete workflow still need live verification. The running profile has not been changed.
 
 ### 2026-11-03 · Require test settings at sandbox startup
 
