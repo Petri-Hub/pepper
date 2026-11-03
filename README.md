@@ -195,6 +195,7 @@ No activity tracked
 - ✅ Run his image as a persistent container in the lab.
 - ✅ Connect his terminal to that container over SSH.
 - ✅ Skills and skill management available in Discord.
+- ✅ Curate his skill index for game development and creative work.
 - ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.
 - ✅ Keep the game's repository in his workspace.
@@ -210,6 +211,7 @@ No activity tracked
 
 - ⬜ Write skills that make Lemon's day-to-day Roblox work faster and easier.
 - ⬜ Write Lemon's Roblox SOUL for non-coders and release boundaries.
+- ⬜ Evaluate whether Luau LSP adds useful type checks beyond Selene.
 - ⬜ Evaluate other MCP servers for the game workflow.
 
 ## References
@@ -236,5 +238,6 @@ No activity tracked
 - [waka-readme](https://github.com/athul/waka-readme): the action that updates the three time tracking sections from Wakapi's stats
 - [ai-memory](https://github.com/akitaonrails/ai-memory): the memory server she shares with Claude Code, through the [community Hermes plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin)
 - [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe): the game Lemon will help build
+- [Luau LSP](https://github.com/JohnnyMorganz/luau-lsp): type analysis to evaluate for Lemon's game workflow
 - [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp): Creator Store search and asset delivery
 - [Tripwire MCP](https://github.com/aliboIly/Tripwire): Roblox platform management to evaluate for Lemon

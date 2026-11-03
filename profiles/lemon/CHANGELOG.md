@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-02 · Curate Lemon's skill index
+
+> *"Keep the creative, research, document and coding skills we selected, including competitor-news-monitor, but remove TDD and the unrelated bundled skills."*
+
+Disabled 31 installed skills across Lemon's profile. His 24 active skills still include the local GitHub App and code execution workflows, plus diagrams, ASCII video, human writing, YouTube content, document formats, maps, code inspection and simplification, debugging, and competitor monitoring. The disabled skills remain installed and can be enabled later. This trims the always-present skill index and avoids loading unrelated procedures for loosely matching requests.
+
 ### 2026-11-02 · Show full code in Discord progress
 
 > *"Code execution works, but the code shown in Discord still looks cut off."*

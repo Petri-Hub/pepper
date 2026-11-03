@@ -103,6 +103,46 @@ platform_toolsets:
   discord: [web, vision, todo, memory, clarify, roblox-assets, terminal, file, code_execution, skills]
 ```
 
+### 📚 Skills
+
+Lemon keeps skills for game development, research, creative work, shared media and common documents. His local `github-app-auth` and `code-execution-sandbox` skills stay available. The other installed skills below are disabled across his profile, so they do not appear in his skill index or load when a task only loosely matches them. Disabling a skill does not remove it from disk. New skills are enabled by default unless Lemon disables them later.
+
+```yaml
+skills:
+  disabled:
+    - airtable
+    - arxiv
+    - baoyu-infographic
+    - box
+    - claude-code
+    - claude-design
+    - codex
+    - computer-use
+    - design-md
+    - document-to-action-items
+    - dogfood
+    - email-inbox-triage
+    - google-workspace
+    - himalaya
+    - inspecting-hermes-desktop-dom
+    - llm-wiki
+    - manim-video
+    - meeting-action-items
+    - node-inspect-debugger
+    - notion
+    - obsidian
+    - opencode
+    - popular-web-designs
+    - product-price-monitor
+    - python-debugpy
+    - requesting-code-review
+    - songsee
+    - teams-meeting-pipeline
+    - test-driven-development
+    - weekly-review-planning
+    - xurl
+```
+
 ### 🖥️ Workspace
 
 His commands run in a container of their own in the lab, not in the one Hermes shares with every profile. The lab starts his image as `lemon-sandbox` on the Docker network, publishing no port, and Hermes reaches it over SSH with a key that belongs to him. Commands start in `/home/lemon/workspace`, where the game's repository is checked out; only the `lemon` user can log in, and only with that key.
