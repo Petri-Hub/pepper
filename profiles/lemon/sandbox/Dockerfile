@@ -20,6 +20,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update && apt-get install --no-install-recommends -y \
         ca-certificates \
         curl \
+        ffmpeg \
         fonts-dejavu-core \
         git \
         jq \
@@ -78,8 +79,8 @@ RUN printf '%s\n' \
 # Entrypoint — prepare the sandbox when the container starts
 COPY --chmod=0755 sandbox/entrypoint.sh /usr/local/bin/lemon-entrypoint
 
-# Asset previews — label thumbnails with their option and asset ID
-COPY --chmod=0755 skills/assets-answering/scripts/label-preview.py /usr/local/bin/lemon-label-preview
+# Asset previews — label thumbnails with their option and name
+COPY --chmod=0755 skills/assets-answering/scripts/gallery.py /usr/local/bin/lemon-asset-gallery
 
 # Runtime — start SSH with the persistent workspace as the working directory
 WORKDIR /home/lemon/workspace

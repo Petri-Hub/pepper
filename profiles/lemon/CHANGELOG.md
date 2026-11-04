@@ -2,6 +2,24 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-03 · Remove the separate audio skill
+
+> *"I think we can delete this skill."*
+
+Removed Lemon's Hermes-managed `roblox-audio-assets` skill and its inspection script. The shared asset skills cover searching and presenting audio, with ffprobe available in the sandbox.
+
+### 2026-11-03 · Send audio previews in Discord
+
+> *"He didn't send me the audio in the chat, and I think ffmpeg was missing from his container."*
+
+Added FFmpeg and ffprobe to the sandbox image and installed them in the running sandbox without a restart. The asset presentation skill now explains how to unpack and attach audio, and Lemon's Hermes-managed audio skill no longer forbids attachments. A downloaded Roblox audio file was successfully decoded and inspected in the sandbox; sending attachments in Discord still needs a live test. The image must be rebuilt and deployed to retain FFmpeg after container recreation.
+
+### 2026-11-03 · Make asset options easier to recognize
+
+> *"The users don't care about IDs. Keep the title in bold and the description, and make the preview look like a bookmark with the name and a large letter."*
+
+Asset replies use linked names instead of separate IDs. One gallery helper turns one to eight thumbnails into cards with muted red name headers, large letters, rounded corners and transparent gaps, with long names truncated. It can mark suitable options with a “Favorita do Lemon” badge, show missing previews and display fonts as a vertical list or on dark cards. Audio is presented as playable attachments when available, with duration when known. The skills, SOUL and helper were applied live without restarting; the sandbox rendered a font list and missing preview, while the Discord audio flow still needs testing. The updated sandbox image must be deployed to preserve the helper across recreation.
+
 ### 2026-11-03 · Keep shared skills with Lemon's profile
 
 > *"Keep a skills folder at the side of sandbox. These are hard-replaced files."*

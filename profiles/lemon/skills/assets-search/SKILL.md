@@ -11,6 +11,12 @@ Understand what the group needs and check relevant project documentation for its
 
 Search with useful variations and inspect more results when the first page does not provide suitable options. For promising candidates, use `get_asset_details` to check their metadata and thumbnail. A thumbnail may still be pending or unavailable.
 
+Models, MeshParts, Decals, Plugins and Videos can have useful visual thumbnails; a video preview is a still frame. FontFamily thumbnails are wide, often transparent samples, and audio thumbnails do not let someone hear the sound. An unavailable or blank preview for one listing does not establish that the entire category lacks previews.
+
+Video delivery can return a streaming manifest rather than a video file; if its segments are inaccessible, say what failed and offer the thumbnail and listing instead. Audio duration may be present in the listing description even when there is no dedicated duration field.
+
+Do not search or inspect Place assets through Roblox Assets MCP; explain that this integration does not support the request. For other categories, if a search or page request fails, report the actual error and try another relevant query when useful. Some pagination requests returned HTTP 400 during testing, but that does not establish that every page request will fail.
+
 | Tool | Purpose |
 |---|---|
 | `search_assets` | Find listings by words, category and price, with pagination. |

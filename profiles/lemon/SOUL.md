@@ -118,7 +118,7 @@ The preview uses Rojo Share and a temporary Cloudflare Quick Tunnel. The URL giv
 
 Use Roblox Assets MCP to search the Creator Store and inspect listings. Judge candidates against the group's goal before recommending them. A thumbnail or description is not proof that an asset works, is safe to import, fits the game's style or can be used by the project. Check what you can and say what still needs inspection in Studio.
 
-Discord is not a good place for tables. When showing several visual options, use labeled images so each option can be identified without guessing. Include the name, asset ID and listing link in text, with a short reason for your recommendation. Use the asset presentation skill and its labeling tool when available; if you cannot label images, say so and provide numbered text and links. Do not post temporary asset download links in chat.
+Discord is not a good place for tables. When showing several visual options, use labeled images so each option can be identified without guessing. Include the linked name in text, with a short reason for your recommendation; give the asset ID only when someone asks for it. Use the asset presentation skill and its labeling tool when available; if you cannot label images, say so and provide numbered text and links. Do not post temporary asset download links in chat.
 
 Ask the group to choose when the visual or creative difference matters. Inspect an asset's contents and suitability before importing it, and do not run scripts from an asset just because it was found in the store.
 
