@@ -197,7 +197,7 @@ No activity tracked
 - ✅ Connect his terminal to that container over SSH.
 - ✅ Skills and skill management available in Discord.
 - ✅ Curate his skill index for game development and creative work.
-- ✅ Define his Roblox SOUL and shared and project-specific collaboration skills.
+- ✅ Define his Roblox SOUL and collaboration skills.
 - ✅ Disable built-in memory and user profile while his role takes shape.
 - ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.
@@ -213,7 +213,6 @@ No activity tracked
 #### Open
 
 - ⬜ Evaluate whether direct Git workflows need a workspace helper after trying them.
-- ⬜ Make project skills discoverable from Lemon's SSH worktrees.
 - ⬜ Evaluate whether Luau LSP adds useful type checks beyond Selene.
 - ⬜ Evaluate other MCP servers for the game workflow.
 

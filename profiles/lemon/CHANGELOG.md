@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-04 · Keep Lemon's development skills with his profile
+
+> *"I'm thinking of giving the agent skills to Lemon only. Can you bring them here?"*
+
+Moved the seven development skills from roblox-with-swe into Lemon's profile and added them to the skill sync. The setup, preview and test instructions still describe that game. The game repository removes its copies in a separate pull request.
+
 ### 2026-11-03 · Remove the separate audio skill
 
 > *"I think we can delete this skill."*
