@@ -1,36 +1,57 @@
 ---
 name: assets-search
-description: Search and evaluate Roblox Creator Store assets for a game project. Use when someone asks Lemon to find or compare models, sounds, images or other assets.
+description: Search and evaluate Roblox Creator Store assets for a game project. Use when someone asks you to find or compare models, sounds, fonts or other assets.
 ---
 
 # Search for assets
 
 ## Search
 
-Understand what the group needs and check relevant project documentation for its style and decisions. Search the Creator Store with Roblox Assets MCP's `search_assets`, choosing the category that fits the request. Searches default to free models; use another category when appropriate and include paid results only if the group wants to consider them.
+Find out what the group needs and check relevant project documentation for its style and decisions. Search the Creator Store with Roblox Assets MCP. Try useful variations when the first results don't fit, and use the category that matches the request. Searches default to free models; include paid results only if the group wants to consider them.
 
-Search with useful variations and inspect more results when the first page does not provide suitable options. For promising candidates, use `get_asset_details` to check their metadata and thumbnail. A thumbnail may still be pending or unavailable.
+| Category | What you can find | Example |
+|---|---|---|
+| `Model` | Objects or groups of parts, sometimes with scripts | A forest cabin |
+| `MeshPart` | Individual 3D meshes | A rock or fence mesh |
+| `Decal` | Images for surfaces | A warning sign |
+| `Audio` | Sound effects and music | Footsteps or a car horn |
+| `Video` | Videos for in-game screens | TV static |
+| `Plugin` | Tools for Roblox Studio | A building tool |
+| `FontFamily` | Fonts for interface text | A serif font for a menu |
 
-Models, MeshParts, Decals, Plugins and Videos can have useful visual thumbnails; a video preview is a still frame. FontFamily thumbnails are wide, often transparent samples, and audio thumbnails do not let someone hear the sound. An unavailable or blank preview for one listing does not establish that the entire category lacks previews.
-
-Video delivery can return a streaming manifest rather than a video file; if its segments are inaccessible, say what failed and offer the thumbnail and listing instead. Audio duration may be present in the listing description even when there is no dedicated duration field.
-
-Do not search or inspect Place assets through Roblox Assets MCP; explain that this integration does not support the request. For other categories, if a search or page request fails, report the actual error and try another relevant query when useful. Some pagination requests returned HTTP 400 during testing, but that does not establish that every page request will fail.
-
-| Tool | Purpose |
+| Tool | What it does |
 |---|---|
-| `search_assets` | Find listings by words, category and price, with pagination. |
-| `get_asset_details` | Inspect one listing's metadata and thumbnail. |
-| `prepare_asset_download` | Get a temporary download URL for a selected asset. |
+| `search_assets` | Search listings by words, category and price, with pagination. |
+| `get_asset_details` | Check one asset's metadata and thumbnail. |
+| `prepare_asset_download` | Get a temporary URL for an asset file. |
 
 ## Evaluate
 
-Compare candidates against the request and the game's style. Check the creator, price, availability and script information when Roblox provides them. A missing field is unknown, not evidence that an asset is free, safe or script-free. A thumbnail does not prove how an asset looks or behaves in the game.
+Compare the options with what the group wants and the game's style. Check who made each asset, its price, availability and whether it contains scripts when that information is available. If something is missing, don't assume the asset is free, safe or script-free.
 
-Shortlist suitable options and explain their differences and your recommendation. If appearance, sound or another creative choice matters, ask the group to choose before importing. Use the `assets-answering` skill to present the options.
+Models, meshes, decals, plugins and videos can have useful previews, but a video preview is only a still frame. Font samples are wide and often transparent. An audio thumbnail doesn't let someone hear the sound, and its duration may only appear in the description. Use the asset presentation skill to show the options.
+
+Explain the differences and let the group decide when a creative choice matters. A picture or description alone doesn't show how an asset will look or behave in the game.
 
 ## Inspect
 
-When the group chooses an asset or asks for a closer inspection, `prepare_asset_download` returns a temporary URL; it does not download or inspect the file. Fetch it into the thread's scratchpad, inspect what your tools can actually read, and keep the URL out of chat. Check contents, scripts, permissions and suitability as far as the available tools allow before importing. Never execute scripts from an asset to inspect it.
+When the group chooses an asset or asks to inspect it more closely, get a temporary download link and save the file in the thread's scratchpad. For sounds, follow the asset presentation skill to download and attach the options before the group chooses. Keep temporary download links out of chat.
 
-If you cannot inspect a model or confirm its behavior, permissions or suitability, say what remains unknown and arrange a Studio check with the group. Do not claim an asset is safe, usable or tested without evidence.
+Check the asset's contents, scripts, permissions and suitability as far as your tools allow. Don't run its scripts just to inspect them. If you can't confirm something, explain what remains unknown and arrange a check in Studio with the group.
+
+## Limitations
+
+- **Places:** Don't search or inspect Place assets through Roblox Assets MCP. If asked, explain that this integration doesn't support the request; Places may still be available elsewhere on Roblox.
+- **Video files:** Delivery can return a streaming manifest rather than a video file. If its segments are inaccessible, explain what failed and offer the thumbnail and listing instead.
+- **Search errors:** If a search or page request fails, report the actual error and try another relevant query when useful. Some pagination requests returned HTTP 400 during testing, but that doesn't mean every page request will fail.
+
+## Common pitfalls
+
+- **Missing previews:** A thumbnail can be pending, blank or unavailable. One missing preview doesn't mean the whole category lacks them.
+- **Overstating results:** A listing's name, description or thumbnail isn't proof that an asset works, is safe to import or fits the game. Say what still needs checking in Studio.
+- **Temporary URLs:** A download URL isn't the file itself and can expire. Fetch the file in your workspace and share the public listing link instead of the temporary URL.
+
+## References
+
+- [Roblox Creator Store API](https://create.roblox.com/docs/cloud/reference/features/creator-store): Search and asset metadata.
+- [roblox-assets-mcp](https://github.com/Petri-Hub/roblox-assets-mcp): The MCP server used to find and inspect assets.
