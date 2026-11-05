@@ -124,11 +124,12 @@ platforms:
 
 ### 🧰 Tools
 
-Lemon's Discord tools cover research, image analysis, tasks, Roblox assets, terminal and file access, code execution, and skill management. Terminal and file tools work in his SSH sandbox. `execute_code` can script repeated web, file and terminal calls, but cannot call Roblox Assets MCP.
+Lemon's Discord and Telegram tools cover research, image analysis, tasks, Roblox assets, terminal and file access, code execution, and skill management. Terminal and file tools work in his SSH sandbox. `execute_code` can script repeated web, file and terminal calls, but cannot call Roblox Assets MCP.
 
 ```yaml
 platform_toolsets:
   discord: [web, vision, todo, clarify, roblox-assets, terminal, file, code_execution, skills]
+  telegram: [web, vision, todo, clarify, roblox-assets, terminal, file, code_execution, skills]
 ```
 
 ### 📚 Skills
