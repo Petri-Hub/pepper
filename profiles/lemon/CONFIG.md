@@ -7,6 +7,7 @@
 <table>
   <tr>
     <td align="center" width="96"><img src="https://cdn.simpleicons.org/discord" width="48" height="48" alt="Discord" /><br>Discord</td>
+    <td align="center" width="96"><img src="https://cdn.simpleicons.org/telegram" width="48" height="48" alt="Telegram" /><br>Telegram</td>
   </tr>
 </table>
 
@@ -69,15 +70,34 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-Lemon shows reasoning and verbose tool progress in Discord so the group can see how he approaches a request. The preview cap is removed to show full `execute_code` arguments, subject to Discord's message limit.
+Lemon keeps reasoning and tool output off in both platforms — the group wants clean, direct answers, not step-by-step traces.
 
 ```yaml
 display:
-  show_reasoning: true
-  tool_progress: verbose
+  show_reasoning: false
+  tool_progress: off
   platforms:
     discord:
       tool_preview_length: 0
+    telegram:
+      tool_preview_length: 0
+```
+
+### 🎙️ Voice
+
+Lemon transcribes Telegram voice messages with OpenAI Whisper and replies in audio when asked, using OpenAI TTS. The language is fixed to Portuguese so Whisper does not misidentify short clips.
+
+```yaml
+stt:
+  provider: openai
+  language: pt
+
+tts:
+  provider: openai
+```
+
+```bash
+VOICE_TOOLS_OPENAI_KEY=…
 ```
 
 ### ⏰ Scheduled replies
@@ -93,11 +113,16 @@ cron:
 
 Lemon's Discord bot accepts messages from an 18-person allowlist, with IDs and token in his private `.env`. Gateway restart notices remain on; his home channel is Pepper's Discord channel, though this Hermes version sends home-channel notices only for the default profile.
 
+His Telegram bot uses the same allowlist principle. Users who may contact him by DM are listed in `TELEGRAM_ALLOWED_USERS`; group-only access is set separately. Reactions give visual feedback while he works.
+
 ```yaml
 platforms:
   discord:
     enabled: true
     gateway_restart_notification: true
+  telegram:
+    enabled: true
+    reactions: true
 ```
 
 ### 🧰 Tools
@@ -113,18 +138,18 @@ platform_toolsets:
 
 Lemon keeps skills for game development, research, creative work, media and documents, including his local GitHub App and code execution workflows. The shared skills below live in this repository and apply across projects.
 
-| Skill | Purpose |
-|---|---|
-| [`assets-search`](skills/assets-search/SKILL.md) | Find and evaluate Roblox Creator Store assets. |
-| [`assets-answering`](skills/assets-answering/SKILL.md) | Present labeled asset previews in Discord. |
-| [`onboarding`](skills/onboarding/SKILL.md) | Introduce Lemon and help collaborators connect Studio. |
-| [`design`](skills/design/SKILL.md) | Explore gameplay and creative decisions with the group. |
-| [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. |
-| [`install`](skills/install/SKILL.md) | Set up the roblox-with-swe toolchain in a worktree. |
-| [`serve`](skills/serve/SKILL.md) | Manage a roblox-with-swe Studio preview. |
-| [`test`](skills/test/SKILL.md) | Check changes and coordinate Studio playtesting. |
-| [`document`](skills/document/SKILL.md) | Record game decisions and contributor guidance. |
-| [`deliver`](skills/deliver/SKILL.md) | Deliver a change through checks and merge. |
+| Skill | Purpose | Status |
+|---|---|---|
+| [`assets-search`](skills/assets-search/SKILL.md) | Find and evaluate Roblox Creator Store assets. | Confirmed |
+| [`assets-answering`](skills/assets-answering/SKILL.md) | Present labeled asset previews in Discord. | Confirmed |
+| [`onboarding`](skills/onboarding/SKILL.md) | Introduce Lemon and help collaborators connect Studio. | Confirmed |
+| [`design`](skills/design/SKILL.md) | Explore gameplay and creative decisions with the group. | — |
+| [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
+| [`install`](skills/install/SKILL.md) | Set up the roblox-with-swe toolchain in a worktree. | Confirmed |
+| [`serve`](skills/serve/SKILL.md) | Manage a roblox-with-swe Studio preview. | — |
+| [`test`](skills/test/SKILL.md) | Check changes and coordinate Studio playtesting. | — |
+| [`document`](skills/document/SKILL.md) | Record game decisions and contributor guidance. | — |
+| [`deliver`](skills/deliver/SKILL.md) | Deliver a change through checks and merge. | — |
 
 Run [`sync-skills.sh`](sync-skills.sh) with Lemon's existing profile skills directory as its argument when applying this configuration; it requires `rsync` and write access to that directory. It replaces the listed skill directories in full, including files Lemon changed or added inside them. His other skills remain managed by Hermes. The sandbox image supplies the asset-labeling helper used by `assets-answering`.
 
