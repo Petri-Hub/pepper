@@ -25,11 +25,20 @@ model:
 
 ### 🤔 Reasoning
 
-Medium effort helps Lemon plan changes and read unfamiliar code without slowing every reply.
+Low effort reduces reasoning tokens across Lemon's Discord conversations and development work.
 
 ```yaml
 agent:
-  reasoning_effort: medium
+  reasoning_effort: low
+```
+
+### 🗜️ Context compression
+
+Lemon compresses long conversations when they reach 150,000 tokens, reducing the amount of old context sent on later model calls. Compression is a trigger, not a hard per-call limit.
+
+```yaml
+compression:
+  threshold_tokens: 150000
 ```
 
 ### 🔁 Turn limit

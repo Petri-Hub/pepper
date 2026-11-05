@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-04 · Reduce token usage
+
+> *"Threshold, i think you can place 150k, change this in a PR for pepper, commit and push, apply to the live agent and restart (If necessary)."*
+
+Set reasoning effort to low and the context compression trigger to 150,000 tokens to reduce reasoning and repeated context in long conversations.
+
 ### 2026-11-04 · Telegram, voice, quieter output, and implement skill
 
 > *"Connect him to Telegram, configure GPT transcribe + voice, remove the verbose output, and update the implement skill."*
