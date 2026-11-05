@@ -21,6 +21,7 @@ DeepSeek Flash keeps Lemon's Discord conversations and coding help inexpensive. 
 model:
   provider: deepseek
   default: deepseek-flash
+  context_length: 150000
 ```
 
 ### 🤔 Reasoning
@@ -34,11 +35,11 @@ agent:
 
 ### 🗜️ Context compression
 
-Lemon compresses long conversations when they reach 150,000 tokens, reducing the amount of old context sent on later model calls. Compression is a trigger, not a hard per-call limit.
+Lemon uses a 150,000-token working context window and starts compressing near 85% of its usable input budget. This leaves room for new messages and reduces the old context sent on later calls; output-token reservation can make the trigger lower than 127,500 tokens.
 
 ```yaml
 compression:
-  threshold_tokens: 150000
+  threshold: 0.85
 ```
 
 ### 🔁 Turn limit

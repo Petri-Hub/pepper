@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-05 · Use a smaller context window
+
+> *"150k max token limit, and ~85% or so it compresses?"*
+
+Set Lemon's working context window to 150,000 tokens and the compression threshold to 85% of the usable input budget. The reply footer now measures usage against that working window.
+
 ### 2026-11-05 · Show context usage in replies
 
 > *"Enable it please."*
