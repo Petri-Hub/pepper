@@ -2,6 +2,22 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-04 · Telegram, voice, quieter output, and implement skill
+
+> *"Connect him to Telegram, configure GPT transcribe + voice, remove the verbose output, and update the implement skill."*
+
+Added Telegram as a second platform (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_USERS`), with reactions enabled so the group gets visual feedback while Lemon works. Added OpenAI Whisper STT fixed to Portuguese and OpenAI TTS, using a separate `VOICE_TOOLS_OPENAI_KEY` credential so the voice key stays decoupled from future model changes. Turned `show_reasoning` and `tool_progress` both off — the group wants clean replies, not traces.
+
+Rewrote the `implement` skill from scratch based on the design brief recorded in `LEMON_IMPLEMENTATION_WORKFLOW.md`: the skill now follows a five-stage loop (intake → look-before-you-build → build → preview-and-iterate → finish), forbids direct delivery to staging, and lists explicit failure modes. The new version was applied to the live agent without a restart; a `/reload-skills` in Lemon's session picks it up.
+
+The other configurations require supplying the Telegram bot token and OpenAI key via 1Password and setting them in the live profile.
+
+### 2026-11-04 · Mark reviewed skills
+
+> *"Mark the assets-search, assets-answering, install, and onboarding skills as confirmed."*
+
+Marked those four skills as confirmed in Lemon's profile so their review status is visible alongside the skill list.
+
 ### 2026-11-04 · Keep Lemon's development skills with his profile
 
 > *"I'm thinking of giving the agent skills to Lemon only. Can you bring them here?"*
