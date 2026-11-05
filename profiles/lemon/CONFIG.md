@@ -94,6 +94,8 @@ stt:
 
 tts:
   provider: openai
+  openai:
+    voice: ballad
 ```
 
 ```bash
