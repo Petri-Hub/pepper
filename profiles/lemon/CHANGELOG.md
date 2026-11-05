@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-04 · Give Lemon the text-to-speech tool
+
+> *"We've just configured OpenAI Voice for him, and he started searching for Edge TTS. Shouldn't he use ballad?"*
+
+Added the `tts` toolset to Lemon's Discord and Telegram tool lists. The voice block configured `text_to_speech`, but the explicit platform lists replace Hermes' default bundle, which is where the tool lives, so Lemon had no way to speak and tried to assemble audio with Edge TTS in his sandbox. The live profile received the same change; Hermes re-resolves platform toolsets every turn, and the resolved Discord set now includes `tts`.
+
 ### 2026-11-04 · Telegram, voice, quieter output, and implement skill
 
 > *"Connect him to Telegram, configure GPT transcribe + voice, remove the verbose output, and update the implement skill."*
