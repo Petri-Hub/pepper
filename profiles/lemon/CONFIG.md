@@ -70,17 +70,12 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-Lemon keeps reasoning and tool output off in both platforms — the group wants clean, direct answers, not step-by-step traces.
+Lemon hides reasoning but keeps tool progress on so the group can follow what he is doing. The custom preview length cap is removed, leaving Hermes' default.
 
 ```yaml
 display:
   show_reasoning: false
-  tool_progress: off
-  platforms:
-    discord:
-      tool_preview_length: 0
-    telegram:
-      tool_preview_length: 0
+  tool_progress: verbose
 ```
 
 ### 🎙️ Voice
