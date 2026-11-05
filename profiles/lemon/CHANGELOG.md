@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-05 · Show context usage in replies
+
+> *"Enable it please."*
+
+Enabled the runtime footer with the context-window percentage on final replies, so the group can see how much context Lemon's last model call used.
+
 ### 2026-11-04 · Reduce token usage
 
 > *"Threshold, i think you can place 150k, change this in a PR for pepper, commit and push, apply to the live agent and restart (If necessary)."*

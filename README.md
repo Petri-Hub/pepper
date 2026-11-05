@@ -205,6 +205,7 @@ No activity tracked
 - ✅ Create Lemon's GitHub App for branches and pull requests.
 - ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and raw content capture.
 - ✅ Low reasoning, context compression at 150,000 tokens, a 500-turn cap and São Paulo time.
+- ✅ Context-window percentage shown in final reply footers.
 - ✅ Thinking and full tool arguments visible in Discord.
 - ✅ Cron replies without Hermes wrappers.
 - ✅ Gateway shutdown and restart notices left on.
