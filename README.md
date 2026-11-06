@@ -201,6 +201,7 @@ No activity tracked
 - ✅ Curate his skill index for game development and creative work.
 - ✅ Define his Roblox SOUL and collaboration skills.
 - ✅ Add a game design skill for critique and player experience.
+- ✅ Give Lemon modelling and texture workflows for Roblox assets.
 - ✅ Disable built-in memory and user profile while his role takes shape.
 - ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.

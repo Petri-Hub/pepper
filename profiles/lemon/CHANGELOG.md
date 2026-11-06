@@ -2,6 +2,14 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Add modelling and texture skills
+
+> *"Rename the skill from /model-3d to /model and create a PR with the /texture skills and the 3D model ones."*
+
+Added `model` and the texture search and presentation skills to Lemon's profile. The modelling workflow uses Blender and the sandbox's Roblox Assets MCP to export and upload assets; Studio visual and gameplay checks still need a human.
+
+Installed the five skills and the modelling references in Lemon's live profile without restarting the gateway. Their files matched this repository and Hermes listed them as enabled. `/model` is reserved by Hermes, so the explicit skill command is `/skill model`; a Discord conversation still needs to verify the workflow.
+
 ### 2026-11-06 · Add Blender to Lemon's sandbox image
 
 > *"Focus on the Blender integration in his Dockerfile."*
