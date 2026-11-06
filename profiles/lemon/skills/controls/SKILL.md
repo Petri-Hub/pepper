@@ -44,10 +44,6 @@ Present the controls that help a collaborator direct work. Describe the differen
 - **`/new`** — start a fresh conversation context.
 - **`/goal <objective>`** — set an objective that can continue across turns.
 
-When introducing `/goal`, explain `/goal status`, `/goal pause`, `/goal resume` and `/goal clear`, and suggest a bounded objective. When relevant, explain that reasoning effort and goals can use more time and resources, compression can omit details, `/stop` does not undo changes, and `/new` does not move or clean up worktrees.
-
-A goal or a shortcut does not replace the group's creative decisions, authorize publication, or guarantee a result. For session settings, do not suggest global changes or administrative controls as normal collaboration shortcuts. Do not present `/model`, `/yolo`, `/restart`, skill administration or internal configuration as part of the general guide. If availability depends on permissions, platform or configuration, say so when it matters rather than claiming a control always works.
-
 ## Presentation
 
 For a general `/controls` request, briefly explain that a command starts with `/` and selects a procedure you can also choose automatically. Then give a **separate catalog**: a brief bulleted list of the main skills, with each command in bold and a plain-language description. Follow the catalog with practical examples in fenced `dotenv` code blocks that people can copy and adapt. Each code block starts with a short `#` description, followed by a blank line and the complete command and request. Preserve the actual command names.
