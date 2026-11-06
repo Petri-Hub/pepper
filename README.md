@@ -192,6 +192,7 @@ No activity tracked
 - ✅ Configure voice transcription and spoken replies in chat.
 - ✅ Run Lemon's separate Wakapi activity reporter.
 - ✅ Connect Roblox Assets MCP for Creator Store assets through Lemon's SSH sandbox.
+- ✅ Give Lemon asset uploads and lifecycle management through Roblox Assets MCP.
 - ✅ Build Lemon's reusable image with Git, Make, Rokit and SSH.
 - ✅ Publish Lemon's development image to GHCR on merge.
 - ✅ Run his image as a persistent container in the lab.
@@ -217,7 +218,7 @@ No activity tracked
 
 - ⬜ Evaluate how Lemon can stay present during long sequences of tool calls.
 - ⬜ Evaluate and test his use of Discord's supported Markdown formatting.
-- ⬜ Expand his MCP tools to publish his own assets to the Creator Store.
+- ⬜ Evaluate public Creator Store listing management through his MCP tools.
 - ⬜ Create a skill to duplicate Roblox With SWE's base for other games.
 - ⬜ Create a planning skill that writes and attaches a Markdown file in chat.
 
