@@ -207,7 +207,7 @@ skills:
 
 Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately.
 
-The workspace can run the game's automated tests through OCALE, alongside formatting, linting and build checks. FFmpeg and ffprobe inspect and convert media for audio previews.
+The workspace can run the game's automated tests through OCALE, alongside formatting, linting and build checks. FFmpeg and ffprobe inspect and convert media for audio previews. Blender provides headless 3D modeling and its `bpy` Python API.
 
 ```yaml
 terminal:

@@ -2,6 +2,10 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Add Blender to the development image
+
+Added Blender from Debian's packages so the sandbox can run Python scripts with Blender's `bpy` API in background mode. The image change has not been deployed to the live sandbox.
+
 ### 2026-11-06 · Apply Lemon's controls skill
 
 > *"Open a PR, merge it, and apply it to the agent."*
