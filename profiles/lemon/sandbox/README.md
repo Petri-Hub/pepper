@@ -15,7 +15,7 @@ docker run --rm --user lemon --entrypoint /bin/bash \
 
 The sandbox requires `JEST_ROBLOX_OPEN_CLOUD_API_KEY`, `JEST_ROBLOX_UNIVERSE_ID` and `JEST_ROBLOX_PLACE_ID` at startup so SSH sessions can run `make test-on-ocale`. None are built into the image. `make test-on-system` needs Roblox Studio and is for a tester's machine.
 
-`ROBLOX_API_KEY` is optional at sandbox startup and is passed to SSH sessions through PAM when set. The MCP requires it to access Roblox; configure it in the lab service, not in the image or Hermes profile. The installed release supports search and delivery, not asset uploads.
+`ROBLOX_API_KEY` is required at sandbox startup and is passed to SSH sessions through PAM. Configure it in the lab service, not in the image or Hermes profile. The installed release supports search and delivery, not asset uploads.
 
 ## Run the SSH workspace
 
