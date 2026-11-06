@@ -5,7 +5,9 @@ description: Explain the useful skill shortcuts and Hermes session commands avai
 
 # Explain Lemon's controls
 
-Help collaborators choose the right control for what they want to do. This is a practical guide to your **skill shortcuts and session commands**, not an introduction to game development or a complete list of everything installed. Someone can also describe what they want in ordinary language; shortcuts make a particular workflow easier to request, not mandatory.
+Help collaborators choose the right control for what they want to do. A **command** is a short instruction beginning with `/` that someone can put before their request. Each skill command selects a procedure you follow to help with that kind of work. You can also choose a suitable procedure automatically when someone makes a request in ordinary language; commands are optional.
+
+This is a practical guide to the available commands, not an introduction to game development or a complete list of everything installed. Explain skills and procedures in everyday language, without assuming the person knows about code or agents.
 
 Answer the person's question first. For a general request, present the most useful controls in short groups with concrete examples. For a specific question, explain the relevant control and its consequences without repeating the whole guide. Use the person's language and natural Discord formatting; avoid tables, long technical explanations and unnecessary setup instructions.
 
@@ -46,7 +48,9 @@ A goal or a shortcut does not replace the group's creative decisions, authorize 
 
 ## Presentation
 
-For a general `/controls` request, lead with the controls a person is likely to use now: a few shortcuts for planning, designing, building and previewing, followed by controls for steering or checking ongoing work. Offer the rest when relevant or when someone asks for more. Keep examples short and practical, and preserve the actual command names.
+For a general `/controls` request, briefly explain that a command starts with `/` and selects a procedure you can also choose automatically. Then give a **separate catalog**: a brief bulleted list of the main skills, with each command in bold and a plain-language description. Follow the catalog with practical examples in fenced code blocks that people can copy and adapt. Each code block starts with a short `#` description, followed by a blank line and the complete command and request. Preserve the actual command names.
+
+Use examples that show enough detail to be useful without requiring the person to know filenames, code or technical terms. Introduce session controls separately after the skill examples, and offer further detail when relevant or requested. For a specific question, give the relevant explanation and an example without repeating the entire catalog.
 
 When explaining a control with a consequential effect, say what it changes before suggesting it. If the person asks about a control you cannot confirm, say what you do know and how they can check with `/help`; do not invent its options or report that it was executed. Use `onboarding` when the person wants an introduction to you or to joining a Studio preview, and this skill when they want the controls themselves.
 
@@ -68,17 +72,45 @@ The person can pick a useful command, understand what it does and try it with th
 
 Use this as a guide to the level of detail and tone, not as a script. Adjust the examples to the current project and the person's question.
 
-> **Pra escolher o tipo de trabalho:**
-> - `/design como podemos deixar as rodadas mais interessantes?` — discutimos ideias e escolhas de jogabilidade.
-> - `/plan criar um sistema de rodadas` — preparo um plano pra vocês revisarem antes de construir.
-> - `/implement adicionar a rodada que combinamos` — começo a implementar a direção combinada.
-> - `/serve` — ajudo a abrir ou reutilizar a prévia no Studio.
->
-> **Enquanto estou trabalhando:** `/steer` me dá uma correção sem interromper o trabalho; `/queue` deixa outro pedido pra depois; `/stop` interrompe a execução.
->
-> **Pra acompanhar uma tarefa longa:** `/status` e `/context` mostram o estado da sessão. Com `/goal`, você pode definir um objetivo que continua por mais de um turno; use `/goal pause` se quiser pausar.
->
-> Você também pode me pedir qualquer uma dessas coisas em uma mensagem normal. Quer que eu explique algum comando com mais detalhes?
+Você pode começar uma mensagem com um **comando** para escolher como quer que eu trabalhe. Cada comando me orienta a seguir um procedimento para aquele tipo de pedido. Se preferir, é só me contar o que você quer: eu também escolho o procedimento automaticamente.
+
+**Comandos de trabalho**
+
+- **`/design`** — pensar em ideias e avaliar escolhas de jogabilidade.
+- **`/plan`** — preparar um plano para o grupo revisar.
+- **`/implement`** — construir uma mudança que combinamos.
+- **`/serve`** — abrir ou reutilizar uma prévia no Studio.
+- **`/test`** — verificar o trabalho e orientar o que testar no Studio.
+- **`/document`** — registrar decisões e mudanças importantes.
+- **`/deliver`** — entregar o trabalho quando o grupo disser que está pronto.
+
+**Exemplos para adaptar**
+
+```text
+# Pensar em uma mecânica
+
+/design Quero que explorar a floresta seja divertido com amigos. Que desafios podemos encontrar pelo caminho, e o que faria cada visita ser diferente?
+```
+
+```text
+# Planejar antes de construir
+
+/plan Quero um sistema de rodadas em que o grupo procura pistas antes de o monstro aparecer. Mostre o que os jogadores vão fazer e como podemos testar a ideia.
+```
+
+```text
+# Construir uma ideia combinada
+
+/implement Vamos criar a primeira versão da rodada que planejamos. Quero que o grupo encontre três pistas e veja um aviso quando o monstro estiver chegando.
+```
+
+```text
+# Abrir a prévia para acompanhar
+
+/serve Prepare a prévia desta thread e me ajude a conectar no Studio para testar a rodada.
+```
+
+**Enquanto trabalho**, `/steer` envia uma correção, `/queue` deixa um pedido para depois e `/stop` interrompe a execução. `/status` e `/context` mostram o estado da sessão. Com `/goal`, você define um objetivo que pode continuar por mais de um turno; `/goal pause` pausa esse trabalho.
 
 ### A focused question
 
