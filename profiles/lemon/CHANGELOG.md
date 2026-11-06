@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Draft a controls skill for Lemon
+
+> *"Explain the useful skills and Hermes commands that give collaborators more control over Lemon."*
+
+Added a controls skill that teaches direct skill shortcuts and session commands through focused explanations and examples. Registered it in the profile and skill sync helper. The draft has not been applied or verified in the live profile.
+
 ### 2026-11-06 · Apply the design and planning skills
 
 > *"Apply those two new skills into Lemon."*
