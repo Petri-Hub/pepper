@@ -191,7 +191,7 @@ No activity tracked
 - ✅ Verify Lemon replies in the Discord server.
 - ✅ Configure voice transcription and spoken replies in chat.
 - ✅ Run Lemon's separate Wakapi activity reporter.
-- ✅ Connect Roblox Assets MCP for Creator Store assets.
+- ✅ Connect Roblox Assets MCP for Creator Store assets through Lemon's SSH sandbox.
 - ✅ Build Lemon's reusable image with Git, Make, Rokit and SSH.
 - ✅ Publish Lemon's development image to GHCR on merge.
 - ✅ Run his image as a persistent container in the lab.

@@ -1,6 +1,6 @@
 # Lemon's development image
 
-This image gives Lemon a persistent Linux workspace with SSH access. It includes Git, Make, pre-commit, Rokit and `cloudflared`, plus an asset-preview labeling helper with Pillow. For a project with a `rokit.toml`, run `rokit install` in its checkout to install its pinned tools. The image has no game-specific tool versions or source files; projects can add other tools as needed.
+This Debian Trixie image gives Lemon a persistent Linux workspace with SSH access. It includes Git, Make, pre-commit, Rokit and `cloudflared`, an asset-preview labeling helper with Pillow, and Roblox Assets MCP 0.2.1 in `/opt/roblox-assets-mcp`. Debian supplies Python and its virtual environment support; pip installs the pinned MCP package into that environment. For a project with a `rokit.toml`, run `rokit install` in its checkout to install its pinned tools. The image has no game-specific tool versions or source files; projects can add other tools as needed.
 
 The image currently targets Linux x86-64, matching the lab host and GitHub Actions runner.
 
@@ -14,6 +14,8 @@ docker run --rm --user lemon --entrypoint /bin/bash \
 ```
 
 The sandbox requires `JEST_ROBLOX_OPEN_CLOUD_API_KEY`, `JEST_ROBLOX_UNIVERSE_ID` and `JEST_ROBLOX_PLACE_ID` at startup so SSH sessions can run `make test-on-ocale`. None are built into the image. `make test-on-system` needs Roblox Studio and is for a tester's machine.
+
+`ROBLOX_API_KEY` is required at sandbox startup and is passed to SSH sessions through PAM. Configure it in the lab service, not in the image or Hermes profile. The installed release supports search and delivery, not asset uploads.
 
 ## Run the SSH workspace
 

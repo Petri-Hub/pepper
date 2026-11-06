@@ -15,12 +15,14 @@ runuser -u lemon -- mkdir -p /home/lemon/workspace/scratchpad \
 : "${JEST_ROBLOX_OPEN_CLOUD_API_KEY:?Missing Open Cloud API key}"
 : "${JEST_ROBLOX_UNIVERSE_ID:?Missing test universe ID}"
 : "${JEST_ROBLOX_PLACE_ID:?Missing test place ID}"
+: "${ROBLOX_API_KEY:?Missing Roblox Assets MCP API key}"
 
 install -m 0600 /dev/null /etc/environment
 printf '%s\n' \
     "JEST_ROBLOX_OPEN_CLOUD_API_KEY=$JEST_ROBLOX_OPEN_CLOUD_API_KEY" \
     "JEST_ROBLOX_UNIVERSE_ID=$JEST_ROBLOX_UNIVERSE_ID" \
-    "JEST_ROBLOX_PLACE_ID=$JEST_ROBLOX_PLACE_ID" > /etc/environment
+    "JEST_ROBLOX_PLACE_ID=$JEST_ROBLOX_PLACE_ID" \
+    "ROBLOX_API_KEY=$ROBLOX_API_KEY" > /etc/environment
 
 # SSH identity — reuse the persistent key or create it on first startup
 if [ ! -s /var/lib/lemon/ssh/ssh_host_ed25519_key ]; then

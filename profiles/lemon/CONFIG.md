@@ -234,7 +234,7 @@ The `github-app-auth` skill holds these identifiers and mints the tokens. Hermes
 
 ### 🔌 MCP servers
 
-Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metadata and request temporary download links. The server runs in his Hermes profile with its own Roblox Open Cloud key. Assets can be fetched into his workspace; getting them into the game still needs a Studio session or an Open Cloud path he does not have yet.
+Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metadata and request temporary download links. Hermes starts the server over SSH in Lemon's sandbox, so its process and files live alongside his terminal workspace. Its Open Cloud key is supplied to the sandbox by the lab, not by Hermes. This version does not upload assets.
 
 | Server | What it gives the agent | Link |
 |---|---|---|
@@ -243,11 +243,22 @@ Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metada
 ```yaml
 mcp_servers:
   roblox-assets:
-    command: uvx
-    args: [roblox-assets-mcp]
-    env:
-      ROBLOX_API_KEY: "${ROBLOX_API_KEY}"
+    command: ssh
+    args:
+      - -T
+      - -o
+      - BatchMode=yes
+      - -o
+      - StrictHostKeyChecking=yes
+      - -o
+      - UserKnownHostsFile=/opt/data/profiles/lemon/ssh/known_hosts
+      - -i
+      - /opt/data/profiles/lemon/ssh/lemon_sandbox_ed25519
+      - lemon@lemon-sandbox
+      - /opt/roblox-assets-mcp/bin/roblox-assets-mcp
 ```
+
+Use the actual private-key path configured for Lemon's terminal if it differs. Before enabling this configuration, add the sandbox's verified persistent SSH host public key to the specified `known_hosts` file under the hostname `lemon-sandbox`; the lab's sandbox README describes the key's location. Keep any existing entries. SSH must be able to authenticate non-interactively, and the host key must match after container replacement. SSH carries MCP protocol messages over standard input and output; do not add a terminal (`-T`) or commands that print banners to standard output.
 
 ### 🧱 Plugins
 
