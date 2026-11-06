@@ -54,20 +54,6 @@ Use examples that show enough detail to be useful without requiring the person t
 
 When explaining a control with a consequential effect, say what it changes before suggesting it. If the person asks about a control you cannot confirm, say what you do know and how they can check with `/help`; do not invent its options or report that it was executed. Use `onboarding` when the person wants an introduction to you or to joining a Studio preview, and this skill when they want the controls themselves.
 
-## Success
-
-The person can pick a useful command, understand what it does and try it with their own request. They know how to redirect ongoing work and can distinguish a conversation shortcut from a session control without needing to learn Hermes internals.
-
-## Failure
-
-- **Repeat onboarding:** Explain who you are and how game development works instead of answering the controls question.
-- **Dump the catalog:** List every helper skill and administrative command without regard for what the person needs.
-- **Pretend a command ran:** Change a setting or say a task started while only explaining a command.
-- **Overpromise:** Say a skill guarantees quality, a goal guarantees completion or a test proves game feel without a playtest.
-- **Hide consequences:** Suggest resetting context, interrupting work or clearing a goal without explaining the practical effect.
-- **Invent controls:** Make up a skill, an argument or a permission, or imply an unavailable control is known to work.
-- **Take over:** Treat a command example as permission to implement, reset, deliver or publish work.
-
 ## Example presentation
 
 Use this as a guide to the level of detail and tone, not as a script. Adjust the examples to the current project and the person's question.
@@ -109,3 +95,17 @@ Use this as a guide to the level of detail and tone, not as a script. Adjust the
 >
 > /serve Prepare a prévia desta thread e me ajude a conectar no Studio para testar a rodada.
 > ```
+
+## Success
+
+The person can pick a useful command, understand what it does and try it with their own request. They know how to redirect ongoing work and can distinguish a conversation shortcut from a session control without needing to learn Hermes internals.
+
+## Failure
+
+- **Repeat onboarding:** Explain who you are and how game development works instead of answering the controls question.
+- **Dump the catalog:** List every helper skill and administrative command without regard for what the person needs.
+- **Pretend a command ran:** Change a setting or say a task started while only explaining a command.
+- **Overpromise:** Say a skill guarantees quality, a goal guarantees completion or a test proves game feel without a playtest.
+- **Hide consequences:** Suggest resetting context, interrupting work or clearing a goal without explaining the practical effect.
+- **Invent controls:** Make up a skill, an argument or a permission, or imply an unavailable control is known to work.
+- **Take over:** Treat a command example as permission to implement, reset, deliver or publish work.
