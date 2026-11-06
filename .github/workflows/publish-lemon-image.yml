@@ -32,6 +32,12 @@ jobs:
       - name: Build
         run: docker build --pull --file profiles/lemon/sandbox/Dockerfile --tag "$IMAGE:${GITHUB_SHA::7}" --tag "$IMAGE:latest" profiles/lemon
 
+      - name: Check headless Blender export and rendering
+        run: |
+          docker run --rm --user lemon --entrypoint blender "$IMAGE:${GITHUB_SHA::7}" \
+            --background --python-exit-code 1 --python-expr \
+            'import bpy, numpy, os; bpy.ops.export_scene.fbx(filepath="/tmp/check.fbx"); s = bpy.context.scene; s.render.engine = "CYCLES"; s.cycles.use_denoising = False; s.cycles.samples = 1; s.render.resolution_x = 64; s.render.resolution_y = 64; s.render.resolution_percentage = 100; s.render.filepath = "/tmp/check.png"; bpy.ops.render.render(write_still=True); assert os.path.getsize("/tmp/check.fbx") > 0 and os.path.getsize("/tmp/check.png") > 0'
+
       - name: Log in to GHCR
         run: echo "$TOKEN" | docker login ghcr.io -u "$ACTOR" --password-stdin
         env:
