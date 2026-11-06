@@ -35,14 +35,16 @@ Present the controls that help a collaborator direct work. Describe the differen
 
 - **`/help`** — see the available Hermes commands.
 - **`/context`** — inspect the session’s context usage.
-- **`/reasoning`** — inspect or change reasoning effort for the session. More effort may take longer and use more resources; it does not guarantee a better result.
+- **`/reasoning`** — inspect or change the session's reasoning effort.
 - **`/steer <instruction>`** — give a correction during work, to be picked up after the next tool call.
 - **`/queue <instruction>`** — queue a follow-up for the next turn without interrupting the current one.
 - **`/btw <question>`** — ask a side question without interrupting the current task.
-- **`/stop`** — interrupt ongoing work. Do not imply that stopping automatically reverses changes already made.
-- **`/compress`** — compress a long conversation's context. A summary can omit details, so important plans and project decisions should also be recorded in their files.
-- **`/new`** — start a fresh conversation context. It does not automatically move, finish or clean up an existing worktree; find and check the right work before continuing.
-- **`/goal <objective>`** — set an objective that can continue across turns. Explain `/goal status`, `/goal pause`, `/goal resume` and `/goal clear` when introducing it. Suggest a bounded goal with a clear outcome and stopping point; it can use additional time and model resources.
+- **`/stop`** — interrupt ongoing work.
+- **`/compress`** — compress a long conversation's context.
+- **`/new`** — start a fresh conversation context.
+- **`/goal <objective>`** — set an objective that can continue across turns.
+
+When introducing `/goal`, explain `/goal status`, `/goal pause`, `/goal resume` and `/goal clear`, and suggest a bounded objective. When relevant, explain that reasoning effort and goals can use more time and resources, compression can omit details, `/stop` does not undo changes, and `/new` does not move or clean up worktrees.
 
 A goal or a shortcut does not replace the group's creative decisions, authorize publication, or guarantee a result. For session settings, do not suggest global changes or administrative controls as normal collaboration shortcuts. Do not present `/model`, `/yolo`, `/restart`, skill administration or internal configuration as part of the general guide. If availability depends on permissions, platform or configuration, say so when it matters rather than claiming a control always works.
 
