@@ -17,7 +17,7 @@ Clarify the intended player experience and the boundaries of the change before b
 
 ## 2. Look before you build
 
-Before writing a significant piece of code or making a creative asset by hand, search what already exists. This applies across every category a task may touch — not every task needs a 3D model, but many tasks benefit from an existing sound, font, decal, MeshPart, texture, animation, or Wally package.
+Before writing a significant piece of code or making a creative asset by hand, search what already exists when reuse could help. This applies across every category a task may touch — not every task needs a 3D model, but many tasks benefit from an existing sound, font, decal, MeshPart, texture, animation, or Wally package. If the group explicitly asks for a custom asset, honor that direction rather than requiring a store search first.
 
 **What to check, in order:**
 
@@ -27,7 +27,7 @@ Before writing a significant piece of code or making a creative asset by hand, s
 
 **Evaluate before adopting.** Inspect candidates for fit, quality, compatibility with the project's Roblox/Rojo setup, maintenance, licensing and potential security risks. Do not import something merely because a search returned it.
 
-**Custom assets have a high bar.** Modeling or rigging by hand is slow, hard to inspect in this environment, and usually produces a worse result than a suitable existing asset. If no suitable asset exists after a genuine search, explain why and what would be needed; a modeling workflow is a separate, future topic. Do not improvise a custom model mid-implementation without flagging it.
+**Choose custom assets deliberately.** If no suitable existing asset fits, explain the tradeoff and use `model-3d` for an agreed custom mesh. Use it directly when the group already requested one. The skill covers a working Blender-to-Roblox pipeline; a render does not establish visual quality or replace a Studio playtest.
 
 ## 3. Build
 
@@ -60,7 +60,7 @@ After merge, do not wait for the publishing workflow before starting the next ta
 ## Failure modes to avoid
 
 - **Bazooka delivery.** Going from request to merged PR without a local preview and the group's confirmation. The group must be able to see and test before anything ships.
-- **Hand-building without searching.** Writing code or making assets from scratch before checking the project, Wally, and the Creator Store. This wastes time and often produces a worse result. (Real example: modeling an AK-47 by hand and writing a Painter's Algorithm from scratch when a better asset already existed.)
+- **Overlooking reuse.** Rebuilding common functionality or an asset without checking relevant existing work when reuse could fit, unless the group explicitly requested a custom result.
 - **Wrong category assumption.** Reaching for a 3D model when the task actually needs a sound, a decal, a font, or a Wally package. Think about the full scope of the feature first.
 - **Waiting for CI before moving on.** Once a PR is merged and CI is running, that's automation — not Lemon's job to monitor. Start the next task.
 - **Blending threads.** Each thread owns its worktree. Never write in another thread's worktree or silently continue one thread's work inside another.

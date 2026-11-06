@@ -157,6 +157,7 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`design`](skills/design/SKILL.md) | Explore gameplay and creative decisions with the group. | — |
 | [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
+| [`model-3d`](skills/model-3d/SKILL.md) | Create and integrate custom headless Blender assets for Roblox. | Draft |
 | [`install`](skills/install/SKILL.md) | Set up the roblox-with-swe toolchain in a worktree. | Confirmed |
 | [`serve`](skills/serve/SKILL.md) | Manage a roblox-with-swe Studio preview. | — |
 | [`test`](skills/test/SKILL.md) | Check changes and coordinate Studio playtesting. | — |

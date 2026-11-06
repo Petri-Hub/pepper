@@ -2,6 +2,10 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Draft the headless 3D asset workflow
+
+Drafted the `model-3d` skill for creating, checking and previewing Blender assets in Roblox, including image textures, FBX, Open Cloud, Rojo and human review. The implementation skill now routes agreed custom assets to it, and the skill sync includes the draft. The skill has not been applied to the live agent; Blender and asset-write access must be checked in the running workspace.
+
 ### 2026-11-06 · Add Blender to the development image
 
 Added Blender from Debian's packages so the sandbox can run Python scripts with Blender's `bpy` API in background mode. The image change has not been deployed to the live sandbox.
