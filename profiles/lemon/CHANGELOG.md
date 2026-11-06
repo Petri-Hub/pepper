@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Draft a planning skill for Lemon
+
+> *"Create a planning skill with a Markdown plan attached in chat and enough technical detail for Lemon to continue after compaction."*
+
+Added a planning skill that keeps a readable group plan and a linked implementation handoff in the thread's scratchpad. The group plan is sent with a Hermes attachment directive; the technical plan records inspected files, decisions and verification. Registered the skill in the profile and sync helper. The draft has not been applied or tested with the live agent, and Markdown attachment delivery from the SSH sandbox remains to be verified.
+
 ### 2026-11-06 · Draft Lemon's game design skill
 
 > *"Combine the best parts of those skills so Lemon can think critically about game design and help the group make the game."*
