@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Add Blender to Lemon's sandbox image
+
+> *"Focus on the Blender integration in his Dockerfile."*
+
+Installed Blender from Debian's packages in the sandbox image. Its bundled Python provides `bpy` to scripts run by Blender in background mode.
+
 ### 2026-11-06 · Update Roblox Assets MCP
 
 > *"Update the agent with the new version of the MCP."*
