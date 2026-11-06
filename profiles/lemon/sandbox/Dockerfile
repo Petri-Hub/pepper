@@ -18,6 +18,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 # System packages — remove generated SSH host keys in the same image layer
 RUN apt-get update && apt-get install --no-install-recommends -y \
+        blender \
         ca-certificates \
         curl \
         ffmpeg \
@@ -27,6 +28,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         make \
         openssh-server \
         pre-commit \
+        python3-numpy \
         python3-pil \
         python3-venv \
         ripgrep \

@@ -1,8 +1,10 @@
 # Lemon's development image
 
-This Debian Trixie image gives Lemon a persistent Linux workspace with SSH access. It includes Git, Make, pre-commit, Rokit and `cloudflared`, an asset-preview labeling helper with Pillow, and Roblox Assets MCP 0.3.0 in `/opt/roblox-assets-mcp`. Debian supplies Python and its virtual environment support; pip installs the pinned MCP package into that environment. For a project with a `rokit.toml`, run `rokit install` in its checkout to install its pinned tools. The image has no game-specific tool versions or source files; projects can add other tools as needed.
+This Debian Trixie image gives Lemon a persistent Linux workspace with SSH access. It includes Blender, Git, Make, pre-commit, Rokit and `cloudflared`, an asset-preview labeling helper with Pillow, and Roblox Assets MCP 0.3.0 in `/opt/roblox-assets-mcp`. Debian supplies Blender, Python and NumPy; Blender's Python includes `bpy` for scripts run with `blender --background --python script.py`, and its FBX exporter needs NumPy. The MCP package is installed separately in a virtual environment. For a project with a `rokit.toml`, run `rokit install` in its checkout to install its pinned tools. The image has no game-specific tool versions or source files; projects can add other tools as needed.
 
 The image currently targets Linux x86-64, matching the lab host and GitHub Actions runner.
+
+Debian's Blender build does not include OpenImageDenoise support. For headless Cycles renders, set `bpy.context.scene.cycles.use_denoising = False`. Use `blender --background --python-exit-code 1 --python script.py` so Python errors produce a failing process exit code.
 
 ## Check the toolchain locally
 

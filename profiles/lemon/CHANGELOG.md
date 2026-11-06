@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Add Blender to Lemon's sandbox image
+
+> *"Focus on the Blender integration in his Dockerfile."*
+
+Installed Blender and NumPy from Debian's packages in the sandbox image. Blender's Python provides `bpy` to scripts run in background mode, and NumPy is needed by its FBX exporter.
+
 ### 2026-11-06 · Update Roblox Assets MCP
 
 > *"Update the agent with the new version of the MCP."*

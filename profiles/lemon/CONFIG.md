@@ -205,7 +205,7 @@ skills:
 
 ### 🖥️ Workspace
 
-Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately.
+Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries Blender, `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately. Blender scripts can use `bpy` through Blender's bundled Python in background mode. Debian's Blender build lacks OpenImageDenoise support, so disable Cycles denoising for headless renders.
 
 The workspace can run the game's automated tests through OCALE, alongside formatting, linting and build checks. FFmpeg and ffprobe inspect and convert media for audio previews.
 
