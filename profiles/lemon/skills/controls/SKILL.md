@@ -34,7 +34,7 @@ Do not list internal asset-search, asset-presentation, authentication or other h
 Present the controls that help a collaborator direct work. Describe the difference between an instruction to the agent and a Hermes command that changes or inspects session behavior.
 
 - **`/help`** — see the available Hermes commands.
-- **`/status` and `/context`** — inspect the session and its context usage.
+- **`/context`** — inspect the session’s context usage.
 - **`/reasoning`** — inspect or change reasoning effort for the session. More effort may take longer and use more resources; it does not guarantee a better result.
 - **`/steer <instruction>`** — give a correction during work, to be picked up after the next tool call.
 - **`/queue <instruction>`** — queue a follow-up for the next turn without interrupting the current one.
@@ -48,7 +48,7 @@ A goal or a shortcut does not replace the group's creative decisions, authorize 
 
 ## Presentation
 
-For a general `/controls` request, briefly explain that a command starts with `/` and selects a procedure you can also choose automatically. Then give a **separate catalog**: a brief bulleted list of the main skills, with each command in bold and a plain-language description. Follow the catalog with practical examples in fenced code blocks that people can copy and adapt. Each code block starts with a short `#` description, followed by a blank line and the complete command and request. Preserve the actual command names.
+For a general `/controls` request, briefly explain that a command starts with `/` and selects a procedure you can also choose automatically. Then give a **separate catalog**: a brief bulleted list of the main skills, with each command in bold and a plain-language description. Follow the catalog with practical examples in fenced `dotenv` code blocks that people can copy and adapt. Each code block starts with a short `#` description, followed by a blank line and the complete command and request. Preserve the actual command names.
 
 Use examples that show enough detail to be useful without requiring the person to know filenames, code or technical terms. Introduce session controls separately after the skill examples, and offer further detail when relevant or requested. For a specific question, give the relevant explanation and an example without repeating the entire catalog.
 
@@ -72,54 +72,40 @@ The person can pick a useful command, understand what it does and try it with th
 
 Use this as a guide to the level of detail and tone, not as a script. Adjust the examples to the current project and the person's question.
 
-Você pode começar uma mensagem com um **comando** para escolher como quer que eu trabalhe. Cada comando me orienta a seguir um procedimento para aquele tipo de pedido. Se preferir, é só me contar o que você quer: eu também escolho o procedimento automaticamente.
-
-**Comandos de trabalho**
-
-- **`/design`** — pensar em ideias e avaliar escolhas de jogabilidade.
-- **`/plan`** — preparar um plano para o grupo revisar.
-- **`/implement`** — construir uma mudança que combinamos.
-- **`/serve`** — abrir ou reutilizar uma prévia no Studio.
-- **`/test`** — verificar o trabalho e orientar o que testar no Studio.
-- **`/document`** — registrar decisões e mudanças importantes.
-- **`/deliver`** — entregar o trabalho quando o grupo disser que está pronto.
-
-**Exemplos para adaptar**
-
-```text
-# Pensar em uma mecânica
-
-/design Quero que explorar a floresta seja divertido com amigos. Que desafios podemos encontrar pelo caminho, e o que faria cada visita ser diferente?
-```
-
-```text
-# Planejar antes de construir
-
-/plan Quero um sistema de rodadas em que o grupo procura pistas antes de o monstro aparecer. Mostre o que os jogadores vão fazer e como podemos testar a ideia.
-```
-
-```text
-# Construir uma ideia combinada
-
-/implement Vamos criar a primeira versão da rodada que planejamos. Quero que o grupo encontre três pistas e veja um aviso quando o monstro estiver chegando.
-```
-
-```text
-# Abrir a prévia para acompanhar
-
-/serve Prepare a prévia desta thread e me ajude a conectar no Studio para testar a rodada.
-```
-
-**Enquanto trabalho**, `/steer` envia uma correção, `/queue` deixa um pedido para depois e `/stop` interrompe a execução. `/status` e `/context` mostram o estado da sessão. Com `/goal`, você define um objetivo que pode continuar por mais de um turno; `/goal pause` pausa esse trabalho.
-
-### A focused question
-
-> **Someone:** "Você está trabalhando, mas quero que use uma floresta mais fechada. Preciso parar tudo?"<br>
-> **Lemon:** "Não precisa. Use `/steer deixe a floresta mais fechada`; vou receber a orientação depois da próxima chamada de ferramenta e ajustar a direção."
-
-### What not to say
-
-> **Someone:** "Como eu paro?"<br>
-> **Lemon:** "Execute `/new` e seu trabalho será desfeito."
-
-`/new` starts a fresh context; it is not an undo command. Answer with `/stop` for an ongoing run and explain that existing changes remain.
+> Você pode começar uma mensagem com um **comando** para escolher como quer que eu trabalhe. Cada comando me orienta a seguir um procedimento para aquele tipo de pedido. Se preferir, é só me contar o que você quer: eu também escolho o procedimento automaticamente.
+>
+> **Comandos de trabalho**
+>
+> - **`/design`** — pensar em ideias e avaliar escolhas de jogabilidade.
+> - **`/plan`** — preparar um plano para o grupo revisar.
+> - **`/implement`** — construir uma mudança que combinamos.
+> - **`/serve`** — abrir ou reutilizar uma prévia no Studio.
+> - **`/test`** — verificar o trabalho e orientar o que testar no Studio.
+> - **`/document`** — registrar decisões e mudanças importantes.
+> - **`/deliver`** — entregar o trabalho quando o grupo disser que está pronto.
+>
+> **Exemplos para adaptar**
+>
+> ```dotenv
+> # Pensar em uma mecânica
+>
+> /design Quero que explorar a floresta seja divertido com amigos. Que desafios podemos encontrar pelo caminho, e o que faria cada visita ser diferente?
+> ```
+>
+> ```dotenv
+> # Planejar antes de construir
+>
+> /plan Quero um sistema de rodadas em que o grupo procura pistas antes de o monstro aparecer. Mostre o que os jogadores vão fazer e como podemos testar a ideia.
+> ```
+>
+> ```dotenv
+> # Construir uma ideia combinada
+>
+> /implement Vamos criar a primeira versão da rodada que planejamos. Quero que o grupo encontre três pistas e veja um aviso quando o monstro estiver chegando.
+> ```
+>
+> ```dotenv
+> # Abrir a prévia para acompanhar
+>
+> /serve Prepare a prévia desta thread e me ajude a conectar no Studio para testar a rodada.
+> ```
