@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Run Roblox Assets MCP in Lemon's sandbox
+
+> *"Reshape the integration so that it attempts to run via SSH, instead of in the Hermes container."*
+
+Moved the MCP process and its credential into the sandbox and configured Hermes to connect over SSH. The image uses Debian Trixie and installs the pinned MCP in a Python virtual environment. The lab supplies the optional key to SSH sessions. Live deployment and the MCP connection still need verification; asset uploads remain separate work.
+
 ### 2026-11-06 · Apply Lemon's controls skill
 
 > *"Open a PR, merge it, and apply it to the agent."*

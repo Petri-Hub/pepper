@@ -22,6 +22,11 @@ printf '%s\n' \
     "JEST_ROBLOX_UNIVERSE_ID=$JEST_ROBLOX_UNIVERSE_ID" \
     "JEST_ROBLOX_PLACE_ID=$JEST_ROBLOX_PLACE_ID" > /etc/environment
 
+# Asset access is optional; PAM exposes it to the SSH-launched MCP server.
+if [ -n "${ROBLOX_API_KEY:-}" ]; then
+    printf '%s\n' "ROBLOX_API_KEY=$ROBLOX_API_KEY" >> /etc/environment
+fi
+
 # SSH identity — reuse the persistent key or create it on first startup
 if [ ! -s /var/lib/lemon/ssh/ssh_host_ed25519_key ]; then
     ssh-keygen -q -t ed25519 -N '' -f /var/lib/lemon/ssh/ssh_host_ed25519_key
