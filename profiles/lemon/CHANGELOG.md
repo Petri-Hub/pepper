@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Update Roblox Assets MCP
+
+> *"Update the agent with the new version of the MCP."*
+
+Pinned Roblox Assets MCP 0.3.0 in the sandbox image. It adds uploads and asset lifecycle management alongside search and delivery. Uploading an asset is separate from publishing a Creator Store listing.
+
 ### 2026-11-06 · Run Roblox Assets MCP in Lemon's sandbox
 
 > *"Reshape the integration so that it attempts to run via SSH, instead of in the Hermes container."*

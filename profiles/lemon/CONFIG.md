@@ -234,11 +234,11 @@ The `github-app-auth` skill holds these identifiers and mints the tokens. Hermes
 
 ### 🔌 MCP servers
 
-Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metadata and request temporary download links. Hermes starts the server over SSH in Lemon's sandbox, so its process and files live alongside his terminal workspace. Its Open Cloud key is supplied to the sandbox by the lab, not by Hermes. This version does not upload assets.
+Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metadata, request temporary download links, and upload and manage owned assets. Hermes starts the server over SSH in Lemon's sandbox, so it can read files from his workspace. Its Open Cloud key is supplied to the sandbox by the lab, not by Hermes. Uploading an asset does not create a public Creator Store listing.
 
 | Server | What it gives the agent | Link |
 |---|---|---|
-| `roblox-assets` | Creator Store search, details and temporary asset URLs | [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp) |
+| `roblox-assets` | Creator Store search, delivery and owned asset lifecycle management | [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp) |
 
 ```yaml
 mcp_servers:
