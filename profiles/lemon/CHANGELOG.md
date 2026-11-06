@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Draft Lemon's game design skill
+
+> *"Combine the best parts of those skills so Lemon can think critically about game design and help the group make the game."*
+
+Expanded the design skill with player experience, core loops, game feel, meaningful choices, challenge, accessibility, progression, replayability, retention and playtesting. It guides Lemon to explain tradeoffs and challenge assumptions without taking creative decisions away from the group. The draft has not been applied or tested with the live agent.
+
 ### 2026-11-05 · Use a smaller context window
 
 > *"150k max token limit, and ~85% or so it compresses?"*
