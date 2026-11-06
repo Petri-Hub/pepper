@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Apply Lemon's controls skill
+
+> *"Open a PR, merge it, and apply it to the agent."*
+
+Installed the controls skill in Lemon's live profile without restarting the gateway. The installed file matched the repository and Hermes listed the skill as enabled; its Discord command and presentation have not yet been tested in a conversation.
+
 ### 2026-11-06 · Draft a controls skill for Lemon
 
 > *"Explain the useful skills and Hermes commands that give collaborators more control over Lemon."*
