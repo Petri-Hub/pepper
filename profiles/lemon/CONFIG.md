@@ -153,6 +153,7 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`assets-search`](skills/assets-search/SKILL.md) | Find and evaluate Roblox Creator Store assets. | Confirmed |
 | [`assets-answering`](skills/assets-answering/SKILL.md) | Present labeled asset previews in Discord. | Confirmed |
 | [`onboarding`](skills/onboarding/SKILL.md) | Introduce Lemon and help collaborators connect Studio. | Confirmed |
+| [`controls`](skills/controls/SKILL.md) | Explain skill shortcuts and session commands. | — |
 | [`design`](skills/design/SKILL.md) | Explore gameplay and creative decisions with the group. | — |
 | [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
