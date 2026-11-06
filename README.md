@@ -199,6 +199,7 @@ No activity tracked
 - ✅ Skills and skill management available in Discord.
 - ✅ Curate his skill index for game development and creative work.
 - ✅ Define his Roblox SOUL and collaboration skills.
+- ✅ Add a game design skill for critique and player experience.
 - ✅ Disable built-in memory and user profile while his role takes shape.
 - ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.
@@ -218,7 +219,6 @@ No activity tracked
 - ⬜ Evaluate and test his use of Discord's supported Markdown formatting.
 - ⬜ Expand his MCP tools to publish his own assets to the Creator Store.
 - ⬜ Create a skill to duplicate Roblox With SWE's base for other games.
-- ⬜ Create a game design skill to guide users through the fundamentals.
 - ⬜ Create a planning skill that writes and attaches a Markdown file in chat.
 
 ## References

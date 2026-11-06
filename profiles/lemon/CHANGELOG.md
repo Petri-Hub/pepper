@@ -2,6 +2,24 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Apply the design and planning skills
+
+> *"Apply those two new skills into Lemon."*
+
+Backed up the existing design skill and installed the reviewed design and planning skill files in Lemon's live profile without restarting the gateway. Both files matched the repository and Hermes listed both skills as enabled. The planning skill's Markdown attachment and Discord preview have not yet been verified end to end.
+
+### 2026-11-06 · Draft a planning skill for Lemon
+
+> *"Create a planning skill with a Markdown plan attached in chat and enough technical detail for Lemon to continue after compaction."*
+
+Added a planning skill that keeps a readable group plan and a linked implementation handoff in the thread's scratchpad. The group plan is sent with a Hermes attachment directive; the technical plan records inspected files, decisions and verification. Registered the skill in the profile and sync helper. The draft has not been applied or tested with the live agent, and Markdown attachment delivery from the SSH sandbox remains to be verified.
+
+### 2026-11-06 · Draft Lemon's game design skill
+
+> *"Combine the best parts of those skills so Lemon can think critically about game design and help the group make the game."*
+
+Expanded the design skill with player experience, core loops, game feel, meaningful choices, challenge, accessibility, progression, replayability, retention and playtesting. It guides Lemon to explain tradeoffs and challenge assumptions without taking creative decisions away from the group. The draft has not been applied or tested with the live agent.
+
 ### 2026-11-05 · Use a smaller context window
 
 > *"150k max token limit, and ~85% or so it compresses?"*

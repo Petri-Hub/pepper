@@ -154,6 +154,7 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`assets-answering`](skills/assets-answering/SKILL.md) | Present labeled asset previews in Discord. | Confirmed |
 | [`onboarding`](skills/onboarding/SKILL.md) | Introduce Lemon and help collaborators connect Studio. | Confirmed |
 | [`design`](skills/design/SKILL.md) | Explore gameplay and creative decisions with the group. | — |
+| [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
 | [`install`](skills/install/SKILL.md) | Set up the roblox-with-swe toolchain in a worktree. | Confirmed |
 | [`serve`](skills/serve/SKILL.md) | Manage a roblox-with-swe Studio preview. | — |
