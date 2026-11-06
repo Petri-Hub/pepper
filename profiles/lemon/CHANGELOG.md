@@ -2,6 +2,72 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Add Blender to Lemon's sandbox image
+
+> *"Focus on the Blender integration in his Dockerfile."*
+
+Installed Blender and NumPy from Debian's packages in the sandbox image. Blender's Python provides `bpy` to scripts run in background mode, and NumPy is needed by its FBX exporter.
+
+### 2026-11-06 · Update Roblox Assets MCP
+
+> *"Update the agent with the new version of the MCP."*
+
+Pinned Roblox Assets MCP 0.3.0 in the sandbox image. It adds uploads and asset lifecycle management alongside search and delivery. Uploading an asset is separate from publishing a Creator Store listing.
+
+### 2026-11-06 · Run Roblox Assets MCP in Lemon's sandbox
+
+> *"Reshape the integration so that it attempts to run via SSH, instead of in the Hermes container."*
+
+Moved the MCP process and its credential into the sandbox and configured Hermes to connect over SSH. The image uses Debian Trixie and installs the pinned MCP in a Python virtual environment. The lab supplies the required key to SSH sessions. Live deployment and the MCP connection still need verification; asset uploads remain separate work.
+
+### 2026-11-06 · Apply Lemon's controls skill
+
+> *"Open a PR, merge it, and apply it to the agent."*
+
+Installed the controls skill in Lemon's live profile without restarting the gateway. The installed file matched the repository and Hermes listed the skill as enabled; its Discord command and presentation have not yet been tested in a conversation.
+
+### 2026-11-06 · Draft a controls skill for Lemon
+
+> *"Explain the useful skills and Hermes commands that give collaborators more control over Lemon."*
+
+Added a controls skill that teaches direct skill shortcuts and session commands through focused explanations and examples. Registered it in the profile and skill sync helper. The draft has not been applied or verified in the live profile.
+
+### 2026-11-06 · Apply the design and planning skills
+
+> *"Apply those two new skills into Lemon."*
+
+Backed up the existing design skill and installed the reviewed design and planning skill files in Lemon's live profile without restarting the gateway. Both files matched the repository and Hermes listed both skills as enabled. The planning skill's Markdown attachment and Discord preview have not yet been verified end to end.
+
+### 2026-11-06 · Draft a planning skill for Lemon
+
+> *"Create a planning skill with a Markdown plan attached in chat and enough technical detail for Lemon to continue after compaction."*
+
+Added a planning skill that keeps a readable group plan and a linked implementation handoff in the thread's scratchpad. The group plan is sent with a Hermes attachment directive; the technical plan records inspected files, decisions and verification. Registered the skill in the profile and sync helper. The draft has not been applied or tested with the live agent, and Markdown attachment delivery from the SSH sandbox remains to be verified.
+
+### 2026-11-06 · Draft Lemon's game design skill
+
+> *"Combine the best parts of those skills so Lemon can think critically about game design and help the group make the game."*
+
+Expanded the design skill with player experience, core loops, game feel, meaningful choices, challenge, accessibility, progression, replayability, retention and playtesting. It guides Lemon to explain tradeoffs and challenge assumptions without taking creative decisions away from the group. The draft has not been applied or tested with the live agent.
+
+### 2026-11-05 · Use a smaller context window
+
+> *"150k max token limit, and ~85% or so it compresses?"*
+
+Set Lemon's working context window to 150,000 tokens and the compression threshold to 85% of the usable input budget. The reply footer now measures usage against that working window.
+
+### 2026-11-05 · Show context usage in replies
+
+> *"Enable it please."*
+
+Enabled the runtime footer with the context-window percentage on final replies, so the group can see how much context Lemon's last model call used.
+
+### 2026-11-04 · Reduce token usage
+
+> *"Threshold, i think you can place 150k, change this in a PR for pepper, commit and push, apply to the live agent and restart (If necessary)."*
+
+Set reasoning effort to low and the context compression trigger to 150,000 tokens to reduce reasoning and repeated context in long conversations.
+
 ### 2026-11-04 · Give Lemon the text-to-speech tool
 
 > *"We've just configured OpenAI Voice for him, and he started searching for Edge TTS. Shouldn't he use ballad?"*

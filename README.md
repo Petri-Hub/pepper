@@ -189,8 +189,10 @@ No activity tracked
 - ✅ Create a Hermes profile with DeepSeek Flash and general tools.
 - ✅ Connect Lemon's Discord bot with an 18-person allowlist.
 - ✅ Verify Lemon replies in the Discord server.
+- ✅ Configure voice transcription and spoken replies in chat.
 - ✅ Run Lemon's separate Wakapi activity reporter.
-- ✅ Connect Roblox Assets MCP for Creator Store assets.
+- ✅ Connect Roblox Assets MCP for Creator Store assets through Lemon's SSH sandbox.
+- ✅ Give Lemon asset uploads and lifecycle management through Roblox Assets MCP.
 - ✅ Build Lemon's reusable image with Git, Make, Rokit and SSH.
 - ✅ Publish Lemon's development image to GHCR on merge.
 - ✅ Run his image as a persistent container in the lab.
@@ -198,23 +200,27 @@ No activity tracked
 - ✅ Skills and skill management available in Discord.
 - ✅ Curate his skill index for game development and creative work.
 - ✅ Define his Roblox SOUL and collaboration skills.
+- ✅ Add a game design skill for critique and player experience.
 - ✅ Disable built-in memory and user profile while his role takes shape.
 - ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.
 - ✅ Keep the game's repository in his workspace.
 - ✅ Create Lemon's GitHub App for branches and pull requests.
 - ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and raw content capture.
-- ✅ Medium reasoning, a 500-turn cap and São Paulo time.
-- ✅ Thinking and full tool arguments visible in Discord.
+- ✅ Low reasoning, a 150,000-token working window with compression at 85%, a 500-turn cap and São Paulo time.
+- ✅ Context-window percentage shown in final reply footers.
+- ✅ Verbose tool progress available in Discord.
 - ✅ Cron replies without Hermes wrappers.
 - ✅ Gateway shutdown and restart notices left on.
 - ✅ Home channel set to Pepper's Discord channel.
 
 #### Open
 
-- ⬜ Evaluate whether direct Git workflows need a workspace helper after trying them.
-- ⬜ Evaluate whether Luau LSP adds useful type checks beyond Selene.
-- ⬜ Evaluate other MCP servers for the game workflow.
+- ⬜ Evaluate how Lemon can stay present during long sequences of tool calls.
+- ⬜ Evaluate and test his use of Discord's supported Markdown formatting.
+- ⬜ Evaluate public Creator Store listing management through his MCP tools.
+- ⬜ Create a skill to duplicate Roblox With SWE's base for other games.
+- ⬜ Create a planning skill that writes and attaches a Markdown file in chat.
 
 ## References
 
@@ -240,5 +246,4 @@ No activity tracked
 - [waka-readme](https://github.com/athul/waka-readme): the action that updates the three time tracking sections from Wakapi's stats
 - [ai-memory](https://github.com/akitaonrails/ai-memory): long-term context for Pepper through the [community Hermes plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin)
 - [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe): the game Lemon helps build
-- [Luau LSP](https://github.com/JohnnyMorganz/luau-lsp): type analysis to evaluate for Lemon's game workflow
 - [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp): Creator Store search and asset delivery

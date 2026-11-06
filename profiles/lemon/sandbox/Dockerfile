@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 # Image metadata — identify Lemon's development sandbox and its source
 LABEL org.opencontainers.image.title="lemon-sandbox" \
@@ -18,6 +18,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 # System packages — remove generated SSH host keys in the same image layer
 RUN apt-get update && apt-get install --no-install-recommends -y \
+        blender \
         ca-certificates \
         curl \
         ffmpeg \
@@ -27,13 +28,19 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         make \
         openssh-server \
         pre-commit \
+        python3-numpy \
         python3-pil \
+        python3-venv \
         ripgrep \
         unzip \
     && rm -f /etc/ssh/ssh_host_*
 
 # Package indexes — remove them after installation
 RUN rm -rf /var/lib/apt/lists/*
+
+# Roblox Assets MCP — install once in the image, not on each SSH connection
+RUN python3 -m venv /opt/roblox-assets-mcp \
+    && /opt/roblox-assets-mcp/bin/pip install --no-cache-dir 'roblox-assets-mcp==0.3.0'
 
 # Base workspace — Lemon user, persistent paths and shell configuration
 RUN useradd --create-home --shell /bin/bash lemon \

@@ -21,15 +21,25 @@ DeepSeek Flash keeps Lemon's Discord conversations and coding help inexpensive. 
 model:
   provider: deepseek
   default: deepseek-flash
+  context_length: 150000
 ```
 
 ### 🤔 Reasoning
 
-Medium effort helps Lemon plan changes and read unfamiliar code without slowing every reply.
+Low effort reduces reasoning tokens across Lemon's Discord conversations and development work.
 
 ```yaml
 agent:
-  reasoning_effort: medium
+  reasoning_effort: low
+```
+
+### 🗜️ Context compression
+
+Lemon uses a 150,000-token working context window and starts compressing near 85% of its usable input budget. This leaves room for new messages and reduces the old context sent on later calls; output-token reservation can make the trigger lower than 127,500 tokens.
+
+```yaml
+compression:
+  threshold: 0.85
 ```
 
 ### 🔁 Turn limit
@@ -70,12 +80,15 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-Lemon hides reasoning but keeps tool progress on so the group can follow what he is doing. The custom preview length cap is removed, leaving Hermes' default.
+Lemon hides reasoning but keeps tool progress on so the group can follow what he is doing. A footer on final replies shows the last model call's context-window percentage. The custom preview length cap is removed, leaving Hermes' default.
 
 ```yaml
 display:
   show_reasoning: false
   tool_progress: verbose
+  runtime_footer:
+    enabled: true
+    fields: [context_pct]
 ```
 
 ### 🎙️ Voice
@@ -141,7 +154,9 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`assets-search`](skills/assets-search/SKILL.md) | Find and evaluate Roblox Creator Store assets. | Confirmed |
 | [`assets-answering`](skills/assets-answering/SKILL.md) | Present labeled asset previews in Discord. | Confirmed |
 | [`onboarding`](skills/onboarding/SKILL.md) | Introduce Lemon and help collaborators connect Studio. | Confirmed |
+| [`controls`](skills/controls/SKILL.md) | Explain skill shortcuts and session commands. | — |
 | [`design`](skills/design/SKILL.md) | Explore gameplay and creative decisions with the group. | — |
+| [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
 | [`install`](skills/install/SKILL.md) | Set up the roblox-with-swe toolchain in a worktree. | Confirmed |
 | [`serve`](skills/serve/SKILL.md) | Manage a roblox-with-swe Studio preview. | — |
@@ -191,7 +206,7 @@ skills:
 
 ### 🖥️ Workspace
 
-Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately.
+Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries Blender, `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately. Blender scripts can use `bpy` through Blender's bundled Python in background mode. Debian's Blender build lacks OpenImageDenoise support, so disable Cycles denoising for headless renders.
 
 The workspace can run the game's automated tests through OCALE, alongside formatting, linting and build checks. FFmpeg and ffprobe inspect and convert media for audio previews.
 
@@ -220,20 +235,31 @@ The `github-app-auth` skill holds these identifiers and mints the tokens. Hermes
 
 ### 🔌 MCP servers
 
-Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metadata and request temporary download links. The server runs in his Hermes profile with its own Roblox Open Cloud key. Assets can be fetched into his workspace; getting them into the game still needs a Studio session or an Open Cloud path he does not have yet.
+Roblox Assets MCP lets Lemon search Creator Store listings, inspect asset metadata, request temporary download links, and upload and manage owned assets. Hermes starts the server over SSH in Lemon's sandbox, so it can read files from his workspace. Its Open Cloud key is supplied to the sandbox by the lab, not by Hermes. Uploading an asset does not create a public Creator Store listing.
 
 | Server | What it gives the agent | Link |
 |---|---|---|
-| `roblox-assets` | Creator Store search, details and temporary asset URLs | [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp) |
+| `roblox-assets` | Creator Store search, delivery and owned asset lifecycle management | [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp) |
 
 ```yaml
 mcp_servers:
   roblox-assets:
-    command: uvx
-    args: [roblox-assets-mcp]
-    env:
-      ROBLOX_API_KEY: "${ROBLOX_API_KEY}"
+    command: ssh
+    args:
+      - -T
+      - -o
+      - BatchMode=yes
+      - -o
+      - StrictHostKeyChecking=yes
+      - -o
+      - UserKnownHostsFile=/opt/data/profiles/lemon/ssh/known_hosts
+      - -i
+      - /opt/data/profiles/lemon/ssh/lemon_sandbox_ed25519
+      - lemon@lemon-sandbox
+      - /opt/roblox-assets-mcp/bin/roblox-assets-mcp
 ```
+
+Use the actual private-key path configured for Lemon's terminal if it differs. Before enabling this configuration, add the sandbox's verified persistent SSH host public key to the specified `known_hosts` file under the hostname `lemon-sandbox`; the lab's sandbox README describes the key's location. Keep any existing entries. SSH must be able to authenticate non-interactively, and the host key must match after container replacement. SSH carries MCP protocol messages over standard input and output; do not add a terminal (`-T`) or commands that print banners to standard output.
 
 ### 🧱 Plugins
 
