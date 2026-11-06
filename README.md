@@ -189,6 +189,7 @@ No activity tracked
 - ✅ Create a Hermes profile with DeepSeek Flash and general tools.
 - ✅ Connect Lemon's Discord bot with an 18-person allowlist.
 - ✅ Verify Lemon replies in the Discord server.
+- ✅ Configure voice transcription and spoken replies in chat.
 - ✅ Run Lemon's separate Wakapi activity reporter.
 - ✅ Connect Roblox Assets MCP for Creator Store assets.
 - ✅ Build Lemon's reusable image with Git, Make, Rokit and SSH.
@@ -206,16 +207,19 @@ No activity tracked
 - ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and raw content capture.
 - ✅ Low reasoning, a 150,000-token working window with compression at 85%, a 500-turn cap and São Paulo time.
 - ✅ Context-window percentage shown in final reply footers.
-- ✅ Thinking and full tool arguments visible in Discord.
+- ✅ Verbose tool progress available in Discord.
 - ✅ Cron replies without Hermes wrappers.
 - ✅ Gateway shutdown and restart notices left on.
 - ✅ Home channel set to Pepper's Discord channel.
 
 #### Open
 
-- ⬜ Evaluate whether direct Git workflows need a workspace helper after trying them.
-- ⬜ Evaluate whether Luau LSP adds useful type checks beyond Selene.
-- ⬜ Evaluate other MCP servers for the game workflow.
+- ⬜ Evaluate how Lemon can stay present during long sequences of tool calls.
+- ⬜ Evaluate and test his use of Discord's supported Markdown formatting.
+- ⬜ Expand his MCP tools to publish his own assets to the Creator Store.
+- ⬜ Create a skill to duplicate Roblox With SWE's base for other games.
+- ⬜ Create a game design skill to guide users through the fundamentals.
+- ⬜ Create a planning skill that writes and attaches a Markdown file in chat.
 
 ## References
 
@@ -241,5 +245,4 @@ No activity tracked
 - [waka-readme](https://github.com/athul/waka-readme): the action that updates the three time tracking sections from Wakapi's stats
 - [ai-memory](https://github.com/akitaonrails/ai-memory): long-term context for Pepper through the [community Hermes plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin)
 - [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe): the game Lemon helps build
-- [Luau LSP](https://github.com/JohnnyMorganz/luau-lsp): type analysis to evaluate for Lemon's game workflow
 - [Roblox Assets MCP](https://github.com/Petri-Hub/roblox-assets-mcp): Creator Store search and asset delivery
