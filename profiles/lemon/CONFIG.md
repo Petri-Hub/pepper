@@ -159,12 +159,19 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
 | [`install`](skills/install/SKILL.md) | Set up the roblox-with-swe toolchain in a worktree. | Confirmed |
+| [`model`](skills/model/SKILL.md) | Create and integrate custom Blender assets for Roblox. | — |
+| [`texture`](skills/texture/SKILL.md) | Find and choose textures and materials. | — |
+| [`texture-answering`](skills/texture-answering/SKILL.md) | Present texture previews and material choices. | — |
+| [`texture-search-in-ambientcg`](skills/texture-search-in-ambientcg/SKILL.md) | Find ambientCG texture maps. | — |
+| [`texture-search-in-polyhaven`](skills/texture-search-in-polyhaven/SKILL.md) | Find Poly Haven texture maps. | — |
 | [`serve`](skills/serve/SKILL.md) | Manage a roblox-with-swe Studio preview. | — |
 | [`test`](skills/test/SKILL.md) | Check changes and coordinate Studio playtesting. | — |
 | [`document`](skills/document/SKILL.md) | Record game decisions and contributor guidance. | — |
 | [`deliver`](skills/deliver/SKILL.md) | Deliver a change through checks and merge. | — |
 
 Run [`sync-skills.sh`](sync-skills.sh) with Lemon's existing profile skills directory as its argument when applying this configuration; it requires `rsync` and write access to that directory. It replaces the listed skill directories in full, including files Lemon changed or added inside them. His other skills remain managed by Hermes. The sandbox image supplies the asset-labeling helper used by `assets-answering`.
+
+Hermes reserves `/model` for its built-in model selection command. Invoke the modelling skill explicitly with `/skill model`, or ask Lemon to use it in conversation.
 
 The listed disabled skills are hidden from his prompt but remain installed; new skills are enabled unless explicitly disabled. The setup, preview and test skills currently describe roblox-with-swe's toolchain; project documentation remains in the game repository.
 
