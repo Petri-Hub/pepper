@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         make \
         openssh-server \
         pre-commit \
+        python3-numpy \
         python3-pil \
         python3-venv \
         ripgrep \

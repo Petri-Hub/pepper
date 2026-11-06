@@ -6,7 +6,7 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 > *"Focus on the Blender integration in his Dockerfile."*
 
-Installed Blender from Debian's packages in the sandbox image. Its bundled Python provides `bpy` to scripts run by Blender in background mode.
+Installed Blender and NumPy from Debian's packages in the sandbox image. Blender's Python provides `bpy` to scripts run in background mode, and NumPy is needed by its FBX exporter.
 
 ### 2026-11-06 · Update Roblox Assets MCP
 
