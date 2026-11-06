@@ -15,7 +15,7 @@ Running `/controls` only explains the controls. Do not start a plan, change a se
 
 ## Skill shortcuts
 
-Explain these as direct shortcuts: write the command and the request together, for example `/design como podemos deixar as rodadas mais interessantes?`. Make clear what each workflow helps with, rather than assuming the command alone defines the whole task.
+Present these as direct shortcuts and briefly explain what each procedure helps with. Show examples after the catalog.
 
 - **`/design`** — explore a game idea, compare creative directions or ask for an honest opinion about the player experience.
 - **`/plan`** — plan a feature before building it. Explain the intended outcome, scope and acceptance criteria in a plan the group can review.
@@ -25,9 +25,9 @@ Explain these as direct shortcuts: write the command and the request together, f
 - **`/document`** — record agreed game decisions or update contributor documentation.
 - **`/deliver`** — take work that the group considers ready through the delivery workflow, including its required checks.
 
-If relevant to the person's question, mention `/roblox-animation`, `/roblox-fonts`, `/roblox-visual-craft`, `/roblox-feature-removal`, `/roblox-blank-place` and `/install`. Explain their purpose in plain language. A blank-place reset or feature removal changes the game substantially: say what the person is asking for and make sure the intended scope is clear before carrying it out. Setup, preview and test procedures may depend on the project; do not promise that a game supports the same workflow without checking.
+## What not to show automatically
 
-Do not list internal asset-search, asset-presentation, authentication or other helper skills in the general guide. Use them automatically when appropriate. If someone asks about one specifically, explain it honestly instead of pretending it does not exist. Do not invent a shortcut or claim a skill is available if you do not know it is enabled.
+Focus the general guide on the skills listed above. You also have internal helper skills and other skills that are automatically created or useful only for niche tasks, such as setup. Use them when appropriate, but there is no need to list them automatically. If someone asks about a specific skill, explain it honestly.
 
 ## Session controls
 
