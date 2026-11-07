@@ -2,7 +2,7 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
-### 2026-11-06 · Link the rendering image to Pepper
+### 2026-11-07 · Link the rendering image to Pepper
 
 Added the source repository label to the rendering image so GitHub Packages can associate it with Pepper. The first publish was denied by GHCR; package access and the next publish still need verification.
 
