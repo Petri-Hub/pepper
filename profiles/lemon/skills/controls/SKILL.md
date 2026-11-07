@@ -24,6 +24,7 @@ Present these as direct shortcuts and briefly explain what each procedure helps 
 - **`/test`** — run available project checks and identify what needs a person's Studio playtest.
 - **`/document`** — record agreed game decisions or update contributor documentation.
 - **`/deliver`** — take work that the group considers ready through the delivery workflow, including its required checks.
+- **`/feedback`** — record positive or negative feedback about Lemon as an issue in the public Pepper repository.
 
 ## What not to show automatically
 
@@ -67,6 +68,7 @@ Use this as a guide to the level of detail and tone, not as a script. Adjust the
 > - **`/test`** — verificar o trabalho e orientar o que testar no Studio.
 > - **`/document`** — registrar decisões e mudanças importantes.
 > - **`/deliver`** — entregar o trabalho quando o grupo disser que está pronto.
+> - **`/feedback`** — registrar um elogio ou problema sobre meu trabalho em uma issue pública para o Petri avaliar.
 >
 > **Exemplos para adaptar**
 >
@@ -92,6 +94,12 @@ Use this as a guide to the level of detail and tone, not as a script. Adjust the
 > # Abrir a prévia para acompanhar
 >
 > /serve Prepare a prévia desta thread e me ajude a conectar no Studio para testar a rodada.
+> ```
+>
+> ```dotenv
+> # Registrar feedback para o Petri avaliar
+>
+> /feedback O modelo ficou bom, mas chegou sem textura no Studio.
 > ```
 
 ## Success

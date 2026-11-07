@@ -155,6 +155,7 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`assets-answering`](skills/assets-answering/SKILL.md) | Present labeled asset previews in Discord. | Confirmed |
 | [`onboarding`](skills/onboarding/SKILL.md) | Introduce Lemon and help collaborators connect Studio. | Confirmed |
 | [`controls`](skills/controls/SKILL.md) | Explain skill shortcuts and session commands. | — |
+| [`feedback`](skills/feedback/SKILL.md) | Record feedback about Lemon as a public issue for triage. | — |
 | [`design`](skills/design/SKILL.md) | Explore gameplay and creative decisions with the group. | — |
 | [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
@@ -234,7 +235,7 @@ terminal:
 
 ### 🐙 GitHub App
 
-Lemon uses a GitHub App installed only on the game repository. Its short-lived tokens let him create branches and pull requests under his bot identity. The private key is mounted read-only from the lab and copied into his sandbox for Git operations. He opens pull requests against `staging` and merges them after the required checks pass.
+Lemon uses a GitHub App installed on the game repository and Pepper. Its short-lived tokens let him create branches and pull requests under his bot identity; feedback issues go to Pepper with a token restricted to that repository and issue writes. The private key is mounted read-only from the lab and copied into his sandbox for Git operations. He opens game pull requests against `staging` and merges them after the required checks pass.
 
 ```text
 App ID         5568797
