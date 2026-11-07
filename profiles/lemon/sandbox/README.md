@@ -4,7 +4,7 @@ This Debian Trixie image gives Lemon a persistent Linux workspace with SSH acces
 
 The image currently targets Linux x86-64, matching the lab host and GitHub Actions runner.
 
-Debian's Blender build does not include OpenImageDenoise support. For headless Cycles renders, set `bpy.context.scene.cycles.use_denoising = False`. Use `blender --background --python-exit-code 1 --python script.py` so Python errors produce a failing process exit code.
+Use `blender --background --python-exit-code 1 --python script.py` for local modeling and export scripts so Python errors produce a failing process exit code. The lab has no GPU; use the Modal rendering workflow for all renders, including previews.
 
 ## Check the toolchain locally
 
