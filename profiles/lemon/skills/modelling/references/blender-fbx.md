@@ -12,10 +12,9 @@ blender --background --python-exit-code 1 \
   --python-expr 'import bpy; print(bpy.app.version_string)'
 blender --background --threads 4 --python-exit-code 1 --python build_asset.py
 blender --background scene.blend --python-exit-code 1 --python check_asset.py
-blender --background scene.blend -o /absolute/path/render -F PNG -f 1
 ```
 
-`--background` avoids a GUI; `--python-exit-code 1` makes a Python exception fail the command. Put options before the action they affect; `-f 1` renders frame 1, producing a filename such as `render0001.png`. A script can instead set `scene.render.filepath` and call `bpy.ops.render.render(write_still=True)`. Use `--help` and the installed Blender's API when a version differs.
+`--background` avoids a GUI; `--python-exit-code 1` makes a Python exception fail the command. Use `--help` and the installed Blender's API when a version differs. Build and check the scene locally, but do not render it from these scripts.
 
 Basic `bpy` operations for scripts:
 
@@ -32,13 +31,11 @@ bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
 
 # Author geometry, UVs, image materials, camera and lights here.
 bpy.ops.wm.save_as_mainfile(filepath="/absolute/scratch/asset.blend")
-bpy.context.scene.render.filepath = "/absolute/scratch/asset.png"
-bpy.ops.render.render(write_still=True)
 ```
 
 Use absolute paths in actual scripts and preserve the editable `.blend`, source script and source maps. Do not delete objects in an existing `.blend` unless the task calls for it; start from an empty scene or modify only selected objects. Do not export a whole scene by accident.
 
-For a headless render, configure a camera, lights, engine, image size and filepath. CPU Cycles works in the current Debian Blender 4.3.2 sandbox when denoising is disabled: set `bpy.context.scene.cycles.use_denoising = False` before rendering. This Debian build lacks OpenImageDenoise support; expect grain at low samples. Eevee failed in one earlier headless container without EGL. Inspect supported options rather than assume they exist. A successful render doesn't establish Roblox material or lighting fidelity.
+Configure a camera, lights and image size in the scene, then use `rendering-in-modal` for every render, including drafts and round-trip inspection. The lab has no GPU, so its CPU renders are slow and use shared resources. A successful Blender render doesn't establish Roblox material or lighting fidelity.
 
 ## Prepare geometry
 

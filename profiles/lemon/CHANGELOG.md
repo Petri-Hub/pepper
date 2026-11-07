@@ -10,6 +10,10 @@ Renamed Lemon's `model` skill to `modelling`, so `/modelling` can select it with
 
 Added a `feedback` skill that records positive, negative or mixed feedback as an issue in the public Pepper repository. The issue preserves the reporter's words and separates observed behavior, inferred expectations and possible causes. Lemon's GitHub App can access Pepper, and the repository's issue feature is enabled. Applied the skill and controls live without a restart and corrected the App skill's repository scope. A Discord `/feedback` test created an issue under Lemon's bot identity and returned its link.
 
+### 2026-11-07 · Keep every Blender render on Modal
+
+Clarified that previews and iterations use Modal because the lab has no GPU and local renders are slow. Removed conflicting local-render examples, authorized the configured bounded Modal workflow in Lemon's instructions, and shortened first-concept iteration before group feedback. Modeling and FBX export remain in the SSH workspace. Applied the prompt and skill changes live without restarting, preserving an unrelated live FBX note; a fresh conversation still needs to verify the behavior.
+
 ### 2026-11-07 · Link the rendering image to Pepper
 
 Added the source repository label to the rendering image so GitHub Packages can associate it with Pepper. After GHCR denied the first publish, the labeled image published successfully and was publicly accessible. A render through Lemon's SSH sandbox used the published image and a T4 successfully.

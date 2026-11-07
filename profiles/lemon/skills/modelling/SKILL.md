@@ -5,7 +5,7 @@ description: Create or adapt a custom 3D asset in headless Blender and prepare, 
 
 # Make a 3D asset work in Roblox
 
-Use Blender's Python API (`bpy`) from the SSH workspace to model, texture, render and export a file; Roblox converts the file into a cloud Model containing MeshParts. Download that model as `.rbxm`, map it through Rojo and have the group inspect it in Studio. A Blender render is useful evidence, not a Roblox playtest. This skill is about a **working asset pipeline**; it does not claim a design is attractive or gameplay-ready.
+Use Blender's Python API (`bpy`) in the SSH workspace to model, texture and export a file, and use `rendering-in-modal` for every render, including previews. Roblox converts the file into a cloud Model containing MeshParts. Download that model as `.rbxm`, map it through Rojo and have the group inspect it in Studio. A Blender render is useful evidence, not a Roblox playtest. This skill is about a **working asset pipeline**; it does not claim a design is attractive or gameplay-ready.
 
 For exact commands and export checks read [Blender and FBX](references/blender-fbx.md). For image sources, UVs and materials read [Textures](references/textures.md). For the Open Cloud request, asset delivery, Rojo and troubleshooting read [Roblox integration](references/roblox-integration.md). Read the relevant reference before that phase; do not load every reference for a question that only needs one.
 

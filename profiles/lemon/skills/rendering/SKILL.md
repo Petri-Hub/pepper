@@ -7,9 +7,9 @@ description: Plan and review Blender renders for visual previews or presentation
 
 ## Render strategy
 
-Determine the purpose, subject, camera angle, lighting, background, resolution and required output before rendering. Inspect the scene and project instructions. For an ordinary Blender still, use `/rendering-in-modal` to render on the T4 instead of loading the homelab. Use `modelling` to create or export an asset and integrate it into Roblox.
+Determine the purpose, subject, camera angle, lighting, background, resolution and required output before rendering. Inspect the scene and project instructions. Use `rendering-in-modal` for every Blender still, including low-quality previews and iterations. The lab has no GPU, so CPU renders are slow and consume shared resources. Use `modelling` to create or export an asset and integrate it into Roblox.
 
-Start with a low-resolution, low-sample preview and inspect it for framing, shape, color, lighting, seams and missing objects or textures. Adjust the scene as needed before producing a higher-quality image. When a creative decision is unresolved, show the group the preview and ask for the decision; a technically successful render is not design approval.
+Start with a low-resolution, low-sample Modal preview and inspect it for framing, shape, color, lighting, seams and missing objects or textures. For a first concept, share that preview once it communicates the requested idea; fix a clear technical defect first if needed, then invite feedback before further subjective refinements. Produce a higher-quality image when the request calls for it. A technically successful render is not design approval.
 
 ## Workspace and presentation
 
@@ -20,7 +20,7 @@ Keep the source scene, required assets and renders in the thread's persistent sc
 - **Dependencies:** Check the active camera, lighting and material resources before submitting a job. Pack eligible assets into a copy of the scene and verify any resources that cannot be packed.
 - **Cost and iteration:** Choose settings appropriate to the requested output. Start small, inspect the result and increase quality only when useful. Consider the effect of resolution, samples and render duration on cost.
 - **Data:** Send only files needed for the render to the selected service. Keep credentials and unrelated files out of the scene and output.
-- **Fallbacks:** If the chosen renderer is unavailable or unsupported, explain the limitation and choose a suitable path with the group; do not silently put a heavy render on the homelab.
+- **Fallbacks:** If Modal is unavailable or cannot render the requested output, explain the limitation and choose a suitable path with the group. Do not render locally, even for a preview.
 
 ## Limitations
 
