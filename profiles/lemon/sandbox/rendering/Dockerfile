@@ -1,5 +1,7 @@
 FROM python:3.11-slim-bookworm
 
+LABEL org.opencontainers.image.source="https://github.com/Petri-Hub/pepper"
+
 RUN apt-get update && apt-get install --no-install-recommends -y \
     libgl1 \
     libglib2.0-0 \

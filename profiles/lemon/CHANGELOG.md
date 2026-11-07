@@ -2,6 +2,10 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Link the rendering image to Pepper
+
+Added the source repository label to the rendering image so GitHub Packages can associate it with Pepper. The first publish was denied by GHCR; package access and the next publish still need verification.
+
 ### 2026-11-06 · Render Blender previews on Modal
 
 Added a `rendering` skill for planning and reviewing previews, a `rendering-in-modal` skill for single-use T4 Cycles renders, and a separate `lemon-render` image. The SSH sandbox installs the Modal client and requires its token pair at startup. FBX export stays local. Pull requests build both images without publishing; the rendering image publishes on main. A small T4 render passed using the prepared Dockerfile; the setup has not been applied or verified on the live agent.
