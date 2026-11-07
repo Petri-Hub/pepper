@@ -2,6 +2,20 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-07 · Show drafts early and work in stages
+
+> *"I prefer to have a draft of what he's doing than making him work for 20 minutes to get a poor result that was misdirected. He needs to produce a medium result in a short time, so the people collaborating with him can steer the style and the game design."*
+
+Langfuse traces from 2 to 7 November showed the pattern: the group saw a single prop's first render after 6 to 12 minutes and a feature's first preview after 14 to 18, while Lemon rendered, inspected and tested in silence. Most corrections were about shape and arrived after a full build, so each one cost a rebuild.
+
+- Added a Working rhythm to his soul: coarse-to-fine stages that end the turn with something to see, up to three questions about look, feel or scope, tool-call budgets before the first stop, short progress lines while he works, checks sized to the stage and rules against invented results. "Direto" in a request, or clearly technical work, skips the stops.
+- He merges only after someone in the thread says the change is finished for now, asked in plain words. Passing checks no longer count as acceptance.
+- Rewrote `implement` around a rough playable version first, with a short search instead of a search-first phase, and the full checks at the finish. Dropped its note that modelling was future work.
+- `modelling` starts with two or three silhouette blockouts and moves FBX checks and textures to later stages. `rendering` drafts at 16 to 32 samples and 50% resolution. `texture` does one search round. `test` runs quick checks during feedback rounds. `deliver`, `plan` and `controls` match.
+- Turned off Hermes' task-completion, tool-use and execution guidance blocks, whose "keep calling tools until complete and verified" rules drove the silent runs; the soul keeps their useful parts. Turned off background skill reviews. Added a 15-minute run budget that asks him to wrap up without cutting the turn.
+
+Not applied to the live agent yet. The live configuration, soul and skills still need to be updated and checked in a Discord session.
+
 ### 2026-11-07 · Rename the modelling shortcut
 
 Renamed Lemon's `model` skill to `modelling`, so `/modelling` can select it without colliding with Hermes' `/model` command. Updated the skill routing, controls and sync helper. Renamed the live skill without restarting, preserved its additional files and confirmed Hermes lists `modelling` as enabled.
