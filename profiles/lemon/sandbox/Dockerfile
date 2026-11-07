@@ -95,7 +95,7 @@ COPY --chmod=0755 sandbox/entrypoint.sh /usr/local/bin/lemon-entrypoint
 COPY --chmod=0755 skills/assets-answering/scripts/gallery.py /usr/local/bin/lemon-asset-gallery
 
 # Modal rendering — available to commands in the SSH workspace
-COPY skills/rendering/scripts/render.py /usr/local/lib/lemon/render.py
+COPY skills/rendering-in-modal/scripts/render.py /usr/local/lib/lemon/render.py
 
 # Runtime — start SSH with the persistent workspace as the working directory
 WORKDIR /home/lemon/workspace

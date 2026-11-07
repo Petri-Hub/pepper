@@ -160,7 +160,8 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
 | [`install`](skills/install/SKILL.md) | Set up the roblox-with-swe toolchain in a worktree. | Confirmed |
 | [`model`](skills/model/SKILL.md) | Create and integrate custom Blender assets for Roblox. | — |
-| [`rendering`](skills/rendering/SKILL.md) | Render Blender previews on a short-lived Modal GPU. | — |
+| [`rendering`](skills/rendering/SKILL.md) | Plan, inspect and present 3D renders. | — |
+| [`rendering-in-modal`](skills/rendering-in-modal/SKILL.md) | Render Blender previews on a short-lived Modal GPU. | — |
 | [`texture`](skills/texture/SKILL.md) | Find and choose textures and materials. | — |
 | [`texture-answering`](skills/texture-answering/SKILL.md) | Present texture previews and material choices. | — |
 | [`texture-search-in-ambientcg`](skills/texture-search-in-ambientcg/SKILL.md) | Find ambientCG texture maps. | — |
@@ -218,7 +219,7 @@ Lemon's terminal and file tools use a persistent lab container over SSH, isolate
 
 The workspace can run the game's automated tests through OCALE, alongside formatting, linting and build checks. FFmpeg and ffprobe inspect and convert media for audio previews.
 
-The sandbox includes the Modal client. The lab supplies `MODAL_TOKEN_ID` and `MODAL_TOKEN_SECRET` to its entrypoint, which requires both and makes them available to SSH sessions. The `rendering` skill sends packed Blender scenes to a separate `lemon-render` image on Modal; the image runs a single-use T4 function with no warm pool. FBX export remains local.
+The sandbox includes the Modal client. The lab supplies `MODAL_TOKEN_ID` and `MODAL_TOKEN_SECRET` to its entrypoint, which requires both and makes them available to SSH sessions. The `rendering-in-modal` skill sends packed Blender scenes to a separate `lemon-render` image on Modal; the image runs a single-use T4 function with no warm pool. FBX export remains local.
 
 ```yaml
 terminal:

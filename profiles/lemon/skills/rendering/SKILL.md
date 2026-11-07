@@ -1,35 +1,35 @@
 ---
 name: rendering
-description: Render Blender scenes on a short-lived Modal GPU for visual inspection and presentation. Use for GPU-assisted Blender still renders; use model for Roblox asset creation and integration.
+description: Plan and review Blender renders for visual previews or presentation. Use when a 3D scene or asset needs a rendered image; use model for asset creation and Roblox integration.
 ---
 
-# Render Blender scenes with Modal
+# Render a 3D scene
 
-Use the bundled script for a single Cycles PNG on a Modal T4. Modeling and exporting stay in the SSH workspace; the `.blend` is sent to Modal and the PNG is saved back locally. A Blender render is not proof of appearance in Roblox Studio.
+## Render strategy
 
-## Prepare
+Determine the purpose, subject, camera angle, lighting, background, resolution and required output before rendering. Inspect the scene and project instructions. For an ordinary Blender still, use `/rendering-in-modal` to render on the T4 instead of loading the homelab. Use `model` to create or export an asset and integrate it into Roblox.
 
-Check the scene has a camera, intended lighting and a compatible Blender version. The `ghcr.io/petri-hub/lemon-render:latest` remote image uses Blender's `bpy` 4.5.0: a file saved by a newer Blender can be incompatible. The image must be published and accessible to Modal before use. Pack eligible textures and linked data and save a separate `.blend`; verify required external resources. Videos, caches and some linked files may need separate transfer, which this single-file script does not provide. Never upload secrets or unrelated files with a scene.
+Start with a low-resolution, low-sample preview and inspect it for framing, shape, color, lighting, seams and missing objects or textures. Adjust the scene as needed before producing a higher-quality image. When a creative decision is unresolved, show the group the preview and ask for the decision; a technically successful render is not design approval.
 
-The sandbox image installs the Modal client and requires `MODAL_TOKEN_ID` and `MODAL_TOKEN_SECRET` at startup, passing them to SSH sessions. Credentials are supplied privately by Petri; never print or ask for them in chat. Do not copy someone else's token or assume environment variables cross SSH. If access is unavailable, report the missing setup.
+## Workspace and presentation
 
-## Render
+Keep the source scene, required assets and renders in the thread's persistent scratchpad under `/home/lemon/workspace/scratchpad/`, organized by task. Preserve the source file and avoid overwriting a previous result. When sharing a preview, use `MEDIA:/absolute/path` and explain what it shows and what still needs review.
 
-Run the copy of the script installed in the SSH sandbox (replace the example paths with the thread's scratchpad paths):
+## Constraints + Guidelines
 
-```bash
-modal run /usr/local/lib/lemon/render.py \
-  --input /home/lemon/workspace/scratchpad/scene.blend \
-  --output /home/lemon/workspace/scratchpad/preview.png \
-  --frame 1 --samples 32 --percentage 50
-```
+- **Dependencies:** Check the active camera, lighting and material resources before submitting a job. Pack eligible assets into a copy of the scene and verify any resources that cannot be packed.
+- **Cost and iteration:** Choose settings appropriate to the requested output. Start small, inspect the result and increase quality only when useful. Consider the effect of resolution, samples and render duration on cost.
+- **Data:** Send only files needed for the render to the selected service. Keep credentials and unrelated files out of the scene and output.
+- **Fallbacks:** If the chosen renderer is unavailable or unsupported, explain the limitation and choose a suitable path with the group; do not silently put a heavy render on the homelab.
 
-The script never overwrites a result. It uses the scene's active camera and base resolution, sets Cycles CUDA and refuses CPU fallback. It disables automatic script execution on file load. It produces one still, not an animation, bake or an Eevee render; unsupported external caches, addons, scripts or features may change the result. Inspect the result and compare it with the brief; attach it using the workspace's `MEDIA:/absolute/path` convention when requested.
+## Limitations
 
-Start with a low-resolution, low-sample preview, then increase only as needed. Render time, GPU queueing, image build and network transfer all affect latency. Check the Modal logs for the selected GPU and errors. If the image builds but no GPU is detected, the scene fails, or an image is missing, report and diagnose rather than claiming success or silently rendering on the homelab.
+- **Roblox appearance:** Blender materials and lighting do not necessarily match Roblox. A render is a design preview, not evidence that an asset looks or works correctly in Studio.
+- **FBX export:** Rendering and export are separate operations. Export and validate FBX locally through `model`; a successful render does not establish export or upload correctness.
+- **Animation and other engines:** Select a workflow that supports the requested output. The current Modal helper renders a single Cycles still; it does not render an animation, bake textures or produce an Eevee render.
 
-The function uses one T4, at most one container, no warm pool, one input per container, a two-second idle window and a 600-second execution timeout. Single-use shutdown and the idle window are separate controls; neither is a budget cap, and timeouts do not include queueing. Preemption can restart work. Do not launch long sequences or increase concurrency, GPU size, timeout or retry policy without checking the scope and cost. For animation, discuss frame count and a bounded batch approach first; repeated single-frame cold starts can be inefficient.
+## References
 
-## Verify and report
-
-For first use, render a small packed scene containing a camera, light and visibly textured object. Check the PNG, GPU log, elapsed time and Modal usage, and compare with a local low-quality preview. Report the remote Blender version, what was rendered and any missing dependencies. If Modal access or GPU provisioning is unavailable, say the cloud path was not verified.
+- [`rendering-in-modal`](../rendering-in-modal/SKILL.md): Prepare and render a packed scene on Modal.
+- [`model`](../model/SKILL.md): Build, export and integrate Roblox assets.
+- [Blender rendering documentation](https://docs.blender.org/manual/en/latest/render/): Cameras, render engines and output.

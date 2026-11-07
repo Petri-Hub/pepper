@@ -15,14 +15,14 @@ if [ "$source_dir" = "$target_dir" ]; then
 fi
 
 # Only these repository-managed skills are replaced; other skills stay intact.
-for name in assets-search assets-answering onboarding controls deliver design document implement install model plan rendering serve test texture texture-answering texture-search-in-ambientcg texture-search-in-polyhaven; do
+for name in assets-search assets-answering onboarding controls deliver design document implement install model plan rendering rendering-in-modal serve test texture texture-answering texture-search-in-ambientcg texture-search-in-polyhaven; do
     if [ ! -f "$source_dir/$name/SKILL.md" ] || [ -L "$target_dir/$name" ]; then
         echo "Invalid source or symlink destination for $name." >&2
         exit 1
     fi
 done
 
-for name in assets-search assets-answering onboarding controls deliver design document implement install model plan rendering serve test texture texture-answering texture-search-in-ambientcg texture-search-in-polyhaven; do
+for name in assets-search assets-answering onboarding controls deliver design document implement install model plan rendering rendering-in-modal serve test texture texture-answering texture-search-in-ambientcg texture-search-in-polyhaven; do
     mkdir -p "$target_dir/$name"
     rsync -a --no-owner --no-group --delete "$source_dir/$name/" "$target_dir/$name/"
     printf 'Replaced %s\n' "$name"

@@ -7,14 +7,14 @@ on:
       - profiles/lemon/sandbox/Dockerfile
       - profiles/lemon/sandbox/entrypoint.sh
       - profiles/lemon/skills/assets-answering/scripts/**
-      - profiles/lemon/skills/rendering/scripts/**
+      - profiles/lemon/skills/rendering-in-modal/scripts/**
       - .github/workflows/publish-lemon-image.yml
   push:
     branches: [main]
     paths:
       - profiles/lemon/sandbox/**
       - profiles/lemon/skills/assets-answering/scripts/**
-      - profiles/lemon/skills/rendering/scripts/**
+      - profiles/lemon/skills/rendering-in-modal/scripts/**
       - .github/workflows/publish-lemon-image.yml
   workflow_dispatch:
 
