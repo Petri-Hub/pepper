@@ -92,7 +92,7 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-Lemon hides reasoning and shows one short line per tool call, with the tool's name and a 10-character preview of its argument, so the group can follow what he is doing without reading the code and file contents he passes. A footer on final replies shows the last model call's context-window percentage.
+Lemon hides reasoning and shows one short line per tool call, with the tool's name and a 10-character preview of its argument, so the group can follow what he is doing without reading the code and file contents he passes. A footer on final replies shows the last model call's context-window percentage and how long the turn took.
 
 ```yaml
 display:
@@ -101,7 +101,7 @@ display:
   tool_preview_length: 10
   runtime_footer:
     enabled: true
-    fields: [context_pct]
+    fields: [context_pct, latency]
 ```
 
 ### 🎙️ Voice

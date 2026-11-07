@@ -2,6 +2,14 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-07 · Turn time in the footer
+
+> *"Cara vamos botar latency por favor."*
+
+The footer on Lemon's final replies now shows the turn's duration after the context percentage, for example `11% · 1m05s`. Hermes' footer has no reasoning-effort field; its fields are `model`, `context_pct`, `latency`, `served_model` and `cwd`.
+
+Applied to the live profile with `hermes -p lemon config set`, after a config backup. The footer builder renders `11% · 1m05s` from the live config for Discord.
+
 ### 2026-11-07 · Short tool lines in Discord
 
 > *"Vamos desativar o Verbose, pode deixar sei lá, 10 caracteres de preview ou algo do tipo por favor."*
