@@ -216,10 +216,13 @@ No activity tracked
 - ✅ Cron replies without Hermes wrappers.
 - ✅ Gateway shutdown and restart notices left on.
 - ✅ Home channel set to Pepper's Discord channel.
+- ✅ Show rough drafts in stages so the group can steer early.
+- ✅ Merge only after the group says a change is finished.
+- ✅ Hermes completion guidance and background skill reviews off.
+- ✅ A 15-minute run budget that asks him to wrap up.
 
 #### Open
 
-- ⬜ Evaluate how Lemon can stay present during long sequences of tool calls.
 - ⬜ Evaluate and test his use of Discord's supported Markdown formatting.
 - ⬜ Evaluate public Creator Store listing management through his MCP tools.
 - ⬜ Create a skill to duplicate Roblox With SWE's base for other games.

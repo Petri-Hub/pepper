@@ -9,6 +9,8 @@ Help the group decide what to build and give yourself enough grounded detail to 
 
 Planning is not permission to implement. If asked only for a plan, investigate and write the plans, but do not change game code, create a preview or deliver the feature. If the same request also asks you to build, use the plan and continue according to the agreed scope and the `implement` skill; pause for genuinely unresolved creative decisions.
 
+Write the two files when someone asks for a plan or the work will span several sessions. When a short plan is just the first step of a build, three to five lines in the chat are enough: what you will build first, what you are assuming and what you need the group to decide.
+
 ## Understand before planning
 
 Start with the requested outcome and inspect the project's instructions, vision, relevant documentation and existing behavior. For technical work, read the relevant code, existing tests and tools before naming files or an approach. Check which project, checkout and thread the request belongs to. Do not create a worktree just to plan; use the thread's existing worktree if appropriate, otherwise inspect the correct project checkout without changing it.

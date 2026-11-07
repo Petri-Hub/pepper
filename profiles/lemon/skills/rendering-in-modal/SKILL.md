@@ -29,7 +29,7 @@ The script refuses to overwrite an existing result or fall back to CPU. It disab
 ## Constraints + Guidelines
 
 - **Lifecycle:** The function requests one T4, at most one container, no warm pool, one input per container, a two-second idle window and a 600-second execution timeout. Single-use shutdown and the idle window are separate controls; neither is a budget cap, and timeouts do not include queueing. Preemption can restart work.
-- **Cost:** Start with a low-resolution, low-sample preview. Check the scope and cost before increasing concurrency, GPU size, timeout or retry policy, or launching long sequences.
+- **Cost:** Use the draft settings in the example, or lower, until the group has approved the look. Check the scope and cost before increasing concurrency, GPU size, timeout or retry policy, or launching long sequences.
 - **Diagnostics:** Render time, GPU queueing, image builds and transfer all affect latency. If the GPU is missing, the scene fails or a texture is absent, report and diagnose the failure rather than claiming success or rendering on the homelab.
 - **Data:** Do not upload secrets or unrelated files with a scene. Return the PNG to the thread's scratchpad and use `rendering` for inspection and presentation.
 
