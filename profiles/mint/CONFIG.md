@@ -1,6 +1,6 @@
 # 🌿 Mint
 
-> Mint is Bárbara's concise, polished personal assistant, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Google Workspace and Vercel are connected to his profile.
+> Mint is Bárbara's concise, polished personal assistant, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Google Workspace, Notion and Vercel are connected to his profile.
 
 ## 💬 Platforms
 
@@ -170,14 +170,19 @@ terminal:
 
 ### 🔌 MCP servers
 
-Vercel's hosted server gives Mint access to the projects and deployments allowed by the account used in its OAuth consent screen. Hermes stores the authorization in Mint's profile, separate from Pepper's connection; no Vercel key is needed in his `.env`.
+Vercel and Notion use their hosted servers, and each gives Mint what the account in its OAuth consent screen can reach. Notion is authorized with Bárbara's own account, so he sees her workspace and never Petri's. Hermes stores both authorizations in Mint's profile, separate from Pepper's; no key for either goes in his `.env`. Notion's hosted server was chosen over the bundled skill because it needs no integration token and no manual page sharing, which would have put a secret in Bárbara's hands and broken silently whenever a page was not shared. It exposes 77 tools, writes included, so [SOUL.md](SOUL.md#constraints--guidelines) holds anything irreversible for her approval.
 
 | Server | What it gives the agent | Link |
 |---|---|---|
+| `notion` | Pages, databases, comments and meeting notes in Bárbara's workspace | [Notion MCP](https://developers.notion.com/docs/mcp) |
 | `vercel` | Projects, deployments and logs available to the authorized account | [Vercel MCP](https://vercel.com/docs/agent-resources/vercel-mcp) |
 
 ```yaml
 mcp_servers:
+  notion:
+    url: https://mcp.notion.com/mcp
+    auth: oauth
+    enabled: true
   vercel:
     url: https://mcp.vercel.com
     auth: oauth
