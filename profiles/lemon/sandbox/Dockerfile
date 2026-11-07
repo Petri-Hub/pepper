@@ -42,6 +42,11 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN python3 -m venv /opt/roblox-assets-mcp \
     && /opt/roblox-assets-mcp/bin/pip install --no-cache-dir 'roblox-assets-mcp==0.4.0'
 
+# Modal — submit rendering jobs from the SSH workspace
+RUN python3 -m venv /opt/modal \
+    && /opt/modal/bin/pip install --no-cache-dir 'modal==1.6.3' \
+    && ln -s /opt/modal/bin/modal /usr/local/bin/modal
+
 # Base workspace — Lemon user, persistent paths and shell configuration
 RUN useradd --create-home --shell /bin/bash lemon \
     && install -d -o lemon -g lemon -m 0755 /home/lemon/workspace \
@@ -88,6 +93,9 @@ COPY --chmod=0755 sandbox/entrypoint.sh /usr/local/bin/lemon-entrypoint
 
 # Asset previews — label thumbnails with their option and name
 COPY --chmod=0755 skills/assets-answering/scripts/gallery.py /usr/local/bin/lemon-asset-gallery
+
+# Modal rendering — available to commands in the SSH workspace
+COPY skills/rendering-in-modal/scripts/render.py /usr/local/lib/lemon/render.py
 
 # Runtime — start SSH with the persistent workspace as the working directory
 WORKDIR /home/lemon/workspace

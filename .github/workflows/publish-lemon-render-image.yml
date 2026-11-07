@@ -1,0 +1,59 @@
+name: Publish Lemon Render Image
+run-name: Publish Lemon render image from ${{ github.sha }}
+
+on:
+  pull_request:
+    paths:
+      - profiles/lemon/sandbox/rendering/**
+      - .github/workflows/publish-lemon-render-image.yml
+  push:
+    branches: [main]
+    paths:
+      - profiles/lemon/sandbox/rendering/**
+      - .github/workflows/publish-lemon-render-image.yml
+  workflow_dispatch:
+
+concurrency:
+  group: publish-lemon-render-image-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE: ghcr.io/petri-hub/lemon-render
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out
+        uses: actions/checkout@v5
+
+      - name: Build
+        run: docker build --pull --tag "$IMAGE:${GITHUB_SHA::7}" --tag "$IMAGE:latest" profiles/lemon/sandbox/rendering
+
+      - name: Check Blender import
+        run: docker run --rm "$IMAGE:${GITHUB_SHA::7}" python -c 'import bpy; print(bpy.app.version_string)'
+
+      - name: Check a headless Cycles render
+        run: docker run --rm "$IMAGE:${GITHUB_SHA::7}" python -c 'import bpy, os; s = bpy.context.scene; s.render.engine = "CYCLES"; s.cycles.samples = 1; s.render.resolution_x = s.render.resolution_y = 32; s.render.filepath = "/tmp/check.png"; bpy.ops.render.render(write_still=True); assert os.path.getsize(s.render.filepath) > 0'
+
+      - name: Log in to GHCR
+        if: github.event_name != 'pull_request'
+        run: echo "$TOKEN" | docker login ghcr.io -u "$ACTOR" --password-stdin
+        env:
+          ACTOR: ${{ github.actor }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish
+        if: github.event_name != 'pull_request'
+        run: |
+          docker push "$IMAGE:${GITHUB_SHA::7}"
+          docker push "$IMAGE:latest"
+
+      - name: Summarize
+        if: github.event_name != 'pull_request'
+        run: echo "Published \`$IMAGE:${GITHUB_SHA::7}\`" >> "$GITHUB_STEP_SUMMARY"

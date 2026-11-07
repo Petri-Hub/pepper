@@ -2,11 +2,19 @@ name: Publish Lemon Image
 run-name: Publish Lemon image from ${{ github.sha }}
 
 on:
+  pull_request:
+    paths:
+      - profiles/lemon/sandbox/Dockerfile
+      - profiles/lemon/sandbox/entrypoint.sh
+      - profiles/lemon/skills/assets-answering/scripts/**
+      - profiles/lemon/skills/rendering-in-modal/scripts/**
+      - .github/workflows/publish-lemon-image.yml
   push:
     branches: [main]
     paths:
       - profiles/lemon/sandbox/**
       - profiles/lemon/skills/assets-answering/scripts/**
+      - profiles/lemon/skills/rendering-in-modal/scripts/**
       - .github/workflows/publish-lemon-image.yml
   workflow_dispatch:
 
@@ -33,15 +41,18 @@ jobs:
         run: docker build --pull --file profiles/lemon/sandbox/Dockerfile --tag "$IMAGE:${GITHUB_SHA::7}" --tag "$IMAGE:latest" profiles/lemon
 
       - name: Log in to GHCR
+        if: github.event_name != 'pull_request'
         run: echo "$TOKEN" | docker login ghcr.io -u "$ACTOR" --password-stdin
         env:
           ACTOR: ${{ github.actor }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish
+        if: github.event_name != 'pull_request'
         run: |
           docker push "$IMAGE:${GITHUB_SHA::7}"
           docker push "$IMAGE:latest"
 
       - name: Summarize
+        if: github.event_name != 'pull_request'
         run: echo "Published \`$IMAGE:${GITHUB_SHA::7}\`" >> "$GITHUB_STEP_SUMMARY"

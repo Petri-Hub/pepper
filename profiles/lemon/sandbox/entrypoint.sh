@@ -1,6 +1,10 @@
 #!/bin/sh
 set -eu
 
+# Require Modal access before preparing the workspace or starting SSH.
+: "${MODAL_TOKEN_ID:?Missing Modal token ID}"
+: "${MODAL_TOKEN_SECRET:?Missing Modal token secret}"
+
 # SSH directories — persistent host key and server runtime files
 install -d -m 0700 /var/lib/lemon/ssh
 install -d -m 0755 /run/sshd
@@ -29,7 +33,9 @@ printf '%s\n' \
     "JEST_ROBLOX_PLACE_ID=$JEST_ROBLOX_PLACE_ID" \
     "ROBLOX_API_KEY=$ROBLOX_API_KEY" \
     "ROBLOX_OWNER_ID=$ROBLOX_OWNER_ID" \
-    "ROBLOX_OWNER_TYPE=$ROBLOX_OWNER_TYPE" > /etc/environment
+    "ROBLOX_OWNER_TYPE=$ROBLOX_OWNER_TYPE" \
+    "MODAL_TOKEN_ID=$MODAL_TOKEN_ID" \
+    "MODAL_TOKEN_SECRET=$MODAL_TOKEN_SECRET" > /etc/environment
 
 # SSH identity — reuse the persistent key or create it on first startup
 if [ ! -s /var/lib/lemon/ssh/ssh_host_ed25519_key ]; then

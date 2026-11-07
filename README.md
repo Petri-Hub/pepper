@@ -57,7 +57,7 @@ Tracked files hold placeholders only. Local, gitignored profile `.env` files hol
 
 ```sh
 ├── .claude/rules      # how agents write profiles and .env files here
-├── .github/workflows  # publishes both sandbox images and refreshes the Wakapi cards below
+├── .github/workflows  # publishes agent images and refreshes the Wakapi cards below
 ├── assets             # the diagram, as an editable Excalidraw file and its SVG
 ├── profiles
 │   └── <name>
@@ -202,6 +202,7 @@ No activity tracked
 - ✅ Define his Roblox SOUL and collaboration skills.
 - ✅ Add a game design skill for critique and player experience.
 - ✅ Give Lemon modelling and texture workflows for Roblox assets.
+- ✅ Render Blender previews with a short-lived Modal GPU and a dedicated image.
 - ✅ Disable built-in memory and user profile while his role takes shape.
 - ✅ Code execution available in Discord.
 - ✅ Hermes session search disabled across his profile.
