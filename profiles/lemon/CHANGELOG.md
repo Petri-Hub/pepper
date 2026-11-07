@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Configure the Assets MCP owner
+
+> *"Replace the MCP for Lemon and configure the values."*
+
+Updated the sandbox to Assets MCP 0.4.0 and supplied its required owner settings to SSH sessions. The modelling skill uses the configured owner instead of passing creator parameters to the upload tool.
+
 ### 2026-11-06 · Add modelling and texture skills
 
 > *"Rename the skill from /model-3d to /model and create a PR with the /texture skills and the 3D model ones."*

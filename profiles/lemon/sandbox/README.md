@@ -1,6 +1,6 @@
 # Lemon's development image
 
-This Debian Trixie image gives Lemon a persistent Linux workspace with SSH access. It includes Blender, Git, Make, pre-commit, Rokit and `cloudflared`, an asset-preview labeling helper with Pillow, and Roblox Assets MCP 0.3.0 in `/opt/roblox-assets-mcp`. Debian supplies Blender, Python and NumPy; Blender's Python includes `bpy` for scripts run with `blender --background --python script.py`, and its FBX exporter needs NumPy. The MCP package is installed separately in a virtual environment. For a project with a `rokit.toml`, run `rokit install` in its checkout to install its pinned tools. The image has no game-specific tool versions or source files; projects can add other tools as needed.
+This Debian Trixie image gives Lemon a persistent Linux workspace with SSH access. It includes Blender, Git, Make, pre-commit, Rokit and `cloudflared`, an asset-preview labeling helper with Pillow, and Roblox Assets MCP 0.4.0 in `/opt/roblox-assets-mcp`. Debian supplies Blender, Python and NumPy; Blender's Python includes `bpy` for scripts run with `blender --background --python script.py`, and its FBX exporter needs NumPy. The MCP package is installed separately in a virtual environment. For a project with a `rokit.toml`, run `rokit install` in its checkout to install its pinned tools. The image has no game-specific tool versions or source files; projects can add other tools as needed.
 
 The image currently targets Linux x86-64, matching the lab host and GitHub Actions runner.
 
@@ -17,7 +17,7 @@ docker run --rm --user lemon --entrypoint /bin/bash \
 
 The sandbox requires `JEST_ROBLOX_OPEN_CLOUD_API_KEY`, `JEST_ROBLOX_UNIVERSE_ID` and `JEST_ROBLOX_PLACE_ID` at startup so SSH sessions can run `make test-on-ocale`. None are built into the image. `make test-on-system` needs Roblox Studio and is for a tester's machine.
 
-`ROBLOX_API_KEY` is required at sandbox startup and is passed to SSH sessions through PAM. Configure it in the lab service, not in the image or Hermes profile. The installed release supports search, delivery and asset lifecycle management, including uploads; it does not publish Creator Store listings.
+`ROBLOX_API_KEY`, `ROBLOX_OWNER_ID` and `ROBLOX_OWNER_TYPE` are required at sandbox startup and passed to SSH sessions through PAM. Configure them in the lab service, not in the image or Hermes profile. The owner type is `user` or `group`; all MCP uploads use the configured owner. The installed release supports search, delivery and asset lifecycle management, including uploads; it does not publish Creator Store listings.
 
 ## Run the SSH workspace
 
