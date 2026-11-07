@@ -1,13 +1,13 @@
 ---
 name: rendering
-description: Plan and review Blender renders for visual previews or presentation. Use when a 3D scene or asset needs a rendered image; use model for asset creation and Roblox integration.
+description: Plan and review Blender renders for visual previews or presentation. Use when a 3D scene or asset needs a rendered image; use modelling for asset creation and Roblox integration.
 ---
 
 # Render a 3D scene
 
 ## Render strategy
 
-Determine the purpose, subject, camera angle, lighting, background, resolution and required output before rendering. Inspect the scene and project instructions. Use `rendering-in-modal` for every Blender still, including low-quality previews and iterations. The lab has no GPU, so CPU renders are slow and consume shared resources. Use `model` to create or export an asset and integrate it into Roblox.
+Determine the purpose, subject, camera angle, lighting, background, resolution and required output before rendering. Inspect the scene and project instructions. Use `rendering-in-modal` for every Blender still, including low-quality previews and iterations. The lab has no GPU, so CPU renders are slow and consume shared resources. Use `modelling` to create or export an asset and integrate it into Roblox.
 
 Start with a low-resolution, low-sample Modal preview and inspect it for framing, shape, color, lighting, seams and missing objects or textures. For a first concept, share that preview once it communicates the requested idea; fix a clear technical defect first if needed, then invite feedback before further subjective refinements. Produce a higher-quality image when the request calls for it. A technically successful render is not design approval.
 
@@ -25,11 +25,11 @@ Keep the source scene, required assets and renders in the thread's persistent sc
 ## Limitations
 
 - **Roblox appearance:** Blender materials and lighting do not necessarily match Roblox. A render is a design preview, not evidence that an asset looks or works correctly in Studio.
-- **FBX export:** Rendering and export are separate operations. Export and validate FBX locally through `model`; a successful render does not establish export or upload correctness.
+- **FBX export:** Rendering and export are separate operations. Export and validate FBX locally through `modelling`; a successful render does not establish export or upload correctness.
 - **Animation and other engines:** Select a workflow that supports the requested output. The current Modal helper renders a single Cycles still; it does not render an animation, bake textures or produce an Eevee render.
 
 ## References
 
 - [`rendering-in-modal`](../rendering-in-modal/SKILL.md): Prepare and render a packed scene on Modal.
-- [`model`](../model/SKILL.md): Build, export and integrate Roblox assets.
+- [`modelling`](../modelling/SKILL.md): Build, export and integrate Roblox assets.
 - [Blender rendering documentation](https://docs.blender.org/manual/en/latest/render/): Cameras, render engines and output.
