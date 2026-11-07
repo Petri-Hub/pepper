@@ -1,6 +1,6 @@
 # 🍋 Lemon
 
-> Lemon helps a Discord group build a Roblox game. He speaks plainly with coders and non-coders, researches ideas and assets, and works on the game's code in his own SSH workspace. DeepSeek powers his replies; he merges his changes after the required checks pass.
+> Lemon helps a Discord group build a Roblox game. He speaks plainly with coders and non-coders, researches ideas and assets, and works on the game's code in his own SSH workspace. DeepSeek powers his replies. He shows rough drafts early so the group can steer, and merges a change once the group says it is finished.
 
 ## 💬 Platforms
 
@@ -44,11 +44,23 @@ compression:
 
 ### 🔁 Turn limit
 
-The 500-step cap stops a runaway task from consuming credits indefinitely.
+The 500-step cap stops a runaway task from consuming credits indefinitely. A 15-minute run budget is the backstop for the working rhythm in his soul: at 12 minutes Hermes tells him to stop discovery and verification and deliver what he has, without cutting the turn off.
 
 ```yaml
 agent:
   max_turns: 500
+  run_budget_seconds: 900
+```
+
+### 🧭 Execution guidance
+
+Hermes adds three prompt blocks for DeepSeek models that tell Lemon to keep calling tools until the task is complete and verified, and to treat "done" as every criterion verified. In his sessions they kept him working in silence for 6 to 27 minutes before the group saw anything. They are off, and his soul's Working rhythm keeps their useful rules: no invented results, tools for checkable facts, read-back after external writes and acting in the same turn.
+
+```yaml
+agent:
+  task_completion_guidance: false
+  tool_use_enforcement: false
+  execution_guidance: false
 ```
 
 ### 🔒 Conversation search
@@ -214,6 +226,16 @@ skills:
     - xurl
 ```
 
+### 🪞 Background review
+
+Hermes' background review is off. After his turns it asked him to update his skills with "Be ACTIVE" pressure: it added 7 to 21% more tool calls to long sessions, grew his skill list from 28 to 53 in four days, and Hermes refused 42% of its writes. New skills come from this repository or a deliberate `/refine`.
+
+```yaml
+auxiliary:
+  background_review:
+    enabled: false
+```
+
 ### 🖥️ Workspace
 
 Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries Blender, `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately. Blender scripts can use `bpy` through Blender's bundled Python in background mode. Modeling and export run locally; renders, including previews, go to Modal because the lab has no GPU.
@@ -235,7 +257,7 @@ terminal:
 
 ### 🐙 GitHub App
 
-Lemon uses a GitHub App installed on the game repository and Pepper. Its short-lived tokens let him create branches and pull requests under his bot identity; feedback issues go to Pepper with a token restricted to that repository and issue writes. The private key is mounted read-only from the lab and copied into his sandbox for Git operations. He opens game pull requests against `staging` and merges them after the required checks pass.
+Lemon uses a GitHub App installed on the game repository and Pepper. Its short-lived tokens let him create branches and pull requests under his bot identity; feedback issues go to Pepper with a token restricted to that repository and issue writes. The private key is mounted read-only from the lab and copied into his sandbox for Git operations. He opens game pull requests against `staging` and merges them once someone in the thread says the change is finished and the required checks pass.
 
 ```text
 App ID         5568797
