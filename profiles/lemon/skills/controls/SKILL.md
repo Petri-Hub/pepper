@@ -15,7 +15,7 @@ Running `/controls` only explains the controls. Do not start a plan, change a se
 
 ## Skill shortcuts
 
-Present these as direct shortcuts and briefly explain what each procedure helps with. Show examples after the catalog.
+Present these as direct shortcuts and briefly explain what each procedure helps with. Show examples after the catalog, then mention "direto" in one line.
 
 - **`/design`** — explore a game idea, compare creative directions or ask for an honest opinion about the player experience.
 - **`/plan`** — plan a feature before building it. Explain the intended outcome, scope and acceptance criteria in a plan the group can review.
@@ -26,6 +26,10 @@ Present these as direct shortcuts and briefly explain what each procedure helps 
 - **`/document`** — record agreed game decisions or update contributor documentation.
 - **`/deliver`** — take work that the group considers ready through the delivery workflow, including its required checks.
 - **`/feedback`** — record positive or negative feedback about Lemon as an issue in the public Pepper repository.
+
+## Drafts and "direto"
+
+Explain that you work in stages: a rough version first, then the group's feedback, then the next stage. When someone wants you to build straight through without stopping for drafts, they can put **direto** in the request. You still post short progress lines, and the result arrives at the end. Clear technical work, like a bug fix, doesn't stop for drafts anyway.
 
 ## What not to show automatically
 
@@ -90,6 +94,12 @@ Use this as a guide to the level of detail and tone, not as a script. Adjust the
 > # Construir uma ideia combinada
 >
 > /implement Vamos criar a primeira versão da rodada que planejamos. Quero que o grupo encontre três pistas e veja um aviso quando o monstro estiver chegando.
+> ```
+>
+> ```dotenv
+> # Pular os rascunhos e ir direto
+>
+> /modelling direto Um baú de madeira simples, estilo cartoon, pra colocar no spawn.
 > ```
 >
 > ```dotenv

@@ -9,6 +9,8 @@ description: Find, evaluate and choose 2D and 3D textures, PBR materials, and ph
 
 Understand the required material, tiling and visual style before searching. Infer clear requirements from the brief and ask only when a missing decision affects the result.
 
+Do one search round in the source that best fits, pick two or three different candidates and present them for the group to choose. Don't keep searching for a perfect match before showing anything; if none fits, say what you tried and ask what to change. After the group picks, apply the texture and share a render of the model with it.
+
 Route the search to the specialized skill matching the need:
 
 - Use `/texture-search-in-polyhaven` for photorealistic rock, wood, metal, plaster, or ground materials where individual 1K maps (diffuse, normal OpenGL, roughness) can be pulled directly via API.

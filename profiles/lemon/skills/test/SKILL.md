@@ -7,7 +7,12 @@ description: Check changes in the roblox-with-swe project using its formatting, 
 
 ## Checks
 
-Run checks from the thread's worktree after its tools and dependencies are installed. Choose checks relevant to the change and fix failures before delivery. These commands are defined by the project's `Makefile`:
+Run checks from the thread's worktree after its tools and dependencies are installed. Match the checks to the stage of the work:
+
+- **Draft or feedback round:** the quickest check that shows the change builds, usually `make build`, plus `make lint` when you changed logic. Don't run the full set or Open Cloud tests for every round.
+- **Finish and delivery:** the checks relevant to the change, including Open Cloud tests when behavior changed. Fix failures before delivery.
+
+These commands are defined by the project's `Makefile`:
 
 ```sh
 # Check Luau formatting.
@@ -31,7 +36,7 @@ The project's Jest suite runs in Roblox Open Cloud:
 make test-on-ocale
 ```
 
-Check that the test settings are present without printing their values. Open Cloud runs use a shared test place and limited resources. Before starting a local run, check whether another run is using it; coordinate with the group if the state is unclear. GitHub's CI concurrency does not coordinate local runs with CI. Avoid unnecessary duplicate runs, but do not skip the required PR checks.
+Check that the test settings are present without printing their values. Open Cloud runs use a shared test place and limited resources. Before starting a local run, check whether another run is using it; coordinate with the group if the state is unclear. GitHub's CI concurrency does not coordinate local runs with CI. Run them at the finish rather than in every feedback round, avoid unnecessary duplicate runs, and do not skip the required PR checks.
 
 ## Studio
 

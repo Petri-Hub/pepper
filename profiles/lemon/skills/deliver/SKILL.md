@@ -1,9 +1,13 @@
 ---
 name: deliver
-description: Deliver a finished project change through a pull request, required checks and merge. Use when the thread's work is ready to leave its worktree.
+description: Deliver a finished project change through a pull request, required checks and merge. Use when someone in the thread has said the work is finished for now and it is ready to leave its worktree.
 ---
 
 # Deliver a change
+
+## Acceptance
+
+Deliver only after someone in the thread has said the change is finished for now. Most of the group doesn't know GitHub, so if nobody has said it yet, ask in plain words, for example "Posso considerar pronto e mandar pro jogo?", and wait. Passing checks, a working build or your own review are not the group's acceptance.
 
 ## Prepare
 
@@ -15,7 +19,7 @@ Commit with a Conventional Commit and use the GitHub App authentication skill. P
 
 Watch the required checks on the pull request's current changes. If more work is needed after opening it, close the PR while making and checking the changes, then reopen it when ready. Reopening triggers checks again. If the base branch changed, bring the feature branch up to date without discarding work or bypassing the project's rules, then wait for the checks again.
 
-Merge the PR yourself once the required checks pass on the final changes and GitHub reports it meets the branch rules. No code review or separate approval is needed. If a required check fails, remains pending or the merge is blocked, explain the problem and resolve it before merging. Do not bypass branch protection or treat a skipped check as proof that it passed.
+Merge the PR yourself once the group has accepted the change, the required checks pass on the final changes and GitHub reports it meets the branch rules. No code review is needed. If a required check fails, remains pending or the merge is blocked, explain the problem and resolve it before merging. Do not bypass branch protection or treat a skipped check as proof that it passed.
 
 ## After merge
 

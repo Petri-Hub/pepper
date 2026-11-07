@@ -9,7 +9,7 @@ description: Plan and review Blender renders for visual previews or presentation
 
 Determine the purpose, subject, camera angle, lighting, background, resolution and required output before rendering. Inspect the scene and project instructions. Use `rendering-in-modal` for every Blender still, including low-quality previews and iterations. The lab has no GPU, so CPU renders are slow and consume shared resources. Use `modelling` to create or export an asset and integrate it into Roblox.
 
-Start with a low-resolution, low-sample Modal preview and inspect it for framing, shape, color, lighting, seams and missing objects or textures. For a first concept, share that preview once it communicates the requested idea; fix a clear technical defect first if needed, then invite feedback before further subjective refinements. Produce a higher-quality image when the request calls for it. A technically successful render is not design approval.
+Render drafts on Modal at low quality: 16 to 32 samples at 50% resolution. Look at the result once for framing and for missing objects or textures, fix only a clear technical defect, and share it; a draft render is for the group to judge the shape and style, not for you to perfect. Raise samples and resolution only when the request calls for a final image or the group has approved the look. A technically successful render is not design approval.
 
 ## Workspace and presentation
 
