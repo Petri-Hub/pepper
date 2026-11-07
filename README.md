@@ -177,6 +177,7 @@ No activity tracked
 - ✅ A five-minute Wakapi reporter and a nightly README card
 - ✅ A subtler butler voice with direct answers and fewer stock closers
 - ✅ Vercel MCP for her apps and deployments, authorized in Mint's own profile
+- ✅ Notion MCP for Bárbara's pages, authorized with her own account
 - ✅ A public Modal sandbox image with Google's Python libraries
 - ✅ Gmail, Calendar and Drive through Bárbara's separate Google OAuth grant
 - ✅ His own GitHub App, acting on Bárbara's repositories under the bot's name
@@ -238,7 +239,7 @@ No activity tracked
 - [Discord Developer Portal](https://discord.com/developers/applications): where Pepper's Discord bot is registered
 - [GitHub Apps](https://docs.github.com/en/apps): how Pepper gets her own identity on GitHub
 - [Google Workspace skill](https://hermes-agent.nousresearch.com/docs/user-guide/skills/bundled/productivity/productivity-google-workspace): the bundled Hermes skill that gives Pepper Gmail, Calendar and Drive
-- [Notion MCP](https://developers.notion.com/docs/mcp): the hosted server Pepper reaches Notion through
+- [Notion MCP](https://developers.notion.com/docs/mcp): the hosted server Pepper and Mint reach Notion through
 - [Vercel MCP](https://vercel.com/docs/mcp): the hosted server Pepper reaches Vercel through
 - [Sentry MCP](https://docs.sentry.io/product/sentry-mcp/): the hosted server Pepper reaches Sentry through
 - [Canva MCP](https://www.canva.dev/docs/mcp/): the hosted server Pepper reaches Canva through

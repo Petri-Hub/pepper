@@ -2,6 +2,20 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-07 · Notion over MCP, with Bárbara's account
+
+> *"I need to connect Mint to Notion, MCP or CLI? It's not for my account, but for Bárbara."*
+
+MCP won, as it did for Pepper. The bundled skill needs an integration token created in Bárbara's workspace and handed over, which puts a secret in a chat, and every page must be shared with the integration by hand, so an unshared page fails without saying why. The hosted server needs neither: she approves one consent screen and Mint sees what her account sees.
+
+`hermes -p mint mcp install notion` added the `mcp_servers.notion` block recorded in [CONFIG.md](CONFIG.md), after a backup of the live `config.yaml`. Bárbara authorized it herself with the browser flow, in a held-open `hermes -p mint mcp login notion` session on the lab and a redirect URL pasted back, since Notion has no device-code flow. The token is in Mint's own `mcp-tokens`, apart from Pepper's. `hermes -p mint mcp test notion` connects in about 1.4 seconds and finds 77 tools, against Pepper's 45 in September, so the server has grown; all stay enabled and Hermes' tool search defers their schemas. `.env.example` did not change.
+
+`SOUL.md` lists Notion under Integrations and adds deleting, sharing and moving Notion pages to what waits for her yes.
+
+Three tries failed before the fourth worked. Hermes' login waits only briefly for the pasted URL, and a redirect URL belongs to the one session that printed its link, so a link from an older session is dead. Two sessions left open at once made it worse. Keep one login session, start it only when the person is ready at the browser, and paste the callback straight away.
+
+The live agent still has to catch up on `SOUL.md`, and Bárbara needs `/new` in her chat so Mint loads the Notion tools. The container was not restarted.
+
 ### 2026-11-03 · Clean up the profile prose
 
 > *"The CONFIG.md files accumulated a lot of information. Make a general passthrough through the files."*
