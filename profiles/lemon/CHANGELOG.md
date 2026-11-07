@@ -2,6 +2,19 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-07 · Start new games with /create
+
+> *"We need something so that Lemon doesn't work in the roblox-with-swe project anymore, and we need a new /create skill that scaffolds a new game: a copy of roblox-with-swe without the CI, since the GitHub repository doesn't exist yet, and without the README, kept bare but with the available flows like testing, and a project name."*
+
+- Added the `create` skill. It carries a bare game template (Rojo project with a baseplate, a server and a client script, one shared module and one Jest spec, plus Rokit, Wally, StyLua, Selene, the Makefile and the Studio Jest scripts) without a README, license, CI or publishing. Lemon copies it from the skill files Hermes syncs into his sandbox, fills in the project name, installs the tools, runs the checks and makes it a local Git repository on `main` with no remote. The template was checked in his sandbox: format, lint, build and the Jest test on Open Cloud passed.
+- Local games are delivered without a pull request: after the group's acceptance and the full local checks, Lemon merges the thread's branch into the game's local `main`. `deliver`, `test`, the soul and the GitHub App notes say so.
+- Retired roblox-with-swe. Its checkout stays in his workspace as a reference, but his soul says not to change it or open pull requests there. `install`, `serve` and `test` now describe any game project, and `controls` and `implement` point to `/create`.
+- `sync-skills.sh` now manages `create`.
+
+Before this change, the game was reset to an empty project in roblox-with-swe and the nine old thread worktrees in his workspace were removed; their branches were saved as a Git bundle outside the lab.
+
+Not applied to the live agent yet.
+
 ### 2026-11-07 · Show drafts early and work in stages
 
 > *"I prefer to have a draft of what he's doing than making him work for 20 minutes to get a poor result that was misdirected. He needs to produce a medium result in a short time, so the people collaborating with him can steer the style and the game design."*

@@ -1,6 +1,6 @@
 ---
 name: test
-description: Check changes in the roblox-with-swe project using its formatting, lint, build and Open Cloud tests, and coordinate Studio playtesting.
+description: Check changes in a game project using its formatting, lint, build and Open Cloud tests, and coordinate Studio playtesting.
 ---
 
 # Test the project
@@ -36,7 +36,7 @@ The project's Jest suite runs in Roblox Open Cloud:
 make test-on-ocale
 ```
 
-Check that the test settings are present without printing their values. Open Cloud runs use a shared test place and limited resources. Before starting a local run, check whether another run is using it; coordinate with the group if the state is unclear. GitHub's CI concurrency does not coordinate local runs with CI. Run them at the finish rather than in every feedback round, avoid unnecessary duplicate runs, and do not skip the required PR checks.
+Check that the test settings are present without printing their values. Open Cloud runs use a shared test place and limited resources. Before starting a local run, check whether another run is using it; coordinate with the group if the state is unclear. GitHub's CI concurrency does not coordinate local runs with CI. Run them at the finish rather than in every feedback round, avoid unnecessary duplicate runs, and do not skip the required PR checks when the project has them. A project without a GitHub repository has no CI, so your local checks are the only ones: run the full set before delivery.
 
 ## Studio
 

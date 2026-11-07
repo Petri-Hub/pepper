@@ -1,6 +1,6 @@
 ---
 name: serve
-description: Start, reuse or stop a Rojo Share preview for the roblox-with-swe project. Use when a Discord thread needs to see its worktree in Roblox Studio.
+description: Start, reuse or stop a Rojo Share preview for a game project. Use when a Discord thread needs to see its worktree in Roblox Studio.
 ---
 
 # Serve the project
@@ -14,10 +14,10 @@ Serve the thread's own worktree. Use the workspace layout and Git to confirm its
 
 workspace/
 ├── projects/
-│   └── roblox-with-swe/ # primary checkout
+│   └── cidade-neon/ # primary checkout
 │
 └── sessions/
-    └── roblox-with-swe/
+    └── cidade-neon/
         └── 2026-11-05-123456-car-sounds/ # this thread's worktree
 ```
 

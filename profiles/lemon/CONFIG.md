@@ -1,6 +1,6 @@
 # 🍋 Lemon
 
-> Lemon helps a Discord group build a Roblox game. He speaks plainly with coders and non-coders, researches ideas and assets, and works on the game's code in his own SSH workspace. DeepSeek powers his replies. He shows rough drafts early so the group can steer, and merges a change once the group says it is finished.
+> Lemon helps a Discord group build Roblox games. He speaks plainly with coders and non-coders, researches ideas and assets, and works on the game's code in his own SSH workspace. DeepSeek powers his replies. He shows rough drafts early so the group can steer, and merges a change once the group says it is finished.
 
 ## 💬 Platforms
 
@@ -170,8 +170,9 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`feedback`](skills/feedback/SKILL.md) | Record feedback about Lemon as a public issue for triage. | — |
 | [`design`](skills/design/SKILL.md) | Explore gameplay and creative decisions with the group. | — |
 | [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
+| [`create`](skills/create/SKILL.md) | Scaffold a new, empty game as a local Git repository. | — |
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
-| [`install`](skills/install/SKILL.md) | Set up the roblox-with-swe toolchain in a worktree. | Confirmed |
+| [`install`](skills/install/SKILL.md) | Set up a game's toolchain in a worktree. | Confirmed |
 | [`modelling`](skills/modelling/SKILL.md) | Create and integrate custom Blender assets for Roblox. | — |
 | [`rendering`](skills/rendering/SKILL.md) | Plan, inspect and present 3D renders. | — |
 | [`rendering-in-modal`](skills/rendering-in-modal/SKILL.md) | Render Blender previews on a short-lived Modal GPU. | — |
@@ -179,16 +180,16 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`texture-answering`](skills/texture-answering/SKILL.md) | Present texture previews and material choices. | — |
 | [`texture-search-in-ambientcg`](skills/texture-search-in-ambientcg/SKILL.md) | Find ambientCG texture maps. | — |
 | [`texture-search-in-polyhaven`](skills/texture-search-in-polyhaven/SKILL.md) | Find Poly Haven texture maps. | — |
-| [`serve`](skills/serve/SKILL.md) | Manage a roblox-with-swe Studio preview. | — |
+| [`serve`](skills/serve/SKILL.md) | Manage a game's Studio preview. | — |
 | [`test`](skills/test/SKILL.md) | Check changes and coordinate Studio playtesting. | — |
 | [`document`](skills/document/SKILL.md) | Record game decisions and contributor guidance. | — |
-| [`deliver`](skills/deliver/SKILL.md) | Deliver a change through checks and merge. | — |
+| [`deliver`](skills/deliver/SKILL.md) | Deliver a change through checks and a merge, by pull request or locally. | — |
 
 Run [`sync-skills.sh`](sync-skills.sh) with Lemon's existing profile skills directory as its argument when applying this configuration; it requires `rsync` and write access to that directory. It replaces the listed skill directories in full, including files Lemon changed or added inside them. His other skills remain managed by Hermes. The sandbox image supplies the asset-labeling helper used by `assets-answering`.
 
 Invoke the modelling skill with `/modelling`, or ask Lemon to use it in conversation. Hermes reserves `/model` for its built-in model selection command.
 
-The listed disabled skills are hidden from his prompt but remain installed; new skills are enabled unless explicitly disabled. The setup, preview and test skills currently describe roblox-with-swe's toolchain; project documentation remains in the game repository.
+The listed disabled skills are hidden from his prompt but remain installed; new skills are enabled unless explicitly disabled. The setup, preview and test skills describe the toolchain every game shares. `create` carries a bare game template, with Rojo, Wally, StyLua, Selene, Jest and the Studio test scripts but no README, license or CI; Hermes copies it into his sandbox with the skill.
 
 ```yaml
 skills:
@@ -238,7 +239,7 @@ auxiliary:
 
 ### 🖥️ Workspace
 
-Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. The game's repository is checked out in `/home/lemon/workspace`, and only his SSH key grants access. The image carries Blender, `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately. Blender scripts can use `bpy` through Blender's bundled Python in background mode. Modeling and export run locally; renders, including previews, go to Modal because the lab has no GPU.
+Lemon's terminal and file tools use a persistent lab container over SSH, isolated from the shared Hermes container. Games are checked out under `/home/lemon/workspace/projects`, and only his SSH key grants access. A game made with `create` is a local Git repository without a remote until Petri creates its GitHub repository. roblox-with-swe stays checked out as a reference, but his soul retires it from further work. The image carries Blender, `ripgrep`, `jq`, Rokit and `cloudflared`; the project pins its Roblox tools separately. Blender scripts can use `bpy` through Blender's bundled Python in background mode. Modeling and export run locally; renders, including previews, go to Modal because the lab has no GPU.
 
 The workspace can run the game's automated tests through OCALE, alongside formatting, linting and build checks. FFmpeg and ffprobe inspect and convert media for audio previews.
 
@@ -257,7 +258,7 @@ terminal:
 
 ### 🐙 GitHub App
 
-Lemon uses a GitHub App installed on the game repository and Pepper. Its short-lived tokens let him create branches and pull requests under his bot identity; feedback issues go to Pepper with a token restricted to that repository and issue writes. The private key is mounted read-only from the lab and copied into his sandbox for Git operations. He opens game pull requests against `staging` and merges them once someone in the thread says the change is finished and the required checks pass.
+Lemon uses a GitHub App installed on the game repository and Pepper. Its short-lived tokens let him create branches and pull requests under his bot identity; feedback issues go to Pepper with a token restricted to that repository and issue writes. The private key is mounted read-only from the lab and copied into his sandbox for Git operations. He opens pull requests against a game's base branch and merges them once someone in the thread says the change is finished and the required checks pass. Local games without a GitHub repository are merged into their local `main` instead.
 
 ```text
 App ID         5568797

@@ -221,12 +221,13 @@ No activity tracked
 - ✅ Merge only after the group says a change is finished.
 - ✅ Hermes completion guidance and background skill reviews off.
 - ✅ A 15-minute run budget that asks him to wrap up.
+- ✅ Scaffold new games as local Git repositories with `/create`.
+- ✅ Retire roblox-with-swe from his work and keep it as a reference.
 
 #### Open
 
 - ⬜ Evaluate and test his use of Discord's supported Markdown formatting.
 - ⬜ Evaluate public Creator Store listing management through his MCP tools.
-- ⬜ Create a skill to duplicate Roblox With SWE's base for other games.
 - ⬜ Create a planning skill that writes and attaches a Markdown file in chat.
 
 ## References

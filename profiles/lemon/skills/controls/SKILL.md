@@ -17,6 +17,7 @@ Running `/controls` only explains the controls. Do not start a plan, change a se
 
 Present these as direct shortcuts and briefly explain what each procedure helps with. Show examples after the catalog, then mention "direto" in one line.
 
+- **`/create`** — start a new, empty game.
 - **`/design`** — explore a game idea, compare creative directions or ask for an honest opinion about the player experience.
 - **`/plan`** — plan a feature before building it. Explain the intended outcome, scope and acceptance criteria in a plan the group can review.
 - **`/implement`** — build an agreed change and prepare it for the group to try.
@@ -66,6 +67,7 @@ Use this as a guide to the level of detail and tone, not as a script. Adjust the
 >
 > **Comandos de trabalho**
 >
+> - **`/create`** — começar um jogo novo, vazio.
 > - **`/design`** — pensar em ideias e avaliar escolhas de jogabilidade.
 > - **`/plan`** — preparar um plano para o grupo revisar.
 > - **`/implement`** — construir uma mudança que combinamos.
