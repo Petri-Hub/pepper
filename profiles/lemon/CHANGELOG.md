@@ -4,7 +4,7 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 ### 2026-11-07 · Record feedback for triage
 
-Added a `feedback` skill that records positive, negative or mixed feedback as an issue in the public Pepper repository. The issue preserves the reporter's words and separates observed behavior, inferred expectations and possible causes. Lemon's GitHub App can access Pepper, and the repository's issue feature is enabled. The skill and controls update still need live application and an end-to-end Discord test.
+Added a `feedback` skill that records positive, negative or mixed feedback as an issue in the public Pepper repository. The issue preserves the reporter's words and separates observed behavior, inferred expectations and possible causes. Lemon's GitHub App can access Pepper, and the repository's issue feature is enabled. Applied the skill and controls live without a restart and corrected the App skill's repository scope; an end-to-end Discord test is still needed.
 
 ### 2026-11-07 · Link the rendering image to Pepper
 
