@@ -12,7 +12,7 @@ Petri wanted each feedback issue to point to the Langfuse session of the convers
 - `feedback` now tells him to load it first and to write the ID in a Session section of every issue, or "unknown" when it isn't available. The ID is an opaque identifier, not a link, so it exposes nothing about the private Langfuse.
 - `sync-skills.sh` now manages `session-id`.
 
-Checked: Hermes' own substitution fills the placeholder with a session ID, and leaves it untouched when there is none. Not checked end to end yet: that a real `/feedback` in Discord produces an ID that matches Langfuse. Not applied to the live agent yet.
+Checked: Hermes' own substitution fills the placeholder with a session ID, and leaves it untouched when there is none. Applied to the live profile on 2026-11-07 by copying the two skills, after a backup of the old `feedback`; Hermes loads `session-id` from the live profile and fills the placeholder. It needs a `/reload-skills` to be picked up. Not checked end to end yet: that a real `/feedback` in Discord produces an ID that matches Langfuse.
 
 ### 2026-11-07 · Start new games with /create
 
