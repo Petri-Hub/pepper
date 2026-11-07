@@ -2,6 +2,14 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-07 · Short tool lines in Discord
+
+> *"Vamos desativar o Verbose, pode deixar sei lá, 10 caracteres de preview ou algo do tipo por favor."*
+
+`display.tool_progress: verbose` printed every tool call's full arguments under its name, so a `write_file` or `execute_code` line carried the whole file or script into the thread. The mode is now `all` with `display.tool_preview_length: 10`: each call is one line, such as `💻 terminal: "make te..."`. Hermes has no mode that shows only the tool's name.
+
+Applied to the live profile with `hermes -p lemon config set`, after a config backup. The display resolver returns `tool_progress: all` and `tool_preview_length: 10` for Discord, and Hermes reads these per turn, so no restart was done.
+
 ### 2026-11-07 · Start new games with /create
 
 > *"We need something so that Lemon doesn't work in the roblox-with-swe project anymore, and we need a new /create skill that scaffolds a new game: a copy of roblox-with-swe without the CI, since the GitHub repository doesn't exist yet, and without the README, kept bare but with the available flows like testing, and a project name."*

@@ -92,12 +92,13 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-Lemon hides reasoning but keeps tool progress on so the group can follow what he is doing. A footer on final replies shows the last model call's context-window percentage. The custom preview length cap is removed, leaving Hermes' default.
+Lemon hides reasoning and shows one short line per tool call, with the tool's name and a 10-character preview of its argument, so the group can follow what he is doing without reading the code and file contents he passes. A footer on final replies shows the last model call's context-window percentage.
 
 ```yaml
 display:
   show_reasoning: false
-  tool_progress: verbose
+  tool_progress: all
+  tool_preview_length: 10
   runtime_footer:
     enabled: true
     fields: [context_pct]
