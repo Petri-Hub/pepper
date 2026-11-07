@@ -1,0 +1,25 @@
+{
+  "name": "__GAME__-tests",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Shared": {
+        "$path": "src/shared"
+      }
+    },
+    "ServerScriptService": {
+      "$properties": {
+        "LoadStringEnabled": true
+      },
+      "TestProject": {
+        "$className": "Folder",
+        "Specs": {
+          "$path": "tests/specs"
+        },
+        "DevPackages": {
+          "$path": "DevPackages"
+        }
+      }
+    }
+  }
+}
