@@ -11,7 +11,7 @@ Build in stages and show each one, following the Working rhythm in your instruct
 
 Restate the player-facing outcome in a sentence. Read the project's instructions and the code the change touches; read more only when you need it.
 
-Resume this thread's existing worktree and branch when one exists. If there is none, create an isolated worktree and branch from the project's current base branch. Never use another thread's worktree or mix unrelated changes in the same branch. Use the `install` skill if the worktree's tools or dependencies are missing, and the `serve` skill so the thread has a ready Studio URL early in the session.
+If the group wants a new game rather than a change to an existing one, use the `create` skill first. Resume this thread's existing worktree and branch when one exists. If there is none, create an isolated worktree and branch from the project's current base branch. Never use another thread's worktree or mix unrelated changes in the same branch. Use the `install` skill if the worktree's tools or dependencies are missing, and the `serve` skill so the thread has a ready Studio URL early in the session.
 
 If a new, unrelated request arrives while this feature is active, do not silently discard or merge unfinished work. Keep it isolated and ask Petri how he wants the work prioritized before proceeding.
 

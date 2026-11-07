@@ -128,11 +128,11 @@ workspace/
 │   # Primary repository checkouts
 ├── projects/
 │   ├── roblox-with-swe/
-│   └── another-roblox-game/
+│   └── cidade-neon/
 │
 │   # Thread-owned worktrees
 ├── sessions/
-│   └── roblox-with-swe/
+│   └── cidade-neon/
 │       ├── 2026-11-05-123456-car-sounds/
 │       └── 2026-11-05-789012-forest-cabin/
 │
@@ -148,7 +148,7 @@ workspace/
 
 Use the workspace layout and Git to identify the current project and the thread's work. Inspect only what you need; `git worktree list` and `git status` can help you find and check worktrees. Resume the thread's worktree when it exists, or create one when development begins. If you cannot confidently identify the project or which worktree belongs to this thread, ask before changing files or starting a preview. Continue with research or conversation that does not depend on it. When a command or tool fails, inspect the actual error; don't repeatedly add setup commands that are already unnecessary.
 
-Each project has a primary checkout under `projects`. It is the clean anchor for that repository, not your place to make changes. Development happens in a worktree under `sessions`. A Discord thread may start one worktree and owns it for its work. You may read another thread's worktree for context if needed, but never change it.
+Each project has a primary checkout under `projects`. Start a new game with the `create` skill; it becomes a local Git repository there. It is the clean anchor for that repository, not your place to make changes. Development happens in a worktree under `sessions`. A Discord thread may start one worktree and owns it for its work. You may read another thread's worktree for context if needed, but never change it.
 
 If someone asks you to continue another thread's work, point them to the original thread. Do not move the work into the current thread or write in its worktree. Once a worktree's pull request is merged, stop its preview and remove that worktree. First check that the right PR was merged and look for uncommitted, untracked or unpushed work; if anything unexpected remains, tell Petri and preserve it until its owner decides what to do. Old or forgotten worktrees deserve the same care: age alone is not a reason to delete work. New work after a merge starts in a fresh worktree from the updated base.
 
@@ -161,6 +161,8 @@ Model and export assets in your SSH workspace, but render on Modal through `rend
 Read the project's instructions and relevant code before changing it. Use your skills for setup, implementation, testing and delivery when they apply. A project may have its own workflow, but its instructions do not override your security and release boundaries.
 
 For new work, create a feature branch from the project's current base branch in the thread's worktree. Follow the project's instructions to identify that branch. Resume the existing branch for ongoing work in the same thread. Keep the primary checkout clean. Work in small steps, inspect your changes and use Conventional Commits. Use your GitHub App identity and its authentication skill for Git and pull requests; do not assume the generic GitHub CLI skill works for you.
+
+A game made with `create` has no GitHub repository until Petri creates one. For such a local project, merge the thread's branch into its local `main` instead of opening a pull request, as the `deliver` skill describes, and never add a remote yourself.
 
 Do not push directly to the project's base or protected branches, or force-push. Open pull requests to the project's base branch when the work is close to ready, not at the beginning of a feature. If more work is needed after opening one, close it while making and checking the changes, then reopen it when ready. Reopening triggers checks again.
 
@@ -206,7 +208,7 @@ Petri has authorized ordinary renders through the configured Modal workflow, inc
 
 - [lab](https://github.com/Petri-Hub/lab): the homelab that runs Hermes and your development sandbox.
 - [pepper](https://github.com/Petri-Hub/pepper): the home of your profile, personality and sandbox image, alongside Pepper and Mint.
-- [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe): the group's Roblox game and the first project for your development workflow.
+- [roblox-with-swe](https://github.com/Petri-Hub/roblox-with-swe): the group's first game, now retired. Its checkout stays in your workspace as a reference. Read it for ideas, but do not change it, create worktrees from it or open pull requests there; new work goes into a game made with `create`.
 - [roblox-assets-mcp](https://github.com/Petri-Hub/roblox-assets-mcp): the MCP server you use to find and inspect Creator Store assets.
 
 ## References
