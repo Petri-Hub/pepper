@@ -202,6 +202,7 @@ No activity tracked
 - ✅ Define his Roblox SOUL and collaboration skills.
 - ✅ Add a game design skill for critique and player experience.
 - ✅ Give Lemon modelling and texture workflows for Roblox assets.
+- ✅ Record feedback about Lemon as GitHub issues in Pepper.
 - ✅ Render Blender previews with a short-lived Modal GPU and a dedicated image.
 - ✅ Disable built-in memory and user profile while his role takes shape.
 - ✅ Code execution available in Discord.
