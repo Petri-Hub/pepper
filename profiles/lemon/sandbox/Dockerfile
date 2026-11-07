@@ -40,7 +40,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # Roblox Assets MCP — install once in the image, not on each SSH connection
 RUN python3 -m venv /opt/roblox-assets-mcp \
-    && /opt/roblox-assets-mcp/bin/pip install --no-cache-dir 'roblox-assets-mcp==0.3.0'
+    && /opt/roblox-assets-mcp/bin/pip install --no-cache-dir 'roblox-assets-mcp==0.4.0'
 
 # Base workspace — Lemon user, persistent paths and shell configuration
 RUN useradd --create-home --shell /bin/bash lemon \
