@@ -4,7 +4,7 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 ### 2026-11-07 · Link the rendering image to Pepper
 
-Added the source repository label to the rendering image so GitHub Packages can associate it with Pepper. The first publish was denied by GHCR; package access and the next publish still need verification.
+Added the source repository label to the rendering image so GitHub Packages can associate it with Pepper. After GHCR denied the first publish, the labeled image published successfully and was publicly accessible. A render through Lemon's SSH sandbox used the published image and a T4 successfully.
 
 ### 2026-11-06 · Render Blender previews on Modal
 
