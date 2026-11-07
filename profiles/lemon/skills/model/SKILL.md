@@ -35,7 +35,7 @@ If a reviewer is available and the task warrants it, have them inspect the actua
 
 Model at an intended stud scale, keep objects meaningfully named, use real UV-mapped image textures when textured output is required, and prepare the scene so only the asset—not camera, ground, lights or helpers—is exported. Blender's procedural shaders and its render are not Roblox materials. Store source photographs/maps and their provenance, and use only material you have the right to use in this project and on Roblox.
 
-Render a representative view and inspect it with the available vision tool. Share it with the group when visual direction matters; if you cannot inspect it yourself, say so and ask for feedback. For headless modeling, follow the [Blender and FBX checks](references/blender-fbx.md): evaluated triangle count, transforms, UVs, material links, image files, correct export selection, size, and FBX round-trip. Validate every required part, not merely the presence of one packed image. Pay particular attention to size, colors, seams and objects missing from the render.
+Use `rendering` for a representative Modal GPU render and inspect it with the available vision tool. Share it with the group when visual direction matters; if you cannot inspect it yourself, say so and ask for feedback. Export FBX locally. For headless modeling, follow the [Blender and FBX checks](references/blender-fbx.md): evaluated triangle count, transforms, UVs, material links, image files, correct export selection, size, and FBX round-trip. Validate every required part, not merely the presence of one packed image. Pay particular attention to size, colors, seams and objects missing from the render.
 
 ## 4. Upload and integrate
 

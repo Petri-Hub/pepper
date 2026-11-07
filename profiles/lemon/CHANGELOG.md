@@ -2,6 +2,10 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-06 · Render Blender previews on Modal
+
+Added a `rendering` skill and a separate `lemon-render` image for single-use T4 Cycles previews. The SSH sandbox installs the Modal client and requires its token pair at startup. FBX export stays local. Pull requests build both images without publishing; the rendering image publishes on main. The setup has not been applied or verified on the live agent, and a Modal GPU render still needs a test.
+
 ### 2026-11-06 · Configure the Assets MCP owner
 
 > *"Replace the MCP for Lemon and configure the values."*

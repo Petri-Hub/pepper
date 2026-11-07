@@ -19,6 +19,8 @@ The sandbox requires `JEST_ROBLOX_OPEN_CLOUD_API_KEY`, `JEST_ROBLOX_UNIVERSE_ID`
 
 `ROBLOX_API_KEY`, `ROBLOX_OWNER_ID` and `ROBLOX_OWNER_TYPE` are required at sandbox startup and passed to SSH sessions through PAM. Configure them in the lab service, not in the image or Hermes profile. The owner type is `user` or `group`; all MCP uploads use the configured owner. The installed release supports search, delivery and asset lifecycle management, including uploads; it does not publish Creator Store listings.
 
+The sandbox installs the Modal client in `/opt/modal` and exposes `modal` on `PATH`. It requires `MODAL_TOKEN_ID` and `MODAL_TOKEN_SECRET` at startup and passes them to SSH sessions through PAM. Supply the values privately through the lab service. The separate [rendering image](rendering/README.md) contains Blender's Python package for Modal GPU jobs; it does not contain these credentials.
+
 ## Run the SSH workspace
 
 The lab will run this image on its Docker network, mount a persistent volume at `/home/lemon/workspace` for multiple repository directories, and mount a public `authorized_keys` file at `/home/lemon/.ssh/authorized_keys`. Mount a separate persistent volume at `/var/lib/lemon/ssh` so SSH keeps the same host identity across container replacements. The container listens on port 22; it does not need a host port published when Hermes reaches it on the lab network.
