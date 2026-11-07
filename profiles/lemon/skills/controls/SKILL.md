@@ -20,6 +20,7 @@ Present these as direct shortcuts and briefly explain what each procedure helps 
 - **`/design`** — explore a game idea, compare creative directions or ask for an honest opinion about the player experience.
 - **`/plan`** — plan a feature before building it. Explain the intended outcome, scope and acceptance criteria in a plan the group can review.
 - **`/implement`** — build an agreed change and prepare it for the group to try.
+- **`/modelling`** — create and prepare a custom 3D asset for the game.
 - **`/serve`** — start, reuse or stop the thread's Studio preview.
 - **`/test`** — run available project checks and identify what needs a person's Studio playtest.
 - **`/document`** — record agreed game decisions or update contributor documentation.
@@ -64,6 +65,7 @@ Use this as a guide to the level of detail and tone, not as a script. Adjust the
 > - **`/design`** — pensar em ideias e avaliar escolhas de jogabilidade.
 > - **`/plan`** — preparar um plano para o grupo revisar.
 > - **`/implement`** — construir uma mudança que combinamos.
+> - **`/modelling`** — criar e preparar um modelo 3D personalizado para o jogo.
 > - **`/serve`** — abrir ou reutilizar uma prévia no Studio.
 > - **`/test`** — verificar o trabalho e orientar o que testar no Studio.
 > - **`/document`** — registrar decisões e mudanças importantes.

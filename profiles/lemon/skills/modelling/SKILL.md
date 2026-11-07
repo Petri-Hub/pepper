@@ -1,5 +1,5 @@
 ---
-name: model
+name: modelling
 description: Create or adapt a custom 3D asset in headless Blender and prepare, upload, and integrate it into a Roblox project. Use when the group asks for a custom mesh, prop, environment module, or other Blender-to-Roblox asset; use the existing asset skills for Creator Store discovery.
 ---
 

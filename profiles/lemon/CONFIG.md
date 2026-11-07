@@ -160,7 +160,7 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
 | [`install`](skills/install/SKILL.md) | Set up the roblox-with-swe toolchain in a worktree. | Confirmed |
-| [`model`](skills/model/SKILL.md) | Create and integrate custom Blender assets for Roblox. | — |
+| [`modelling`](skills/modelling/SKILL.md) | Create and integrate custom Blender assets for Roblox. | — |
 | [`rendering`](skills/rendering/SKILL.md) | Plan, inspect and present 3D renders. | — |
 | [`rendering-in-modal`](skills/rendering-in-modal/SKILL.md) | Render Blender previews on a short-lived Modal GPU. | — |
 | [`texture`](skills/texture/SKILL.md) | Find and choose textures and materials. | — |
@@ -174,7 +174,7 @@ Lemon keeps skills for game development, research, creative work, media and docu
 
 Run [`sync-skills.sh`](sync-skills.sh) with Lemon's existing profile skills directory as its argument when applying this configuration; it requires `rsync` and write access to that directory. It replaces the listed skill directories in full, including files Lemon changed or added inside them. His other skills remain managed by Hermes. The sandbox image supplies the asset-labeling helper used by `assets-answering`.
 
-Hermes reserves `/model` for its built-in model selection command. Invoke the modelling skill explicitly with `/skill model`, or ask Lemon to use it in conversation.
+Invoke the modelling skill with `/modelling`, or ask Lemon to use it in conversation. Hermes reserves `/model` for its built-in model selection command.
 
 The listed disabled skills are hidden from his prompt but remain installed; new skills are enabled unless explicitly disabled. The setup, preview and test skills currently describe roblox-with-swe's toolchain; project documentation remains in the game repository.
 
