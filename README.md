@@ -128,9 +128,9 @@ Python    0 hrs 0 mins    ░░░░░░░░░░░░░░░░░░
 <!--START_SECTION:lemon-->
 
 ```rust
-Total Time: 0 hrs 3 mins
+Total Time: 0 hrs 2 mins
 
-Unknown   0 hrs 3 mins    █████████████████████████   100.00 %
+Unknown   0 hrs 2 mins    █████████████████████████   100.00 %
 ```
 
 <!--END_SECTION:lemon-->
