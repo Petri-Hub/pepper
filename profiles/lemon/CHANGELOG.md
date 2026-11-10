@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-10 · Separate agents in Langfuse
+
+> *"Configure environments using the same names of each agent."*
+
+Lemon sends traces to the shared Hermes project with the `lemon` environment. The official catalog plugin replaced the bundled integration; the lab's full-content capture applies to every enabled profile. A test generation reached Langfuse with its environment and session ID. Existing traces keep their previous environment.
+
 ### 2026-11-07 · Turn time in the footer
 
 > *"Cara vamos botar latency por favor."*
@@ -29,7 +35,7 @@ Applied to the live profile with `hermes -p lemon config set`, after a config ba
 
 Before this change, the game was reset to an empty project in roblox-with-swe and the nine old thread worktrees in his workspace were removed; their branches were saved as a Git bundle outside the lab.
 
-Not applied to the live agent yet.
+Applied to the live agent on 2026-11-07: the soul and the managed skills were copied into his profile, and the next `/new` session picks them up. No restart was needed.
 
 ### 2026-11-07 · Show drafts early and work in stages
 
