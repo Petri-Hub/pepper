@@ -150,6 +150,7 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ Read-only FAM MCP and website skills for inbox and assignments
 - ✅ Crons and reminders delivered through Telegram or Discord
 - ✅ A Modal sandbox with her own image, tools and Python libraries
+- ✅ Modal sandbox files delivered to chat after the upgrade
 - ✅ GitHub and Google access inside the sandbox when she needs them
 - ✅ A 150,000-token context with compression at 85%
 - ✅ Langfuse tracing in the shared Hermes project under `pepper`
@@ -163,10 +164,6 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ Morning report covering her health, calendar, mail and GitHub
 - ✅ *marin* for spoken replies and GPT-Live conversations
 - ✅ Casual Portuguese SOUL with clear trust and privacy boundaries
-
-#### Open
-
-- ⬜ Recheck Modal sandbox file delivery to chat after the upgrade
 
 ### 🌿 Mint
 
@@ -221,7 +218,9 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ Keep the game's repository in his workspace.
 - ✅ Create Lemon's GitHub App for branches and pull requests.
 - ✅ Langfuse tracing in the shared Hermes project under `lemon`.
-- ✅ Low reasoning, a 150,000-token working window with compression at 85%, a 500-turn cap and São Paulo time.
+- ✅ Low reasoning and a 500-turn cap.
+- ✅ 150,000-token context with compression at 85%.
+- ✅ São Paulo time.
 - ✅ Context-window percentage shown in final reply footers.
 - ✅ Verbose tool progress available in Discord.
 - ✅ Cron replies without Hermes wrappers.
@@ -234,11 +233,8 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ Scaffold new games as local Git repositories with `/create`.
 - ✅ Retire roblox-with-swe from his work and keep it as a reference.
 
-#### Open
-
-- ⬜ Evaluate and test his use of Discord's supported Markdown formatting.
-- ⬜ Evaluate public Creator Store listing management through his MCP tools.
-- ⬜ Create a planning skill that writes and attaches a Markdown file in chat.
+- ✅ Planning skill that attaches a Markdown file in chat.
+- ✅ Evaluated public Creator Store listing management through MCP.
 
 ## References
 

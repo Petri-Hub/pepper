@@ -161,7 +161,7 @@ platform_toolsets:
 
 ### 📦 Modal
 
-Pepper runs shell and file work in a disposable Modal sandbox, isolated from the lab host and paid for by her own Modal account. Her [public image](sandbox/) supplies tools and libraries; Hermes copies only the listed private credential files into it. Work she wants to keep must reach a repository or chat before the sandbox ends. The lab applies a patch for sandbox file delivery; delivery to chat still needs an end-to-end check after the Hermes upgrade.
+Pepper runs shell and file work in a disposable Modal sandbox, isolated from the lab host and paid for by her own Modal account. Her [public image](sandbox/) supplies tools and libraries; Hermes copies only the listed private credential files into it. Work she wants to keep must reach a repository or chat before the sandbox ends. The lab applies a patch for sandbox file delivery, which was checked through Telegram after the Hermes upgrade.
 
 ```yaml
 terminal:

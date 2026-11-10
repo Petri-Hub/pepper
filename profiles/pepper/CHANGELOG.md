@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-10 · Verify Modal file delivery
+
+> *"This is done: Recheck Modal sandbox file delivery to chat after the upgrade."*
+
+Pepper delivered a Markdown document, PDF, image, audio and video through Telegram with the rebased media patch active.
+
 ### 2026-11-10 · Match Lemon’s context settings
 
 > *"Same thing we did on Lemon: 150k with 85% compaction."*
