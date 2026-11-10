@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-10 · Separate agents in Langfuse
+
+> *"Configure environments using the same names of each agent."*
+
+Lemon sends traces to the shared Hermes project with the `lemon` environment. The official catalog plugin replaced the bundled integration; the lab's full-content capture applies to every enabled profile. A test generation reached Langfuse with its environment and session ID. Existing traces keep their previous environment.
+
 ### 2026-11-07 · Start new games with /create
 
 > *"We need something so that Lemon doesn't work in the roblox-with-swe project anymore, and we need a new /create skill that scaffolds a new game: a copy of roblox-with-swe without the CI, since the GitHub repository doesn't exist yet, and without the README, kept bare but with the available flows like testing, and a project name."*

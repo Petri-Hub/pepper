@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-10 · Separate agents in Langfuse
+
+> *"Configure environments using the same names of each agent."*
+
+Mint sends traces to the shared Hermes project with the `mint` environment. The official catalog plugin replaced the bundled integration; the lab's full-content capture applies to every enabled profile. A test generation reached Langfuse with its environment and session ID. Existing traces keep their previous environment.
+
 ### 2026-11-07 · Notion over MCP, with Bárbara's account
 
 > *"I need to connect Mint to Notion, MCP or CLI? It's not for my account, but for Bárbara."*

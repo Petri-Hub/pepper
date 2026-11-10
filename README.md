@@ -151,7 +151,7 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ Crons and reminders delivered through Telegram or Discord
 - ✅ A Modal sandbox with her own image, tools and Python libraries
 - ✅ GitHub and Google access inside the sandbox when she needs them
-- ✅ Sandbox files delivered to chat and retained after rebuilds
+- ✅ Langfuse tracing in the shared Hermes project under `pepper`
 - ✅ AI Memory for long-term context across her conversations
 - ✅ Skills and skill management available in chat and scheduled work
 - ✅ Hermes session search disabled across her profile
@@ -163,12 +163,17 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ *marin* for spoken replies and GPT-Live conversations
 - ✅ Casual Portuguese SOUL with clear trust and privacy boundaries
 
+#### Open
+
+- ⬜ Recheck Modal sandbox file delivery to chat after the upgrade
+
 ### 🌿 Mint
 
 #### Done
 
 - ✅ Separate Hermes profile with his own OpenAI key and fallback model
 - ✅ Telegram and Discord bots, with Cedar for voice notes and live chat
+- ✅ Langfuse tracing in the shared Hermes project under `mint`
 - ✅ His own Modal workspace and sandbox for shell commands
 - ✅ Medium reasoning, a 500-turn cap and São Paulo time
 - ✅ Notes and reminders stored separately from Pepper's profile
@@ -213,7 +218,7 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ Hermes session search disabled across his profile.
 - ✅ Keep the game's repository in his workspace.
 - ✅ Create Lemon's GitHub App for branches and pull requests.
-- ✅ Langfuse Cloud tracing with Lemon's own Ingestion key and raw content capture.
+- ✅ Langfuse tracing in the shared Hermes project under `lemon`.
 - ✅ Low reasoning, a 150,000-token working window with compression at 85%, a 500-turn cap and São Paulo time.
 - ✅ Context-window percentage shown in final reply footers.
 - ✅ Verbose tool progress available in Discord.
@@ -237,7 +242,7 @@ Unknown   0 hrs 2 mins    ██████████████████
 
 - [Hermes Agent](https://hermes-agent.nousresearch.com/docs/): the documentation for the framework every profile runs on
 - [Hermes Agent on GitHub](https://github.com/NousResearch/hermes-agent): the source code, from [Nous Research](https://nousresearch.com)
-- [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse): Lemon's tracing integration and its catalog successor
+- [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse): the agents’ shared tracing integration
 - [OpenAI API Platform](https://platform.openai.com/docs): the models behind Pepper's thinking, transcription and voice
 - [Telegram Bot API](https://core.telegram.org/bots/api): how Pepper's Telegram bot talks to Telegram
 - [Discord Developer Portal](https://discord.com/developers/applications): where Pepper's Discord bot is registered

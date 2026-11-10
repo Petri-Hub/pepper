@@ -151,7 +151,7 @@ platform_toolsets:
 
 ### 📦 Modal
 
-Pepper runs shell and file work in a disposable Modal sandbox, isolated from the lab host and paid for by her own Modal account. Her [public image](sandbox/) supplies tools and libraries; Hermes copies only the listed private credential files into it. Work she wants to keep must reach a repository or chat before the sandbox ends. The lab applies Hermes patches for sandbox file delivery and file-tool routing.
+Pepper runs shell and file work in a disposable Modal sandbox, isolated from the lab host and paid for by her own Modal account. Her [public image](sandbox/) supplies tools and libraries; Hermes copies only the listed private credential files into it. Work she wants to keep must reach a repository or chat before the sandbox ends. The lab applies a patch for sandbox file delivery; delivery to chat still needs an end-to-end check after the Hermes upgrade.
 
 ```yaml
 terminal:
@@ -235,17 +235,34 @@ mcp_servers:
       FAM_PASSWORD: "${FAM_PASSWORD}"
 ```
 
+### 🗂️ Session retention
+
+Ended conversations are kept instead of being automatically pruned after 90 days.
+
+```yaml
+sessions:
+  auto_prune: false
+```
+
 ### 🧱 Plugins
+
+Langfuse records Pepper's turns, model calls and tool use in the shared Hermes project under the `pepper` environment, so the agents can be filtered apart. The lab enables full capture, including prompts, replies and tool payloads.
 
 ai-memory is Pepper's long-term wiki. The community plugin recalls context before replies and sends her turns and session endings back to the lab server. Its search covers every project, including private work, even when friends talk to her; this access choice needs separate review if that boundary changes.
 
 | Plugin | What it gives the agent | Link |
 |---|---|---|
 | `ai-memory` | Wiki context before every reply, turns and session ends sent to ai-memory, and `ai_memory_search`, `ai_memory_write` and `ai_memory_status` tools | [ai-memory-hermes-plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin) |
+| `langfuse` | Traces, sessions, usage and cost in the shared Hermes project | [Official Langfuse plugin](https://github.com/NousResearch/hermes-official-plugins/tree/main/langfuse) |
 
 ```yaml
 memory:
   provider: ai-memory
+
+plugins:
+  enabled:
+    - langfuse
+    - spotify
 ```
 
 ```json
@@ -258,6 +275,13 @@ memory:
 
 ```bash
 AI_MEMORY_AUTH_TOKEN=…
+```
+
+```bash
+HERMES_LANGFUSE_PUBLIC_KEY=…
+HERMES_LANGFUSE_SECRET_KEY=…
+HERMES_LANGFUSE_BASE_URL=https://us.cloud.langfuse.com
+HERMES_LANGFUSE_ENV=pepper
 ```
 
 ## References
