@@ -19,7 +19,7 @@ Lemon sends traces to the shared Hermes project with the `lemon` environment. Th
 
 Before this change, the game was reset to an empty project in roblox-with-swe and the nine old thread worktrees in his workspace were removed; their branches were saved as a Git bundle outside the lab.
 
-Not applied to the live agent yet.
+Applied to the live agent on 2026-11-07: the soul and the managed skills were copied into his profile, and the next `/new` session picks them up. No restart was needed.
 
 ### 2026-11-07 · Show drafts early and work in stages
 
