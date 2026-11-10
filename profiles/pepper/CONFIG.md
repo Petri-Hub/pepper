@@ -140,7 +140,7 @@ The Google Workspace skill gives Pepper Gmail, Calendar, Drive, Contacts, Sheets
 
 ### 🎵 Spotify
 
-Hermes' Spotify tools let Pepper control playback and manage Petri's playlists and library when a Premium account and active device are available. Spotify is enabled in Telegram, Discord and scheduled runs because her morning report checks the connection. These explicit lists also freeze the other toolsets available on each platform.
+The official Spotify plugin lets Pepper control playback and manage Petri's playlists and library when a Premium account and active device are available. Spotify is enabled in Telegram, Discord and scheduled runs because her morning report checks the connection. These explicit lists also freeze the other toolsets available on each platform.
 
 ```yaml
 platform_toolsets:
@@ -254,6 +254,7 @@ ai-memory is Pepper's long-term wiki. The community plugin recalls context befor
 |---|---|---|
 | `ai-memory` | Wiki context before every reply, turns and session ends sent to ai-memory, and `ai_memory_search`, `ai_memory_write` and `ai_memory_status` tools | [ai-memory-hermes-plugin](https://github.com/MrLuciano/ai-memory-hermes-plugin) |
 | `langfuse` | Traces, sessions, usage and cost in the shared Hermes project | [Official Langfuse plugin](https://github.com/NousResearch/hermes-official-plugins/tree/main/langfuse) |
+| `spotify` | Playback, search, queue, playlists and library tools | [Official Spotify plugin](https://github.com/NousResearch/hermes-official-plugins/tree/main/spotify) |
 
 ```yaml
 memory:
