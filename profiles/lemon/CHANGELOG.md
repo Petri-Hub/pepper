@@ -8,6 +8,22 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 Lemon sends traces to the shared Hermes project with the `lemon` environment. The official catalog plugin replaced the bundled integration; the lab's full-content capture applies to every enabled profile. A test generation reached Langfuse with its environment and session ID. Existing traces keep their previous environment.
 
+### 2026-11-07 · Turn time in the footer
+
+> *"Cara vamos botar latency por favor."*
+
+The footer on Lemon's final replies now shows the turn's duration after the context percentage, for example `11% · 1m05s`. Hermes' footer has no reasoning-effort field; its fields are `model`, `context_pct`, `latency`, `served_model` and `cwd`.
+
+Applied to the live profile with `hermes -p lemon config set`, after a config backup. The footer builder renders `11% · 1m05s` from the live config for Discord.
+
+### 2026-11-07 · Short tool lines in Discord
+
+> *"Vamos desativar o Verbose, pode deixar sei lá, 10 caracteres de preview ou algo do tipo por favor."*
+
+`display.tool_progress: verbose` printed every tool call's full arguments under its name, so a `write_file` or `execute_code` line carried the whole file or script into the thread. The mode is now `all` with `display.tool_preview_length: 10`: each call is one line, such as `💻 terminal: "make te..."`. Hermes has no mode that shows only the tool's name.
+
+Applied to the live profile with `hermes -p lemon config set`, after a config backup. The display resolver returns `tool_progress: all` and `tool_preview_length: 10` for Discord, and Hermes reads these per turn, so no restart was done.
+
 ### 2026-11-07 · Start new games with /create
 
 > *"We need something so that Lemon doesn't work in the roblox-with-swe project anymore, and we need a new /create skill that scaffolds a new game: a copy of roblox-with-swe without the CI, since the GitHub repository doesn't exist yet, and without the README, kept bare but with the available flows like testing, and a project name."*
