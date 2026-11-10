@@ -21,6 +21,7 @@ GPT-6 Luna handles Mint's everyday questions and tasks, with GPT-5.6 Luna as a f
 model:
   provider: openai-api
   default: gpt-6-luna
+  context_length: 150000
 ```
 
 ```yaml
@@ -36,6 +37,15 @@ Medium effort gives Mint room to reason through a task without slowing simple re
 ```yaml
 agent:
   reasoning_effort: medium
+```
+
+### 🗜️ Context compression
+
+Mint uses a 150,000-token working context window and starts compressing near 85% of its usable input budget, matching Lemon. Output-token reservation can make the trigger lower than 127,500 tokens.
+
+```yaml
+compression:
+  threshold: 0.85
 ```
 
 ### 🔁 Turn limit

@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-10 · Match Lemon’s context settings
+
+> *"Same thing we did on Lemon: 150k with 85% compaction."*
+
+Pepper now uses a 150,000-token context window and a compression threshold of 85% of the usable input budget. Both settings were applied to the live profile and read back; a new session picks them up.
+
 ### 2026-11-10 · Separate agents in Langfuse
 
 > *"Configure environments using the same names of each agent."*
