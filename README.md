@@ -151,6 +151,7 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ Crons and reminders delivered through Telegram or Discord
 - ✅ A Modal sandbox with her own image, tools and Python libraries
 - ✅ GitHub and Google access inside the sandbox when she needs them
+- ✅ A 150,000-token context with compression at 85%
 - ✅ Langfuse tracing in the shared Hermes project under `pepper`
 - ✅ AI Memory for long-term context across her conversations
 - ✅ Skills and skill management available in chat and scheduled work
@@ -173,6 +174,7 @@ Unknown   0 hrs 2 mins    ██████████████████
 
 - ✅ Separate Hermes profile with his own OpenAI key and fallback model
 - ✅ Telegram and Discord bots, with Cedar for voice notes and live chat
+- ✅ A 150,000-token context with compression at 85%
 - ✅ Langfuse tracing in the shared Hermes project under `mint`
 - ✅ His own Modal workspace and sandbox for shell commands
 - ✅ Medium reasoning, a 500-turn cap and São Paulo time

@@ -22,6 +22,7 @@ model:
   provider: openai-api
   base_url: https://api.openai.com/v1
   default: gpt-6-luna
+  context_length: 150000
 ```
 
 ```yaml
@@ -37,6 +38,15 @@ Medium effort. It's enough for most of what she does, like small coding tasks, r
 ```yaml
 agent:
   reasoning_effort: medium
+```
+
+### 🗜️ Context compression
+
+Pepper uses a 150,000-token working context window and starts compressing near 85% of its usable input budget, matching Lemon. Output-token reservation can make the trigger lower than 127,500 tokens.
+
+```yaml
+compression:
+  threshold: 0.85
 ```
 
 ### 🔁 Turn limit
