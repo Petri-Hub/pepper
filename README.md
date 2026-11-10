@@ -232,7 +232,6 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ A 15-minute run budget that asks him to wrap up.
 - ✅ Scaffold new games as local Git repositories with `/create`.
 - ✅ Retire roblox-with-swe from his work and keep it as a reference.
-
 - ✅ Planning skill that attaches a Markdown file in chat.
 - ✅ Evaluated public Creator Store listing management through MCP.
 
