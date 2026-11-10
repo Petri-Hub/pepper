@@ -189,9 +189,35 @@ mcp_servers:
     enabled: true
 ```
 
+### 🗂️ Session retention
+
+Ended conversations are kept instead of being automatically pruned after 90 days.
+
+```yaml
+sessions:
+  auto_prune: false
+```
+
 ### 🧱 Plugins
 
-None yet.
+Langfuse records Mint's turns, model calls and tool use in the shared Hermes project under the `mint` environment, so the agents can be filtered apart. The lab enables full capture, including prompts, replies and tool payloads.
+
+| Plugin | What it gives the agent | Link |
+|---|---|---|
+| `langfuse` | Traces, sessions, usage and cost in the shared Hermes project | [Official Langfuse plugin](https://github.com/NousResearch/hermes-official-plugins/tree/main/langfuse) |
+
+```yaml
+plugins:
+  enabled:
+    - langfuse
+```
+
+```bash
+HERMES_LANGFUSE_PUBLIC_KEY=…
+HERMES_LANGFUSE_SECRET_KEY=…
+HERMES_LANGFUSE_BASE_URL=https://us.cloud.langfuse.com
+HERMES_LANGFUSE_ENV=mint
+```
 
 ### ⏱️ Wakapi
 

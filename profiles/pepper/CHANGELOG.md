@@ -2,6 +2,14 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-10 · Separate agents in Langfuse
+
+> *"Configure environments using the same names of each agent."*
+
+Pepper sends traces to the shared Hermes project with the `pepper` environment. The official catalog plugin replaced the bundled integration; the lab's full-content capture applies to every enabled profile. A test generation reached Langfuse with its environment and session ID. Existing traces keep their previous environment.
+
+Hermes was upgraded, and Spotify moved to its official plugin. The Modal delivery patch was rebased for the new image; delivery to chat still needs an end-to-end test, and sandbox sync reported an encoding error.
+
 ### 2026-11-03 · Clean up the profile prose
 
 > *"I'm not using any coding agent with Pepper. Make a general passthrough through the files so we can open a new PR."*
