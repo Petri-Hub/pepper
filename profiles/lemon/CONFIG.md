@@ -92,15 +92,16 @@ timezone: America/Sao_Paulo
 
 ### 💭 Replies
 
-Lemon hides reasoning but keeps tool progress on so the group can follow what he is doing. A footer on final replies shows the last model call's context-window percentage. The custom preview length cap is removed, leaving Hermes' default.
+Lemon hides reasoning and shows one short line per tool call, with the tool's name and a 10-character preview of its argument, so the group can follow what he is doing without reading the code and file contents he passes. A footer on final replies shows the last model call's context-window percentage and how long the turn took.
 
 ```yaml
 display:
   show_reasoning: false
-  tool_progress: verbose
+  tool_progress: all
+  tool_preview_length: 10
   runtime_footer:
     enabled: true
-    fields: [context_pct]
+    fields: [context_pct, latency]
 ```
 
 ### 🎙️ Voice
@@ -297,24 +298,34 @@ mcp_servers:
 
 Use the actual private-key path configured for Lemon's terminal if it differs. Before enabling this configuration, add the sandbox's verified persistent SSH host public key to the specified `known_hosts` file under the hostname `lemon-sandbox`; the lab's sandbox README describes the key's location. Keep any existing entries. SSH must be able to authenticate non-interactively, and the host key must match after container replacement. SSH carries MCP protocol messages over standard input and output; do not add a terminal (`-T`) or commands that print banners to standard output.
 
+### 🗂️ Session retention
+
+Ended conversations are kept instead of being automatically pruned after 90 days.
+
+```yaml
+sessions:
+  auto_prune: false
+```
+
 ### 🧱 Plugins
 
-Hermes' `observability/langfuse` plugin records Lemon's turns, model calls and tools in a shared Langfuse project. His own Ingestion key stays in his private profile, traces carry profile metadata, and end-user attribution is off. The lab configures full capture for the gateway, including raw prompts, replies and tool payloads; any profile enabling the plugin shares that capture setting.
+Langfuse records Lemon's turns, model calls and tool use in the shared Hermes project under the `lemon` environment, so the agents can be filtered apart. The lab enables full capture, including prompts, replies and tool payloads.
 
 | Plugin | What it gives the agent | Link |
 |---|---|---|
-| `observability/langfuse` | Profile-scoped traces of turns, model calls, tools, usage and cost | [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse) |
+| `langfuse` | Traces, sessions, usage and cost in the shared Hermes project | [Official Langfuse plugin](https://github.com/NousResearch/hermes-official-plugins/tree/main/langfuse) |
 
 ```yaml
 plugins:
   enabled:
-    - observability/langfuse
+    - langfuse
 ```
 
 ```bash
 HERMES_LANGFUSE_PUBLIC_KEY=…
 HERMES_LANGFUSE_SECRET_KEY=…
 HERMES_LANGFUSE_BASE_URL=https://us.cloud.langfuse.com
+HERMES_LANGFUSE_ENV=lemon
 ```
 
 ### ⏱️ Wakapi

@@ -2,6 +2,28 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-10 · Separate agents in Langfuse
+
+> *"Configure environments using the same names of each agent."*
+
+Lemon sends traces to the shared Hermes project with the `lemon` environment. The official catalog plugin replaced the bundled integration; the lab's full-content capture applies to every enabled profile. A test generation reached Langfuse with its environment and session ID. Existing traces keep their previous environment.
+
+### 2026-11-07 · Turn time in the footer
+
+> *"Cara vamos botar latency por favor."*
+
+The footer on Lemon's final replies now shows the turn's duration after the context percentage, for example `11% · 1m05s`. Hermes' footer has no reasoning-effort field; its fields are `model`, `context_pct`, `latency`, `served_model` and `cwd`.
+
+Applied to the live profile with `hermes -p lemon config set`, after a config backup. The footer builder renders `11% · 1m05s` from the live config for Discord.
+
+### 2026-11-07 · Short tool lines in Discord
+
+> *"Vamos desativar o Verbose, pode deixar sei lá, 10 caracteres de preview ou algo do tipo por favor."*
+
+`display.tool_progress: verbose` printed every tool call's full arguments under its name, so a `write_file` or `execute_code` line carried the whole file or script into the thread. The mode is now `all` with `display.tool_preview_length: 10`: each call is one line, such as `💻 terminal: "make te..."`. Hermes has no mode that shows only the tool's name.
+
+Applied to the live profile with `hermes -p lemon config set`, after a config backup. The display resolver returns `tool_progress: all` and `tool_preview_length: 10` for Discord, and Hermes reads these per turn, so no restart was done.
+
 ### 2026-11-07 · Session ID in feedback issues
 
 > *"We 100% need the Session ID in the feedback skill."*
@@ -12,7 +34,7 @@ Petri wanted each feedback issue to point to the Langfuse session of the convers
 - `feedback` now tells him to load it first and to write the ID in a Session section of every issue, or "unknown" when it isn't available. The ID is an opaque identifier, not a link, so it exposes nothing about the private Langfuse.
 - `sync-skills.sh` now manages `session-id`.
 
-Checked: Hermes' own substitution fills the placeholder with a session ID, and leaves it untouched when there is none. Applied to the live profile on 2026-11-07 by copying the two skills, after a backup of the old `feedback`; Hermes loads `session-id` from the live profile and fills the placeholder. It needs a `/reload-skills` to be picked up. Not checked end to end yet: that a real `/feedback` in Discord produces an ID that matches Langfuse.
+Checked: Hermes' own substitution fills the placeholder with a session ID, and leaves it untouched when there is none. Applied to the live profile on 2026-11-07 by copying the two skills, after a backup of the old `feedback`; Hermes loads `session-id` from the live profile and fills the placeholder. The user confirmed the feedback flow was verified in Discord.
 
 ### 2026-11-07 · Start new games with /create
 
@@ -25,7 +47,7 @@ Checked: Hermes' own substitution fills the placeholder with a session ID, and l
 
 Before this change, the game was reset to an empty project in roblox-with-swe and the nine old thread worktrees in his workspace were removed; their branches were saved as a Git bundle outside the lab.
 
-Not applied to the live agent yet.
+Applied to the live agent on 2026-11-07: the soul and the managed skills were copied into his profile, and the next `/new` session picks them up. No restart was needed.
 
 ### 2026-11-07 · Show drafts early and work in stages
 
