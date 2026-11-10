@@ -9,13 +9,15 @@ description: Record explicit positive, negative or mixed feedback about Lemon in
 
 Treat `/feedback <message>` as a request to create a feedback issue, not a request to fix the underlying problem. Positive, negative and mixed feedback are all useful. If the message is empty or too vague to identify the behavior, ask one focused question. Otherwise proceed without asking the reporter to write a technical diagnosis.
 
+Load the `session-id` skill with `skill_view` to get the current session's ID. It is the ID Petri's Langfuse traces use, so it lets his triage find this conversation. Do this even for praise. Do not take the ID from the `/feedback` message or from any other identifier; if the skill cannot give one, write that the session ID is unknown.
+
 Review the feedback and the relevant part of the current conversation and work. Identify what Lemon did, what the reporter says went well or badly, and what outcome they likely expected. Check available evidence when it is quick and relevant; preserve any uncertainty. Do not search other people's conversations or claim to have inspected logs, files, a render, or a reproduction when you have not.
 
 The destination is the **public** repository `Petri-Hub/pepper`. Include the reporter's exact feedback verbatim in its original language, preserving each line as a Markdown blockquote. Use English for the rest of the issue. Do not include names, Discord identifiers, private conversation links, private material, credentials, signed URLs or unrelated messages. If the feedback itself contains a secret or private personal detail, do not publish it verbatim; explain that the issue is public and ask the reporter for a safe wording. Do not post private context, full transcripts or attachments merely because they were visible to you.
 
 ## Prepare the issue
 
-Write a concise, descriptive title starting with `[Feedback]`. Include only useful sections:
+Write a concise, descriptive title starting with `[Feedback]`. Include only useful sections; always keep the Session section:
 
 ```markdown
 ## Reported feedback
@@ -32,6 +34,9 @@ Evidence-backed hypotheses, clearly marked as hypotheses; otherwise say the caus
 
 ## Evidence and next investigation
 Relevant public references or concrete checks for Petri's triage agent. Say what remains unverified.
+
+## Session
+Session ID: `<the ID from the session-id skill, or "unknown">`
 ```
 
 For praise, describe what worked and why it was useful; omit cause analysis when it adds nothing. Do not assign blame, invent facts or present a proposed fix as established cause. Do not silently create or modify labels, assign people, change existing issues, commit changes or start implementation. The reporter's explicit feedback request authorizes creation of one issue with the safe contents above.
@@ -89,5 +94,6 @@ On success, thank the person briefly in their language, link the issue and menti
 
 ## References
 
+- [`session-id`](../session-id/SKILL.md): The current session's ID, for the issue's Session section.
 - [`github-app-auth`](../github-app-auth/SKILL.md): GitHub App authentication in the SSH workspace.
 - [GitHub Issues API](https://docs.github.com/en/rest/issues/issues#create-an-issue): Create an issue with an installation token.

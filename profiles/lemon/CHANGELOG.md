@@ -24,6 +24,18 @@ Applied to the live profile with `hermes -p lemon config set`, after a config ba
 
 Applied to the live profile with `hermes -p lemon config set`, after a config backup. The display resolver returns `tool_progress: all` and `tool_preview_length: 10` for Discord, and Hermes reads these per turn, so no restart was done.
 
+### 2026-11-07 · Session ID in feedback issues
+
+> *"We 100% need the Session ID in the feedback skill."*
+
+Petri wanted each feedback issue to point to the Langfuse session of the conversation it came from. Hermes groups Langfuse traces by the session's own ID, but Lemon had no way to read it: his terminal runs in the sandbox over SSH, which doesn't receive `HERMES_SESSION_ID`, and the `/feedback` shortcut fills a skill's `${HERMES_SESSION_ID}` placeholder with the gateway's routing key for the chat, not the session ID.
+
+- Added a small `session-id` skill whose only content is the placeholder. When Lemon loads it with the `skill_view` tool, Hermes fills in the real session ID.
+- `feedback` now tells him to load it first and to write the ID in a Session section of every issue, or "unknown" when it isn't available. The ID is an opaque identifier, not a link, so it exposes nothing about the private Langfuse.
+- `sync-skills.sh` now manages `session-id`.
+
+Checked: Hermes' own substitution fills the placeholder with a session ID, and leaves it untouched when there is none. Applied to the live profile on 2026-11-07 by copying the two skills, after a backup of the old `feedback`; Hermes loads `session-id` from the live profile and fills the placeholder. The user confirmed the feedback flow was verified in Discord.
+
 ### 2026-11-07 · Start new games with /create
 
 > *"We need something so that Lemon doesn't work in the roblox-with-swe project anymore, and we need a new /create skill that scaffolds a new game: a copy of roblox-with-swe without the CI, since the GitHub repository doesn't exist yet, and without the README, kept bare but with the available flows like testing, and a project name."*

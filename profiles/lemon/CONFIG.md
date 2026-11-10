@@ -168,7 +168,8 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`assets-answering`](skills/assets-answering/SKILL.md) | Present labeled asset previews in Discord. | Confirmed |
 | [`onboarding`](skills/onboarding/SKILL.md) | Introduce Lemon and help collaborators connect Studio. | Confirmed |
 | [`controls`](skills/controls/SKILL.md) | Explain skill shortcuts and session commands. | — |
-| [`feedback`](skills/feedback/SKILL.md) | Record feedback about Lemon as a public issue for triage. | — |
+| [`feedback`](skills/feedback/SKILL.md) | Record feedback about Lemon as a public issue for triage, with the session ID so Petri can find the Langfuse traces. | — |
+| [`session-id`](skills/session-id/SKILL.md) | Give the current session's ID, which `feedback` loads. | — |
 | [`design`](skills/design/SKILL.md) | Explore gameplay and creative decisions with the group. | — |
 | [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
 | [`create`](skills/create/SKILL.md) | Scaffold a new, empty game as a local Git repository. | — |
