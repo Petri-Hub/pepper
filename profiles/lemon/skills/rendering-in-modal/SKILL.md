@@ -1,6 +1,6 @@
 ---
 name: rendering-in-modal
-description: Render a packed Blender scene as a single Cycles PNG on a short-lived Modal T4. Use when the rendering workflow needs an off-host GPU still render.
+description: Use when a Blender scene needs a still render on Modal.
 ---
 
 # Render Blender scenes with Modal

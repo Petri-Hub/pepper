@@ -1,6 +1,6 @@
 ---
 name: texture-search-in-polyhaven
-description: Search, inspect and download CC0 PBR textures and individual map files from Poly Haven's public API. Use when looking for photorealistic rock, wood, brick, metal or ground materials.
+description: Use when searching Poly Haven for CC0 PBR textures.
 ---
 
 # Search Poly Haven textures

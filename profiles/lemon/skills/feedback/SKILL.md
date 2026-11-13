@@ -1,6 +1,6 @@
 ---
 name: feedback
-description: Record explicit positive, negative or mixed feedback about Lemon in a GitHub issue for Petri to triage. Use when someone invokes /feedback or explicitly asks to register feedback about Lemon's work.
+description: Use when someone sends /feedback about Lemon's work.
 ---
 
 # Record feedback about Lemon

@@ -1,6 +1,6 @@
 ---
 name: assets-answering
-description: Present Roblox asset search results in Discord with visual previews, font samples or audio attachments. Use when showing the group candidates or asking them to choose an asset.
+description: Use when showing the group asset options to pick from.
 ---
 
 # Present assets

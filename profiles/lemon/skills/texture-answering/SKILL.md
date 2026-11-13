@@ -1,6 +1,6 @@
 ---
 name: texture-answering
-description: Present texture and material options to the Discord group with visual previews, PBR map specifications, and license details. Use when showing the group candidates or asking them to choose a texture.
+description: Use when showing the group texture options to pick from.
 ---
 
 # Present textures and materials

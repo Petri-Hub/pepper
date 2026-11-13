@@ -1,6 +1,6 @@
 ---
 name: rendering
-description: Plan and review Blender renders for visual previews or presentation. Use when a 3D scene or asset needs a rendered image; use modelling for asset creation and Roblox integration.
+description: Use when a 3D asset or scene needs a preview image.
 ---
 
 # Render a 3D scene

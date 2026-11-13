@@ -1,6 +1,6 @@
 ---
 name: deliver
-description: Deliver a finished project change through checks and a merge, with a pull request when the project has a GitHub repository or locally when it doesn't. Use when someone in the thread has said the work is finished for now and it is ready to leave its worktree.
+description: Use when the group says finished work can ship.
 ---
 
 # Deliver a change

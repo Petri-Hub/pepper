@@ -1,6 +1,6 @@
 ---
 name: controls
-description: Explain the useful skill shortcuts and Hermes session commands available to Lemon's collaborators. Use when someone asks how to control Lemon, which commands to use, or how to direct an ongoing session.
+description: Use when someone asks how to control or direct Lemon.
 ---
 
 # Explain Lemon's controls

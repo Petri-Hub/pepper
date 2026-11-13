@@ -1,6 +1,6 @@
 ---
 name: install
-description: Set up or repair the toolchain and dependencies for a game project in the current worktree. Use when starting development or when this project's tools or packages are missing.
+description: Use when a worktree's tools or packages are missing.
 ---
 
 # Install the project
