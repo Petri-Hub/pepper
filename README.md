@@ -230,6 +230,8 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ Merge only after the group says a change is finished.
 - ✅ Hermes completion guidance and background skill reviews off.
 - ✅ A 15-minute run budget that asks him to wrap up.
+- ✅ Architecture skills and a feature-based game template.
+- ✅ Skill descriptions that fit Hermes' 60-character index.
 - ✅ Scaffold new games as local Git repositories with `/create`.
 - ✅ Retire roblox-with-swe from his work and keep it as a reference.
 - ✅ Planning skill that attaches a Markdown file in chat.

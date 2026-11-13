@@ -174,8 +174,13 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`plan`](skills/plan/SKILL.md) | Prepare a group plan and a technical handoff. | — |
 | [`create`](skills/create/SKILL.md) | Scaffold a new, empty game as a local Git repository. | — |
 | [`implement`](skills/implement/SKILL.md) | Implement an agreed feature or fix. | — |
+| [`architecture`](skills/architecture/SKILL.md) | Decide who owns what and how features connect, when planning and before building. | — |
+| [`architecture-rojo`](skills/architecture-rojo/SKILL.md) | Where files go in a Rojo project, with a tested worked example and the architecture checks. | — |
+| [`architecture-netcode`](skills/architecture-netcode/SKILL.md) | Split work between server and client: intent, validation, replicated state and prediction. | — |
 | [`install`](skills/install/SKILL.md) | Set up a game's toolchain in a worktree. | Confirmed |
-| [`modelling`](skills/modelling/SKILL.md) | Create and integrate custom Blender assets for Roblox. | — |
+| [`modelling`](skills/modelling/SKILL.md) | Start a custom 3D asset: stages, review path and standards. | — |
+| [`modelling-blender`](skills/modelling-blender/SKILL.md) | Build, texture and export a model in headless Blender. | — |
+| [`modelling-roblox`](skills/modelling-roblox/SKILL.md) | Upload and integrate a finished model into the game. | — |
 | [`rendering`](skills/rendering/SKILL.md) | Plan, inspect and present 3D renders. | — |
 | [`rendering-in-modal`](skills/rendering-in-modal/SKILL.md) | Render Blender previews on a short-lived Modal GPU. | — |
 | [`texture`](skills/texture/SKILL.md) | Find and choose textures and materials. | — |
@@ -187,11 +192,13 @@ Lemon keeps skills for game development, research, creative work, media and docu
 | [`document`](skills/document/SKILL.md) | Record game decisions and contributor guidance. | — |
 | [`deliver`](skills/deliver/SKILL.md) | Deliver a change through checks and a merge, by pull request or locally. | — |
 
-Run [`sync-skills.sh`](sync-skills.sh) with Lemon's existing profile skills directory as its argument when applying this configuration; it requires `rsync` and write access to that directory. It replaces the listed skill directories in full, including files Lemon changed or added inside them. His other skills remain managed by Hermes. The sandbox image supplies the asset-labeling helper used by `assets-answering`.
+Run [`sync-skills.sh`](sync-skills.sh) with Lemon's existing profile skills directory as its argument when applying this configuration; it requires `rsync` and write access to that directory. It replaces every skill directory in `skills/` in full, since the folder holds only repository-managed skills, including files Lemon changed or added inside them. His other skills remain managed by Hermes. The sandbox image supplies the asset-labeling helper used by `assets-answering`.
 
 Invoke the modelling skill with `/modelling`, or ask Lemon to use it in conversation. Hermes reserves `/model` for its built-in model selection command.
 
-The listed disabled skills are hidden from his prompt but remain installed; new skills are enabled unless explicitly disabled. The setup, preview and test skills describe the toolchain every game shares. `create` carries a bare game template, with Rojo, Wally, StyLua, Selene, Jest and the Studio test scripts but no README, license or CI; Hermes copies it into his sandbox with the skill.
+The listed disabled skills are hidden from his prompt but remain installed; new skills are enabled unless explicitly disabled. The setup, preview and test skills describe the toolchain every game shares. `create` carries a bare game template, with Rojo, Wally, StyLua, Selene, Jest, the Studio test scripts and `sleitnick/signal` but no README, license or CI; Hermes copies it into his sandbox with the skill. The template builds games as `<family>/<feature>` folders inside `src/server`, `src/client` and `src/shared` and ships `make check-architecture`, a Python checker whose rules live in `architecture.toml`, so a require that points at nothing or a feature reaching into another fails before Studio does.
+
+Every skill description fits the 60 characters Hermes shows in its skill index and begins with its trigger. Longer descriptions are clipped there, which hides the part Lemon routes on; the repository-managed skills bypass Hermes' own check when `sync-skills.sh` copies them, so the limit is kept by hand.
 
 ```yaml
 skills:
