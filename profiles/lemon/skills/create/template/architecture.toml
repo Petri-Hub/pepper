@@ -1,0 +1,51 @@
+# Architecture rules, checked by `make check-architecture`.
+# Layout: src/<server|client|shared>/<family>/<feature>/...
+
+[project]
+root_project = "default.project.json"  # the tree every require is resolved against
+sources = ["src"]
+
+[realms]
+server = "src/server"
+client = "src/client"
+shared = "src/shared"
+
+[limits]
+max_lines = 200  # split a module by responsibility before it grows past this
+
+[shared_pure]
+# shared/ holds config and pure functions: no engine access, no clock, no state.
+forbidden = [
+  '\bgame\b',
+  '\bworkspace\b',
+  '\bGetService\b',
+  'Instance\.new',
+  '\btask\.(?:wait|spawn|delay|defer)\b',
+  '\bos\.(?:clock|time)\b',
+]
+
+[[forbid]]
+name = "client-never-requires-server"
+from = ["src/client/**"]
+to = ["src/server/**"]
+reason = "The client cannot load server code. Send intent through a RemoteEvent and read replicated attributes."
+
+[[forbid]]
+name = "server-never-requires-client"
+from = ["src/server/**"]
+to = ["src/client/**"]
+reason = "The server must not depend on presentation. Replicate state and let the client draw it."
+
+[[forbid]]
+name = "shared-never-requires-realms"
+from = ["src/shared/**"]
+to = ["src/server/**", "src/client/**"]
+reason = "Shared code is loaded by both sides and stays pure."
+
+[[forbid]]
+name = "feature-internals-are-private"
+from = ["src/**"]
+to = ["src/server/*/*/**", "src/client/*/*/**"]
+except_to = ["src/server/*/*/init.luau", "src/client/*/*/init.luau"]
+same_feature = "allow"
+reason = "Another feature may only require this feature's init.luau (its public surface) or its shared files."

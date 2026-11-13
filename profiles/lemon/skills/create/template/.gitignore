@@ -19,3 +19,6 @@ sourcemap.json
 /Packages/
 /DevPackages/
 /ServerPackages/
+
+# Python bytecode from the architecture scripts.
+__pycache__/

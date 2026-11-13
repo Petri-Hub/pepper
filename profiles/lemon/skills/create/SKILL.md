@@ -1,11 +1,11 @@
 ---
 name: create
-description: Scaffold a new, empty Roblox game as a local Git repository in Lemon's workspace, with Rojo, Wally, formatting, linting, Jest tests and a Studio preview ready to use. Use when the group wants to start a new game.
+description: Use when the group wants to start a new game.
 ---
 
 # Create a new game
 
-Start a new game from the bare template in this skill: a Rojo project with a baseplate, a server script, a client script, one shared module and one Jest test. The game lives only in your workspace as a local Git repository. It has no GitHub repository, CI or publishing until Petri creates them.
+Start a new game from the bare template in this skill: a Rojo project with a baseplate, a server and a client script that start every feature, one infrastructure feature (`core/characters`) and one Jest test. Games are built as features under `src/server`, `src/client` and `src/shared`, as the `architecture` skills describe. The game lives only in your workspace as a local Git repository. It has no GitHub repository, CI or publishing until Petri creates them.
 
 ## 1. Name the game
 
@@ -41,9 +41,10 @@ From the new project's root:
 rokit install --no-trust-check
 wally install
 
-# Check that the empty game formats, lints and builds.
+# Check that the empty game formats, lints, builds and keeps its architecture.
 make format-check
 make lint
+make check-architecture
 make build
 ```
 
@@ -70,10 +71,14 @@ Tell the thread the game's name and folder, what it contains and which checks pa
 
 | Path | Purpose |
 |---|---|
-| `default.project.json` | The game's Rojo project: shared, server and client folders, a baseplate, lighting and sound settings. |
+| `default.project.json` | The game's Rojo project: the baseplate, lighting and sound settings, the `Packages` folder and the mapping of `src/server`, `src/client` and `src/shared`. |
+| `src/server/init.server.luau`, `src/client/init.client.luau` | Start every feature found under their own folder. You never edit them to add a feature. |
+| `src/server/core/characters/`, `src/shared/core/characters/` | The one feature the template ships: `Characters.observe` runs a feature's setup for each character and cleans it up. |
+| `architecture.toml`, `scripts/architecture/` | The architecture rules and the checker behind `make check-architecture` and `make test-architecture`. |
+| `AGENTS.md` | The game's code map for agents: layout, rules and a table of features. Keep it current. `docs/` stays free for the game's own documentation. |
 | `test.project.json`, `jest.config.toml`, `tests/specs/` | The test place and the Jest specs. |
-| `rokit.toml`, `wally.toml` | Pinned tools (Rojo, StyLua, Selene, Wally, jest-roblox-cli, rojo-share) and test packages. |
-| `Makefile` | `build`, `serve`, `format-check`, `format-apply`, `lint`, `test-on-ocale` and `test-on-system`. |
+| `rokit.toml`, `wally.toml` | Pinned tools (Rojo, StyLua, Selene, Wally, jest-roblox-cli, rojo-share), the `sleitnick/signal` package and the test packages. |
+| `Makefile` | `build`, `serve`, `format-check`, `format-apply`, `lint`, `check-architecture`, `test-architecture`, `test-on-ocale` and `test-on-system`. |
 | `.stylua.toml`, `selene.toml`, `.pre-commit-config.yaml` | Formatting and linting rules. |
 | `scripts/` | Run the Jest tests in Studio on Linux through Vinegar, for people developing on their own computer. |
 | `.env.example` | The variables for running tests on Open Cloud from a computer without your sandbox's settings. |
@@ -86,3 +91,4 @@ There is no README, license, CI or publishing workflow on purpose. Petri adds th
 - **Inventing the template.** Writing project files from memory when the template folder is missing.
 - **Adding a remote or CI.** Creating a GitHub repository, a remote or workflows; that is Petri's step.
 - **Building the game in the scaffold.** `create` makes the empty project. Gameplay starts afterwards in a thread worktree with `implement`.
+- **Copying the architecture example into a new game.** The `architecture-rojo` example is a reference. A new game starts with `core/characters` only, and features are added when the game needs them.
