@@ -1,6 +1,6 @@
 ---
 name: document
-description: Update a Roblox project's documentation to reflect agreed game decisions, current behavior and useful contributor guidance. Use when work changes what the group needs to remember.
+description: Use when work changes what the project docs should say.
 ---
 
 # Document the project
@@ -17,4 +17,4 @@ Use clear language for the intended reader. Game vision and collaboration guidan
 
 ## Review
 
-Keep related project pages consistent, and remove or update claims that the change makes inaccurate. Review the documentation diff alongside the code. If the work is still untested or a decision remains open, say so instead of describing it as complete.
+When a feature is added, or what it owns, exposes or uses changes, update the feature table in `AGENTS.md`; it is the map the next session reads before building. Keep related project pages consistent, and remove or update claims that the change makes inaccurate. Review the documentation diff alongside the code. If the work is still untested or a decision remains open, say so instead of describing it as complete.

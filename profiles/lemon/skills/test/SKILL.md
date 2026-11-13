@@ -1,6 +1,6 @@
 ---
 name: test
-description: Check changes in a game project using its formatting, lint, build and Open Cloud tests, and coordinate Studio playtesting.
+description: Use when checking that a change builds, lints and passes.
 ---
 
 # Test the project
@@ -9,7 +9,7 @@ description: Check changes in a game project using its formatting, lint, build a
 
 Run checks from the thread's worktree after its tools and dependencies are installed. Match the checks to the stage of the work:
 
-- **Draft or feedback round:** the quickest check that shows the change builds, usually `make build`, plus `make lint` when you changed logic. Don't run the full set or Open Cloud tests for every round.
+- **Draft or feedback round:** the quickest check that shows the change builds, usually `make build`, plus `make lint`, and `make check-architecture` when the project has it, when you changed logic or moved files. Don't run the full set or Open Cloud tests for every round.
 - **Finish and delivery:** the checks relevant to the change, including Open Cloud tests when behavior changed. Fix failures before delivery.
 
 These commands are defined by the project's `Makefile`:
@@ -21,11 +21,14 @@ make format-check
 # Check the Luau source and tests.
 make lint
 
+# Check the architecture: requires resolve, features stay separate, modules stay small.
+make check-architecture
+
 # Build the development place.
 make build
 ```
 
-For formatting changes, `make format-apply` updates Luau files in the current worktree. Review the resulting diff. These checks do not run the game or prove a feature works in Studio.
+`make check-architecture` fails when a `require` points at nothing, when a source file sits outside `src/server`, `src/client` and `src/shared`, or when a feature reaches into another's internals. Fix the code; do not edit `architecture.toml` to silence it. For formatting changes, `make format-apply` updates Luau files in the current worktree. Review the resulting diff. These checks do not run the game or prove a feature works in Studio.
 
 ## Open Cloud
 

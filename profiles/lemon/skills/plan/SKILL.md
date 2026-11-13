@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Plan a Roblox game feature or project change with the group. Use when asked to create, revise or review a plan, or when an agreed planning step is needed before substantial work.
+description: Use when asked to plan a feature or change.
 ---
 
 # Plan the work
@@ -14,6 +14,8 @@ Write the two files when someone asks for a plan or the work will span several s
 ## Understand before planning
 
 Start with the requested outcome and inspect the project's instructions, vision, relevant documentation and existing behavior. For technical work, read the relevant code, existing tests and tools before naming files or an approach. Check which project, checkout and thread the request belongs to. Do not create a worktree just to plan; use the thread's existing worktree if appropriate, otherwise inspect the correct project checkout without changing it.
+
+For technical work, load `architecture` before you write the implementation plan. It decides where the feature's code lives and how it connects to the features that exist, and those decisions shape the tasks. Decide them yourself; do not turn them into questions for the group.
 
 Separate **agreed requirements**, your **proposals**, and **assumptions or unknowns**. A concrete idea is enough to begin: make reasonable routine assumptions and label them. Ask a focused question when a missing answer would materially change gameplay, scope or another consequential choice; offer a recommendation and tradeoff when helpful. Continue research and draft the parts that do not depend on the answer. If a decision blocks the whole approach, say so and present the plan as a draft, not an agreed design.
 
@@ -37,6 +39,7 @@ Keep technical detail at the level needed to understand a decision, constraint o
 
 - The project, relevant checkout, branch or base revision when available, current phase and links to the group plan and relevant project instructions.
 - Observed behavior and inspected source paths, interfaces, tests, docs and assets, with the role each plays. Distinguish verified paths from proposed new files and unknowns; never guess filenames or claim inspection you did not perform.
+- **Seams**, from `architecture`: for each feature the work adds or touches, what it owns, what it exposes and what it uses from other features, and a check that the next feature the group has hinted at would add files instead of editing existing ones. Verified features come from reading the code; mark proposed ones as proposed.
 - A concise approach and ordered, independently understandable tasks, with dependencies, affected components, meaningful boundaries and the reason for consequential choices. Preserve the group's decisions and corrections, not just "as discussed".
 - Acceptance criteria mapped to concrete verification: appropriate automated checks, expected results and a Studio playtest where game feel or visual behavior matters. Name what cannot be checked from your environment.
 - Material risks, assumptions, unresolved choices and the next action. Record external documentation when it constrains the approach; record current evidence, not credentials or private data.
@@ -72,6 +75,7 @@ The group receives an attached, readable plan and can understand the proposed pl
 - **False precision:** Present an assumption as a decision, or hide a consequential unknown behind a confident task list.
 - **Uncheckable outcomes:** Say "make it fun" or "test everything" without observable criteria and a relevant way to check them.
 - **Stale handoff:** Ignore a changed decision or continue from an old plan without checking the current project and thread.
+- **Tasks without seams:** List files to create before deciding which feature owns each piece of state. The tasks inherit a tangle the plan never looked at.
 - **Planning theatre:** Demand a long questionnaire, mandatory template sections or an approval for routine choices when the request already gives enough direction.
 - **Scope creep:** Begin implementation after a plan-only request or present the plan as permission to publish.
 
