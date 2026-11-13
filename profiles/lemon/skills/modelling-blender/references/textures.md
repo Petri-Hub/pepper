@@ -35,7 +35,7 @@ image_node.image = image
 material.node_tree.links.new(
     image_node.outputs["Color"], nodes["Principled BSDF"].inputs["Base Color"]
 )
-# Assign material to the UV-mapped mesh, then export using blender-fbx.md.
+# Assign material to the UV-mapped mesh, then export using the Blender and FBX checks.
 ```
 
 For generated or baked maps, write **each image to a unique, real filename**, then pack and embed it; do not leave multiple images on the same unnamed or shared path. We saw Blender reimport report packed images while Roblox assigned a texture only to one mesh. Giving the images distinct paths and exporting again yielded texture references on every intended greatsword mesh. The check is per material and per exported object, including glass, trim and dark inserts—not a single count of images.
