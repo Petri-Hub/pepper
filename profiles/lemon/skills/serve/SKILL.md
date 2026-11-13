@@ -1,6 +1,6 @@
 ---
 name: serve
-description: Start, reuse or stop a Rojo Share preview for a game project. Use when a Discord thread needs to see its worktree in Roblox Studio.
+description: Use when a thread needs a Studio preview link.
 ---
 
 # Serve the project

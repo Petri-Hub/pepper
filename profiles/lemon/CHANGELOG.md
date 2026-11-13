@@ -2,6 +2,18 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-10 · Architecture skills and a feature-based template
+
+> *"We need an architecture skill that Lemon reads when planning and when implementing, so one feature, like stamina, can connect to others, like combat, instead of becoming spaghetti. Also split the modelling skill, and review every skill description."*
+
+Lemon's own `roblox-architecture` skill, written during the hack-and-slash session and living only in the lab container, is replaced by three skills in this repository: `architecture` (owners, public surfaces, the patterns that make features compose, and when to read it), `architecture-rojo` (file layout, `require` paths, signals, the checks and a tested five-feature example) and `architecture-netcode` (server and client responsibilities). `plan` and `implement` now call `architecture`, `document` keeps the feature table in the game's `AGENTS.md` current and `test` runs `make check-architecture`.
+
+`create`'s template now organizes features as `<family>/<feature>` folders directly inside `src/server`, `src/client` and `src/shared`, so Rojo maps those three folders as they are and adding a feature needs no project-file change. It also adds the `sleitnick/signal` Wally package, a `core/characters` feature, bootstrap scripts that start every feature, an `AGENTS.md` code map at the game's root (so `docs/` stays free for real documentation), and a Python checker (`architecture.toml`, `scripts/architecture/`). The checker resolves every `require` against the tree Rojo builds and enforces import rules, the line limit, shared-code purity and feature cycles. Its 20 self-tests pass; the template and example pass StyLua, Selene and `rojo build`. Luau type-checking and the Jest specs were not run.
+
+`modelling` is now an entry skill with `modelling-blender` and `modelling-roblox`, so a model that never goes into the game no longer loads the Roblox pipeline. Its references moved with their skills. Every skill description now fits Hermes' 60-character skill index; before, all 22 repository skills were longer than the index shows. `sync-skills.sh` now syncs every folder in `skills/` instead of a hand-kept list, so a new skill deploys without editing the script.
+
+Not applied to the live agent yet: run `sync-skills.sh`, then delete the container's own `roblox-architecture` skill. The tracked `SOUL.md` is unchanged.
+
 ### 2026-11-10 · Separate agents in Langfuse
 
 > *"Configure environments using the same names of each agent."*

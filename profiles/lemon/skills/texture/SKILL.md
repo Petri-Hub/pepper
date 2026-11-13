@@ -1,6 +1,6 @@
 ---
 name: texture
-description: Find, evaluate and choose 2D and 3D textures, PBR materials, and photographic surface maps for Roblox models. Use when someone asks for textures, materials, or surfaces for game objects.
+description: Use when someone asks for textures, materials or surfaces.
 ---
 
 # Find and choose textures

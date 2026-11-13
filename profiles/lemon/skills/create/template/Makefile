@@ -1,4 +1,4 @@
-.PHONY: build test-on-system test-on-ocale format-apply format-check lint serve
+.PHONY: build test-on-system test-on-ocale format-apply format-check lint check-architecture test-architecture serve
 
 -include .env
 
@@ -12,6 +12,9 @@ format-apply:
 format-check:
 	stylua src tests --check
 
+check-architecture:
+	python3 scripts/architecture check
+
 lint:
 	selene src tests
 
@@ -20,6 +23,9 @@ dist:
 
 build: dist
 	rojo build --output ./dist/development.rbxlx
+
+test-architecture:
+	python3 -B scripts/architecture/test_architecture.py
 
 test-on-system:
 	jest-roblox-cli

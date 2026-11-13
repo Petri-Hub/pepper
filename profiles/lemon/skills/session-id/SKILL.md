@@ -1,6 +1,6 @@
 ---
 name: session-id
-description: Give the ID of the current Hermes session, the one Petri's Langfuse traces are grouped by. Load it with skill_view when a report needs to point to this conversation. People do not invoke it directly.
+description: Use when a report must point to this conversation.
 ---
 
 # Current session ID
@@ -9,7 +9,7 @@ The ID of the current Hermes session is:
 
 `${HERMES_SESSION_ID}`
 
-Petri's Langfuse traces are grouped by this ID, so it lets him find this conversation's traces. It is an opaque identifier and is safe to include in a public issue.
+Petri's Langfuse traces are grouped by this ID, so it lets him find this conversation's traces. It is an opaque identifier and is safe to include in a public issue. Load this skill with `skill_view` when a report needs to point to this conversation; people do not invoke it directly.
 
 ## Using it
 

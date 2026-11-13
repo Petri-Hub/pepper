@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Implement an agreed feature or fix in a Roblox project. Use when Lemon is asked to change the game, from understanding the request through a rough playable version, the group's feedback rounds and the finished change.
+description: Use when asked to build or change a game feature.
 ---
 
 # Implement a change
@@ -9,7 +9,7 @@ Build in stages and show each one, following the Working rhythm in your instruct
 
 ## 1. Intake and workspace
 
-Restate the player-facing outcome in a sentence. Read the project's instructions and the code the change touches; read more only when you need it.
+Restate the player-facing outcome in a sentence. Read the project's `AGENTS.md` (instructions and code map) and the code the change touches; read more only when you need it. Load `architecture` before you create the first file, and `architecture-rojo` or `architecture-netcode` when you create or move files, or when state or input crosses between server and client. Decide which feature owns what, and say the seams in three lines, before you write code.
 
 If the group wants a new game rather than a change to an existing one, use the `create` skill first. Resume this thread's existing worktree and branch when one exists. If there is none, create an isolated worktree and branch from the project's current base branch. Never use another thread's worktree or mix unrelated changes in the same branch. Use the `install` skill if the worktree's tools or dependencies are missing, and the `serve` skill so the thread has a ready Studio URL early in the session.
 
@@ -25,7 +25,7 @@ Inspect a candidate for fit, compatibility with the project's Roblox and Rojo se
 
 ## 3. Rough version
 
-Build the smallest playable version of the idea in the thread's worktree: grey parts, placeholder assets and simple values are fine. Follow the project's existing structure and keep authoritative behavior on the server. Run a quick check that it builds, such as `make build`, then give the group the ready Studio URL and tell them what to try and what is still missing. End the turn there.
+Build the smallest playable version of the idea in the thread's worktree: grey parts, placeholder assets and simple values are fine. Follow the project's existing structure and keep authoritative behavior on the server. A rough version is still built as a feature with an owner and a public surface, in its own folder; only the polish waits. Run a quick check that it builds and keeps the structure, such as `make build`, plus `make check-architecture` when the project has it, then give the group the ready Studio URL and tell them what to try and what is still missing. End the turn there.
 
 ## 4. Iterate
 
@@ -35,7 +35,7 @@ Each round of feedback is one stage: the core mechanic first, then content, effe
 
 ## 5. Finish
 
-When someone in the thread says the feature is finished for now, review the diff and update the project documentation for any behavior or decision that changed. Add or update tests for the behavior the change needs to verify, and run the full checks with the `test` skill. Report what passed, what failed and what still needs a Studio playtest.
+When someone in the thread says the feature is finished for now, review the diff and update the project documentation for any behavior or decision that changed, including the feature table in `AGENTS.md`. Run the extensibility test from `architecture`: the next feature the group hinted at should fit without editing this one. Add or update tests for the behavior the change needs to verify, and run the full checks with the `test` skill. Report what passed, what failed and what still needs a Studio playtest.
 
 Stop the thread's preview and hand off to the `deliver` skill. Do not open a pull request, merge or publish before this point unless the group explicitly asks to end the iteration early.
 
@@ -48,4 +48,5 @@ After merge, do not wait for the publishing workflow before starting the next ta
 - **Endless search.** Searching the store and package registry for many tool calls before building anything. A placeholder is fine for a first version.
 - **Wrong category assumption.** Reaching for a 3D model when the task actually needs a sound, a decal, a font or a package. Think about the full scope of the feature first.
 - **Waiting for CI before moving on.** Once a PR is merged and CI is running, that's automation, not Lemon's job to monitor. Start the next task.
+- **Grey-box spaghetti.** A rough version that puts its state, rules and drawing in one file, or reaches into another feature's internals. Rough means simple placeholders, not no structure.
 - **Blending threads.** Each thread owns its worktree. Never write in another thread's worktree or silently continue one thread's work inside another.

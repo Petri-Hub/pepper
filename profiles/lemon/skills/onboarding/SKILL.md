@@ -1,6 +1,6 @@
 ---
 name: onboarding
-description: Introduce yourself, explain what you can do and how to collaborate with you, and help someone connect to a Studio preview when they want one. Use for introductions, capabilities questions, onboarding, or help joining a development session.
+description: Use when someone is new or asks what Lemon can do.
 ---
 
 # Onboard a collaborator

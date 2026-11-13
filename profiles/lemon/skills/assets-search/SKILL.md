@@ -1,6 +1,6 @@
 ---
 name: assets-search
-description: Search and evaluate Roblox Creator Store assets for a game project. Use when someone asks you to find or compare models, sounds, fonts or other assets.
+description: Use when someone asks to find or compare Roblox assets.
 ---
 
 # Search for assets

@@ -1,13 +1,20 @@
 ---
 name: modelling
-description: Create or adapt a custom 3D asset in headless Blender and prepare, upload, and integrate it into a Roblox project. Use when the group asks for a custom mesh, prop, environment module, or other Blender-to-Roblox asset; use the existing asset skills for Creator Store discovery.
+description: Use when the group asks for a custom 3D model.
 ---
 
-# Make a 3D asset work in Roblox
+# Model a custom 3D asset
 
-Use Blender's Python API (`bpy`) in the SSH workspace to model, texture and export a file, and use `rendering-in-modal` for every render, including previews. Roblox converts the file into a cloud Model containing MeshParts. Download that model as `.rbxm`, map it through Rojo and have the group inspect it in Studio. A Blender render is useful evidence, not a Roblox playtest. This skill is about a **working asset pipeline**; it does not claim a design is attractive or gameplay-ready.
+Start here for any custom mesh, prop or environment module. This skill sets the stages, the review path and the standards every model follows. The hands-on work lives in two skills that you load only at the stage that needs them:
 
-For exact commands and export checks read [Blender and FBX](references/blender-fbx.md). For image sources, UVs and materials read [Textures](references/textures.md). For the Open Cloud request, asset delivery, Rojo and troubleshooting read [Roblox integration](references/roblox-integration.md). Read a reference when you reach its stage; a silhouette draft needs none of them.
+| Load | When |
+|---|---|
+| `modelling-blender` | You build, texture, render or export the model in Blender. Every custom model needs it. |
+| `modelling-roblox` | The group wants the finished model in the game. A model that stays a render, a concept or a local export never loads it. |
+
+A ready-made asset often beats a custom model: when the request leaves room, search the Creator Store with `assets-search` before building one. When the group asks explicitly for custom modelling, honor that request. Textures come from `texture` and renders from `rendering`.
+
+This skill is about a **working asset pipeline**; it does not claim a design is attractive or gameplay-ready.
 
 ## 1. Scope and workspace
 
@@ -26,7 +33,7 @@ Each stage ends your turn with a render attached, as the Working rhythm in your 
 | **Silhouette** | Two or three clearly different blockouts from simple shapes, at the intended scale, with flat grey or single-color materials. No textures, bevels or fine detail. One option is enough when the request includes a sketch or reference with a clear shape. | One low-sample render with the options side by side and labeled A, B, C, or one render per option. Ask which to develop. |
 | **Shape** | The chosen option's proportions and main forms. | A render from the same angle, so the change is easy to compare. |
 | **Detail and material** | Secondary forms, then UVs and textures through the `texture` skill. | A render of the textured model. |
-| **Roblox** | Export, upload and integration, only when the group wants the asset in the game. | The Studio URL and what to check there. |
+| **Roblox** | Export, upload and integration, only when the group wants the asset in the game. Load `modelling-roblox`. | The Studio URL and what to check there. |
 
 Keep each stage's script and render in the scratchpad so the next stage starts from the accepted version instead of rebuilding it.
 
@@ -42,21 +49,11 @@ Keep each stage's script and render in the scratchpad so the next stage starts f
 | Write credential or permission is missing | Stop that phase and say which permission or owner is needed; do not request a secret in chat, try unrelated keys, or quietly fall back to a less appropriate account. Continue local work. |
 | A human is needed to see or play the result | Give the group a ready `serve` preview and focused instructions. A person must confirm the visual and interactive result before calling the feature ready, following `implement` and `test`; don't claim it passed based on a build or thumbnail. |
 
-## 4. Check what the stage needs
+## 4. Standards for every model
 
-Draft stages need quick checks only: the script ran without errors, the expected parts exist at the intended size, and the render shows the whole object. Look at a draft render once to catch a broken result, such as an empty frame, missing parts or a wrong scale, and fix only that. Judging the shape and style is the group's job; don't re-render a draft to improve its look before they have seen it.
+Model at an intended stud scale and keep objects meaningfully named. Keep the source `.blend`, scripts, source images and their provenance in the thread's scratchpad so a later stage starts from the accepted version. Use only material you have the right to use in this project and on Roblox.
 
-Model at an intended stud scale and keep objects meaningfully named. Use real UV-mapped image textures when textured output is required. Blender's procedural shaders and its render are not Roblox materials. Store source photographs/maps and their provenance, and use only material you have the right to use in this project and on Roblox.
-
-Before export, prepare the scene so only the asset, not camera, ground, lights or helpers, is exported. Export FBX locally and run the full [Blender and FBX checks](references/blender-fbx.md): evaluated triangle count, transforms, UVs, material links, image files, correct export selection, size and FBX round-trip. Validate every required part, not merely the presence of one packed image. If a reviewer is available and the task warrants it, have them inspect the FBX, texture mapping and export report before upload; a second agent is not a required gate.
-
-## 5. Upload and integrate
-
-When upload is authorized, upload the validated FBX as a **Model** to the agreed user or group with the Open Cloud Assets API, then poll the operation. Record operation, asset ID, owner, revision, moderation and elapsed time without exposing credentials or signed URLs. The upload creates Roblox assets; it does not need a public Creator Store listing. `done`, approval, model delivery, texture permissions and an actual in-game load are separate checks.
-
-Fetch the resulting Roblox model with Asset Delivery, inspect all imported MeshParts and texture references, and compare it to the source. If a texture or mesh is missing, diagnose the failing stage and correct it; do not claim the import worked merely because the API returned an ID. Map the `.rbxm` into the thread's project, prepare a `serve` preview and run relevant `test` checks. Preserve model scale and behavior intentionally; configure anchoring, collision and networking for the actual use rather than copying a temporary display script.
-
-## 6. Hand off evidence
+## 5. Hand off evidence
 
 Attach renders with the sandbox's `MEDIA:/absolute/path` convention and, once the asset is in the game, give the ready Studio URL through `serve`. Explain what to check in Studio: shape, size beside a character, orientation, texture and lighting, clipping, collision and interaction as relevant. Name what was checked locally, what Roblox reported and what still needs human confirmation. Do not present a Blender render as an in-game screenshot or a headless build as proof of appearance.
 

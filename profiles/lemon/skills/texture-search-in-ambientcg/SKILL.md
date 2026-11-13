@@ -1,6 +1,6 @@
 ---
 name: texture-search-in-ambientcg
-description: Search, inspect and download CC0 seamless PBR material packs from ambientCG's REST API. Use when looking for tileable architectural surfaces, terrain, ground, plaster, stone or sci-fi materials.
+description: Use when searching ambientCG for tileable CC0 materials.
 ---
 
 # Search ambientCG textures

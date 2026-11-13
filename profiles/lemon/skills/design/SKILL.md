@@ -1,6 +1,6 @@
 ---
 name: design
-description: Explore, critique and shape a Roblox game's player experience. Use for game ideas, mechanics, progression, replayability, creative direction, or a meaningful gameplay concern noticed while considering a feature.
+description: Use when the group explores or critiques game ideas.
 ---
 
 # Design the player experience
