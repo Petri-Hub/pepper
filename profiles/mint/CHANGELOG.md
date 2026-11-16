@@ -2,6 +2,18 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-16 · Mint out loud at home
+
+> *"I want to connect Mint to an Alexa-like device to make my room smart, without the device's own intelligence, so I can customize it and it has exactly the same context Mint has."*
+
+Bárbara talks to Mint through a Home Assistant voice satellite. Home Assistant's Assist pipeline turns speech into text and back, and the Hermes Voice integration sends each utterance to Mint's API server, so the device is only a microphone and a speaker. A spare Android phone running Ava is the first satellite, since used Echo Dots cost more and risk bricking when unlocked.
+
+- **API server** on port 8643, bound for the lab's network and protected by its own key. `.env.example` gained the four `API_SERVER_*` variables.
+- **Home Assistant plugin** with a token from a Home Assistant user created for Mint, added to `plugins.enabled`. `.env.example` gained `HASS_URL` and `HASS_TOKEN`.
+- **SOUL.md** lists Home Assistant under Integrations and adds how to speak a reply: short, no markdown, private details kept for chat.
+
+Spoken conversations get their own session. With `session_search` disabled they do not see the chat history, only what Mint keeps in memory. The lab still has to run Home Assistant 2026.10 or newer with HACS, install Hermes Voice by hand through HACS and point it at Mint's API server. The live agent has not been changed yet: it needs the new `.env` values, the plugin, the SOUL update and a gateway restart, and Bárbara needs `/new` in her chats.
+
 ### 2026-11-10 · Match Lemon’s context settings
 
 > *"Same thing we did on Lemon: 150k with 85% compaction."*

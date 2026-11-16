@@ -1,6 +1,6 @@
 # 🌿 Mint
 
-> Mint is Bárbara's concise, polished personal assistant, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Google Workspace, Notion and Vercel are connected to his profile.
+> Mint is Bárbara's concise, polished personal assistant, with the manner of a refined butler and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Google Workspace, Notion, Vercel and Home Assistant are connected to his profile, and a Home Assistant voice satellite lets her talk to him out loud at home.
 
 ## 💬 Platforms
 
@@ -130,6 +130,17 @@ wake_word:
   phrase: "hey mint"
 ```
 
+### 🔊 Voice at home
+
+A Home Assistant voice satellite lets Bárbara talk to Mint out loud at home, with the same soul, memory and integrations he has in chat. Home Assistant handles the microphone, speech-to-text and speech, and the Hermes Voice integration hands each utterance to Mint's API server, so the device holds no intelligence of its own. The API server listens on its own port, reachable only inside the lab's network, and its key is required on every request because the server exposes his full toolset. Spoken conversations get their own session, separate from Telegram and Discord.
+
+```bash
+API_SERVER_ENABLED=true
+API_SERVER_HOST=0.0.0.0
+API_SERVER_PORT=8643
+API_SERVER_KEY=…
+```
+
 ### 📡 Messaging
 
 Mint gets his own Telegram and Discord bots. Numeric user allowlists restrict who can talk to each bot. Gateway shutdown and restart notices stay out of both chats.
@@ -161,6 +172,15 @@ Mint uses the same published Google OAuth client as Pepper, with his own grant a
 ```bash
 /opt/data/profiles/mint/google_client_secret.json   # a private copy of the shared OAuth client
 /opt/data/profiles/mint/google_token.json           # Mint's separate account grant
+```
+
+### 🏠 Home Assistant
+
+The official Home Assistant plugin lets Mint read and control the smart devices at Bárbara's home, by chat or by voice. His long-lived token belongs to a Home Assistant user created for him, so his access can be narrowed or revoked without touching hers. The plugin refuses service domains that run code on the Home Assistant host, and no events are forwarded to him.
+
+```bash
+HASS_URL=http://homeassistant:8123
+HASS_TOKEN=…
 ```
 
 ### 🧪 Sandbox
@@ -215,11 +235,13 @@ Langfuse records Mint's turns, model calls and tool use in the shared Hermes pro
 | Plugin | What it gives the agent | Link |
 |---|---|---|
 | `langfuse` | Traces, sessions, usage and cost in the shared Hermes project | [Official Langfuse plugin](https://github.com/NousResearch/hermes-official-plugins/tree/main/langfuse) |
+| `homeassistant` | The `ha_list_entities`, `ha_get_state`, `ha_list_services` and `ha_call_service` tools | [Official Home Assistant plugin](https://hermes-agent.nousresearch.com/docs/plugins/homeassistant) |
 
 ```yaml
 plugins:
   enabled:
     - langfuse
+    - homeassistant
 ```
 
 ```bash

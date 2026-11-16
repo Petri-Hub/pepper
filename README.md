@@ -188,6 +188,9 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ A public Modal sandbox image with Google's Python libraries
 - ✅ Gmail, Calendar and Drive through Bárbara's separate Google OAuth grant
 - ✅ His own GitHub App, acting on Bárbara's repositories under the bot's name
+- ✅ Home Assistant plugin for the smart devices at home
+- ✅ API server for the Hermes Voice integration in Home Assistant
+- ✅ An Android phone running Ava as his first voice satellite
 
 ### 🍋 Lemon
 
@@ -241,6 +244,10 @@ Unknown   0 hrs 2 mins    ██████████████████
 
 - [Hermes Agent](https://hermes-agent.nousresearch.com/docs/): the documentation for the framework every profile runs on
 - [Hermes Agent on GitHub](https://github.com/NousResearch/hermes-agent): the source code, from [Nous Research](https://nousresearch.com)
+- [Hermes Home Assistant plugin](https://hermes-agent.nousresearch.com/docs/plugins/homeassistant): how Mint reads and controls devices at home
+- [Hermes API server](https://hermes-agent.nousresearch.com/docs/user-guide/features/api-server): the OpenAI-compatible endpoint Home Assistant calls for Mint
+- [Hermes Voice](https://github.com/majorminorlabs/hermes-voice): the Home Assistant integration that makes Mint a voice assistant
+- [Ava Pro](https://github.com/knoop7/Ava-Pro): the Android app that turns a phone into a voice satellite
 - [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse): the agents’ shared tracing integration
 - [OpenAI API Platform](https://platform.openai.com/docs): the models behind Pepper's thinking, transcription and voice
 - [Telegram Bot API](https://core.telegram.org/bots/api): how Pepper's Telegram bot talks to Telegram
