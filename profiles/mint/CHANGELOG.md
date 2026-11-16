@@ -16,7 +16,7 @@ The live agent still has to receive the new `SOUL.md`, and Bárbara needs `/new`
 
 Bárbara talks to Mint through a Home Assistant voice satellite. Home Assistant's Assist pipeline turns speech into text and back, and the Hermes Voice integration sends each utterance to Mint's API server, so the device is only a microphone and a speaker. A spare Android phone running Ava is the first satellite, since used Echo Dots cost more and risk bricking when unlocked.
 
-- **API server** on port 8643, bound for the lab's network and protected by its own key. `.env.example` gained the four `API_SERVER_*` variables.
+- **API server** reached under `/p/mint/` in the lab's multiplexed gateway and published at the Mint domain, protected by his own key. The listener is process-wide and belongs to the lab; `.env.example` gained only `API_SERVER_KEY`.
 - **Home Assistant plugin** with a token from a Home Assistant user created for Mint, added to `plugins.enabled`. `.env.example` gained `HASS_URL` and `HASS_TOKEN`.
 - **SOUL.md** lists Home Assistant under Integrations and adds how to speak a reply: short, no markdown, private details kept for chat.
 

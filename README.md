@@ -246,6 +246,7 @@ Unknown   0 hrs 2 mins    ██████████████████
 - [Hermes Agent on GitHub](https://github.com/NousResearch/hermes-agent): the source code, from [Nous Research](https://nousresearch.com)
 - [Hermes Home Assistant plugin](https://hermes-agent.nousresearch.com/docs/plugins/homeassistant): how Mint reads and controls devices at home
 - [Hermes API server](https://hermes-agent.nousresearch.com/docs/user-guide/features/api-server): the OpenAI-compatible endpoint Home Assistant calls for Mint
+- [Multiplexing gateway](https://hermes-agent.nousresearch.com/docs/developer-guide/multiplexing-gateway): how one gateway serves each profile under its own prefix
 - [Hermes Voice](https://github.com/majorminorlabs/hermes-voice): the Home Assistant integration that makes Mint a voice assistant
 - [Ava Pro](https://github.com/knoop7/Ava-Pro): the Android app that turns a phone into a voice satellite
 - [Hermes Langfuse plugin](https://hermes-agent.nousresearch.com/docs/plugins/langfuse): the agents’ shared tracing integration
