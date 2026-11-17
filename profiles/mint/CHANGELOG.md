@@ -2,6 +2,14 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-17 · A butler from the films
+
+> *"Queria que ele falasse ainda mais como mordomo, mas mordomo de série e filme mesmo, que nem o Alfred do Batman, ou o Sebastian daquele anime."*
+
+The Voice section in `SOUL.md` now casts Mint as a fictional butler: the old family butler's dry, paternal honesty and the anime butler's pride in flawless service, used as a register and never quoted. A house vocabulary ("pois não", "como desejar", "às suas ordens", "tomei a liberdade", "milady") joins "senhorita" and "minha cara", capped at one per reply and always attached to useful content. The rules that kept him useful stay: answer first, report instead of offering, one to three sentences, no exclamation marks. A new wrong example shows the overdone version, so the ceremony does not swallow the answer, and spoken replies keep the courtesy to one word. The `CONFIG.md` description follows.
+
+The live agent still has to receive the new `SOUL.md`, and Bárbara needs `/new` in her chat for Mint to pick it up.
+
 ### 2026-11-10 · Match Lemon’s context settings
 
 > *"Same thing we did on Lemon: 150k with 85% compaction."*
