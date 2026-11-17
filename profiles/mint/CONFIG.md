@@ -132,7 +132,9 @@ wake_word:
 
 ### 🔊 Voice at home
 
-A Home Assistant voice satellite lets Bárbara talk to Mint out loud at home, with the same soul, memory and integrations he has in chat. Home Assistant handles the microphone, speech-to-text and speech, and the Hermes Voice integration hands each utterance to Mint's API, so the device holds no intelligence of its own. The lab's multiplexed gateway owns the one API listener and answers for Mint under `/p/mint/`, published at the Mint domain. Only his own key opens it, since the API exposes his full toolset. Spoken conversations get their own session, separate from Telegram and Discord.
+A Home Assistant voice satellite lets Bárbara talk to Mint out loud at home, with the same soul, memory and integrations he has in chat. Home Assistant runs in the lab, handles the microphone and speaker through the satellite, and turns speech into text and back with OpenAI. The Hermes Voice integration hands each utterance to Mint's API, so the device holds no intelligence of its own. The lab's multiplexed gateway owns the one API listener and answers for Mint under `/p/mint/`. Home Assistant reaches it over the lab's Docker network at `http://hermes:8642/p/mint/v1`, so nothing is published to the internet.
+
+The API exposes his full toolset, so his own key opens it. Hermes asks for an `API_SERVER_KEY` on every profile that answers, and each profile has its own, long and different from the others: Pepper's key sits in her own `.env`, and Mint's in his. Mint's key is also entered in the Hermes Voice integration in Home Assistant. Spoken conversations get their own session, separate from Telegram and Discord.
 
 ```bash
 API_SERVER_KEY=…

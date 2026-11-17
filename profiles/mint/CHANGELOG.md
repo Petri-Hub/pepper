@@ -16,11 +16,11 @@ The live agent still has to receive the new `SOUL.md`, and Bárbara needs `/new`
 
 Bárbara talks to Mint through a Home Assistant voice satellite. Home Assistant's Assist pipeline turns speech into text and back, and the Hermes Voice integration sends each utterance to Mint's API server, so the device is only a microphone and a speaker. A spare Android phone running Ava is the first satellite, since used Echo Dots cost more and risk bricking when unlocked.
 
-- **API server** reached under `/p/mint/` in the lab's multiplexed gateway and published at the Mint domain, protected by his own key. The listener is process-wide and belongs to the lab; `.env.example` gained only `API_SERVER_KEY`.
+- **API server** reached under `/p/mint/` in the lab's multiplexed gateway, protected by his own key. The listener is process-wide and belongs to the lab, and Home Assistant calls it over the Docker network at `http://hermes:8642/p/mint/v1`, so it is not published to the internet. Hermes asks for a key on every profile that answers, so Mint and Pepper each have their own, and `.env.example` gained `API_SERVER_KEY`.
 - **Home Assistant plugin** with a token from a Home Assistant user created for Mint, added to `plugins.enabled`. `.env.example` gained `HASS_URL` and `HASS_TOKEN`.
 - **SOUL.md** lists Home Assistant under Integrations and adds how to speak a reply: short, no markdown, private details kept for chat.
 
-Spoken conversations get their own session. With `session_search` disabled they do not see the chat history, only what Mint keeps in memory. The lab still has to run Home Assistant 2026.10 or newer with HACS, install Hermes Voice by hand through HACS and point it at Mint's API server. The live agent has not been changed yet: it needs the new `.env` values, the plugin, the SOUL update and a gateway restart, and Bárbara needs `/new` in her chats.
+Spoken conversations get their own session. With `session_search` disabled they do not see the chat history, only what Mint keeps in memory. Home Assistant runs in the lab with OpenAI for speech, so no speech containers run there. The Redmi reaches it over Tailscale, where only the lab can connect to it. Hermes Voice is installed by hand through HACS and pointed at Mint's API with his key. The lab side is live. Mint's side needs the new `.env` values, the plugin and the SOUL update, and Bárbara needs `/new` in her chats.
 
 ### 2026-11-10 · Match Lemon’s context settings
 

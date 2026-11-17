@@ -190,7 +190,7 @@ Unknown   0 hrs 2 mins    ██████████████████
 - ✅ His own GitHub App, acting on Bárbara's repositories under the bot's name
 - ✅ Home Assistant plugin for the smart devices at home
 - ✅ API server for the Hermes Voice integration in Home Assistant
-- ✅ An Android phone running Ava as his first voice satellite
+- ✅ An Android phone running Ava as his first voice satellite, with Home Assistant in the lab and OpenAI for speech
 
 ### 🍋 Lemon
 
