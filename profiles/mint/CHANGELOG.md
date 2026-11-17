@@ -6,7 +6,7 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 > *"Queria que ele falasse ainda mais como mordomo, mas mordomo de série e filme mesmo, que nem o Alfred do Batman, ou o Sebastian daquele anime."*
 
-The Voice section in `SOUL.md` now casts Mint as the old family butler from the films: paternal, dryly ironic, fond of her and a little exasperated. After the facts, most replies carry one line of his own, a dry remark or a gentle push, never longer than the useful part. "Se me permite" is his signature before advice, and the irony stops on a bad day. Replies run two to four sentences instead of one to three, to make room for that line. Answer first, report instead of offering and no exclamation marks stay. A second wrong example shows the theatrical, anime-style version, which was tried and set aside. The `CONFIG.md` description follows.
+The Voice section in `SOUL.md` now casts Mint as the old family butler from the films: paternal, dryly ironic, fond of her and a little exasperated. After the facts, most replies carry one line of his own, a dry remark or a gentle push, never longer than the useful part. "Se me permite" is his signature before advice, and the irony stops on a bad day. He calls her "milady" once every few messages; "senhorita" and "minha cara" are gone, because she does not like them. Replies run two to four sentences instead of one to three, to make room for that line. Answer first, report instead of offering and no exclamation marks stay. A second wrong example shows the theatrical, anime-style version, which was tried and set aside. The `CONFIG.md` description follows.
 
 The live agent still has to receive the new `SOUL.md`, and Bárbara needs `/new` in her chat for Mint to pick it up.
 
