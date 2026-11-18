@@ -1,6 +1,6 @@
 # 🌿 Mint
 
-> Mint is Bárbara's concise, polished personal assistant, with the manner of an old family butler from the films, paternal, dryly ironic and unflappable, and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Google Workspace, Notion and Vercel are connected to his profile.
+> Mint is Bárbara's concise, polished personal assistant, with the manner of an old family butler from the films, paternal, dryly ironic and unflappable, and a little chocolate-mint wit. He helps with everyday questions, design discussions and reminders on Telegram, Discord and voice, thinks with OpenAI, and runs commands in his own Modal sandbox. Google Workspace, Notion, Vercel and Home Assistant are connected to his profile, and a Home Assistant voice satellite lets her talk to him out loud at home.
 
 ## 💬 Platforms
 
@@ -130,6 +130,16 @@ wake_word:
   phrase: "hey mint"
 ```
 
+### 🔊 Voice at home
+
+A Home Assistant voice satellite lets Bárbara talk to Mint out loud at home, with the same soul, memory and integrations he has in chat. Home Assistant runs in the lab, handles the microphone and speaker through the satellite, and turns speech into text and back with OpenAI. The Hermes Voice integration hands each utterance to Mint's API, so the device holds no intelligence of its own. The lab's multiplexed gateway owns the one API listener and answers for Mint under `/p/mint/`. Home Assistant reaches it over the lab's Docker network at `http://hermes:8642/p/mint/v1`, so nothing is published to the internet.
+
+The API exposes his full toolset, so his own key opens it. Hermes asks for an `API_SERVER_KEY` on every profile that answers, and each profile has its own, long and different from the others: Pepper's key sits in her own `.env`, and Mint's in his. Mint's key is also entered in the Hermes Voice integration in Home Assistant. Spoken conversations get their own session, separate from Telegram and Discord. Hermes Voice keeps one session per conversation by default, and Home Assistant starts a new one after five minutes of silence. The phone and Home Assistant are on different networks, so the satellite is added by its Tailscale address, since ESPHome discovery does not cross networks.
+
+```bash
+API_SERVER_KEY=…
+```
+
 ### 📡 Messaging
 
 Mint gets his own Telegram and Discord bots. Numeric user allowlists restrict who can talk to each bot. Gateway shutdown and restart notices stay out of both chats.
@@ -161,6 +171,15 @@ Mint uses the same published Google OAuth client as Pepper, with his own grant a
 ```bash
 /opt/data/profiles/mint/google_client_secret.json   # a private copy of the shared OAuth client
 /opt/data/profiles/mint/google_token.json           # Mint's separate account grant
+```
+
+### 🏠 Home Assistant
+
+The official Home Assistant plugin lets Mint read and control the smart devices at Bárbara's home, by chat or by voice. His long-lived token belongs to a Home Assistant user created for him, so his access can be narrowed or revoked without touching hers. The plugin refuses service domains that run code on the Home Assistant host, and no events are forwarded to him: the plugin also ships a gateway platform that listens to Home Assistant's event bus, but it forwards nothing until `watch_domains`, `watch_entities` or `watch_all` is set, and none is. Hermes logs a warning about that at startup.
+
+```bash
+HASS_URL=http://homeassistant:8123
+HASS_TOKEN=…
 ```
 
 ### 🧪 Sandbox
@@ -215,11 +234,13 @@ Langfuse records Mint's turns, model calls and tool use in the shared Hermes pro
 | Plugin | What it gives the agent | Link |
 |---|---|---|
 | `langfuse` | Traces, sessions, usage and cost in the shared Hermes project | [Official Langfuse plugin](https://github.com/NousResearch/hermes-official-plugins/tree/main/langfuse) |
+| `homeassistant` | The `ha_list_entities`, `ha_get_state`, `ha_list_services` and `ha_call_service` tools | [Official Home Assistant plugin](https://hermes-agent.nousresearch.com/docs/plugins/homeassistant) |
 
 ```yaml
 plugins:
   enabled:
     - langfuse
+    - homeassistant
 ```
 
 ```bash
