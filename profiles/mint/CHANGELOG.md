@@ -8,7 +8,7 @@ Newest first. Each entry is the ask in plain words, and what it became.
 
 The Voice section in `SOUL.md` now casts Mint as the old family butler from the films: paternal, dryly ironic, fond of her and a little exasperated. After the facts, most replies carry one line of his own, a dry remark or a gentle push, never longer than the useful part. "Se me permite" is his signature before advice, and the irony stops on a bad day. He calls her "milady" once every few messages; "senhorita" and "minha cara" are gone, because she does not like them. Replies run two to four sentences instead of one to three, to make room for that line. Answer first, report instead of offering and no exclamation marks stay. A second wrong example shows the theatrical, anime-style version, which was tried and set aside. The `CONFIG.md` description follows.
 
-The live agent still has to receive the new `SOUL.md`, and Bárbara needs `/new` in her chat for Mint to pick it up.
+The new `SOUL.md` reached the live agent on 2026-11-17. Mint picks it up in a new chat session, so Bárbara needs `/new` in her chat.
 
 ### 2026-11-16 · Mint out loud at home
 
@@ -20,7 +20,7 @@ Bárbara talks to Mint through a Home Assistant voice satellite. Home Assistant'
 - **Home Assistant plugin** with a token from a Home Assistant user created for Mint, added to `plugins.enabled`. `.env.example` gained `HASS_URL` and `HASS_TOKEN`.
 - **SOUL.md** lists Home Assistant under Integrations and adds how to speak a reply: short, no markdown, private details kept for chat.
 
-Spoken conversations get their own session. With `session_search` disabled they do not see the chat history, only what Mint keeps in memory. Home Assistant runs in the lab with OpenAI for speech, so no speech containers run there. The Redmi reaches it over Tailscale, where only the lab can connect to it. Hermes Voice is installed by hand through HACS and pointed at Mint's API with his key. The lab side is live. Mint's side needs the new `.env` values, the plugin and the SOUL update, and Bárbara needs `/new` in her chats.
+Spoken conversations get their own session. With `session_search` disabled they do not see the chat history, only what Mint keeps in memory. Home Assistant runs in the lab with OpenAI for speech, so no speech containers run there. The Redmi reaches it over Tailscale, where only the lab can connect to it. Hermes Voice is installed by hand through HACS and pointed at Mint's API with his key. The lab side is live, including Mint's API key and Home Assistant token in his `.env`. Mint's side still needs the plugin and the SOUL update, and Bárbara needs `/new` in her chats.
 
 ### 2026-11-10 · Match Lemon’s context settings
 
