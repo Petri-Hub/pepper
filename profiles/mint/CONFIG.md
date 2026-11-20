@@ -100,7 +100,7 @@ cron:
 
 ### 🎙️ Voice
 
-OpenAI transcribes Mint's voice notes and speaks his replies in Cedar. GPT-Live uses the same voice, and *hey mint* starts a session on supported clients; Telegram and Discord use voice notes instead.
+OpenAI transcribes Mint's voice notes and speaks his replies in Onyx, with a sincere, reassuring delivery. GPT-Live keeps Cedar, because Onyx is not one of its voices, and *hey mint* starts a session on supported clients; Telegram and Discord use voice notes instead. The voice at home speaks with the same Onyx voice, set in Home Assistant's OpenAI text-to-speech entry together with a short prompt for tone, pacing and a Brazilian accent. Hermes has no setting for that prompt, so it lives only in Home Assistant.
 
 ```yaml
 stt:
@@ -113,7 +113,7 @@ stt:
 tts:
   provider: openai
   openai:
-    voice: cedar
+    voice: onyx
 ```
 
 ```yaml

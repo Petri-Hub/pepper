@@ -170,7 +170,7 @@ Unknown   0 hrs 2 mins    ██████████████████
 #### Done
 
 - ✅ Separate Hermes profile with his own OpenAI key and fallback model
-- ✅ Telegram and Discord bots, with Cedar for voice notes and live chat
+- ✅ Telegram and Discord bots, with Onyx for voice notes and Cedar for live chat
 - ✅ A 150,000-token context with compression at 85%
 - ✅ Langfuse tracing in the shared Hermes project under `mint`
 - ✅ His own Modal workspace and sandbox for shell commands
