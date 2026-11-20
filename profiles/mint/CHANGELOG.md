@@ -20,7 +20,7 @@ Bárbara talks to Mint through a Home Assistant voice satellite. Home Assistant'
 - **Home Assistant plugin** with a token from a Home Assistant user created for Mint, added to `plugins.enabled`. `.env.example` gained `HASS_URL` and `HASS_TOKEN`.
 - **SOUL.md** lists Home Assistant under Integrations and adds how to speak a reply: short, no markdown, private details kept for chat.
 
-Spoken conversations get their own session. With `session_search` disabled they do not see the chat history, only what Mint keeps in memory. Home Assistant runs in the lab with OpenAI for speech, so no speech containers run there. The Redmi reaches it over Tailscale, where only the lab can connect to it. Hermes Voice is installed by hand through HACS and pointed at Mint's API with his key. The lab side is live, including Mint's API key and Home Assistant token in his `.env`. Mint's side still needs the plugin and the SOUL update, and Bárbara needs `/new` in her chats.
+Spoken conversations get their own session. With `session_search` disabled they do not see the chat history, only what Mint keeps in memory. Home Assistant runs in the lab with OpenAI for speech, so no speech containers run there. The Redmi reaches it over Tailscale, where only the lab can connect to it. Hermes Voice is installed by hand through the Marketplace that Home Assistant 2026.11 ships in place of HACS, and pointed at Mint's API with his key. The lab side is live, including Mint's API key and Home Assistant token in his `.env`. Mint's side still needs the plugin and the SOUL update, and Bárbara needs `/new` in her chats.
 
 ### 2026-11-10 · Match Lemon’s context settings
 
