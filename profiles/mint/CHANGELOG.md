@@ -2,6 +2,12 @@
 
 Newest first. Each entry is the ask in plain words, and what it became.
 
+### 2026-11-20 · Onyx for Mint's voice
+
+> *"Voice is good, can you update on his profile too?"*
+
+Mint's voice on the phone at home sounded right with Onyx and a sincere, reassuring prompt, so `tts.openai.voice` on his profile is now `onyx` and Telegram and Discord voice notes follow. GPT-Live stays on Cedar, since Onyx is not one of its voices. The tone prompt and the speed live in Home Assistant's OpenAI text-to-speech entry, because Hermes has no persistent setting for them. `CONFIG.md` and the README follow.
+
 ### 2026-11-17 · A butler from the films
 
 > *"Queria que ele falasse ainda mais como mordomo, mas mordomo de série e filme mesmo, que nem o Alfred do Batman, ou o Sebastian daquele anime."*
