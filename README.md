@@ -115,10 +115,11 @@ Markdown   0 hrs 10 mins   ███▒░░░░░░░░░░░░░�
 <!--START_SECTION:mint-->
 
 ```rust
-Total Time: 0 hrs 3 mins
+Total Time: 0 hrs 6 mins
 
-Unknown   0 hrs 3 mins    █████████████████████████   100.00 %
-Python    0 hrs 0 mins    ░░░░░░░░░░░░░░░░░░░░░░░░░   00.00 %
+Unknown    0 hrs 3 mins    ████████████▓░░░░░░░░░░░░   50.30 %
+Markdown   0 hrs 3 mins    ████████████▒░░░░░░░░░░░░   49.70 %
+Python     0 hrs 0 mins    ░░░░░░░░░░░░░░░░░░░░░░░░░   00.00 %
 ```
 
 <!--END_SECTION:mint-->
