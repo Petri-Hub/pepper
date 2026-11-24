@@ -101,11 +101,11 @@ Each agent reports to a separate Wakapi user in the lab. These cards show Wakapi
 <!--START_SECTION:pepper-->
 
 ```rust
-Total Time: 1 hrs 8 mins
+Total Time: 1 hrs 7 mins
 
-Unknown    0 hrs 47 mins   █████████████████▒░░░░░░░   69.10 %
-Python     0 hrs 11 mins   ████░░░░░░░░░░░░░░░░░░░░░   15.89 %
-Markdown   0 hrs 10 mins   ███▓░░░░░░░░░░░░░░░░░░░░░   15.01 %
+Unknown    0 hrs 46 mins   █████████████████░░░░░░░░   68.54 %
+Python     0 hrs 11 mins   ████░░░░░░░░░░░░░░░░░░░░░   16.18 %
+Markdown   0 hrs 10 mins   ███▓░░░░░░░░░░░░░░░░░░░░░   15.28 %
 ```
 
 <!--END_SECTION:pepper-->
